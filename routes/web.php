@@ -15,14 +15,19 @@
 
 Route::get('/', function () {
     return view('pages.home');
-});
+})->name('home');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/danh-sach-bai-viet', function () {
     return view('pages.list-post');
 });
 Route::get('/lien-he', function () {
     return view('pages.contact');
 });
+Route::get('/sign-in', function () {
+    return view('pages.sign-in');
+})->name('login');
+Route::get('/sign-up', function () {
+    return view('pages.sign-up');
+})->name('logup');

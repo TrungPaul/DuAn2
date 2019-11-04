@@ -1,4 +1,6 @@
 @extends('layouts.index')
+@section('title', 'Bài Viết')
+
 @section('content')
     <div class="beautypress-newsfeed-section beautypress-no-bg section-padding">
         <div class="container">

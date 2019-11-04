@@ -49,7 +49,10 @@
                             <a href="{{ url('lien-he') }}">Liên hệ</a>
                         </li>
                         <li>
-                            <a href="{{ url('dang-nhap') }}">Đăng nhập</a>
+                            <a href="{{ url('sign-in') }}">Đăng nhập</a>
+                        </li>
+                        <li>
+                            <a href="{{ url('sign-up') }}">Đăng Ký</a>
                         </li>
                     </ul>
                 </div>
