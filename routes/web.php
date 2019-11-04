@@ -11,6 +11,18 @@
 |
 */
 
+
+
 Route::get('/', function () {
-    return view('welcome');
+    return view('pages.home');
+});
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/danh-sach-bai-viet', function () {
+    return view('pages.list-post');
+});
+Route::get('/lien-he', function () {
+    return view('pages.contact');
 });
