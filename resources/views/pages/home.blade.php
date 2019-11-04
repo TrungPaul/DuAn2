@@ -1,4 +1,5 @@
 @extends('layouts.index')
+@section('title', 'SpaTime')
 
 @section('content')
     @include('layouts.owl-carousel')
