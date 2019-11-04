@@ -13,6 +13,7 @@
 
 
 
+
 Route::get('/', function () {
     return view('pages.home');
 })->name('home');
@@ -22,8 +23,18 @@ Auth::routes();
 Route::get('/danh-sach-bai-viet', function () {
     return view('pages.list-post');
 });
+
 Route::get('/lien-he', function () {
     return view('pages.contact');
 });
+
 Route::get('/sign-in','AuthController@getLogin')->name('login');
 Route::post('/post-login','AuthController@postLogin')->name('postLogin');
+
+
+Route::get('/sign-up', function () {
+    return view('pages.sign-up');
+})->name('register');
+
+Route::post('/sign-up', 'AuthController@register');
+

@@ -9,9 +9,7 @@
                             <img src="assets/img/logo-footer-v4-1.png" alt="">
                         </a>
                     </div>
-                    <div class="beautypress-single-footer">
-                        <p>Then an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five.</p>
-                    </div><!-- .beautypress-single-footer END -->
+                    
                 </div>
                 <div class="col-md-12 col-sm-12 col-lg-4 col-xl-4">
                     <div class="beautypress-single-footer beautypress-single-footer-group">

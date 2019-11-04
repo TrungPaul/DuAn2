@@ -11,9 +11,9 @@
                     <i class="xsicon icon-cosmetics"></i>
                     <img src="assets/img/features-1.jpg" alt="">
                     <div class="beautypress-our-features-content">
-                        <h3>Beauty Care</h3>
+                        <h3>Nail</h3>
                         <div class="xs-btn-wraper">
-                            <a href="#" class="xs-btn round-btn box-shadow-btn bg-color-purple">read more <span></span></a>
+                            <a href="#" class="xs-btn round-btn box-shadow-btn bg-color-purple">Chi tiết <span></span></a>
                         </div>
                     </div>
                 </div><!-- .beautypress-single-our-feature END -->
@@ -23,9 +23,9 @@
                     <i class="xsicon icon-stones"></i>
                     <img src="assets/img/features-2.jpg" alt="">
                     <div class="beautypress-our-features-content">
-                        <h3>Spa Care</h3>
+                        <h3>Chăm sóc da mặt</h3>
                         <div class="xs-btn-wraper">
-                            <a href="#" class="xs-btn round-btn box-shadow-btn bg-color-purple">read more <span></span></a>
+                            <a href="#" class="xs-btn round-btn box-shadow-btn bg-color-purple">Chi tiết <span></span></a>
                         </div>
                     </div>
                 </div><!-- .beautypress-single-our-feature END -->
@@ -35,9 +35,9 @@
                     <i class="xsicon icon-lotus"></i>
                     <img src="assets/img/features-3.jpg" alt="">
                     <div class="beautypress-our-features-content">
-                        <h3>yoga Care</h3>
+                        <h3>Chăm sóc cơ thể</h3>
                         <div class="xs-btn-wraper">
-                            <a href="#" class="xs-btn round-btn box-shadow-btn bg-color-purple">read more <span></span></a>
+                            <a href="#" class="xs-btn round-btn box-shadow-btn bg-color-purple">Chi tiết <span></span></a>
                         </div>
                     </div>
                 </div><!-- .beautypress-single-our-feature END -->
