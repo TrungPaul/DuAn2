@@ -24,8 +24,8 @@
                         </div>
                     </div>
                     <div class="form-group mb-3">
-                            <label>Password</label>
-                            <span class="text-danger">(*)</span>
+                        <label>Password</label>
+                        <span class="text-danger">(*)</span>
                         <div class="clearfix">
                             <label class="float-left"></label>
                         </div>
@@ -38,6 +38,7 @@
                             </span>
                         </div>
                     </div>
+
                     <div class="row">
                         <div class="col-sm-8">
                             <div class="checkbox-custom checkbox-default">

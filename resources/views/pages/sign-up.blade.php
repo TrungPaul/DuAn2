@@ -7,43 +7,53 @@
                 <h2 class="title text-uppercase font-weight-bold m-0"><i class="fas fa-user mr-1"></i> Sign Up</h2>
             </div>
             <div class="card-body">
-                <form action="" method="post" enctype="multipart/form-data" novalidate >
+                <form action="{{ route('register') }}" method="POST" enctype="multipart/form-data" novalidate>
                     @csrf
                     <div class="form-group mb-3">
                         <label>Tên hiển thị</label>
                         <label class="text-danger">(*)</label>
                         <div class="input-group">
-                            <input name="name" type="text" class="form-control form-control-lg"  value=""/>
+                            <input name="name" type="text" class="form-control form-control-lg" value="{{ old('name') }}"/>
                             <span class="input-group-append">
                             <span class="input-group-text">
                                 <i class="fas fa-user"></i>
                             </span>
                         </span>
                         </div>
+                        @if($errors->first('name'))
+                            <span class="text-danger"> {{ $errors->first('name') }} </span>
+                        @endif
                     </div>
                     <div class="form-group mb-3">
                         <label>Email</label>
                         <label class="text-danger">(*)</label>
                         <div class="input-group">
-                            <input name="email" type="text" class="form-control form-control-lg" value=""/>
+                            <input name="email" type="text" class="form-control form-control-lg" value="{{ old('email') }}"/>
                             <span class="input-group-append">
                             <span class="input-group-text">
                                 <i class="fas fa-user"></i>
                             </span>
                         </span>
                         </div>
+                        @if($errors->first('email'))
+                            <span class="text-danger"> {{ $errors->first('email') }} </span>
+                        @endif
                     </div>
                     <div class="form-group mb-3">
                         <label>Mật khẩu</label>
                         <label class="text-danger">(*)</label>
                         <div class="input-group">
-                            <input name="password" type="password" class="form-control form-control-lg" value="{{old('password')}}" />
+                            <input name="password" type="password" class="form-control form-control-lg"
+                                   value="{{old('password')}}"/>
                             <span class="input-group-append">
                             <span class="input-group-text">
                                 <i class="fas fa-lock"></i>
                             </span>
                         </span>
                         </div>
+                        @if($errors->first('password'))
+                            <span class="text-danger"> {{ $errors->first('password') }} </span>
+                        @endif
                     </div>
 
                     <div class="form-group mb-3">
@@ -60,7 +70,7 @@
                         </span>
                         </div>
                         @if($errors->first('pwd'))
-                            <span class="text-danger">  </span>
+                            <span class="text-danger"> {{ $errors->first('pwd') }}  </span>
                         @endif
                     </div>
                     <div class="form-group mb-3 ">
@@ -70,37 +80,39 @@
                         </div>
                         <div class="d-flex justify-content-around">
                             <div class="form-check p-2">
-                                <input class="form-check-input" type="radio" name="gender"  value="1">
+                                <input class="form-check-input" type="radio" name="gender" value="1">
                                 <label class="form-check-label" for="exampleRadios2">
                                     Nam
                                 </label>
                             </div>
                             <div class="form-check p-2">
-                                <input class="form-check-input " type="radio" name="gender"  value="2">
+                                <input class="form-check-input " type="radio" name="gender" value="2">
                                 <label class="form-check-label" for="exampleRadios2">
                                     Nữ
                                 </label>
                             </div>
                             <div class="form-check p-2">
-                                <input class="form-check-input " type="radio" name="gender"  value="3">
+                                <input class="form-check-input " type="radio" name="gender" value="3">
                                 <label class="form-check-label" for="exampleRadios2">
                                     Khác
                                 </label>
                             </div>
                         </div>
+                        @if($errors->first('gender'))
+                            <span class="text-danger"> {{ $errors->first('gender') }}  </span>
+                        @endif
                     </div>
-
 
                     <br>
                     <div class="row">
                         <div class="col-sm-10">
                             <div class="checkbox-custom checkbox-default">
                                 <div class="checkbox-custom checkbox-default">
-                                    <input id="RememberMe" name="rememberme" type="checkbox"/>
+                                    <input id="RememberMe" name="remember" type="checkbox"/>
                                     <label for="RememberMe">Tôi đồng ý với các điều khoản sử dụng</label>
                                 </div>
-                                @if($errors->first('rememberme'))
-                                    <span class="text-danger"> </span>
+                                @if($errors->first('remember'))
+                                    <span class="text-danger"> {{ $errors->first('remember') }} </span>
                                 @endif
                             </div>
                         </div>
@@ -109,25 +121,20 @@
                     <div class="row">
                         <div class="col-sm-12 text-center">
                             <button type="submit" class="btn btn-primary mt-2">Đăng ký</button>
-
-
                         </div>
                     </div>
-
+                    <br>
                     <div class="mb-1 text-center">
-                            <img src="{{asset('assets/img/section-heading-separetor.png')}}" alt="" style="width:52%">
-                        </div>
+                        <img src="{{asset('assets/img/section-heading-separetor.png')}}" alt="" style="width:52%">
+                    </div>
+                    <br>
                     <div class="mb-1 text-center">
                         <a class="btn btn-facebook mb-3 ml-1 mr-1" href="#">Đăng nhập <i class="fab fa-facebook-f"></i></a>
                         <a class="btn btn-google mb-3 ml-1 mr-1" href="#">Đăng nhập <i class="fab fa-google"></i></a>
                     </div>
-
                     <p class="text-center">Bạn đã có tài khoản<a href="{{route('login')}}">Đăng nhập</a></p>
-
                 </form>
             </div>
         </div>
-
-
     </div>
 @endsection

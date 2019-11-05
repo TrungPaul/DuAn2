@@ -24,5 +24,6 @@
 <link rel="stylesheet" href="assets/css/plugins.css" />
 <!--Theme custom css -->
 <link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/toastr.css" >
 <!--Theme Responsive css-->
 <!-- <link rel="stylesheet" href="css/responsive.css" /> -->
