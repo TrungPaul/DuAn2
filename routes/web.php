@@ -14,15 +14,11 @@
 
 
 
-Route::get('/', function () {
-    return view('pages.home');
-})->name('home');
+Route::get('/','HomeController@index')->name('home');
 
 Auth::routes();
 
-Route::get('/danh-sach-bai-viet', function () {
-    return view('pages.list-post');
-});
+Route::get('/danh-sach-bai-viet', 'PostController@index')->name('post');
 
 Route::get('/lien-he', function () {
     return view('pages.contact');

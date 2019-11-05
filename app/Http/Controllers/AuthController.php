@@ -33,7 +33,7 @@ class AuthController extends Controller
         if ($checklogin) {
             return redirect()->route('home');
         } else {
-            return redirect()->route('getLogin');
+            return redirect()->route('login');
         }
     }
 
