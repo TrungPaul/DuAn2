@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\User;
 use Illuminate\Support\Facades\Lang;
+use App\Http\Requests\RegisterRequest;
 
 class AuthController extends Controller
 {
