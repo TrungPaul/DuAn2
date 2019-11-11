@@ -27,10 +27,21 @@ Route::get('/lien-he', function () {
 Route::get('/sign-in','AuthController@getLogin')->name('login');
 Route::post('/post-login','AuthController@postLogin')->name('postLogin');
 
-
-Route::get('/sign-up', function () {
-    return view('pages.sign-up');
-})->name('register');
-
+Route::get('/sign-up', 'AuthController@screen')->name('register');
 Route::post('/sign-up', 'AuthController@register');
+
+Route::get('logout', function () {
+    Auth::logout();
+    Session::flush();
+    return redirect()->route('login');
+})->name('logout');
+
+Route::prefix('spa')->group(function () {
+    Route::get('employee', function () {
+        return view('pages-spa.list-employee');
+    });
+    Route::get('list-employee', function () {
+        return view('pages-spa.list-employee');
+    })->name('list-employee');
+});
 
