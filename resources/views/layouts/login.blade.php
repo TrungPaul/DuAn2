@@ -18,20 +18,20 @@
 
 	<!-- Vendor CSS -->
 	<link rel="stylesheet" href="{{asset('vendor/bootstrap/css/bootstrap.css')}}" />
-	
+
 
 	<link rel="stylesheet" href="{{asset('vendor/font-awesome/css/all.min.css')}}" />
 		<!-- <link rel="stylesheet" href="vendor/magnific-popup/magnific-popup.css" />
 			<link rel="stylesheet" href="vendor/bootstrap-datepicker/css/bootstrap-datepicker3.css" /> -->
 
 			<!-- Theme CSS -->
-			<link rel="stylesheet" href="{{asset('css/theme.css')}}" />
+			<link rel="stylesheet" href="{{asset('assets/css/theme.css')}}" />
 
 			<!-- Theme Custom CSS -->
-			
+
 
 			<!-- Head Libs -->
-			
+
 
 </head>
 <body>
@@ -42,7 +42,7 @@
 			<!-- end: page -->
 
 			<!-- Vendor -->
-			
+
 </body>
 
 		<!-- Mirrored from preview.oklerthemes.com/porto-admin/2.2.0/pages-signin.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 09 Aug 2019 04:14:02 GMT -->
