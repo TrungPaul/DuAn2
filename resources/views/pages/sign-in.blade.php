@@ -2,12 +2,10 @@
 @section('title', 'Đăng nhập')
 @section('content')
     <div class="center-sign">
-
         <div class="panel card-sign">
             <div class="card-title-sign mt-3 text-right">
                 <h2 class="title text-uppercase font-weight-bold m-0"><a href="{{route('home')}}">SpaTime</a></h2>
             </div>
-
             <div class="card-body">
                 <form action="{{ route('postLogin')}}" method="POST">
                     @csrf
@@ -48,7 +46,7 @@
                             </div>
                         </div>
                         <div class="col-sm-4 text-right">
-                            <button type="submit" class="btn btn-purple mt-2">Đăng nhập</button>
+                            <button type="submit" class="btn btn-primary mt-2">Đăng nhập</button>
                             <a href="" style="color: #999" class="float-right"></a>
 
                         </div>
@@ -60,11 +58,11 @@
                         <a class="btn btn-facebook mb-3 ml-1 mr-1" href="">Đăng nhập bằng  <i
                                 class="fab fa-facebook-f"></i></a>
                     </div>
-
-                    <p class="text-center">Bạn đã có tài khoản <a href="">Đăng ký</a></p>
+                    <p class="text-center">Bạn đã có tài khoản <a href="/sign-up">Đăng ký</a></p>
                 </form>
             </div>
         </div>
-
     </div>
 @endsection
+
+

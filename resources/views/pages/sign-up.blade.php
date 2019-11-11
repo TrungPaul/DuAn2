@@ -13,7 +13,8 @@
                         <label>Tên hiển thị</label>
                         <label class="text-danger">(*)</label>
                         <div class="input-group">
-                            <input name="name" type="text" class="form-control form-control-lg" value="{{ old('name') }}"/>
+                            <input name="name" type="text" class="form-control form-control-lg"
+                                   value="{{ old('name') }}"/>
                             <span class="input-group-append">
                             <span class="input-group-text">
                                 <i class="fas fa-user"></i>
@@ -28,7 +29,8 @@
                         <label>Email</label>
                         <label class="text-danger">(*)</label>
                         <div class="input-group">
-                            <input name="email" type="text" class="form-control form-control-lg" value="{{ old('email') }}"/>
+                            <input name="email" type="text" class="form-control form-control-lg"
+                                   value="{{ old('email') }}"/>
                             <span class="input-group-append">
                             <span class="input-group-text">
                                 <i class="fas fa-user"></i>
@@ -138,3 +140,4 @@
         </div>
     </div>
 @endsection
+

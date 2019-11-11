@@ -9,7 +9,7 @@
                             <img src="assets/img/logo-footer-v4-1.png" alt="">
                         </a>
                     </div>
-                    
+
                 </div>
                 <div class="col-md-12 col-sm-12 col-lg-4 col-xl-4">
                     <div class="beautypress-single-footer beautypress-single-footer-group">
@@ -28,5 +28,4 @@
             </div>
         </div>
     </div>
-
 </footer>

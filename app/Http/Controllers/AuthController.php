@@ -18,7 +18,6 @@ class AuthController extends Controller
 
     }
 
-
     public function postLogin(Request $request)
     {
         //nếu chưa login thì chạy xuống dưới
@@ -37,12 +36,18 @@ class AuthController extends Controller
         }
     }
 
+    public function screen()
+    {
+        return view('pages.sign-up');
+    }
+
     public function register(RegisterRequest $request)
     {
         $input = $request->all();
         $input['password'] = bcrypt($input['password']);
         $user = User::create($input);
+        $success = Lang::get('message.create_user');
 
-        return redirect()->route('login')->with('crate_user',Lang::get('message.create_user'));
+        return redirect()->route('login', compact('success'))->with('crate_user',Lang::get('message.create_user'));
     }
 }
