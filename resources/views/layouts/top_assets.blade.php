@@ -32,3 +32,5 @@
 <link href="assets-spa/css/styles.css" rel="stylesheet">
 <!-- Custom Color -->
 <link href="assets-spa/css/skin/default.css" rel="stylesheet">
+<!-- wysihtml5 -->
+<link href="assets/css/bootstrap-wysihtml5.css" rel="stylesheet">

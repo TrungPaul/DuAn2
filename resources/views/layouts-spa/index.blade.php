@@ -35,7 +35,7 @@
         <div class="container">
             <nav class="xs_nav_2 xs_nav-landscape">
                 <div class="nav-header">
-                    <a class="nav-logo" href="index.html">
+                    <a class="nav-logo" href="{{ url('/') }}">
                         <img src="assets/img/logo-v4.png" alt="logo">
                     </a>
                 </div>

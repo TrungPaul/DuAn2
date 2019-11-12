@@ -19,6 +19,7 @@ Route::get('/','HomeController@index')->name('home');
 Auth::routes();
 
 Route::get('/danh-sach-bai-viet', 'PostController@index')->name('post');
+Route::get('{post_id}/detail', 'PostController@detail')->name('detail_post');
 
 Route::get('/lien-he', function () {
     return view('pages.contact');
@@ -43,5 +44,12 @@ Route::prefix('spa')->group(function () {
     Route::get('list-employee', function () {
         return view('pages-spa.list-employee');
     })->name('list-employee');
+
+    //post
+    Route::get('post','PostController@show')->name('list-post');
+    Route::get('add','PostController@add')->name('add-post');
+    Route::post('create-post', 'PostController@create_post')->name('create-post');
+    Route::get('{id}/edit','PostController@edit')->name('edit-post');
+    Route::post('update','PostController@update_post')->name('update-post');
 });
 
