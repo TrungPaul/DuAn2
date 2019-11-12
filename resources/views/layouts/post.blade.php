@@ -16,12 +16,12 @@
                                     <a href="#">By Gomez</a>
                                 </div>
                                 <div class="beautypress-dates">
-                                    <p class="bg-color-purple">5/10<strong>dec</strong></p>
+                                    <p class="bg-color-purple">5/10<strong>{{ $p->category->name }}</strong></p>
                                 </div>
                             </div><!-- .beautypress-newsfeed-header-content END -->
                         </div><!-- .beautypress-newsfeed-header END -->
                         <div class="beautypress-newsfeed-footer">
-                            <a href="#">{{ $p->title }}</a>
+                            <a href="{{route('detail_post', $p->id)}}">{{ $p->title }}</a>
                             <p>{{ $p->content }}</p>
                         </div><!-- .beautypress-newsfeed-footer END -->
                     </div><!-- .beautypress-single-newsletter END -->
