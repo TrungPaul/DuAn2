@@ -13,7 +13,8 @@
 
                 <div class="tr-single-box">
                     <div class="tr-single-header">
-                        <h4><i class="lni-file"></i> Manage jobs</h4>
+                        <a href="" class="btn mg-add"><h4><i class="lni-file"></i> Thêm nhân viên</h4></a>
+
                     </div>
 
                     <div class="tr-single-body">

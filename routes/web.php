@@ -37,11 +37,8 @@ Route::get('logout', function () {
 })->name('logout');
 
 Route::prefix('spa')->group(function () {
-    Route::get('employee', function () {
-        return view('pages-spa.list-employee');
-    });
-    Route::get('list-employee', function () {
-        return view('pages-spa.list-employee');
-    })->name('list-employee');
+    Route::get('employee', 'StaffController@listEmployee')->name('list-employee');
+    Route::get('add-employee', 'StaffController@addEmployee')->name('add-employee');
+    Route::post('add-employee', 'StaffController@createEmployee');
 });
 

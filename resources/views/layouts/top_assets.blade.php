@@ -27,8 +27,4 @@
 <link rel="stylesheet" href="assets/css/toastr.css" >
 <!--Theme Responsive css-->
 <!-- <link rel="stylesheet" href="css/responsive.css" /> -->
-<link href="assets-spa/css/plugins.css" rel="stylesheet">
-<!-- Custom CSS -->
-<link href="assets-spa/css/styles.css" rel="stylesheet">
-<!-- Custom Color -->
-<link href="assets-spa/css/skin/default.css" rel="stylesheet">
+

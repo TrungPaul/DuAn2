@@ -8,7 +8,7 @@
     <title>@yield('title')</title>
 
     <!-- All Plugins Css -->
-    @include ('layouts.top_assets')
+    @include ('layouts-spa.top_assets')
 </head>
 
 <body class="blue-skin">
