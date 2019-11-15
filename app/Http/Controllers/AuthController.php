@@ -45,4 +45,11 @@ class AuthController extends Controller
 
         return redirect()->route('login')->with('crate_user',Lang::get('message.create_user'));
     }
+
+    public function logout()
+    {
+        Auth::logout();
+
+        return redirect()->route('home');
+    }
 }

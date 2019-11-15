@@ -48,8 +48,8 @@
                             </div>
                         </div>
                         <div class="col-sm-4 text-right">
-                            <button type="submit" class="btn btn-purple mt-2">Đăng nhập</button>
-                            <a href="" style="color: #999" class="float-right"></a>
+                            <button type="submit" class="btn btn-primary mt-2">Đăng nhập</button>
+                        <a href="{{ route('get.resetform') }}" target="_blank" style="color: #999" class="float-right">Quên mật khẩu</a>
 
                         </div>
                     </div>

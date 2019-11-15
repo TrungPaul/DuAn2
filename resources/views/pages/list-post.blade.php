@@ -2,146 +2,43 @@
 @section('title', 'Bài Viết')
 
 @section('content')
-    <div class="beautypress-newsfeed-section beautypress-no-bg section-padding">
-        <div class="container">
-            <div class="beautypress-section-headinig beautypress-version-2" style="margin-top: 5%">
-                <h3>Danh sách bài viết</h3>
-                <img src="assets/img/section-heading-separetor.png" alt="">
+<section class="beautypress-simple-text-with-img-section bg-color-gray">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xl-6 col-lg-6">
+                <div class="twentytwenty-wrapper twentytwenty-horizontal"><div class="twentytwenty-container beautypress-before-after" style="height: 393.438px;">
+                    <img src="img/before-after-1.jpg" alt="" class="twentytwenty-before" style="clip: rect(0px, 270px, 393.438px, 0px);">
+                    <img src="img/before-after-2.jpg" alt="" class="twentytwenty-after" style="clip: rect(0px, 540px, 393.438px, 270px);">
+                <div class="twentytwenty-handle" style="left: 270px;"><span class="twentytwenty-left-arrow"></span><span class="twentytwenty-right-arrow"></span></div></div></div>
             </div>
-            <div class="row">
-                <div class="col-md-12 col-sm-12 col-xl-4 col-lg-4">
-                    <div class="beautypress-single-newsletter mb-30">
-                        <div class="beautypress-newsfeed-header beautypress-black-gradient-overlay">
-                            <img src="assets/img/inner-news-feed-1.jpg" alt="">
-                            <div class="beautypress-newsfeed-header-content">
-                                <div class="beautypress-newsfeed-img">
-                                    <img src="assets/img/avatar-1.jpg" alt="">
-                                    <a href="#">By Zulia</a>
-                                </div>
-                                <div class="beautypress-dates">
-                                    <p class="bg-color-purple">27<strong>Jan</strong></p>
-                                </div>
-                            </div><!-- .beautypress-newsfeed-header-content END -->
-                        </div><!-- .beautypress-newsfeed-header END -->
-                        <div class="beautypress-newsfeed-footer">
-                            <a href="#">It is a long established fact that a reader.</a>
-                            <p>Randomised words which don't look even slightly believable. If you are going to use a passage you need to be sure.</p>
-                        </div><!-- .beautypress-newsfeed-footer END -->
-                    </div><!-- .beautypress-single-newsletter END -->
-                </div>
-                <div class="col-md-12 col-sm-12 col-xl-4 col-lg-4">
-                    <div class="beautypress-single-newsletter mb-30">
-                        <div class="beautypress-newsfeed-header beautypress-black-gradient-overlay">
-                            <img src="assets/img/inner-news-feed-1.jpg" alt="">
-                            <div class="beautypress-newsfeed-header-content">
-                                <div class="beautypress-newsfeed-img">
-                                    <img src="assets/img/avatar-1.jpg" alt="">
-                                    <a href="#">By Zulia</a>
-                                </div>
-                                <div class="beautypress-dates">
-                                    <p class="bg-color-purple">27<strong>Jan</strong></p>
-                                </div>
-                            </div><!-- .beautypress-newsfeed-header-content END -->
-                        </div><!-- .beautypress-newsfeed-header END -->
-                        <div class="beautypress-newsfeed-footer">
-                            <a href="#">It is a long established fact that a reader.</a>
-                            <p>Randomised words which don't look even slightly believable. If you are going to use a passage you need to be sure.</p>
-                        </div><!-- .beautypress-newsfeed-footer END -->
-                    </div><!-- .beautypress-single-newsletter END -->
-                </div>
-                <div class="col-md-12 col-sm-12 col-xl-4 col-lg-4">
-                    <div class="beautypress-single-newsletter mb-30">
-                        <div class="beautypress-newsfeed-header beautypress-black-gradient-overlay">
-                            <img src="assets/img/inner-news-feed-1.jpg" alt="">
-                            <div class="beautypress-newsfeed-header-content">
-                                <div class="beautypress-newsfeed-img">
-                                    <img src="assets/img/avatar-1.jpg" alt="">
-                                    <a href="#">By Zulia</a>
-                                </div>
-                                <div class="beautypress-dates">
-                                    <p class="bg-color-purple">27<strong>Jan</strong></p>
-                                </div>
-                            </div><!-- .beautypress-newsfeed-header-content END -->
-                        </div><!-- .beautypress-newsfeed-header END -->
-                        <div class="beautypress-newsfeed-footer">
-                            <a href="#">It is a long established fact that a reader.</a>
-                            <p>Randomised words which don't look even slightly believable. If you are going to use a passage you need to be sure.</p>
-                        </div><!-- .beautypress-newsfeed-footer END -->
-                    </div><!-- .beautypress-single-newsletter END -->
-                </div>
-                <div class="col-md-12 col-sm-12 col-xl-4 col-lg-4">
-                    <div class="beautypress-single-newsletter mb-30">
-                        <div class="beautypress-newsfeed-header beautypress-black-gradient-overlay">
-                            <img src="assets/img/inner-news-feed-1.jpg" alt="">
-                            <div class="beautypress-newsfeed-header-content">
-                                <div class="beautypress-newsfeed-img">
-                                    <img src="assets/img/avatar-1.jpg" alt="">
-                                    <a href="#">By Zulia</a>
-                                </div>
-                                <div class="beautypress-dates">
-                                    <p class="bg-color-purple">27<strong>Jan</strong></p>
-                                </div>
-                            </div><!-- .beautypress-newsfeed-header-content END -->
-                        </div><!-- .beautypress-newsfeed-header END -->
-                        <div class="beautypress-newsfeed-footer">
-                            <a href="#">It is a long established fact that a reader.</a>
-                            <p>Randomised words which don't look even slightly believable. If you are going to use a passage you need to be sure.</p>
-                        </div><!-- .beautypress-newsfeed-footer END -->
-                    </div><!-- .beautypress-single-newsletter END -->
-                </div>
-                <div class="col-md-12 col-sm-12 col-xl-4 col-lg-4">
-                    <div class="beautypress-single-newsletter mb-30">
-                        <div class="beautypress-newsfeed-header beautypress-black-gradient-overlay">
-                            <img src="assets/img/inner-news-feed-1.jpg" alt="">
-                            <div class="beautypress-newsfeed-header-content">
-                                <div class="beautypress-newsfeed-img">
-                                    <img src="assets/img/avatar-1.jpg" alt="">
-                                    <a href="#">By Zulia</a>
-                                </div>
-                                <div class="beautypress-dates">
-                                    <p class="bg-color-purple">27<strong>Jan</strong></p>
-                                </div>
-                            </div><!-- .beautypress-newsfeed-header-content END -->
-                        </div><!-- .beautypress-newsfeed-header END -->
-                        <div class="beautypress-newsfeed-footer">
-                            <a href="#">It is a long established fact that a reader.</a>
-                            <p>Randomised words which don't look even slightly believable. If you are going to use a passage you need to be sure.</p>
-                        </div><!-- .beautypress-newsfeed-footer END -->
-                    </div><!-- .beautypress-single-newsletter END -->
-                </div>
-                <div class="col-md-12 col-sm-12 col-xl-4 col-lg-4">
-                    <div class="beautypress-single-newsletter mb-30">
-                        <div class="beautypress-newsfeed-header beautypress-black-gradient-overlay">
-                            <img src="assets/img/inner-news-feed-1.jpg" alt="">
-                            <div class="beautypress-newsfeed-header-content">
-                                <div class="beautypress-newsfeed-img">
-                                    <img src="assets/img/avatar-1.jpg" alt="">
-                                    <a href="#">By Zulia</a>
-                                </div>
-                                <div class="beautypress-dates">
-                                    <p class="bg-color-purple">27<strong>Jan</strong></p>
-                                </div>
-                            </div><!-- .beautypress-newsfeed-header-content END -->
-                        </div><!-- .beautypress-newsfeed-header END -->
-                        <div class="beautypress-newsfeed-footer">
-                            <a href="#">It is a long established fact that a reader.</a>
-                            <p>Randomised words which don't look even slightly believable. If you are going to use a passage you need to be sure.</p>
-                        </div><!-- .beautypress-newsfeed-footer END -->
-                    </div><!-- .beautypress-single-newsletter END -->
-                </div>
-            </div>
-            <div class="beautypress-pagination-wraper">
-                <ul class="beautypress-pagination">
-                    <li><a href="#"><i class="fa fa-angle-left"></i></a></li>
-                    <li><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">...</a></li>
-                    <li><a href="#">11</a></li>
-                    <li><a href="#">12</a></li>
-                    <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
-                </ul>
+            <div class="col-md-12 col-sm-12 col-lg-6 col-xl-6">
+                <div class="beautypress-simple-text beautypress-version-2">
+                    <div class="beautypress-big-sub-heading">
+                        <h2>Secret of</h2>
+                        <h3>BeautyPress</h3>
+                    </div><!-- .beautypress-separetor-sub-heading END -->
+                    <div class="beautypress-simple-text-content">
+                        <p>After owning two successful salon locations they decided to move their passion to the small town of Gainesville.</p>
+                    </div>
+                    <div class="beautypress-spilit-container">
+                        <div class="beautypress-icon-with-text">
+                            <div class="beautypress-svg-ico">
+                                <img src="img/cosmetics.svg" alt="">
+                            </div>
+                            <h3>Reflexology</h3>
+                            <p>Stimulates the movement of energy by applying pressure.</p>
+                        </div><!-- .beautypress-icon-with-text END -->
+                        <div class="beautypress-icon-with-text">
+                            <div class="beautypress-svg-ico">
+                                <img src="img/nail.svg" alt="">
+                            </div>
+                            <h3>Nail Therapy</h3>
+                            <p>Wraps are intended to tone and tighten skin while helping.</p>
+                        </div><!-- .beautypress-icon-with-text END -->
+                    </div>
+                </div><!-- .beautypress-simple-text END -->
             </div>
         </div>
     </div>
+</section>
 @endsection
