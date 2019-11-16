@@ -49,11 +49,20 @@
                             <a href="{{ url('lien-he') }}">Liên hệ</a>
                         </li>
                         <li>
+                            @if (Auth::user())
+                        <a href="{{ url('thong-tin') }}">
+                                <img src="{{ Auth::user()->avatar }}" alt="" style="width:10%">
+                            {{ Auth::user()->name }}
+                        </a>
+                    @else
+                    <li>
                             <a href="{{ url('sign-in') }}">Đăng nhập</a>
                         </li>
                         <li>
                             <a href="{{ url('sign-up') }}">Đăng Ký</a>
                         </li>
+                    @endif
+                    </li>
                     </ul>
                 </div>
             </nav>
