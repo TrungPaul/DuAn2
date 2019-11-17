@@ -13,8 +13,8 @@
           rel="stylesheet" type="text/css">
     <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
     <!-- Vendor CSS -->
-    <link rel="stylesheet" href="{{asset('vendor/bootstrap/css/bootstrap.css')}}"/>
-    <link rel="stylesheet" href="{{asset('vendor/font-awesome/css/all.min.css')}}"/>
+    <link rel="stylesheet" href="{{asset('assets/vendor/bootstrap/css/bootstrap.css')}}"/>
+    <link rel="stylesheet" href="{{asset('assets/vendor/font-awesome/css/all.min.css')}}"/>
     <!-- <link rel="stylesheet" href="vendor/magnific-popup/magnific-popup.css" />
         <link rel="stylesheet" href="vendor/bootstrap-datepicker/css/bootstrap-datepicker3.css" /> -->
     <!-- Theme CSS -->
