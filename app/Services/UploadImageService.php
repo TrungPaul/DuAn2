@@ -6,9 +6,11 @@ class UploadImageService
 {
     public function uploadFile($avatar)
     {
-        $extension = $avatar->getClientOriginalExtension();
-        $file_name = time() . '-' . rand(1, 100) . '.' . $extension;
+//        $image = $request->file('avatar');
+        $name = time() . '.' . $avatar->getClientOriginalExtension();
+        $destinationPath = public_path('/images/employee');
+        $avatar->move($destinationPath, $name);
 
-        return asset($avatar->move('images/employee', $file_name));
+        return $name;
     }
 }

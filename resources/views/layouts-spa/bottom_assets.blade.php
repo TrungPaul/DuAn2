@@ -12,6 +12,8 @@
 <script src="assets-spa/js/summernote.js"></script>
 <script src="assets-spa/js/cl-switch.js"></script>
 <script src="assets-spa/js/custom.js"></script>
+<script src="assets/js/toastr.min.js"></script>
+<script src="assets-spa/js/ajax-spa.js"></script>
 <!-- ============================================================== -->
 <!-- This page plugins -->
 <!-- ============================================================== -->

@@ -35,10 +35,15 @@ Route::get('logout', function () {
     Session::flush();
     return redirect()->route('login');
 })->name('logout');
-
-Route::prefix('spa')->group(function () {
-    Route::get('employee', 'StaffController@listEmployee')->name('list-employee');
-    Route::get('add-employee', 'StaffController@addEmployee')->name('add-employee');
-    Route::post('add-employee', 'StaffController@createEmployee');
+Route::group(['middleware'=>'auth'],function() {
+    Route::prefix('spa')->group(function () {
+        Route::get('employee', 'StaffController@listEmployee')->name('list-employee');
+        Route::get('add-employee', 'StaffController@addEmployee')->name('add-employee');
+        Route::post('add-employee', 'StaffController@createEmployee');
+        Route::get('employee/{id}', 'StaffController@edit')->name('edit-employee');
+        Route::post('employee/{id}', 'StaffController@update');
+        //thay đổi trạng thái
+        Route::post('employee-status/{id}', 'StaffController@delete');
+    });
 });
 

@@ -31,22 +31,18 @@
             </div>
         </div>
     </div>
-    <div class="topbar tp-rlt" >
+    <div class="topbar tp-rlt">
         <div class="container">
             <nav class="xs_nav_2 xs_nav-landscape">
                 <div class="nav-header">
-                    <a class="nav-logo" href="index.html">
+                    <ao class="nav-logo" href="index.html">
                         <img src="assets/img/logo-v4.png" alt="logo">
-                    </a>
+                    </ao>
                 </div>
                 <div class="nav-menus-wrapper">
                     <ul class="nav-menu nav-menu-centered" style="margin-right: -300px;">
-
                         <li>
-                            <a href="{{ url('sign-in') }}">Đăng nhập</a>
-                        </li>
-                        <li>
-                            <a href="{{ url('sign-up') }}">Đăng Ký</a>
+                            <a href="{{ url('contact') }}">Liên hệ với chúng tôi</a>
                         </li>
                     </ul>
                 </div>
@@ -61,8 +57,8 @@
         <div class="container">
             <div class="row">
                 <!-- Sidebar Start -->
-                @include ('layouts-spa.sidebar')
-                <!-- /col-md-4 -->
+            @include ('layouts-spa.sidebar')
+            <!-- /col-md-4 -->
                 @yield ('content')
 
             </div>
@@ -70,6 +66,7 @@
     </section>
     @include ('layouts.footer')
     @include ('layouts-spa.bottom_assets')
+    @yield('alert');
 </div>
 
 </body>

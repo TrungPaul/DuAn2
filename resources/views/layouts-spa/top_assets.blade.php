@@ -13,6 +13,7 @@
 <!-- Custom Color -->
 <link href="assets-spa/css/skin/default.css" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/plugins.css" />
+<link rel="stylesheet" href="assets/css/toastr.css" >
 
 
 
