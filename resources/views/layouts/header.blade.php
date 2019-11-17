@@ -13,7 +13,8 @@
         </div>
     </div>
 </div>
-<header class="beautypress-header-section beautypress-header-version-3 beautypress-header-version-2 header-height-calc-minus">
+<header
+    class="beautypress-header-section beautypress-header-version-3 beautypress-header-version-2 header-height-calc-minus">
     <div class="beautypress-header-top bg-color-gray-2">
         <div class="container">
             <div class="beautypress-spilit-container beautypress-version-2">
@@ -48,21 +49,21 @@
                         <li>
                             <a href="{{ url('lien-he') }}">Liên hệ</a>
                         </li>
-                        <li>
-                            @if (Auth::user())
-                        <a href="{{ url('thong-tin') }}">
-                                <img src="{{ Auth::user()->avatar }}" alt="" style="width:10%">
-                            {{ Auth::user()->name }}
-                        </a>
-                    @else
-                    <li>
-                            <a href="{{ url('sign-in') }}">Đăng nhập</a>
-                        </li>
-                        <li>
-                            <a href="{{ url('sign-up') }}">Đăng Ký</a>
-                        </li>
-                    @endif
-                    </li>
+                        @if(Auth::check())
+                            <li>
+                                <a href="">{{ Auth::user()->name }}</a>
+                            </li>
+                            <li>
+                                <a href="{{ url('logout') }}"><i class="fa fa-sign-out" aria-hidden="true"></i></a>
+                            </li>
+                        @else
+                            <li>
+                                <a href="{{ url('sign-in') }}">Đăng nhập</a>
+                            </li>
+                            <li>
+                                <a href="{{ url('sign-up') }}">Đăng Ký</a>
+                            </li>
+                        @endif
                     </ul>
                 </div>
             </nav>

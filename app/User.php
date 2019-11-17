@@ -22,7 +22,8 @@ protected $table = 'users';
         'phone_number',
         'date_of_birth',
         'avatar',
-        'is_active'
+        'is_active',
+        'gender'
     ];
 
     /**

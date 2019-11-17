@@ -47,11 +47,17 @@ Route::get('logout', function () {
     Session::flush();
     return redirect()->route('home');
 })->name('logout');
-
-Route::prefix('spa')->group(function () {
-    Route::get('employee', function () {
-        return view('pages-spa.list-employee');
+Route::group(['middleware'=>'auth'],function() {
+    Route::prefix('spa')->group(function () {
+        Route::get('employee', 'StaffController@listEmployee')->name('list-employee');
+        Route::get('add-employee', 'StaffController@addEmployee')->name('add-employee');
+        Route::post('add-employee', 'StaffController@createEmployee');
+        Route::get('employee/{id}', 'StaffController@edit')->name('edit-employee');
+        Route::post('employee/{id}', 'StaffController@update');
+        //thay đổi trạng thái
+        Route::post('employee-status/{id}', 'StaffController@delete');
     });
+
     Route::get('list-employee', function () {
         return view('pages-spa.list-employee');
     })->name('list-employee');
@@ -62,6 +68,7 @@ Route::prefix('spa')->group(function () {
     Route::post('create-post', 'PostController@create_post')->name('create-post');
     Route::get('{id}/edit','PostController@edit')->name('edit-post');
     Route::post('update','PostController@update_post')->name('update-post');
+
 });
 
 

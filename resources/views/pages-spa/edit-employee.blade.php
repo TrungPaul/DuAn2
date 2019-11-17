@@ -12,17 +12,19 @@
                 <!-- Add New jobs -->
                 <div class="tr-single-box">
                     <div class="tr-single-header">
-                        <h4><i class="ti-plus"></i> Thêm nhân viên mới</h4>
+                        <a href="{{ route('list-employee')}}" class="btn mg-add">
+                            <h4 class="btn-add"><i class="ti-shift-right mr-2"></i> Quay lại</h4>
+                        </a>
                     </div>
                     <div class="tr-single-body">
-                        <form action="{{ route('add-employee') }}" method="POST" enctype="multipart/form-data"
+                        <form action="{{ route('edit-employee', ['id' => $employee->id]) }}" method="POST" enctype="multipart/form-data"
                               novalidate>
                             @csrf
                             <div class="row">
                                 <div class="col-lg-6 col-md-6 col-sm-6">
                                     <div class="form-group">
                                         <label>Tên nhân viên</label>
-                                        <input class="form-control" type="text" name="name" value="{{ old('name') }}">
+                                        <input class="form-control" type="text" name="name" value="{{ $employee->name }}">
                                         @if( $errors->first('name'))
                                             <span class="text-danger">{{ $errors->first('name')}}</span>
                                         @endif
@@ -34,10 +36,9 @@
                                         <select id="career-gender" name="gender"
                                                 class="form-control select2-hidden-accessible"
                                                 data-select2-id="career-gender" tabindex="-1" aria-hidden="true">
-                                            <option value="" data-select2-id="6">&nbsp;</option>
+                                            <option value="{{ $employee->gender }}" data-select2-id="6">{{ $employee->gender }}</option>
                                             <option value="Nam" data-select2-id="12">Nam</option>
                                             <option value="Nữ" data-select2-id="13">Nữ</option>
-
                                         </select><span
                                             class="select2 select2-container select2-container--default select2-container--below select2-container--focus"
                                             dir="ltr" data-select2-id="5" style="width: 329px;"><span
@@ -61,11 +62,11 @@
                                 </div>
                                 <div class="col-lg-6 col-md-6col-sm-6" style="width: 150px; ">
                                     <div class="form-group">
-                                        <img id="showImage" src="images/default-avatar.png" width="150"
+                                        <img id="showImage" src="images/employee/{{ $employee->avatar }}" width="150"
                                              style="margin-left: 30%;">
                                     </div>
                                 </div>
-                                <button type="submit" class="btn btn-info btn-md full-width">Thêm mới<i
+                                <button type="submit" class="btn btn-info btn-md full-width">Thay đổi<i
                                         class="ml-2 ti-arrow-right"></i></button>
                             </div>
                         </form>
