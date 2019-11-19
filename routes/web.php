@@ -69,6 +69,11 @@ Route::group(['middleware'=>'auth'],function() {
     Route::get('{id}/edit','PostController@edit')->name('edit-post');
     Route::post('update','PostController@update_post')->name('update-post');
 
+    Route::get('service/{spaId}','ServiceController@index')->name('list-service');
+    Route::get('service/delete/{serviceId}','ServiceController@destroy')->name('delete-service');
+    Route::get('service/get-add-service/{spaId}','ServiceController@storeService')->name('get-add-service');
+    Route::post('service/post-add-service/{spaId}', 'ServiceController@add')->name('get-add-service');
+
 });
 
 
