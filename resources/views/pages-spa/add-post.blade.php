@@ -22,7 +22,12 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label>Tiêu đề</label>
-                                    <input type="text" name="title" class="form-control">
+                                    <input type="text" name="title" class="form-control @error('title') is-invalid @enderror" value="{{ old('title') }}"> 
+                                    @error('title')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
 
                                 <div class="form-group">
@@ -44,17 +49,27 @@
                                     <img id="proImg" src="" class="img-responsive">
                                 </div>
                                 </div> -->
-
+                                <img src="https://summer.pes.edu/wp-content/uploads/2019/02/default-2.jpg" alt="Ảnh" class="img-responsive" id="showImage" name="img" style="border: 2px solid #ccc">
                                 <div class="form-group">
                                     <label>Ảnh sản phẩm</label>
-                                    <input type="file" name="image" class="form-control">
+                                    <input type="file" name="image" class="form-control @error('image') is-invalid @enderror" value="{{ old('image') }}">
+                                    @error('image') 
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                             </div>
 
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label>Nội dung bài viết</label>
-                                    <textarea name="content" class="form-control" rows="10" class="textarea"></textarea>
+                                    <textarea name="content" id="textarea" class="form-control @error('content') is-invalid @enderror" >{{ old('content') }}</textarea>
+                                    @error('content')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                             </div>
 
@@ -72,4 +87,26 @@
         </div>
 
     </div>
+    <script>
+        var img = document.querySelector('[name="image"]');
+        img.onchange = function () {
+            var anh = this.files[0];
+            if (anh == undefined) {
+                document.querySelector('#showImage').src = "https://summer.pes.edu/wp-content/uploads/2019/02/default-2.jpg";
+            } else {
+                getBase64(anh, '#showImage');
+            }
+            getBase64(anh, '#showImage');
+        }
+        function getBase64(file, selector) {
+            var reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = function () {
+                document.querySelector(selector).src = reader.result;
+            };
+            reader.onerror = function (error) {
+                console.log('Error: ', error);
+            };
+        }
+    </script>
 @endsection()

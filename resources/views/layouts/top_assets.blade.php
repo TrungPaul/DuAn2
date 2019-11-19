@@ -24,7 +24,7 @@
 <link rel="stylesheet" href="assets/css/plugins.css" />
 <!--Theme custom css -->
 <link rel="stylesheet" href="assets/css/style.css">
-<link rel="stylesheet" href="assets/css/toastr.css" >
+<link rel="stylesheet" href="assets/css/toastr.min.css" >
 <!--Theme Responsive css-->
 <!-- <link rel="stylesheet" href="css/responsive.css" /> -->
 <link href="assets-spa/css/plugins.css" rel="stylesheet">
@@ -33,4 +33,7 @@
 <!-- Custom Color -->
 <link href="assets-spa/css/skin/default.css" rel="stylesheet">
 <!-- wysihtml5 -->
-<link href="assets/css/bootstrap-wysihtml5.css" rel="stylesheet">
+<link href="assets/css/summernote.css" rel="stylesheet">
+<link href="assets/css/summernote-bs4.css" rel="stylesheet">
+<link href="assets/css/summernote-lite.css" rel="stylesheet">
+

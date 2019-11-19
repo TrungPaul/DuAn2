@@ -6,12 +6,14 @@ use Illuminate\Http\Request;
 use App\Post;
 use App\Category;
 use Illuminate\Support\Facades\DB;
+use App\Http\Requests\PostRequest;
 
 class PostController extends Controller
 {
+    //client
     public function index()
     {
-        $posts = Post::paginate(5);
+        $posts = Post::where('status', '=', 1)->get();
         return view('pages.list-post', compact('posts'));
     }
 
@@ -22,9 +24,10 @@ class PostController extends Controller
         return view('pages.post-detail', compact('post', 'new_posts', 'categories'));
     }
 
+    //backend (spa)
     public function show()
     {
-        $posts = Post::orderBy('created_at', 'desc')->paginate(5);
+        $posts = Post::orderBy('created_at', 'desc')->get();
         return view('pages-spa.list-post', compact('posts'));
     }
 
@@ -34,7 +37,7 @@ class PostController extends Controller
     	return view('pages-spa.add-post', compact('category'));
     }
 
-    public function create_post(Request $request)
+    public function create_post(PostRequest $request)
     {	
         $data = new Post;
         $data->fill($request->all());
@@ -46,7 +49,8 @@ class PostController extends Controller
             $data->image = $filename;
         }
         $data->save();
-        return redirect()->route('list-post');
+        $success = 1;
+        return redirect()->route('list-post', compact('success'));
     }
 
     public function edit(Post $id) 
@@ -55,7 +59,7 @@ class PostController extends Controller
         return view('pages-spa.edit-post', ['post' => $id], ['cate' => $cate]);
     }
 
-    public function update_post(Request $request)
+    public function update_post(PostRequest $request)
     {
         $post = Post::find($request->id);
         $post->where('id', $request->id)->update([
@@ -71,6 +75,38 @@ class PostController extends Controller
             $post->image = $filename;
         }
         $post->save();
-        return redirect()->route('list-post');
+        $success = 2;
+        return redirect()->route('list-post', compact('success'));
     }
+
+    public function change_status(Request $request) 
+    {
+        $post = Post::find($request->id);
+        $post->where('id', $request->id)->update([
+            'status' => 1,
+        ]);
+        $post->save();
+        $success = 3;
+        return redirect()->route('list-post', compact('success'));
+    }
+
+    public function change_status_b(Request $request) 
+    {
+        $post = Post::find($request->id);
+        $post->where('id', $request->id)->update([
+            'status' => 0,
+        ]);
+        $post->save();
+        $success = 3;
+        return redirect()->route('list-post', compact('success'));
+    }
+
+    public function delete($id)
+    {
+        $post = Post::find($id);
+        $post->delete();
+        $success = 0;
+        return redirect()->route('list-post', compact('success'));
+    }
+
 }

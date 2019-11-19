@@ -2949,7 +2949,7 @@ nav.navbar ul.dropdown-menu .dropdown-item:hover, nav.navbar ul .dropdown-item:f
     -webkit-transition: 0.2s ease-in;
     -o-transition: 0.2s ease-in;
     transition: 0.2s ease-in;
-	position: fixed;
+	/* position: fixed; */
     background: #ffffff;
 }
 

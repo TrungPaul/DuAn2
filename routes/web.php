@@ -19,7 +19,7 @@ Route::get('/','HomeController@index')->name('home');
 Auth::routes();
 
 Route::get('/danh-sach-bai-viet', 'PostController@index')->name('post');
-Route::get('{post_id}/detail', 'PostController@detail')->name('detail_post');
+Route::get('post/{post_id}/detail', 'PostController@detail')->name('detail_post');
 
 Route::get('/lien-he', function () {
     return view('pages.contact');
@@ -58,10 +58,13 @@ Route::prefix('spa')->group(function () {
 
     //post
     Route::get('post','PostController@show')->name('list-post');
-    Route::get('add','PostController@add')->name('add-post');
+    Route::get('post/add','PostController@add')->name('add-post');
     Route::post('create-post', 'PostController@create_post')->name('create-post');
-    Route::get('{id}/edit','PostController@edit')->name('edit-post');
+    Route::get('post/{id}/edit','PostController@edit')->name('edit-post');
     Route::post('update','PostController@update_post')->name('update-post');
+    Route::get('post/{id}/duyet','PostController@change_status')->name('change-status-post');
+    Route::get('post/{id}/boduyet','PostController@change_status_b')->name('change-status-post-b');
+    Route::get('post/{id}/delete', 'PostController@delete')->name('delete-post');
 });
 
 

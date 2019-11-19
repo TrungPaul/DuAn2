@@ -26,8 +26,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $posts = Post::limit(3)->get();
-        $services = Service::limit(3)->get();
+        $posts = Post::where('status', '=', 1)->limit(3)->get();
+        $services = Service::limit(3)->get(); 
         return view('pages.home', compact('posts', 'services'));
     }
 }

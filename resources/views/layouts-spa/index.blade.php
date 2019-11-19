@@ -40,7 +40,7 @@
                     </a>
                 </div>
                 <div class="nav-menus-wrapper">
-                    <ul class="nav-menu nav-menu-centered" style="margin-right: -300px;">
+                    <ul class="nav-menu nav-menu-centered text-right">
 
                         <li>
                             <a href="{{ url('sign-in') }}">Đăng nhập</a>

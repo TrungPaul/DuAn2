@@ -3299,18 +3299,17 @@ Section
 
 .beautypress-dates p {
     display: inline-block;
-    min-width: 60px;
-    font-size: 2.143em;
-    font-weight: 200;
+    font-size: 14px;
     text-align: center;
+    color: #fff;
 }
 
 .beautypress-dates p strong {
     display: block;
-    font-size: 0.400em;
+    color: #fff;
+    font-size: 10px;
     font-weight: 700;
-    text-transform: uppercase;
-    padding: 10px 5px;
+    padding: 5px 5px;
     position: relative;
 }
 
@@ -3326,7 +3325,7 @@ Section
 }
 
 .beautypress-dates .bg-color-purple strong {
-    background-color: rgba(0, 0, 0, .2);
+    background-color: rgba(0, 0, 0, 0.1);
 }
 
 .beautypress-newsfeed-footer a {
