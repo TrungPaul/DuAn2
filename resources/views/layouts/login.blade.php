@@ -26,7 +26,6 @@
     @yield('content')
 </section>
 @include ('layouts.bottom_assets')
-@include ('layouts.toastr')
 </body>
 <!-- Mirrored from preview.oklerthemes.com/porto-admin/2.2.0/pages-signin.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 09 Aug 2019 04:14:02 GMT -->
 </html>
