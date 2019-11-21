@@ -20,7 +20,8 @@ class PostsTableSeeder extends Seeder
                 'user_id' => 1,
                 'cate_id' => 1, 
                 'title' => $faker->word,
-                'image' => $faker->image('public/images',640,480, 'people', false),
+                'description' => $faker->word,
+                'image' => $faker->image('public/images/posts',640,480, 'people', false),
                 'content' => $faker->word,
                 'status' => 1,
             ]);
