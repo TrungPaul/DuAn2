@@ -74,6 +74,13 @@ Route::group(['middleware'=>'auth'],function() {
     Route::get('service/get-add-service/{spaId}','ServiceController@storeService')->name('get-add-service');
     Route::post('service/post-add-service/{spaId}', 'ServiceController@add')->name('get-add-service');
 
+    Route::post('booking/add', 'BookingOfUserController@addBooking')->name('add-booking');
+    Route::get('service-detail/{spaId}','ServiceDetailController@index')->name('list-serviceDetail');
+    Route::post('service-detail/update/{id}','ServiceDetailController@update')->name('update-serviceDetail');
+    Route::get('service-detail/getupdate/{id}','ServiceDetailController@getUpdate')->name('get-update-serviceDetail');
+    Route::get('service-detail/getadd/{spaId}','ServiceDetailController@getAdd')->name('getAdd-serviceDetail');
+    Route::get('service-detail/delete/{id}','ServiceDetailController@destroy')->name('destroy-serviceDetail');
+    Route::post('service-detail/add', 'ServiceDetailController@postAddServiceDetail')->name('add-serviceDetail');
 });
 
 

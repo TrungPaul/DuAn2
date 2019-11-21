@@ -48,5 +48,5 @@ class ServiceController extends Controller
         Service::where('id', $request->id)->update($data);
 
         return $this->index($request->spa_id);
-    }
+    } 
 }
