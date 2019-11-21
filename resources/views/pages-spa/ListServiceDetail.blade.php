@@ -18,11 +18,9 @@
 
                     <div class="tr-single-body">
                         <div class="row">
-
+                            @foreach ( $service as $ser)
                             <div class="col-md-12">
-
                                 <!-- Single Manage job -->
-                                @foreach ( $service as $ser)
                                     <div class="manage-list">
 
                                         <div class="mg-list-wrap">
@@ -38,7 +36,7 @@
 
                                         <div class="mg-action">
                                             <div class="btn-group ml-2">
-                                                <a href="{{route('update-serviceDetail', $ser->id)}}" class="mg-edit" title="Sửa"><i class="ti-pencil"></i></a>
+                                                <a href="{{route('get-update-serviceDetail', $ser->id)}}" class="mg-edit" title="Sửa"><i class="ti-pencil"></i></a>
                                             </div>
                                             <div class="btn-group ml-2">
                                                 <a href="{{route('destroy-serviceDetail', $ser->id)}}" class="mg-edit" title="Xóa"><i class="ti-trash"></i></a>
