@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Post;
 use App\Category;
+use App\Comment;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -17,9 +19,10 @@ class PostController extends Controller
 
     public function detail(Post $post_id) {
         $post = Post::find($post_id->id);
+        $comments = Post::find($post_id->id)->comments;
         $new_posts = Post::orderBy('created_at', 'desc')->limit(3)->get();
         $categories = Category::all();
-        return view('pages.post-detail', compact('post', 'new_posts', 'categories'));
+        return view('pages.post-detail', compact('post', 'new_posts', 'categories', 'comments'));
     }
 
     public function show()
