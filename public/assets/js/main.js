@@ -819,64 +819,7 @@
 			 contact form init
 			 =========================================================================*/
 
-			if ( $( '#beautypress-contact' ).length > 0 ) {
-		$( '#beautypress-contact' ).on( 'submit', function( event ) {
-
-		event.preventDefault( );
-			var c_name = $( '#c_name' ),
-			c_email = $( '#c_email' ),
-			c_subject = $( '#c_subject' ),
-			c_massage = $( '#c_massage' ),
-			c_submit = $( '#c_submit' ),
-			c_error = false;
-			$( '.c_error_massage , .beautypress_success_message , .beautypress_loader' ).hide( ).fadeOut( 400 );
-			if ( c_name.val( ) === '' ) {
-		c_name.after( '<p class="c_error_massage">' + c_name.attr( 'placeholder' ) + ' filed is not empty </p>' ).show( ).fadeIn( 500 );
-			c_error = true;
-			c_name.focus( );
-		}
-		if ( c_email.val( ) === '' ) {
-		c_email.after( '<p class="c_error_massage">' + c_email.attr( 'placeholder' ) + ' filed is not empty </p>' ).show( ).fadeIn( 500 );
-			c_error = true;
-			c_email.focus( );
-		} else if ( !email_pattern( c_email.val( ).toLowerCase( ) ) ) {
-		c_email.after( '<p class="c_error_massage">' + c_email.attr( 'placeholder' ) + ' filed is not vaild </p>' ).show( ).fadeIn( 500 );
-			c_error = true;
-			c_email.focus( );
-		}
-		if ( c_subject.val( ) === '' ) {
-		c_subject.after( '<p class="c_error_massage">' + c_subject.attr( 'placeholder' ) + ' filed is not empty </p>' ).show( ).fadeIn( 500 );
-			c_error = true;
-			c_subject.focus( );
-		}
-		if ( c_massage.val( ) === '' ) {
-		c_massage.after( '<p class="c_error_massage">' + c_massage.attr( 'placeholder' ) + ' filed is not empty </p>' ).show( ).fadeIn( 500 );
-			c_error = true;
-			c_massage.focus( );
-		}
-
-		if ( c_error === false ) {
-		c_submit.before( ).hide( ).fadeIn( );
-			$.ajax( {
-			type: "POST",
-				url: "php/contact-form.php",
-				data: {
-				'c_name' : c_name.val( ),
-					'c_email' : c_email.val( ),
-					'c_subject' : c_subject.val( ),
-					'c_massage' : c_massage.val( )
-				},
-				success: function( result ){
-				c_submit.after( '<span class="beautypress_success_message">' + result + '</span>' ).hide( ).fadeIn( );
-					$( ".beautypress_loader" ).fadeOut( "normal", function( ) {
-				$( this ).remove( );
-				} );
-					$( '#beautypress-contact' )[0].reset( );
-				}
-			} );
-		}
-		} );
-			}
+	
 
 		/*=============================================================
 		 instagram feeds

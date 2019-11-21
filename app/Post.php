@@ -11,6 +11,7 @@ class Post extends Model
         'user_id',
         'cate_id',
         'title',
+        'description',
         'image',
         'content',
         'status',
@@ -19,5 +20,10 @@ class Post extends Model
     public function category()
 	{
     	return $this->belongsTo('App\Category', 'cate_id', 'id');
-	}
+    }
+
+    public function comments()
+    {
+        return $this->hasMany('App\Comment');
+    }
 }

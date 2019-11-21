@@ -21,9 +21,7 @@ Auth::routes();
 Route::get('/danh-sach-bai-viet', 'PostController@index')->name('post');
 Route::get('{post_id}/detail', 'PostController@detail')->name('detail_post');
 
-Route::get('/lien-he', function () {
-    return view('pages.contact');
-});
+Route::get('lien-he', 'ContactController@index')->name('view_contact');
 
 Route::group(['namespace' => 'User'], function(){
     Route::get('/thong-tin', 'HomeController@profile')->name('user.profile');
@@ -70,5 +68,11 @@ Route::group(['middleware'=>'auth'],function() {
     Route::post('update','PostController@update_post')->name('update-post');
 
 });
+
+//comment 
+Route::post('create-comments', 'CommentController@add')->name('create_comment');
+
+//contact
+Route::post('contact', 'ContactController@add')->name('contact');
 
 
