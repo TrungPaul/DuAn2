@@ -60,9 +60,14 @@
                             <li>
                                 <a href="{{ url('sign-in') }}">Đăng nhập</a>
                             </li>
+                            <li class="dropdown">
+                                <a href="#">Đăng ký</a>
+                                <div class="dropdown-content">
+                                    <p><a href="{{ url('sign-up') }}">Đăng ký tài khoản thuờng</a></p>
+                                    <hr>
+                                    <p><a href="{{ url('sign-up-spa') }}">Đăng ký tải khoản spa</a></p>
+                                </div>
                             <li>
-                                <a href="{{ url('sign-up') }}">Đăng Ký</a>
-                            </li>
                         @endif
                     </ul>
                 </div>
