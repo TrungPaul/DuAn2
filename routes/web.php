@@ -87,4 +87,7 @@ Route::post('create-comments', 'CommentController@add')->name('create_comment');
 //contact
 Route::post('contact', 'ContactController@add')->name('contact');
 
+//dang ky spa
 
+Route::get('sign-up-spa', 'SpaController@register');
+Route::post('post-spa-register','SpaController@postRegister')->name('spa_register');

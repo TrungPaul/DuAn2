@@ -10717,3 +10717,28 @@ label[for="rating"] {
 #preloader-cancel-btn span {
     background-color: #fff;
 }
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 195px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 5px 5px 5px 10px;
+    z-index: 1;
+  }
+  
+  .dropdown-content p a{
+    font-size: 13px;
+    color: #111111;
+  }
+
+  .dropdown:hover .dropdown-content {
+    margin-top : 0;
+    display: block;
+  }

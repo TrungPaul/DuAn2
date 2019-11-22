@@ -2,11 +2,6 @@
 @section('title', 'Chi tiết bài viết')
 
 @section('content')
-@if(session()->has('message'))
-    <div class="alert alert-success">
-        {{ session()->get('message') }}
-    </div>
-@endif
 <section class="beautypress-blog-post-section section-padding mt-5">
 			<div class="container">
 				<div class="row">
