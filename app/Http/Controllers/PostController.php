@@ -14,15 +14,39 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::paginate(5);
-        return view('pages.list-post', compact('posts'));
+        $categories = Category::all();
+        return view('pages.list-post', compact('posts', 'categories'));
+    }
+
+    public function view()
+    {
+        $posts = Post::orderBy('views', 'desc')->get();
+        $categories = Category::all();
+        return view('pages.list-post', compact('posts', 'categories'));
+    }
+
+    public function new()
+    {
+        $posts = Post::orderBy('created_at', 'desc')->get();
+        $categories = Category::all();
+        return view('pages.list-post', compact('posts', 'categories'));
     }
 
     public function detail(Post $post_id) {
         $post = Post::find($post_id->id);
+        $posts = Post::where('cate_id', '=', $post->cate_id)->get();
         $comments = Post::find($post_id->id)->comments;
         $new_posts = Post::orderBy('created_at', 'desc')->limit(3)->get();
         $categories = Category::all();
-        return view('pages.post-detail', compact('post', 'new_posts', 'categories', 'comments'));
+        return view('pages.post-detail', compact('post', 'posts', 'new_posts', 'categories', 'comments'));
+    }
+
+    public function posts_category($cate_id)
+    {
+        $posts = Post::where('cate_id', '=', $cate_id)->get();
+        $posts_view = Post::orderBy('views', 'desc')->limit(3)->get();
+        $categories = Category::all();
+        return view('pages.list-post-cate', compact('posts', 'posts_view', 'categories'));
     }
 
     public function show()

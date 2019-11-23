@@ -8,8 +8,11 @@
 					<div class="col-md-12 col-xl-8 col-lg-8">
 						<div class="beautypress-blog-post-group">
 							<div class="beautypress-blog-post-wraper">
-								<img src="images/posts/{{ $post->image }}" alt="">		
+								<img src="images/posts/{{ $post->image }}" width="100%">	
+								<p>Danh mục: <strong>{{ $post->category->name }}</strong></p>
+								<p>Tác giả: <strong>Hoàng</strong></p>	
 								<h2>{{ $post->title }}</h2>
+								<i>{{ $post->description }}</i>
                                 <p>{{ $post->content }}</p>
 							</div><!-- .beautypress-blog-post-wraper END -->
 						
@@ -42,7 +45,7 @@
 									@endforeach
 								</div><!-- .beautypress-replay-answer-wraper END -->
 							</div><!-- .beautypress-replay-answer-container END -->
-							<div class="beautypress-replay-container">
+							<div class="beautypress-replay-answer-container">
 								<div class="beautypress-simple-title mb-30">
 									<h3>Đăng bình luận</h3>
 								</div><!-- .beautypress-simple-title END -->
@@ -73,13 +76,18 @@
 											<div class="col-md-6 col-sm-12">
 												@if (!Auth::check())
 													<div class="form-group">
-														<input type="text" name="name" id="r_name" class="form-control" placeholder="Tên (bắt buộc)" value="{{ old('name') }}">
+														<input type="text" name="name" id="r_name" class="form-control" placeholder="Tên" value="{{ old('name') }}">
 													</div>
 												@endif
 											</div>
 										</div>
 										<div class="form-group">
-											<textarea name="content" class="form-control mb-30"  id="r_massage" cols="30" placeholder="Nội dung (bắt buộc)" rows="10">{{ old('content') }}</textarea>
+											@if (Auth::check())
+												<img src="images/{{ Auth::user()->avatar }}" width="50"><br><br>
+												<textarea name="content" class="form-control mb-30"  id="r_massage" cols="30" placeholder="Nhập bình luận" rows="10">{{ old('content') }}</textarea>
+											@else 
+												<textarea name="content" class="form-control mb-30"  id="r_massage" cols="30" placeholder="Nhập bình luận" rows="10">{{ old('content') }}</textarea>
+											@endif
 										</div>
 										<div class="form-group">
 											<input type="submit" value="Gửi bình luận" id="r_submit">
@@ -93,13 +101,34 @@
 						<div class="beautypress-side-bar-group">
 							<div class="beautypress-single-sidebar">
 								<div class="beautypress-sidebar-heading">
+									<h3>Bài viết liên quan</h3>
+								</div>
+								<div class="beautypress-latest-news-wraper">
+									@foreach ( $posts as $ps)
+										@if ($ps->id != $post->id)
+											<div class="beautypress-single-latest-news">
+												<div class="beautypress-latest-post-img">
+												<a href="{{route('detail_post', $ps->id)}}"><img src="images/posts/{{ $ps->image}}" alt=""></a>
+												</div>
+												<div class="beautypress-latest-post-content">
+													<a href="{{route('detail_post', $ps->id)}}">{{ $ps->title }}</a>
+													<i>{{ $ps->description }}</i>
+												</div>
+											</div><!-- .beautypress-single-latest-news END -->
+										@endif
+									@endforeach
+								</div><!-- .beautypress-latest-news-wraper END -->
+							</div><!-- .beautypress-single-sidebar END -->
+								
+							<div class="beautypress-single-sidebar">
+								<div class="beautypress-sidebar-heading">
 									<h3>Bài viết mới nhất</h3>
 								</div>
 								<div class="beautypress-latest-news-wraper">
                                     @foreach ( $new_posts as $np)
                                         <div class="beautypress-single-latest-news">
                                             <div class="beautypress-latest-post-img">
-                                                <img src="images/posts/{{ $np->image}}" alt="">
+                                            <a href="{{route('detail_post', $np->id)}}"><img src="images/posts/{{ $np->image}}" alt=""></a>
                                             </div>
                                             <div class="beautypress-latest-post-content">
                                                 <a href="{{route('detail_post', $np->id)}}">{{ $np->title }}</a>
@@ -109,13 +138,14 @@
                                     @endforeach
 								</div><!-- .beautypress-latest-news-wraper END -->
 							</div><!-- .beautypress-single-sidebar END -->
+
 							<div class="beautypress-single-sidebar">
 								<div class="beautypress-sidebar-heading">
 									<h3>Danh mục</h3>
 								</div>
 								<ul class="beautypress-category-list">
                                     @foreach ( $categories as $cate)
-                                     <li><a href="#"><i class="fa fa-play"></i>{{ $cate->name }}</a></li>
+                                     	<li><a href="{{route('post_in_cate', $cate->id)}}"><i class="fa fa-play"></i> {{ $cate->name }}</a></li>
                                     @endforeach
 								</ul><!-- .beautypress-category-list END -->
 							</div><!-- .beautypress-single-sidebar END -->

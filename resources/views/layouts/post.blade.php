@@ -15,9 +15,9 @@
                                     <img src="assets/img/avatar-3.jpg" alt="">
                                     <a href="#">By Gomez</a>
                                 </div>
-                                <!-- <div class="beautypress-dates">
-                                    <p class="bg-color-purple">5/10<strong>{{ $p->category->name }}</strong></p>
-                                </div> -->
+                                <div class="beautypress-dates">
+                                    <p class="color-white"><strong>{{ $p->category->name }}</strong></p>
+                                </div>
                             </div><!-- .beautypress-newsfeed-header-content END -->
                         </div><!-- .beautypress-newsfeed-header END -->
                         <div class="beautypress-newsfeed-footer">
