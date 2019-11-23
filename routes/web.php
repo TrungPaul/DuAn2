@@ -31,6 +31,7 @@ Route::group(['namespace' => 'User'], function(){
 
     Route::get('change-password', 'HomeController@changePassword')->name('user.change-password');
     Route::post('change-password', 'HomeController@savePassword')->name('user.save-password');
+    Route::get('/booking', 'HomeController@book')->name('user.book');
 
 });
 
@@ -81,7 +82,7 @@ Route::group(['middleware'=>'auth'],function() {
     Route::post('service-detail/add', 'ServiceDetailController@postAddServiceDetail')->name('add-serviceDetail');
 });
 
-//comment 
+//comment
 Route::post('create-comments', 'CommentController@add')->name('create_comment');
 
 //contact
