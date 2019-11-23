@@ -1,4 +1,4 @@
-<div class="col-md-4 col-sm-12">
+<div class="col-md-3 col-sm-12">
     <div class="dashboard-wrap">
 
         <div class="dashboard-thumb">
@@ -11,6 +11,9 @@
         <ul class="nav dashboard-verticle-nav">
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('list-employee') }}"><i class="ti-file"></i>Quản lí nhân viên</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('management-booking') }}"><i class="ti-file"></i>Quản lí đặt lịch</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link active" href="">
@@ -28,7 +31,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="login.html"><i class="lni-exit"></i>Đăng xuất</a>
+                <a class="nav-link" href="{{ route('logout') }}"><i class="lni-exit"></i>Đăng xuất</a>
             </li>
         </ul>
 

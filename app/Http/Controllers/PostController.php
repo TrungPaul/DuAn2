@@ -37,20 +37,10 @@ class PostController extends Controller
 
     public function detail(Post $post_id) {
         $post = Post::find($post_id->id);
-        $post->increment('views');
-        $posts = Post::where('cate_id', '=', $post->cate_id)->get();
         $comments = Post::find($post_id->id)->comments;
         $new_posts = Post::orderBy('created_at', 'desc')->limit(3)->get();
         $categories = Category::all();
-        return view('pages.post-detail', compact('post', 'posts', 'new_posts', 'categories', 'comments'));
-    }
-
-    public function posts_category($cate_id)
-    {
-        $posts = Post::where('cate_id', '=', $cate_id)->get();
-        $posts_view = Post::orderBy('views', 'desc')->limit(3)->get();
-        $categories = Category::all();
-        return view('pages.list-post-cate', compact('posts', 'posts_view', 'categories'));
+        return view('pages.post-detail', compact('post', 'new_posts', 'categories', 'comments'));
     }
 
     public function show()
@@ -128,12 +118,5 @@ class PostController extends Controller
     {
         $id->delete();
         return redirect()->back()->with('message_delete', 'Xoá bài viết thành công!');
-    }
-
-    public function search(Request $request) {
-        $key = $request->key;
-        $posts = Post::where('title', 'like', '%' . $key . '%')->get();
-        $services = Service::where('name_service', 'like', '%' . $key . '%')->get();
-        return view('pages.search', compact('posts', 'services'));
     }
 }

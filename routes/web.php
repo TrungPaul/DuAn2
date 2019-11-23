@@ -61,11 +61,9 @@ Route::group(['middleware'=>'auth:spa'],function() {
         Route::post('employee/{id}', 'StaffController@update');
         //thay đổi trạng thái
         Route::post('employee-status/{id}', 'StaffController@delete');
-    });
+        Route::get('management-booking', 'BookingOfUserController@getBookingOfSpa')->name('management-booking');
 
-    Route::get('list-employee', function () {
-        return view('pages-spa.list-employee');
-    })->name('list-employee');
+    });
 
     Route::get('service/{spaId}','ServiceController@index')->name('list-service');
     Route::get('service/delete/{serviceId}','ServiceController@destroy')->name('delete-service');
