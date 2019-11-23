@@ -1,5 +1,5 @@
 @extends('layouts.index')
-@section('title', 'Bài viết')
+@section('title', 'Danh mục bài viết')
 
 @section('content')
     <div class="beautypress-newsfeed-section beautypress-no-bg section-padding">
@@ -19,9 +19,9 @@
                                         <img src="assets/img/avatar-1.jpg" alt="">
                                         <a href="#">By Hoàng</a>
                                     </div>
-                                    <!-- <div class="beautypress-dates">
-                                        <p class="bg-color-purple">27<strong>{{ $p->category->name }}</strong></p>
-                                    </div> -->
+                                    <div class="beautypress-dates">
+                                        <p class="color-white"><strong>{{ $p->category->name }}</strong></p>
+                                    </div>
                                 </div><!-- .beautypress-newsfeed-header-content END -->
                             </div><!-- .beautypress-newsfeed-header END -->
                             <div class="beautypress-newsfeed-footer">
@@ -35,13 +35,23 @@
                 <div class="col-md-4">
                     <div class="beautypress-single-sidebar">
                         <div class="beautypress-sidebar-heading">
-                            <h3>Sắp xếp</h3>
+                            <h3>Bài viết nổi bật</h3>
                         </div>
-                        <ul class="beautypress-category-list">
-                            <li><a href="{{route('new_post')}}"><i class="fa fa-play"></i>&emsp;Mới nhất</a></li>
-                            <li><a href="{{route('hot_post')}}"><i class="fa fa-play"></i>&emsp;Xem nhiều</a></li>
-                        <ul>
+                        <div class="beautypress-latest-news-wraper">
+                            @foreach ( $posts_view as $pv)
+                                <div class="beautypress-single-latest-news">
+                                    <div class="beautypress-latest-post-img">
+                                        <a href="{{route('detail_post', $pv->id)}}"><img src="images/posts/{{ $pv->image}}" alt=""></a>
+                                    </div>
+                                    <div class="beautypress-latest-post-content">
+                                        <a href="{{route('detail_post', $pv->id)}}">{{ $pv->title }}</a>
+                                        <i>{{ $pv->description }}</i>
+                                    </div>
+                                </div><!-- .beautypress-single-latest-news END -->
+                            @endforeach
+                        </div><!-- .beautypress-latest-news-wraper END -->
                     </div><!-- .beautypress-single-sidebar END -->
+                    
                     <div class="beautypress-single-sidebar">
                         <div class="beautypress-sidebar-heading">
                             <h3>Danh mục</h3>
