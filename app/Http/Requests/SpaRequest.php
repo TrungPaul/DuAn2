@@ -28,6 +28,9 @@ class SpaRequest extends FormRequest
             'location' => 'required',
             'phone' => 'required',
             'image' => 'required|mimes:jpeg,png,jpg,gif,svg',
+            'email' => 'bail|required|email|max:255|unique:spas',
+            'password' => 'required|min:6',
+            'pwd' => 'required|same:password',
             'remember' =>'required'
         ];
     }
@@ -39,6 +42,13 @@ class SpaRequest extends FormRequest
             'phone.required' => "Số điện thoại không được để trống",
             'image.required' => "Ảnh không được để trống",
             'image.mimes' => "Đuôi của ảnh phải là jpeg, png, jpg, gif, svg",
+            'email.required' => "Email không được để trống",
+            'email.email'=> "Email không đúng định dạng",
+            'email.max' => "Email không quá 255 ký tự",
+            'email.unique' => "Email đã tồn tại",
+            'password.required' => "Mật khẩu không được để trống",
+            'pwd.required' => "Không được để trống",
+            'pwd.same' => "Mật khẩu không trùng khớp",
             'remember.required' => "Vui lòng cam đoan với chúng tôi"
         ];
     }

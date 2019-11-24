@@ -13,7 +13,7 @@ class PostController extends Controller
 {
     public function index()
     {
-        $posts = Post::paginate(5);
+        $posts = Post::all();
         $categories = Category::all();
         return view('pages.list-post', compact('posts', 'categories'));
     }
@@ -34,6 +34,7 @@ class PostController extends Controller
 
     public function detail(Post $post_id) {
         $post = Post::find($post_id->id);
+        $post->increment('views');
         $posts = Post::where('cate_id', '=', $post->cate_id)->get();
         $comments = Post::find($post_id->id)->comments;
         $new_posts = Post::orderBy('created_at', 'desc')->limit(3)->get();
@@ -99,5 +100,12 @@ class PostController extends Controller
         }
         $post->save();
         return redirect()->route('list-post');
+    }
+
+    public function search(Request $request) {
+        $posts = Post::where('title', 'like', '%' . $request->key . '%')
+                        ->orWhere('description', 'like', '%' . $request->key . '%')
+                        ->get();
+        return view('pages.search', compact('posts'));
     }
 }
