@@ -18,11 +18,13 @@ Route::get('/','HomeController@index')->name('home');
 
 Auth::routes();
 
+//bài viết
 Route::get('/danh-sach-bai-viet', 'PostController@index')->name('post');
 Route::get('/danh-sach-bai-viet/orderBy=view', 'PostController@view')->name('hot_post');
 Route::get('/danh-sach-bai-viet/orderBy=date', 'PostController@new')->name('new_post');
 Route::get('post/{post_id}/detail', 'PostController@detail')->name('detail_post');
 Route::get('{cate_id}/posts_category', 'PostController@posts_category')->name('post_in_cate');
+Route::get('search', 'PostController@search')->name('search');;
 
 Route::get('lien-he', 'ContactController@index')->name('view_contact');
 
@@ -92,6 +94,7 @@ Route::post('create-comments', 'CommentController@add')->name('create_comment');
 Route::post('contact', 'ContactController@add')->name('contact');
 
 //dang ky spa
-
 Route::get('sign-up-spa', 'SpaController@register');
 Route::post('post-spa-register','SpaController@postRegister')->name('spa_register');
+Route::get('login-spa', 'SpaController@login')->name('login_spa');
+Route::post('post-spa-login','SpaController@post_login')->name('post_login_spa');
