@@ -13,15 +13,15 @@ class PostsTableSeeder extends Seeder
     {
         $faker = Faker\Factory::create();
 
-        $limit = 10;
+        $limit = 20;
 
         for ($i = 0; $i < $limit; $i++) {
             DB::table('posts')->insert([
-                'user_id' => 1,
-                'cate_id' => 1, 
+                'user_id' => rand(1, 10),
+                'cate_id' => rand(1, 10),
                 'title' => $faker->word,
                 'description' => $faker->word,
-                'image' => $faker->image('public/images/posts',640,480, 'people', false),
+                'image' => 'image-seeder.jpg',
                 'content' => $faker->word,
                 'status' => 1,
             ]);

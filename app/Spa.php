@@ -18,4 +18,9 @@ class Spa extends Model
     protected $hidden = [
         'password'
     ];
+
+    public function listService()
+    {
+        return $this->belongsTo(ServiceDetail::class, 'spa_id', 'id');
+    }
 }

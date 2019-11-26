@@ -16,7 +16,7 @@
                                     <a href="#">By Gomez</a>
                                 </div>
                                 <div class="beautypress-dates">
-                                    <p class="color-white"><strong>{{ $p->category->name }}</strong></p>
+                                    <p class="color-white"><strong>{{ $p->category['name'] }}</strong></p>
                                 </div>
                             </div><!-- .beautypress-newsfeed-header-content END -->
                         </div><!-- .beautypress-newsfeed-header END -->
