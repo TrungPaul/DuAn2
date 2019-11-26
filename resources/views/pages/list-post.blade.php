@@ -20,7 +20,7 @@
                                         <a href="#">By Hoàng</a>
                                     </div>
                                     <!-- <div class="beautypress-dates">
-                                        <p class="bg-color-purple">27<strong>{{ $p->category->name }}</strong></p>
+                                        <p class="bg-color-purple">27<strong>{{ $p->category['name'] }}</strong></p>
                                     </div> -->
                                 </div><!-- .beautypress-newsfeed-header-content END -->
                             </div><!-- .beautypress-newsfeed-header END -->
@@ -30,6 +30,7 @@
                             </div><!-- .beautypress-newsfeed-footer END -->
                         </div><!-- .beautypress-single-newsletter END -->
                     @endforeach
+                        {{ $posts->links() }}
                 </div>
 
                 <div class="col-md-4">

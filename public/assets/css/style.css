@@ -4990,7 +4990,7 @@ Section
 }
 
 .beautypress-both-side-list.beautypress-version-3 li span {
-    color: var(--color-chocolate);
+    color: var(--color-purple);
 }
 
 .beautypress-single-pricing-table.beautypress-version-3 .beautypress-both-side-list li {
@@ -9347,8 +9347,8 @@ Section
 .beautypress-single-new-pricing.beautypress-pricing-content {
     display: -ms-grid;
     display: grid;
-    -ms-grid-columns: (1fr)[2];
-    grid-template-columns: repeat(2, 1fr);
+    /*-ms-grid-columns: (1fr)[1];*/
+    /*grid-template-columns: repeat(2, 1fr);*/
     grid-gap: 25px;
     -ms-grid-row-align: center;
     align-items: center;
@@ -9361,7 +9361,7 @@ Section
 }
 
 .beautypress-single-new-pricing.beautypress-pricing-header {
-    background-color: var(--color-cyan);
+    overflow: hidden;
     color: var(--color-white);
     text-align: center;
     -webkit-box-pack: center;
@@ -9460,16 +9460,16 @@ Section
 .beautypress-single-new-pricing.beautypress-pricing-footer h5 {
     margin: 0;
     font-weight: 100;
-    color: var(--color-chocolate);
+    color: var(--color-purple);
     font-size: 3.571em;
     letter-spacing: 3px;
     -webkit-transition: all .4s ease;
     transition: all .4s ease;
 }
 
-.beautypress-single-new-pricing-wraper.active .beautypress-pricing-header,
+
 .beautypress-single-new-pricing-wraper.active .beautypress-pricing-footer {
-    background-color: var(--color-chocolate);
+    background-color: var(--color-purple);
 }
 
 .beautypress-single-new-pricing-wraper.active .beautypress-pricing-footer h3,
@@ -10723,7 +10723,7 @@ label[for="rating"] {
     position: relative;
     display: inline-block;
   }
-  
+
   .dropdown-content {
     display: none;
     position: absolute;
@@ -10733,7 +10733,7 @@ label[for="rating"] {
     padding: 5px 5px 5px 10px;
     z-index: 1;
   }
-  
+
   .dropdown-content p a{
     font-size: 13px;
     color: #111111;

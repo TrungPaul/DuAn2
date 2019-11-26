@@ -82,19 +82,19 @@
                         </div>
                         <div class="d-flex justify-content-around">
                             <div class="form-check p-2">
-                                <input class="form-check-input" type="radio" name="gender" value="Nam">
+                                <input class="form-check-input" type="radio" name="gender" value="1">
                                 <label class="form-check-label" for="exampleRadios2">
                                     Nam
                                 </label>
                             </div>
                             <div class="form-check p-2">
-                                <input class="form-check-input " type="radio" name="gender" value="Nữ">
+                                <input class="form-check-input " type="radio" name="gender" value="2">
                                 <label class="form-check-label" for="exampleRadios2">
                                     Nữ
                                 </label>
                             </div>
                             <div class="form-check p-2">
-                                <input class="form-check-input " type="radio" name="gender" value="Khác">
+                                <input class="form-check-input " type="radio" name="gender" value="3">
                                 <label class="form-check-label" for="exampleRadios2">
                                     Khác
                                 </label>

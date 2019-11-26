@@ -63,10 +63,6 @@
                     <div class="mb-1 text-center">
                         <img src="{{asset('assets/img/section-heading-separetor.png')}}" alt="" style="width:52%">
                     </div>
-                    <div class="mb-1 text-center">
-                        <a class="btn btn-facebook mb-3 ml-1 mr-1" href="">Đăng nhập bằng  <i
-                                class="fab fa-facebook-f"></i></a>
-                    </div>
                     <p class="text-center">Bạn đã có tài khoản <a href="/sign-up">Đăng ký</a></p>
                 </form>
             </div>

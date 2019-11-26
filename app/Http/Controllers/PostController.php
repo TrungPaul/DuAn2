@@ -13,7 +13,7 @@ class PostController extends Controller
 {
     public function index()
     {
-        $posts = Post::all();
+        $posts = Post::where('status', 1)->orderBy('id', 'desc')->paginate('6');
         $categories = Category::all();
         return view('pages.list-post', compact('posts', 'categories'));
     }
@@ -57,13 +57,13 @@ class PostController extends Controller
     }
 
     public function add()
-    {	
+    {
         $category = Category::all();
     	return view('pages-spa.add-post', compact('category'));
     }
 
     public function create_post(Request $request)
-    {	
+    {
         $data = new Post;
         $data->fill($request->all());
         if ($request->hasFile('image')) {
@@ -77,7 +77,7 @@ class PostController extends Controller
         return redirect()->route('list-post');
     }
 
-    public function edit(Post $id) 
+    public function edit(Post $id)
     {
         $cate = Category::all();
         return view('pages-spa.edit-post', ['post' => $id], ['cate' => $cate]);
