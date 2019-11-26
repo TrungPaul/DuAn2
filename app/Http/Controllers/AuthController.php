@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\LoginUser;
 use Illuminate\Support\Facades\Auth;
 use App\User;
 use Illuminate\Support\Facades\Lang;
@@ -18,13 +19,9 @@ class AuthController extends Controller
 
     }
 
-    public function postLogin(Request $request)
+    public function postLogin(LoginUser $request)
     {
-        //nếu chưa login thì chạy xuống dưới
-        $this->validate($request, [
-            'email' => 'required|email|exists:users',
-            'password' => 'required|min:6',
-        ]);
+        
         // check validate , lấy ra dữ liệu
         $data = $request->only(['email', 'password']);
         // KIỂM TRA ĐĂNG NHẬP EMAIL VÀ PASSWWORD VỪA NHẬN

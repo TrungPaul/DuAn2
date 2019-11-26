@@ -1,8 +1,8 @@
 
 (function($){
 	"use strict";
-	
-	//Loader	
+
+	//Loader
 	$(window).on('load', function () {
 		$('.Loader').delay(350).fadeOut('slow');
 		$('body').delay(350).css({ 'overflow': 'visible' });
@@ -13,7 +13,7 @@
             n = (window.innerHeight > 0 ? window.innerHeight : this.screen.height) - 1;
         n -= o, 1 > n && (n = 1), n > o && $(".page-wrapper").css("min-height", n + "px")
     };
-	
+
     $(window).on('ready', o), $(window).on("resize", o), $(function() {
         $('[data-toggle="tooltip"]').tooltip()
     }), $(function() {
@@ -37,7 +37,7 @@
             scrollTop: 0
         }, 700)
     })
-	
+
 	// Jobs
 	$("#job-slide").owlCarousel({
 		loop:true,
@@ -62,7 +62,7 @@
 			}
 		}
 	})
-	
+
 	// Jobs
 	$("#testimonial-3-slide").owlCarousel({
 		loop:true,
@@ -87,7 +87,7 @@
 			}
 		}
 	})
-	
+
 	// Jobs
 	$("#agency-slide").owlCarousel({
 		loop:true,
@@ -112,7 +112,7 @@
 			}
 		}
 	})
-	
+
 	// RL List
 	$("#rl-list").owlCarousel({
 		loop:true,
@@ -137,8 +137,8 @@
 			}
 		}
 	})
-	
-	
+
+
 	// Testimonials 2
 	$("#testimonials-two").owlCarousel({
 		nav:true,
@@ -166,7 +166,7 @@
 			}
 		}
 	})
-	
+
 	// location
 	$('#location').select2({
 		placeholder: "Địa điểm...",
@@ -177,25 +177,25 @@
 		placeholder: "Danh mục...",
 		allowClear: true
 	});
-	
+
 	// All Select Category
 	$('#category-2').select2({
 		placeholder: "Choose Category...",
 		allowClear: true
 	});
-	
+
 	// Filter Sidebar Category
 	$('#category-3').select2({
 		placeholder: "Choose Category...",
 		allowClear: true
 	});
-	
+
 	// All Search
 	$('#search-allow').select2({
 		placeholder: "Search Allow",
 		allowClear: true
 	});
-	
+
 	// Job type
 	$('#jb-type').select2({
 		placeholder: "Loại việcs",
@@ -206,86 +206,90 @@
 		placeholder: "Giới tính",
 		allowClear: true
 	})
-	
+    $('#career-gender1').select2({
+        placeholder: "Danh mục dịch vụ",
+        allowClear: true
+    })
+
 	// Career  Lavel
 	$('#career-lavel').select2({
 		placeholder: "Danh mục",
 		allowClear: true
 	});
-	
+
 	// Offerd Salary
 	$('#offerd-sallery').select2({
 		placeholder: "Offerd Salary",
 		allowClear: true
 	});
-	
+
 	// Experience
 	$('#experience').select2({
 		placeholder: "Please Select",
 		allowClear: true
 	});
-	
+
 	// Gender
 	$('#gender').select2({
 		placeholder: "Please Select",
 		allowClear: true
-	});	
-	
+	});
+
 	// Industry
 	$('#industry').select2({
 		placeholder: "Please Select",
 		allowClear: true
-	});	
-	
+	});
+
 	// Qualification
 	$('#qualification').select2({
 		placeholder: "Please Select",
 		allowClear: true
-	});	
-	
-	
+	});
+
+
 	// Business Type
 	$('#business-type').select2({
 		placeholder: "Search Allow",
 		allowClear: true
 	});
-	
-	// Search Page Tag & Skill 
+
+	// Search Page Tag & Skill
 	$(".tag-skill").select2({
 	  tags: true
 	});
-	
-	// Specialisms 
+
+	// Specialisms
 	$("#specialisms").select2({
 		placeholder: "Specialisms"
 	});
 
-	// Editor 
+	// Editor
 	$('#summernote').summernote({
 		height: 150
 	});
-	
-	// Editor 
+
+	// Editor
 	$('#resume-info').summernote({
 		height: 120
 	});
-	
+
 	// Job Description
 	$('#jb-description').summernote({
 		height: 150
 	});
-	
-	// CV 
+
+	// CV
 	$('#cv-cover').summernote({
 		height: 150
 	});
-	
+
 	// File upload
 	$(".custom-file-input").on("change", function() {
 	  var fileName = $(this).val().split("\\").pop();
 	  $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
 	});
-	
+
 	/****----- Counter ---------*/
 	$('.count').on('each', function () {
 		$(this).prop('Counter',0).animate({
@@ -298,6 +302,6 @@
 			}
 		});
 	});
-	
-	
+
+
 })(jQuery);

@@ -2089,7 +2089,7 @@ a.btn-trans-video i {
 }
 
   .btn-warning-gradiant.active, .btn-warning-gradiant:active, .btn-warning-gradiant:focus {
-    -webkit-box-shadow: 0px;
+    -webkit-box-shadow:0px;
     box-shadow: 0px;
     opacity: 1;
 }
@@ -4680,7 +4680,6 @@ button.owl-prev, button.owl-next {
     left: 0;
     width: 38px;
     height: 38px;
-    background: url(../img/job-featured.png) no-repeat top left;
     background-size: 39px 39px;
     -webkit-border-radius: 5px 0 0 0;
     border-radius: 5px 0 0 0;
@@ -6149,25 +6148,49 @@ span em {
 	transition:all 0.4s;
     color: #e91e63;
 }
+
 .mg-edit {
-    background: rgba(106, 27, 154,0.1);
+    background: rgba(156, 39, 176,0.1);
     padding: 6px 16px;
     border-radius: 2px;
     transition:all 0.4s;
-    color: #6a1b9a;
+    color: #9c27b0;
+}
+
+.mg-add {
+    background: rgba(156, 39, 176,0.1);
+    padding: 6px 16px;
+    border-radius: 2px;
+    transition:all 0.4s;
+    color: white;
+    background:#9c27b0;
 }
 .mg-delete:hover, .mg-delete:focus {
     background:#e91e63;
     color:#ffffff;
 }
+
 .mg-edit:hover, .mg-edit:focus {
-    background:#6a1b9a;
-    color:white;
+    background:#9c27b0;
+    color:#ffffff;
+}
+
+.employee {
+    margin-left: 23.5rem!important;
+}
+
+.btn-add {
+    color: white;
+    opacity: 1!important;
+    padding-top: 10%;
+}
+#epl-add {
+    margin-right: 55%!important;
 }
 
 
 /*-----------------------------------------------
-	Common Element Start
+Common Element Start
 ------------------------------------------------*/
 .progress-bar {
     -webkit-animation: animate-positive 2s;
@@ -6470,7 +6493,7 @@ a.btn.btn-cta:hover, a.btn.btn-cta:focus{
 }
 /*------------ Element Start: Tab --------------*/
 .fade.in {
-    opacity: 1;
+    /*opacity: 1;*/
 }
 .nav-tabs .nav-link {
     border: none;
@@ -7058,6 +7081,16 @@ span.current-page:before {
     background: #ffffff;
     display: block;
 	width:100%;
+    border-radius: 2px;
+    border: 1px solid #eceef3;
+    margin-bottom: 30px;
+}
+
+.tr-single-box-add {
+    background: #ffffff;
+    display: block;
+    width:100%;
+    margin-left: 55%;
     border-radius: 2px;
     border: 1px solid #eceef3;
     margin-bottom: 30px;

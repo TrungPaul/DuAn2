@@ -23,27 +23,33 @@
                     </div>
                     <div class="col-sm-12 col-lg-8 col-xl-8">
                         <div class="beautypress-contact-form">
-                            <form action="#" method="POST" id="beautypress-contact">
+                            <form action="{{route('contact')}}" method="POST" id="beautypress-contact">
+                                @csrf
                                 <div class="beautypress-spilit-container">
                                     <div class="input-group">
-                                        <input type="text" name="name" id="c_name" placeholder="Your name">
-                                        <div class="input-group-addon"><i class="fa fa-user"></i></div>
+                                        <input type="text" name="name"  placeholder="Tên"> 
                                     </div>
                                     <div class="input-group">
-                                        <input type="email" name="email" id="c_email" placeholder="Your email">
-                                        <div class="input-group-addon"><i class="xsicon icon-envelope5"></i></div>
+                                        <input type="email" name="email"  placeholder="Email" class="@error('email') is-invalid @enderror">
+                                        @error('email')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
                                     </div>
                                 </div><!-- .beautypress-spilit-container END -->
                                 <div class="input-group">
-                                    <input type="text" name="subject" id="c_subject" placeholder="Subject">
-                                    <div class="input-group-addon">@</div>
+                                    <input type="number" name="phone" placeholder="Điện thoại" class="@error('phone') is-invalid @enderror">
+                                    @error('phone')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
                                 </div>
                                 <div class="input-group">
-                                    <textarea name="massage" id="c_massage" cols="30" rows="10"
-                                              placeholder="Your comments"></textarea>
-                                    <div class="input-group-addon"><i class="fa fa-pencil"></i></div>
+                                    <textarea name="content"  cols="30" rows="10"
+                                              placeholder="Nội dung" class="@error('content') is-invalid @enderror"></textarea>
+                                    @error('content')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
                                 </div>
-                                <input type="submit" value="submit" id="c_submit">
+                                <input type="submit" value="Gửi" id="c_submit" class="mt-2">
                             </form><!-- #beautypress-contact END -->
                         </div><!-- .beautypress-contact-form END -->
                     </div>

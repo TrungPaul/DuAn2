@@ -18,12 +18,12 @@
                             <h4 class="btn-add"><i class="ti-shift-right mr-2"></i> Thêm</h4>
                         </a>
                     </div>
+                    </div>
                     <div class="tr-single-body">
                         <div class="row">
-
+                            @foreach ( $service as $ser)
                             <div class="col-md-12">
                                 <!-- Single Manage job -->
-                                @foreach ( $service as $ser)
                                     <div class="manage-list">
                                         <div class="mg-list-wrap">
                                             <div class="mg-list-thumb">

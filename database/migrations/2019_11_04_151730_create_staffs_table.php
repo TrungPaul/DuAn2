@@ -16,10 +16,10 @@ class CreateStaffsTable extends Migration
         Schema::create('staffs', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->string('avatar');
+            $table->string('avatar')->default('default-avatar.png');
             $table->string('gender');
             $table->integer('spa_id');
-            $table->integer('is_active');
+            $table->integer('is_active')->default(0);
             $table->timestamps();
         });
     }

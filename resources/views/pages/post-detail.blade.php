@@ -2,138 +2,87 @@
 @section('title', 'Chi tiết bài viết')
 
 @section('content')
-<section class="beautypress-blog-post-section section-padding">
+<section class="beautypress-blog-post-section section-padding mt-5">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12 col-xl-8 col-lg-8">
 						<div class="beautypress-blog-post-group">
 							<div class="beautypress-blog-post-wraper">
-								<img src="images/{{ $post->image }}" alt="">		
-								<div class="beautypress-tag">
-									<a href="#">beauty</a>
-									<a href="#">spa</a>
-									<a href="#">nature</a>
-									<a href="#">salon</a>
-								</div><!-- .beautypress-tag END -->
+								<img src="images/posts/{{ $post->image }}" alt="">		
 								<h2>{{ $post->title }}</h2>
-                                <p><span class="firstcharacter">O</span>{{ $post->content }}</p>
-
-								<p>His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. "What's happened to me?" he thought. It wasn't a dream. His room, a proper human room although a little too small, lay peacefully between its four familiar walls. A collection of textile samples lay spread out on the table - Samsa was a travelling salesman - and above it there hung a picture that he had recently cut out of an illustrated magazine and housed in a nice, gilded frame. It showed a lady fitted out with a fur hat and fur boa who sat upright, raising a heavy fur muff that covered the whole of her lower arm towards the viewer.</p>
+                                <p>{{ $post->content }}</p>
 							</div><!-- .beautypress-blog-post-wraper END -->
-							<div class="beautypress-spilit-container mb-70">
-								<div class="beautypress-simple-title text-left">
-									<h5>Previous Post</h5>
-									<a href="#">One morning, when Gregor Samsa</a>
-								</div><!-- .beautypress-simple-title END -->
-								<div class="beautypress-simple-title text-right">
-									<h5>Next Post</h5>
-									<a href="#">However hard he threw himself</a>
-								</div><!-- .beautypress-simple-title END -->
-							</div><!-- .beautypress-spilit-container END -->
+						
 							<div class="beautypress-replay-answer-container">
 								<div class="beautypress-simple-title mb-30">
-									<h3>Bình luận <span>(211)</span></h3>
+									<h3>Bình luận</h3>
 								</div>
 								<div class="beautypress-replay-answer-wraper">
-									<div class="beautypress-single-replay">
-										<div class="beautypress-replayer-img">
-											<img src="assets/img/avatar-1.jpg" alt="">
-										</div>
-										<div class="beautypress-replay-text">
-											<div class="beautypress-spilit-container">
-												<div class="beautypress-replay-name">
-													<h5>Jhon William Smith</h5>
-												</div>
-												<div class="beautypress-replay-time">
-													<h6>September 10, 2016 at 1:31 pm </h6>
-												</div>
+									@foreach ( $comments as $cmt)
+										<div class="beautypress-single-replay">
+											<div class="beautypress-replayer-img">
+												@if (isset($cmt->avatar))
+													<img src="images/{{ $cmt->avatar }}" alt="">
+												@else
+													<img src="https://www.hardiagedcare.com.au/wp-content/uploads/2019/02/default-avatar-profile-icon-vector-18942381.jpg" alt="">
+												@endif
 											</div>
-											<p>One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly</p>
-											<ul class="beautypress-socail-react">
-												<li><a href="#" class="color-purple"><i class="fa fa-thumbs-o-up"></i></a>18K+</li>
-												<li><a href="#" class="color-purple"><i class="fa fa-thumbs-o-down"></i></a>18k+</li>
-												<li><a href="#" class="color-purple">Repley</a></li>
-											</ul>
-										</div>
-									</div><!-- .beautypress-single-replay END -->
-									<div class="beautypress-single-replay beautypress-replay">
-										<div class="beautypress-replayer-img">
-											<img src="assets/img/avatar-2.jpg" alt="">
-										</div>
-										<div class="beautypress-replay-text">
-											<div class="beautypress-spilit-container">
-												<div class="beautypress-replay-name">
-													<h5>Jhon William Smith</h5>
+											<div class="beautypress-replay-text">
+												<div class="beautypress-spilit-container">
+													<div class="beautypress-replay-name">
+														<h5>{{ $cmt->name }}</h5>
+													</div>
+													<div class="beautypress-replay-time">
+														<h6>{{ $cmt->created_at }} </h6>
+													</div>
 												</div>
-												<div class="beautypress-replay-time">
-													<h6>September 10, 2016 at 1:31 pm </h6>
-												</div>
+												<p> {{ $cmt->content }}</p>
 											</div>
-											<p>slightly domed and divided by arches into stiff sections. The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. "What's happened to me?" he thought.</p>
-											<ul class="beautypress-socail-react">
-												<li><a href="#" class="color-purple"><i class="fa fa-thumbs-o-up"></i></a>18K+</li>
-												<li><a href="#" class="color-purple"><i class="fa fa-thumbs-o-down"></i></a>18k+</li>
-												<li><a href="#" class="color-purple">Repley</a></li>
-											</ul>
-										</div>
-									</div><!-- .beautypress-single-replay .beautypress-replay END -->
-									<div class="beautypress-single-replay">
-										<div class="beautypress-replayer-img">
-											<img src="assets/img/avatar-3.jpg" alt="">
-										</div>
-										<div class="beautypress-replay-text">
-											<div class="beautypress-spilit-container">
-												<div class="beautypress-replay-name">
-													<h5>Jhon William Smith</h5>
-												</div>
-												<div class="beautypress-replay-time">
-													<h6>September 10, 2016 at 1:31 pm </h6>
-												</div>
-											</div>
-											<p> However hard he threw himself onto his right, he always rolled back to where he was. He must have tried it a hundred times, shut his eyes so that he wouldn't have to look at the floundering legs, and only stopped when</p>
-											<ul class="beautypress-socail-react">
-												<li><a href="#" class="color-purple"><i class="fa fa-thumbs-o-up"></i></a>18K+</li>
-												<li><a href="#" class="color-purple"><i class="fa fa-thumbs-o-down"></i></a>18k+</li>
-												<li><a href="#" class="color-purple">Repley</a></li>
-											</ul>
-										</div>
-									</div><!-- .beautypress-single-replay END -->
+										</div><!-- .beautypress-single-replay END -->
+									@endforeach
 								</div><!-- .beautypress-replay-answer-wraper END -->
-								<div class="beautypress-btn-wraper">
-									<a href="#" class="xs-btn bg-color-purple round-btn box-shadow-btn">
-										More Comments
-										<span></span>
-									</a>
-								</div><!-- .beautypress-btn-wraper END -->
 							</div><!-- .beautypress-replay-answer-container END -->
 							<div class="beautypress-replay-container">
 								<div class="beautypress-simple-title mb-30">
-									<h3>Leave a Reply</h3>
+									<h3>Đăng bình luận</h3>
 								</div><!-- .beautypress-simple-title END -->
+								@if(session()->has('message'))
+									<div class="alert alert-success">
+										{{ session()->get('message') }}
+									</div>
+								@endif
+								@if ($errors->any())
+									<div class="alert alert-danger">
+										<ul>
+											@foreach ($errors->all() as $error)
+												<li>{{ $error }}</li>
+											@endforeach
+										</ul>
+									</div>
+								@endif
 								<div class="beautypress-replay-form-wraper">
-									<form action="#" method="POST" id="beautypress-replay-form">
-										<div class="row mb-30">
-											<div class="col-md-4 col-sm-12">
-												<div class="form-group">
-													<input type="text" id="r_name" class="form-control" placeholder="Your name">
-												</div>
-											</div>
-											<div class="col-md-4 col-sm-12">
-												<div class="form-group">
-													<input type="email" id="r_email" class="form-control" placeholder="Your email">
-												</div>
-											</div>
-											<div class="col-md-4 col-sm-12">
-												<div class="form-group">
-													<input type="text" id="r_website" class="form-control" placeholder="Website">
-												</div>
+									<form action="{{route('create_comment')}}" method="POST" id="beautypress-replay-form">
+										@csrf
+										<input type="hidden" name="post_id" value="<?= $post->id ?>"> 
+										@if (Auth::check())
+											<input type="hidden" name="name" value="<?= Auth::user()->name ?>">
+											<input type="hidden" name="user_id" value="<?= Auth::user()->id ?>"> 
+											<input type="hidden" name="avatar" value="<?= Auth::user()->avatar ?>"> 
+										@endif
+										<div class="row mb-10">
+											<div class="col-md-6 col-sm-12">
+												@if (!Auth::check())
+													<div class="form-group">
+														<input type="text" name="name" id="r_name" class="form-control" placeholder="Tên (bắt buộc)" value="{{ old('name') }}">
+													</div>
+												@endif
 											</div>
 										</div>
 										<div class="form-group">
-											<textarea class="form-control mb-30" name="r_massage" id="r_massage" cols="30" placeholder="Comments" rows="10"></textarea>
+											<textarea name="content" class="form-control mb-30"  id="r_massage" cols="30" placeholder="Nội dung (bắt buộc)" rows="10">{{ old('content') }}</textarea>
 										</div>
 										<div class="form-group">
-											<input type="submit" value="Submit comment" id="r_submit">
+											<input type="submit" value="Gửi bình luận" id="r_submit">
 										</div>
 									</form>
 								</div><!-- .beautypress-replay-form-wraper END -->
@@ -150,11 +99,11 @@
                                     @foreach ( $new_posts as $np)
                                         <div class="beautypress-single-latest-news">
                                             <div class="beautypress-latest-post-img">
-                                                <img src="assets/img/latest-post-img-3.jpg" alt="">
+                                                <img src="images/posts/{{ $np->image}}" alt="">
                                             </div>
                                             <div class="beautypress-latest-post-content">
                                                 <a href="{{route('detail_post', $np->id)}}">{{ $np->title }}</a>
-                                                <i>20 Hours Ago</i>
+                                                <i>{{ $np->description }}</i>
                                             </div>
                                         </div><!-- .beautypress-single-latest-news END -->
                                     @endforeach

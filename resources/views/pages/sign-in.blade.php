@@ -7,7 +7,7 @@
                 <h2 class="title text-uppercase font-weight-bold m-0"><a href="{{route('home')}}">SpaTime</a></h2>
             </div>
             <div class="card-body">
-                <form action="{{ route('postLogin')}}" method="POST">
+                <form action="{{ route('postLogin')}}" method="post">
                     @csrf
                     <div class="form-group mb-3">
                         <label>Email</label>
@@ -20,6 +20,12 @@
                                 </span>
                             </span>
                         </div>
+                        @if (session('errmsg'))
+                        <p class="text-danger"> {{session('errmsg')}} </p>
+                    @endif
+                        @if($errors->first('email'))
+                                    <span class="text-danger"> {{$errors->first('email')}} </span>
+                                @endif
                     </div>
                     <div class="form-group mb-3">
                         <label>Password</label>
@@ -35,6 +41,9 @@
                                 </span>
                             </span>
                         </div>
+                        @if($errors->first('password'))
+                                    <span class="text-danger"> {{$errors->first('password')}} </span>
+                                @endif
                     </div>
 
                     <div class="row">
