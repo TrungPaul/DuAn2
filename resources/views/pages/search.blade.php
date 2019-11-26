@@ -34,6 +34,9 @@
                 </div>
             @endforeach
         </div>
+        @if (count($posts) == 0) 
+            <div style="margin-top:500px;"></div>
+        @endif
     </div>
 </section><!-- .beautypress-exclusive-products END -->
 @endsection

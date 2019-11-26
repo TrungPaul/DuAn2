@@ -10,7 +10,7 @@
 							<div class="beautypress-blog-post-wraper">
 								<img src="images/posts/{{ $post->image }}" width="100%">	
 								<p>Danh mục: <strong>{{ $post->category->name }}</strong></p>
-								<p>Tác giả: <strong>Hoàng</strong></p>	
+								<!-- <p>Tác giả: <strong>{{ $post->user->name }}</strong></p>	 -->
 								<h2>{{ $post->title }}</h2>
 								<i>{{ $post->description }}</i>
                                 <p>{{ $post->content }}</p>
@@ -20,6 +20,20 @@
 								<div class="beautypress-simple-title mb-30">
 									<h3>Bình luận</h3>
 								</div>
+								@if(session()->has('message_reply'))
+									<div class="alert alert-success">
+										{{ session()->get('message_reply') }}
+									</div>
+								@endif
+								@if ($errors->any())
+									<div class="alert alert-danger">
+										<ul>
+											@foreach ($errors->all() as $error)
+												<li>{{ $error }}</li>
+											@endforeach
+										</ul>
+									</div>
+								@endif
 								<div class="beautypress-replay-answer-wraper">
 									@foreach ( $comments as $cmt)
 										<div class="beautypress-single-replay">
@@ -40,9 +54,78 @@
 													</div>
 												</div>
 												<p> {{ $cmt->content }}</p>
+												<ul class="beautypress-socail-react text-right">
+													<li><a style="cursor: pointer;" class="color-purple" onclick="reply(this,{{ $cmt->id }})">Trả lời</a></li>
+												</ul>
+												
 											</div>
+											<!-- reply -->
+												
+											<!-- end reply -->
 										</div><!-- .beautypress-single-replay END -->
+										
+										@foreach($cmt->replies as $rep)
+										<div class="beautypress-single-replay" style="margin-left:80px;">
+											<div class="beautypress-replayer-img">
+											@if (isset($rep->avatar))
+												<img src="images/{{ $rep->avatar }}" alt="">
+											@else
+												<img src="https://www.hardiagedcare.com.au/wp-content/uploads/2019/02/default-avatar-profile-icon-vector-18942381.jpg" alt="">
+											@endif
+											</div>
+											<div class="beautypress-replay-text">
+												<div class="beautypress-spilit-container">
+													<div class="beautypress-replay-name">
+														<h5>{{ $rep->name }}</h5>
+													</div>
+													<div class="beautypress-replay-time">
+														<h6>{{ $rep->created_at }} </h6>
+													</div>
+												</div>
+												<p> {{ $rep->content }}</p>
+											
+											</div>
+										</div>
+										@endforeach
+										<hr>
 									@endforeach
+									
+									<!-- Đăng reply -->
+									@if (isset($cmt))
+									<div class="beautypress-replay-container reply-row" style="display:none;">
+										<div class="beautypress-replay-form-wraper">
+											<form class="formreply" action="{{route('create_reply')}}" method="POST" id="beautypress-replay-form">
+													<div class="row mb-30">
+														@csrf
+														<input type="hidden" name="comment_id"> 
+														@if (Auth::check())
+															<input type="hidden" name="name" value="<?= Auth::user()->name ?>">
+															<input type="hidden" name="user_id" value="<?= Auth::user()->id ?>"> 
+															<input type="hidden" name="avatar" value="<?= Auth::user()->avatar ?>"> 
+														@endif
+														<div class="col-md-12">
+														@if (!Auth::check())
+															<div class="form-group">
+																<input type="text" name="reply_name" id="r_name" class="form-control" placeholder="Tên" value="{{ old('name') }}">
+															</div>
+														@endif
+														</div>
+													</div>
+													<div class="form-group">
+													@if (Auth::check())
+														<img src="images/{{ Auth::user()->avatar }}" width="30"><br><br>
+														<textarea name="reply_content" class="form-control mb-30"  id="r_massage" cols="30" placeholder="Nhập bình luận" rows="10">{{ old('content') }}</textarea>
+													@else 
+														<textarea name="reply_content" class="form-control mb-30"  id="r_massage" cols="30" placeholder="Nhập bình luận" rows="10">{{ old('content') }}</textarea>
+													@endif
+													</div>
+													<div class="form-group">
+														<input type="submit" value="Đăng trả lời" id="r_submit">
+													</div>
+											</form>
+										</div><!-- .beautypress-replay-form-wraper END -->
+									</div><!-- .beautypress-replay-container END -->
+									@endif
 								</div><!-- .beautypress-replay-answer-wraper END -->
 							</div><!-- .beautypress-replay-answer-container END -->
 							<div class="beautypress-replay-answer-container">
@@ -97,6 +180,8 @@
 							</div><!-- .beautypress-replay-container END -->
 						</div><!-- .beautypress-blog-post-group END -->
 					</div>
+
+					<!-- bải viết liên quan -->
 					<div class="col-md-12 col-xl-4 col-lg-4">
 						<div class="beautypress-side-bar-group">
 							<div class="beautypress-single-sidebar">
@@ -120,6 +205,7 @@
 								</div><!-- .beautypress-latest-news-wraper END -->
 							</div><!-- .beautypress-single-sidebar END -->
 								
+							<!-- bài viết mới nhất -->
 							<div class="beautypress-single-sidebar">
 								<div class="beautypress-sidebar-heading">
 									<h3>Bài viết mới nhất</h3>

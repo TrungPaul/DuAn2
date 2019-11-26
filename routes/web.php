@@ -90,6 +90,9 @@ Route::group(['middleware'=>'auth'],function() {
 //comment
 Route::post('create-comments', 'CommentController@add')->name('create_comment');
 
+//reply comment
+Route::post('create-reply', 'CommentController@reply')->name('create_reply');
+
 //contact
 Route::post('contact', 'ContactController@add')->name('contact');
 
