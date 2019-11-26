@@ -10808,3 +10808,7 @@ label[for="rating"] {
     transform: translate(0px, 0px) scale(1, 1);
     opacity: 1;
   }
+  
+label.error {
+    color:red;
+}
