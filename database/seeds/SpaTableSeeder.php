@@ -21,7 +21,8 @@ class SpaTableSeeder extends Seeder
                 'email' => $faker->email(),
                 'password' => Hash::make('123456'),
                 'phone' => '0393079176',
-                'location' => rand(1, 3) ,
+                'city_id' => rand(1, 3),
+                'location' => $faker->address(),
                 'is_active' => 0,
                 'image' => 'image-seeder.jpg'
             ]);

@@ -18,6 +18,7 @@ class CreateSpasTable extends Migration
             $table->string('email');
             $table->string('password');
             $table->string('name');
+            $table->integer('city_id');
             $table->string('location');
             $table->string('phone');
             $table->string('image');

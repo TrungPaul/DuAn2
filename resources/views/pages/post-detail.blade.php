@@ -9,8 +9,12 @@
 						<div class="beautypress-blog-post-group">
 							<div class="beautypress-blog-post-wraper">
 								<img src="images/posts/{{ $post->image }}" width="100%">	
-								<p>Danh mục: <strong>{{ $post->category->name }}</strong></p>
-								<!-- <p>Tác giả: <strong>{{ $post->user->name }}</strong></p>	 -->
+								<p>Danh mục: <strong>{{ $post->category->name }}</strong></p> 
+								<div class="beautypress-newsfeed-img">
+									<strong>Tác giả: </strong>&emsp;
+									<img src="images/{{ $post->user->avatar }}" alt="">
+									{{ $post->user->name }}
+								</div>
 								<h2>{{ $post->title }}</h2>
 								<i>{{ $post->description }}</i>
                                 <p>{{ $post->content }}</p>
@@ -23,15 +27,6 @@
 								@if(session()->has('message_reply'))
 									<div class="alert alert-success">
 										{{ session()->get('message_reply') }}
-									</div>
-								@endif
-								@if ($errors->any())
-									<div class="alert alert-danger">
-										<ul>
-											@foreach ($errors->all() as $error)
-												<li>{{ $error }}</li>
-											@endforeach
-										</ul>
 									</div>
 								@endif
 								<div class="beautypress-replay-answer-wraper">

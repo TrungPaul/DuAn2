@@ -14,9 +14,9 @@ class LocationTableSeeder extends Seeder
         $city = [
             ['name' => 'Hà Nội'],
 
-            ["name" => "Đà Nẵng"],
+            ["name" => "Hồ Chí Minh"],
 
-            ['name' => "Thành phố HCM"]
+            ['name' => "Đà Nẵng"]
         ];
 
         DB::table('locations')->insert($city);
