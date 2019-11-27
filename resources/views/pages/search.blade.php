@@ -1,10 +1,16 @@
-<section class="beautypress-exclusive-products">
+@extends('layouts.index')
+@section('title', 'Tìm kiếm bài viết')
+
+@section('content')
+<section class="beautypress-exclusive-products" style="margin-top:150px;">
     <div class="container">
         <div class="beautypress-section-headinig beautypress-version-2">
-            <h3>Bài viết</h3>
+            <h3>Tìm kiếm</h3>
             <img src="assets/img/section-heading-separetor.png" alt="">
         </div>
-        <div class="row">
+        <h6>Tìm thấy {{count($posts)}} kết quả</h6>
+        <hr>
+        <div class="row" style="margin-top:50px;">
             @foreach ( $posts as $key => $p )
                 <div class="col-md-12 col-sm-12 col-xl-4 col-lg-4">
                     <div class="beautypress-single-newsletter mb-30">
@@ -30,3 +36,4 @@
         </div>
     </div>
 </section><!-- .beautypress-exclusive-products END -->
+@endsection

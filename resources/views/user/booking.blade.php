@@ -37,12 +37,18 @@
                                             <option value="{{$ser->id}}">{{$ser->name_service}} ({{$ser->price_service}}đ)</option>
                                             @endforeach
                                         </select>
+                                        @if( $errors->first('service_detail_id'))
+                                            <span class="text-danger">{{ $errors->first('service_detail_id')}}</span>
+                                        @endif
                                     </div>
                                 </div><!-- .beautypress-select END -->
                                 <div class="beautypress-spilit-container">
                                     <div class="">
                                         <div class="input-group">
                                             <input type="date" id="appointment-date" class="form-control" name="date_booking">
+                                            @if( $errors->first('date_booking'))
+                                                <span class="text-danger">{{ $errors->first('date_booking')}}</span>
+                                            @endif
                                         </div>
                                     </div><!-- .beautypress-date-select END -->
                                     <div class="beautypress-select">
@@ -53,7 +59,9 @@
                                                     <option value="{{$time->id}}">{{$time->time}}</option>
                                                 @endforeach
                                             </select>
-
+                                            @if( $errors->first('time_booking'))
+                                                <span class="text-danger">{{ $errors->first('time_booking')}}</span>
+                                            @endif
                                         </div>
                                     </div><!-- .beautypress-select END -->
                                 </div>
@@ -64,6 +72,9 @@
                                                 <option value="{{$st->id}}">{{$st->name}}</option>
                                                    @endforeach
                                         </select>
+                                        @if( $errors->first('staff_id'))
+                                            <span class="text-danger">{{ $errors->first('staff_id')}}</span>
+                                        @endif
                                     </div>
                                 </div>
                                 <button type="submit" class="btn btn-info btn-md full-width">Thêm mới<i
@@ -77,3 +88,16 @@
         </div>
     </section>
     @endsection
+
+@section('alert')
+    @if (session('fail'))
+        <script>
+            toastr.error('{{ session('fail')}}', {timeOut: 200});
+        </script>
+    @endif
+    @if (session('success'))
+        <script>
+            toastr.success('{{ session('success')}}', {timeOut: 200});
+        </script>
+    @endif
+@endsection

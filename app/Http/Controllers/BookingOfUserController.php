@@ -8,6 +8,7 @@ use App\BookingOfUser;
 use App\Time;
 use App\Staff;
 use Illuminate\Support\Facades\Auth;
+use Mail;
 
 class BookingOfUserController extends Controller
 {
@@ -21,22 +22,40 @@ class BookingOfUserController extends Controller
     }
 
     public function addBooking(Request $request , $spaId){
+//        dd($request->all());
+        $this->validate($request, [
+            'service_detail_id' => 'required',
+            'date_booking' => 'required|after:today',
+            'time_booking'=> 'required',
+            'staff_id' => 'required'
+        ]);
 
         $booking = new BookingOfUser();
         $booking->fill($request->all());
         $booking->user_id = 2;
         $booking->spa_id = $spaId;
-        $bookingStaff = BookingOfUser::where('spa_id', $spaId)
-            ->where('date_booking', $booking->date_booking)
+
+        $bookingStaff = BookingOfUser::
+            where('spa_id', $spaId)
+            ->whereDate('date_booking','=', $booking->date_booking)
             ->where('staff_id', $booking->staff_id)
             ->where('time_booking', $booking->time_booking)
             ->count();
-        $slotTime = BookingOfUser::where('time_booking', $booking->time_booking)->count();
-        if ($bookingStaff > 0 && $slotTime > 5 ){
-            return('nhân viên đã có hẹn');
+//        dd($bookingStaff);
+//        $bookingStaff = BookingOfUser::find(1);
+        $slotTime = BookingOfUser::where('spa_id', $spaId)
+            ->whereDate('date_booking', $booking->date_booking)
+            ->where('time_booking', $booking->time_booking)->count();
+        if (($bookingStaff != 0)){
+            return redirect()->route('user.book')->with('fail', 'Đặt lịch không thành công , nhân viên đã có hẹn');
         }
-        $booking->save();
+        else{
+            Mail::send('mailfb', array('name'=>$input["name"],'email'=>$input["email"], 'content'=>$input['comment']), function($message){
+                $message->to('plachym.it@gmail.com', 'Visitor')->subject('Visitor Feedback!');
+            });
+            $booking->save();
 
-        return view('pages.home');
+            return redirect()->route('home')->with('success', 'Đặt lịch thành công ');
+        }
     }
 }

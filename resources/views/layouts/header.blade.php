@@ -69,9 +69,19 @@
                                 </div>
                             <li>
                         @endif
+                        <li>
+                            <a href="#search" title="Tìm kiếm"><i class="fas fa-search"></i></a>
+                        </li>
                     </ul>
                 </div>
             </nav>
         </div>
+    </div>
+    <div id="search">
+        <button type="button" class="close">×</button>
+        <form action="{{route('search')}}" method="GET" autocomplete="off">
+            <input type="search" class="search" name="key" placeholder="Tìm kiếm..." />
+            <button type="submit" class="btn btn-primary">Tìm kiếm</button>
+        </form>
     </div>
 </header>

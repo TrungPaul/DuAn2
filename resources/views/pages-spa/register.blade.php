@@ -13,6 +13,7 @@
                     </div>
                 @endif
                 <a class="text-primary h5" href="{{ url('/') }}">Trở về trang chủ</a><br><br>
+                <p class="font-weight-bold">Thông tin cơ bản</p>
                 <form action="{{ route('spa_register') }}" method="POST" enctype="multipart/form-data" novalidate>
                     @csrf
                     <div class="form-group mb-3">
@@ -62,6 +63,7 @@
                         @error('phone')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
+                        
                     </div>
 
                     <div class="form-group mb-3">
@@ -81,8 +83,56 @@
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
-
                     <br>
+
+                    <p class="font-weight-bold">Thông tin đăng nhập</p>
+                    <div class="form-group mb-3">
+                        <label>Email</label>
+                        <label class="text-danger">(*)</label>
+                        <div class="input-group">
+                            <input name="email" type="email" class="form-control form-control-lg @error('email') is-invalid @enderror"
+                                   value="{{old('email')}}"/>
+                            <span class="input-group-append">
+                            <span class="input-group-text">
+                                <i class="fas fa-envelope"></i>
+                            </span>
+                        </span>
+                        </div>
+                        @error('email')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    <div class="form-group mb-3">
+                        <label>Mật khẩu</label>
+                        <label class="text-danger">(*)</label>
+                        <div class="input-group">
+                            <input name="password" type="password" class="form-control form-control-lg @error('password') is-invalid @enderror">
+                            <span class="input-group-append">
+                            <span class="input-group-text">
+                                <i class="fas fa-lock"></i>
+                            </span>
+                        </span>
+                        </div>
+                        @error('password')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    <div class="form-group mb-3">
+                        <label>Nhập lại mật khẩu</label>
+                        <label class="text-danger">(*)</label>
+                        <div class="input-group">
+                            <input name="pwd" type="password" class="form-control form-control-lg @error('pwd') is-invalid @enderror">
+                            <span class="input-group-append">
+                            <span class="input-group-text">
+                                <i class="fas fa-lock"></i>
+                            </span>
+                        </span>
+                        </div>
+                        @error('pwd')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+
                     <div class="row">
                         <div class="col-sm-10">
                             <div class="checkbox-custom checkbox-default">
@@ -111,7 +161,7 @@
                         <a class="btn btn-facebook mb-3 ml-1 mr-1" href="#">Đăng nhập <i class="fab fa-facebook-f"></i></a>
                         <a class="btn btn-google mb-3 ml-1 mr-1" href="#">Đăng nhập <i class="fab fa-google"></i></a>
                     </div> -->
-                    <p class="text-center">Bạn đã có tài khoản<a href="{{route('login')}}" class="text-primary"> Đăng nhập</a></p>
+                    <p class="text-center">Bạn đã có tài khoản<a href="{{route('login_spa')}}" class="text-primary"> Đăng nhập</a></p>
                 </form>
             </div>
         </div>
