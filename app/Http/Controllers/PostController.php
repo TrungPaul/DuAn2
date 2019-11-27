@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Post;
 use App\Category;
 use App\Comment;
+use App\Service;
+use App\Spa;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
@@ -103,9 +105,9 @@ class PostController extends Controller
     }
 
     public function search(Request $request) {
-        $posts = Post::where('title', 'like', '%' . $request->key . '%')
-                        ->orWhere('description', 'like', '%' . $request->key . '%')
-                        ->get();
-        return view('pages.search', compact('posts'));
+        $key = $request->key;
+        $posts = Post::where('title', 'like', '%' . $key . '%')->get();
+        $services = Service::where('name_service', 'like', '%' . $key . '%')->get();
+        return view('pages.search', compact('posts', 'services'));
     }
 }
