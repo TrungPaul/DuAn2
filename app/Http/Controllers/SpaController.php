@@ -20,17 +20,17 @@ class SpaController extends Controller
 
     public function login()
     {
-        return view('pages-spa.login');
+        return view('pages-spa.login-spa');
     }
 
-    public function post_login(LoginUser $request)
+    public function postLoginSpa(LoginUser $request)
     {
         $data = $request->only(['email', 'password']);
-        $checkLogin = Auth::attempt($data);
+        $checkLogin = Auth::guard('spa')->attempt($data);
         if ($checkLogin) {
-            return redirect()->route('home');
+            return redirect()->route('info-spa');
         } else {
-            return redirect()->route('login_spa');
+            return redirect()->route('login-spa');
         }
     }
 
@@ -65,5 +65,18 @@ class SpaController extends Controller
                 return $query->where('city_id', $locations);
             })->with('listService')->orderBy('id', 'DESC')->paginate(6);
         return view('pages.list-spa', compact('result', 'location', 'service'));
+    }
+
+    public function detailSpa($id)
+    {
+//        $detailSpa = Spa::where('id', $id)->first()->toArray();
+//        dd($detailSpa);
+
+        return view('pages.detail-spa');
+    }
+
+    public function information()
+    {
+        return view('pages-spa.spa');
     }
 }

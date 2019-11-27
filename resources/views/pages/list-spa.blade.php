@@ -66,7 +66,7 @@
                                     <li>Địa chỉ: {{ $spa->location }}, {{ $spa->city->name }} </li>
                                 </ul>
                             </div><!-- .beautypress-single-new-pricing END -->
-                            <a href="#" class="beautypress-single-new-pricing beautypress-pricing-footer">
+                            <a href="{{ route('detail-spa',[ $spa->id ]) }}" class="beautypress-single-new-pricing beautypress-pricing-footer">
                                 <h3>Đặt lịch</h3>
                             </a><!-- .beautypress-single-new-pricing END -->
                         </div>

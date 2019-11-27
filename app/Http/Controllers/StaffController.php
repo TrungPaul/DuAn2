@@ -20,7 +20,7 @@ class StaffController extends Controller
     public function listEmployee(Request $request)
     {
         $key = $request->keyword;
-        $idSpa = Auth::user()->id;
+        $idSpa = Auth::guard('spa')->user()->id;
         if (!$request->has('keyword') || empty($key)) {
             $getEmployee = Staff::where([
                     ['spa_id', $idSpa],
