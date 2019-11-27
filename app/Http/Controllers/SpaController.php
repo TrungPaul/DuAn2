@@ -62,7 +62,7 @@ class SpaController extends Controller
                 return $query->where('name', 'like', "%$kw%");
             })
             ->when($locations, function ($query, $locations) {
-                return $query->where('location', $locations);
+                return $query->where('city_id', $locations);
             })->with('listService')->orderBy('id', 'DESC')->paginate(6);
         return view('pages.list-spa', compact('result', 'location', 'service'));
     }
