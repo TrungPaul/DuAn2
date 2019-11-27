@@ -50,9 +50,6 @@ class BookingOfUserController extends Controller
             return redirect()->route('user.book')->with('fail', 'Đặt lịch không thành công , nhân viên đã có hẹn');
         }
         else{
-            Mail::send('mailfb', array('name'=>$input["name"],'email'=>$input["email"], 'content'=>$input['comment']), function($message){
-                $message->to('plachym.it@gmail.com', 'Visitor')->subject('Visitor Feedback!');
-            });
             $booking->save();
 
             return redirect()->route('home')->with('success', 'Đặt lịch thành công ');
