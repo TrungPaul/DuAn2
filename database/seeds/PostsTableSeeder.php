@@ -17,17 +17,12 @@ class PostsTableSeeder extends Seeder
 
         for ($i = 0; $i < $limit; $i++) {
             DB::table('posts')->insert([
-<<<<<<< HEAD
                 'user_id' => rand(1, 10),
-                'cate_id' => rand(1, 10),
-=======
-                'user_id' => 1,
-                'cate_id' => rand(1, 10), 
->>>>>>> reply_cmt
+                'cate_id' => rand(1, 5),
                 'title' => $faker->word,
                 'description' => $faker->word,
                 'image' => 'image-seeder.jpg',
-                'content' => $faker->word,
+                'content' => $faker->text,
                 'status' => 1,
             ]);
         }

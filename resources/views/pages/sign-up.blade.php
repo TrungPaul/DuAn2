@@ -134,7 +134,7 @@
                         <a class="btn btn-facebook mb-3 ml-1 mr-1" href="#">Đăng nhập <i class="fab fa-facebook-f"></i></a>
                         <a class="btn btn-google mb-3 ml-1 mr-1" href="#">Đăng nhập <i class="fab fa-google"></i></a>
                     </div>
-                    <p class="text-center">Bạn đã có tài khoản<a href="{{route('login')}}" class="text-primary">Đăng nhập</a></p>
+                    <p class="text-center">Bạn đã có tài khoản<a href="{{route('login')}}" class="text-primary"> Đăng nhập</a></p>
                 </form>
             </div>
         </div>

@@ -10,6 +10,7 @@ class Spa extends Model
     protected $fillable = [
         'email',
         'name',
+        'city_id',
         'location',
         'phone',
         'image',
@@ -22,5 +23,10 @@ class Spa extends Model
     public function listService()
     {
         return $this->belongsTo(ServiceDetail::class, 'spa_id', 'id');
+    }
+
+    public function city()
+	{
+    	return $this->belongsTo('App\City');
     }
 }

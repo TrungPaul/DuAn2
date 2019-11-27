@@ -25,6 +25,7 @@ class SpaRequest extends FormRequest
     {
         return [
             'name' => 'required',
+            'city_id' => 'required|not_in:0',
             'location' => 'required',
             'phone' => 'required',
             'image' => 'required|mimes:jpeg,png,jpg,gif,svg',
@@ -38,6 +39,8 @@ class SpaRequest extends FormRequest
     public function messages(){
         return [
             'name.required'    => 'Tên không được để trống',
+            'city_id.required'   => 'Bạn phải chọn thành phố',
+            'city_id.not_in'   => 'Bạn phải chọn thành phố',
             'location.required'   => 'Địa chỉ không được để trống',
             'phone.required' => "Số điện thoại không được để trống",
             'image.required' => "Ảnh không được để trống",

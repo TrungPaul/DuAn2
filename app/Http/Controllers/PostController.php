@@ -20,14 +20,14 @@ class PostController extends Controller
 
     public function view()
     {
-        $posts = Post::orderBy('views', 'desc')->get();
+        $posts = Post::orderBy('views', 'desc')->paginate('6');
         $categories = Category::all();
         return view('pages.list-post', compact('posts', 'categories'));
     }
 
     public function new()
     {
-        $posts = Post::orderBy('created_at', 'desc')->get();
+        $posts = Post::orderBy('created_at', 'desc')->paginate('6');
         $categories = Category::all();
         return view('pages.list-post', compact('posts', 'categories'));
     }

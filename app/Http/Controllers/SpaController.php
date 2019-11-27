@@ -14,7 +14,8 @@ class SpaController extends Controller
 {
     public function register()
     {
-        return view('pages-spa.register');
+        $location = DB::table('locations')->get();
+        return view('pages-spa.register', compact('location'));
     }
 
     public function login()

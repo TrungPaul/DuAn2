@@ -16,8 +16,8 @@
                                 <img src="images/posts/{{ $p->image }}">
                                 <div class="beautypress-newsfeed-header-content">
                                     <div class="beautypress-newsfeed-img">
-                                        <img src="assets/img/avatar-1.jpg" alt="">
-                                        <a href="#">By Hoàng</a>
+                                        <img src="images/{{ $p->user->avatar }}" alt="">
+                                        <a href="#">{{ $p->user->name }}</a>
                                     </div>
                                     <div class="beautypress-dates">
                                         <p class="color-white"><strong>{{ $p->category->name }}</strong></p>
