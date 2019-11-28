@@ -11,7 +11,7 @@ class Comment extends Model
 		'user_id',
 		'avatar',
 		'name',
-    	'post_id',
+		'post_id',
 		'content',
 		'created_at',
     ];
@@ -24,4 +24,10 @@ class Comment extends Model
 	{
     	return $this->belongsTo('App\User');
 	}
+
+	public function replies()
+	{
+    	return $this->hasMany('App\Reply');
+    }
+	
 }

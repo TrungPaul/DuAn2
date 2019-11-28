@@ -9,7 +9,7 @@ use Illuminate\Notifications\Notifiable;
 class User extends Authenticatable
 {
     use Notifiable;
-protected $table = 'users';
+    protected $table = 'users';
     /**
      * The attributes that are mass assignable.
      *
@@ -44,8 +44,4 @@ protected $table = 'users';
         'email_verified_at' => 'datetime',
     ];
 
-    public function comments()
-	{
-    	return $this->hasMany('App\Comment');
-	}
 }

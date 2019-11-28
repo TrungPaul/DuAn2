@@ -16,12 +16,12 @@
                                 <img src="images/posts/{{ $p->image }}">
                                 <div class="beautypress-newsfeed-header-content">
                                     <div class="beautypress-newsfeed-img">
-                                        <img src="assets/img/avatar-1.jpg" alt="">
-                                        <a href="#">By Hoàng</a>
+                                        <img src="images/{{ $p->user->avatar }}" alt="">
+                                        <a href="#">{{ $p->user->name }}</a>
                                     </div>
-                                    <!-- <div class="beautypress-dates">
-                                        <p class="bg-color-purple">27<strong>{{ $p->category->name }}</strong></p>
-                                    </div> -->
+                                    <div class="beautypress-dates">
+                                        <p class="color-white"><strong>{{ $p->category->name }}</strong></p>
+                                    </div>
                                 </div><!-- .beautypress-newsfeed-header-content END -->
                             </div><!-- .beautypress-newsfeed-header END -->
                             <div class="beautypress-newsfeed-footer">
@@ -30,6 +30,10 @@
                             </div><!-- .beautypress-newsfeed-footer END -->
                         </div><!-- .beautypress-single-newsletter END -->
                     @endforeach
+                    <div class="d-flex justify-content-center">
+                        {{ $posts->links() }}
+                    </div>
+                        
                 </div>
 
                 <div class="col-md-4">

@@ -54,4 +54,18 @@ class UserServices
         return redirect()->route('user.profile')
                          ->with('errmsg', 'Change password successfully');
     }
+
+    public function listuser()
+    {
+        $user = User::all();
+
+        return $user;
+    }
+
+    public function update(Request $request)
+    {
+        $user = User::find($request->id);
+        $user->fill($request->all());
+        $user->save();
+    }
 }

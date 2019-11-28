@@ -2,14 +2,22 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Spa extends Model
+
+class Spa extends Authenticatable
 {
+    use Notifiable;
+
+    protected $guard = 'spa';
+
     protected $table = 'spas';
+
     protected $fillable = [
         'email',
         'name',
+        'city_id',
         'location',
         'phone',
         'image',
@@ -18,4 +26,14 @@ class Spa extends Model
     protected $hidden = [
         'password'
     ];
+
+    public function listService()
+    {
+        return $this->belongsTo(ServiceDetail::class, 'spa_id', 'id');
+    }
+
+    public function city()
+	{
+    	return $this->belongsTo('App\City');
+    }
 }

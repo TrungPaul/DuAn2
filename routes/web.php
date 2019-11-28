@@ -18,14 +18,14 @@ Route::get('/','HomeController@index')->name('home');
 
 Auth::routes();
 
-//bài viết
 Route::get('/danh-sach-bai-viet', 'PostController@index')->name('post');
 Route::get('/danh-sach-bai-viet/orderBy=view', 'PostController@view')->name('hot_post');
 Route::get('/danh-sach-bai-viet/orderBy=date', 'PostController@new')->name('new_post');
 Route::get('post/{post_id}/detail', 'PostController@detail')->name('detail_post');
 Route::get('{cate_id}/posts_category', 'PostController@posts_category')->name('post_in_cate');
+Route::get('list-spa','SpaController@show')->name('list-spa');
 Route::get('search', 'PostController@search')->name('search');;
-
+Route::get('detail-spa/{idSpa}', 'SpaController@detailSpa')->name('detail-spa');
 Route::get('lien-he', 'ContactController@index')->name('view_contact');
 Route::get('/booking/{spaId}', 'BookingOfUserController@book')->name('user.book');
 Route::post('/booking/{spaId}/add', 'BookingOfUserController@addBooking')->name('user.booking');
@@ -51,8 +51,9 @@ Route::get('logout', function () {
     Session::flush();
     return redirect()->route('home');
 })->name('logout');
-Route::group(['middleware'=>'auth'],function() {
+Route::group(['middleware'=>'auth:spa'],function() {
     Route::prefix('spa')->group(function () {
+        Route::get('/', 'SpaController@information')->name('info-spa');
         Route::get('employee', 'StaffController@listEmployee')->name('list-employee');
         Route::get('add-employee', 'StaffController@addEmployee')->name('add-employee');
         Route::post('add-employee', 'StaffController@createEmployee');
@@ -90,11 +91,34 @@ Route::group(['middleware'=>'auth'],function() {
 //comment
 Route::post('create-comments', 'CommentController@add')->name('create_comment');
 
+//reply comment
+Route::post('create-reply', 'CommentController@reply')->name('create_reply');
+
 //contact
 Route::post('contact', 'ContactController@add')->name('contact');
 
 //dang ky spa
-Route::get('sign-up-spa', 'SpaController@register');
+
+Route::get('sign-up-spa', 'SpaController@register')->name('login_spa');;
 Route::post('post-spa-register','SpaController@postRegister')->name('spa_register');
-Route::get('login-spa', 'SpaController@login')->name('login_spa');
-Route::post('post-spa-login','SpaController@post_login')->name('post_login_spa');
+Route::get('login-spa', 'SpaController@login')->name('login-spa');
+Route::post('login-spa', 'SpaController@postLoginSpa');
+
+// Start Admin
+
+Route::group(['prefix' => 'admin'], function () {
+    Route::get('/', function(){
+        return view('admin.admin');
+    })->name('admin');
+
+    // user
+    Route::get('/thanh-vien', 'AdminController@listuser')->name('admin.listuser');
+    Route::get('{user}/edit-user','AdminController@edituser')->name('admin.edit_user');
+    Route::post('/update','AdminController@updateuser')->name('admin.updateuser');
+
+    // spa
+    Route::get('/spa', 'AdminController@listspa')->name('admin.listspa');
+    Route::get('{spa}/edit-spa', 'AdminController@editspa')->name('admin.editspa');
+    Route::post('/update-spa', 'AdminController@updatespa')->name('admin.update_spa');
+});
+// End Admin

@@ -33,7 +33,27 @@
                         @enderror
                     </div>
                     <div class="form-group mb-3">
-                        <label>Location</label>
+                        <label>Thành phố</label>
+                        <label class="text-danger">(*)</label>
+                        <div class="input-group">
+                            <select name="city_id" class="browser-default custom-select form-control-lg @error('location') is-invalid @enderror" style="height:48px;">
+                                <option value="">Chọn...</option>
+                                @foreach ( $location as $city)
+                                    <option value="{{ $city->id }}" {{ old('city_id') == $city->id ? "selected" : "" }}>{{ $city->name }}</option>
+                                @endforeach
+                            </select>
+                            <span class="input-group-append">
+                            <span class="input-group-text">
+                                <i class="fas fa-city"></i>
+                            </span>
+                        </span>
+                        </div>
+                        @error('city_id')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    <div class="form-group mb-3">
+                        <label>Địa chỉ cụ thể</label>
                         <label class="text-danger">(*)</label>
                         <div class="input-group">
                             <input name="location" type="text" class="form-control form-control-lg @error('location') is-invalid @enderror"
@@ -72,7 +92,7 @@
                             <label class="text-danger">(*)</label>
                         </div>
                         <div class="input-group" style="font-size:12px;">
-                            <input name="image" type="file" class="form-control form-control-lg @error('image') is-invalid @enderror" style="font-size:18px;" value=""/>
+                            <input name="image" type="file" class="form-control form-control-lg @error('image') is-invalid @enderror" style="font-size:18px;" value="{{old('image')}}"/>
                             <span class="input-group-append">
                             <span class="input-group-text">
                                 <i class="fas fa-image"></i>

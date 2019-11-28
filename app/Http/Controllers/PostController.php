@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Post;
 use App\Category;
 use App\Comment;
+use App\Service;
+use App\Spa;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
@@ -13,21 +15,21 @@ class PostController extends Controller
 {
     public function index()
     {
-        $posts = Post::all();
+        $posts = Post::where('status', 1)->orderBy('id', 'desc')->paginate('6');
         $categories = Category::all();
         return view('pages.list-post', compact('posts', 'categories'));
     }
 
     public function view()
     {
-        $posts = Post::orderBy('views', 'desc')->get();
+        $posts = Post::orderBy('views', 'desc')->paginate('6');
         $categories = Category::all();
         return view('pages.list-post', compact('posts', 'categories'));
     }
 
     public function new()
     {
-        $posts = Post::orderBy('created_at', 'desc')->get();
+        $posts = Post::orderBy('created_at', 'desc')->paginate('6');
         $categories = Category::all();
         return view('pages.list-post', compact('posts', 'categories'));
     }
@@ -57,13 +59,13 @@ class PostController extends Controller
     }
 
     public function add()
-    {	
+    {
         $category = Category::all();
     	return view('pages-spa.add-post', compact('category'));
     }
 
     public function create_post(Request $request)
-    {	
+    {
         $data = new Post;
         $data->fill($request->all());
         if ($request->hasFile('image')) {
@@ -77,7 +79,7 @@ class PostController extends Controller
         return redirect()->route('list-post');
     }
 
-    public function edit(Post $id) 
+    public function edit(Post $id)
     {
         $cate = Category::all();
         return view('pages-spa.edit-post', ['post' => $id], ['cate' => $cate]);
@@ -103,9 +105,9 @@ class PostController extends Controller
     }
 
     public function search(Request $request) {
-        $posts = Post::where('title', 'like', '%' . $request->key . '%')
-                        ->orWhere('description', 'like', '%' . $request->key . '%')
-                        ->get();
-        return view('pages.search', compact('posts'));
+        $key = $request->key;
+        $posts = Post::where('title', 'like', '%' . $key . '%')->get();
+        $services = Service::where('name_service', 'like', '%' . $key . '%')->get();
+        return view('pages.search', compact('posts', 'services'));
     }
 }

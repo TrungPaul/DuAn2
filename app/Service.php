@@ -12,4 +12,9 @@ class Service extends Model
         'name_service',
         'icon',
     ];
+
+    public function listSpa()
+    {
+        $this->belongsTo(Spa::class, 'spa_id', 'id');
+    }
 }

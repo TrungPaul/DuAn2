@@ -1,18 +1,3 @@
-<div id="preloader">
-    <div class="preloader-window left-window"></div>
-    <div class="preloader-window right-window"></div>
-    <div class="preloader-content">
-        <img src="assets/img/prelaoder-logo.png" alt="">
-        <h2>Beautypress</h2>
-    </div>
-    <div class="spinner-block">
-        <div class="spinner-eff spinner-eff-3">
-            <div class="circle circle-1"></div>
-            <div class="circle circle-2"></div>
-            <div class="circle circle-3"></div>
-        </div>
-    </div>
-</div>
 <header
     class="beautypress-header-section beautypress-header-version-3 beautypress-header-version-2 header-height-calc-minus">
     <div class="beautypress-header-top bg-color-gray-2">
@@ -41,7 +26,7 @@
                             <a href="{{ url('/') }}">Trang chủ</a>
                         </li>
                         <li>
-                            <a href="{{ url('tim-kiem-spa') }}">Tìm spa</a>
+                            <a href="{{ url('list-spa') }}">Tìm spa</a>
                         </li>
                         <li>
                             <a href="{{ url('/danh-sach-bai-viet') }}">Bài viết</a>
