@@ -104,3 +104,21 @@ Route::post('post-spa-register','SpaController@postRegister')->name('spa_registe
 Route::get('login-spa', 'SpaController@login')->name('login-spa');
 Route::post('login-spa', 'SpaController@postLoginSpa');
 
+// Start Admin
+
+Route::group(['prefix' => 'admin'], function () {
+    Route::get('/', function(){
+        return view('admin.admin');
+    })->name('admin');
+
+    // user
+    Route::get('/thanh-vien', 'AdminController@listuser')->name('admin.listuser');
+    Route::get('{user}/edit-user','AdminController@edituser')->name('admin.edit_user');
+    Route::post('/update','AdminController@updateuser')->name('admin.updateuser');
+
+    // spa
+    Route::get('/spa', 'AdminController@listspa')->name('admin.listspa');
+    Route::get('{spa}/edit-spa', 'AdminController@editspa')->name('admin.editspa');
+    Route::post('/update-spa', 'AdminController@updatespa')->name('admin.update_spa');
+});
+// End Admin
