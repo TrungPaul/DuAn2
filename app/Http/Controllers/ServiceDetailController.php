@@ -17,10 +17,9 @@ class ServiceDetailController extends Controller
 
     public function index($spaId)
     {
-
         $service = ServiceDetail::where('spa_id', $spaId)->get();
 
-        return view('pages-spa.ListServiceDetail', compact( 'service' , 'spaId'));
+        return view('pages-spa.ListServiceDetail', compact( 'service'));
     }
 
     public function destroy($id)

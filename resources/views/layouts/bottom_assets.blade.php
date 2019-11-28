@@ -8,3 +8,13 @@
 <script src="assets/js/appear.js"></script>
 <script src="assets/js/main.js"></script>
 <script src="assets/js/toastr.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.bundle.min.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js" type="text/javascript"></script>
+<script src="assets/js/comment.js"></script>
+
+<script type="text/javascript">
+    //thông báo sau khi liên hệ
+    <?php if (isset($_GET['action_contact']) && $_GET['action_contact'] == true) { ?>
+        toastr.success('Cảm ơn bạn đã góp ý, chúng tôi sẽ phản hồi bạn trong thời gian sớm nhất!')
+    <?php } ?>
+</script>

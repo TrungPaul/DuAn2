@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Config;
 
 class ServicesTableSeeder extends Seeder
 {
@@ -13,13 +14,13 @@ class ServicesTableSeeder extends Seeder
     {
         $faker = Faker\Factory::create();
 
-        $limit = 10;
+        $limit = 3;
 
         for ($i = 0; $i < $limit; $i++) {
             DB::table('services')->insert([
-                'spa_id' => 1,
-                'name_service' => $faker->name,
-                'icon' => $faker->image('public/images',640,480, 'people', false),
+                'spa_id' => rand(1, 10),
+                'name_service' => $faker->name(),
+                'icon' => 'image-seeder.jpg',
             ]);
         }
     }

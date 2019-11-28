@@ -17,8 +17,10 @@ class CreateBookingOfUserTable extends Migration
             $table->bigIncrements('id');
             $table->integer('user_id');
             $table->integer('spa_id');
+            $table->date('date_booking');
+            $table->integer('time_booking');
+            $table->integer('staff_id');
             $table->integer('service_detail_id');
-            $table->dateTime('date');
             $table->timestamps();
         });
     }

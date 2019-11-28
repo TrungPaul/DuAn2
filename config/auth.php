@@ -46,6 +46,10 @@ return [
             'provider' => 'users',
             'hash' => false,
         ],
+        'spa' => [
+            'driver' => 'session',
+            'provider' => 'spas',
+        ],
     ],
 
     /*
@@ -70,6 +74,12 @@ return [
             'driver' => 'eloquent',
             'model' => App\User::class,
         ],
+
+        'spas' => [
+            'driver' => 'eloquent',
+            'model' => App\Spa::class,
+        ],
+
 
         // 'users' => [
         //     'driver' => 'database',

@@ -111,7 +111,7 @@
                             <div class="checkbox-custom checkbox-default">
                                 <div class="checkbox-custom checkbox-default">
                                     <input id="RememberMe" name="remember" type="checkbox"/>
-                                    <label for="RememberMe">Tôi đồng ý với các điều khoản sử dụng</label>
+                                    <label for="RememberMe"><a href="https://www.facebook.com/legal/terms" class="text-primary">Tôi đồng ý với các điều khoản sử dụng</a></label>
                                 </div>
                                 @if($errors->first('remember'))
                                     <span class="text-danger"> {{ $errors->first('remember') }} </span>
@@ -122,7 +122,7 @@
                     </div>
                     <div class="row">
                         <div class="col-sm-12 text-center">
-                            <button type="submit" class="btn btn-primary mt-2">Đăng ký</button>
+                            <button type="submit" class="btn btn-primary mt-2 ">Đăng ký</button>
                         </div>
                     </div>
                     <br>
@@ -134,7 +134,7 @@
                         <a class="btn btn-facebook mb-3 ml-1 mr-1" href="#">Đăng nhập <i class="fab fa-facebook-f"></i></a>
                         <a class="btn btn-google mb-3 ml-1 mr-1" href="#">Đăng nhập <i class="fab fa-google"></i></a>
                     </div>
-                    <p class="text-center">Bạn đã có tài khoản<a href="{{route('login')}}">Đăng nhập</a></p>
+                    <p class="text-center">Bạn đã có tài khoản<a href="{{route('login')}}" class="text-primary"> Đăng nhập</a></p>
                 </form>
             </div>
         </div>

@@ -1,5 +1,5 @@
 @extends('layouts.index')
-@section('title', 'Bài Viết')
+@section('title', 'Bài viết')
 
 @section('content')
     <div class="beautypress-newsfeed-section beautypress-no-bg section-padding">
@@ -9,33 +9,54 @@
                 <img src="assets/img/section-heading-separetor.png" alt="">
             </div>
             <div class="row">
-                @foreach ( $posts as $key => $p )
-                    <div class="col-md-12 col-sm-12 col-xl-4 col-lg-4">
+                <div class="col-md-8">
+                    @foreach ( $posts as $key => $p )
                         <div class="beautypress-single-newsletter mb-30">
-                            <div class="beautypress-newsfeed-header beautypress-black-gradient-overlay">
-                                <img src="images/{{ $p->image }}" alt="">
+                            <div class="beautypress-newsfeed-header beautypress-black-gradient-overlay d-flex">
+                                <img src="images/posts/{{ $p->image }}">
                                 <div class="beautypress-newsfeed-header-content">
                                     <div class="beautypress-newsfeed-img">
-                                        <img src="assets/img/avatar-1.jpg" alt="">
-                                        <a href="#">By Zulia</a>
+                                        <img src="images/{{ $p->user->avatar }}" alt="">
+                                        <a href="#">{{ $p->user->name }}</a>
                                     </div>
                                     <div class="beautypress-dates">
-                                        <p class="bg-color-purple">27<strong>{{ $p->category->name }}</strong></p>
+                                        <p class="color-white"><strong>{{ $p->category->name }}</strong></p>
                                     </div>
                                 </div><!-- .beautypress-newsfeed-header-content END -->
                             </div><!-- .beautypress-newsfeed-header END -->
                             <div class="beautypress-newsfeed-footer">
                                 <a href="{{route('detail_post', $p->id)}}">{{ $p->title }}</a>
-                                <p>{{ $p->content }}</p>
+                                <p>{{ $p->description }}</p>
                             </div><!-- .beautypress-newsfeed-footer END -->
                         </div><!-- .beautypress-single-newsletter END -->
+                    @endforeach
+                    <div class="d-flex justify-content-center">
+                        {{ $posts->links() }}
                     </div>
-                @endforeach
-            </div>
-            <div class="beautypress-pagination-wraper">
-                <ul class="beautypress-pagination">
-                    {{ $posts->links() }}
-                </ul>
+                        
+                </div>
+
+                <div class="col-md-4">
+                    <div class="beautypress-single-sidebar">
+                        <div class="beautypress-sidebar-heading">
+                            <h3>Sắp xếp</h3>
+                        </div>
+                        <ul class="beautypress-category-list">
+                            <li><a href="{{route('new_post')}}"><i class="fa fa-play"></i>&emsp;Mới nhất</a></li>
+                            <li><a href="{{route('hot_post')}}"><i class="fa fa-play"></i>&emsp;Xem nhiều</a></li>
+                        <ul>
+                    </div><!-- .beautypress-single-sidebar END -->
+                    <div class="beautypress-single-sidebar">
+                        <div class="beautypress-sidebar-heading">
+                            <h3>Danh mục</h3>
+                        </div>
+                        <ul class="beautypress-category-list">
+                            @foreach ( $categories as $cate)
+                                <li><a href="{{route('post_in_cate', $cate->id)}}"><i class="fa fa-play"></i>&emsp;{{ $cate->name }}</a></li>
+                            @endforeach
+                        </ul><!-- .beautypress-category-list END -->
+                    </div><!-- .beautypress-single-sidebar END -->
+                </div>
             </div>
         </div>
     </div>

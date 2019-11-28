@@ -15,11 +15,14 @@ class CreateSpasTable extends Migration
     {
         Schema::create('spas', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('email');
+            $table->string('password');
             $table->string('name');
+            $table->integer('city_id');
             $table->string('location');
             $table->string('phone');
             $table->string('image');
-            $table->integer('is_active');
+            $table->integer('is_active')->default(0);
             $table->timestamps();
         });
     }
