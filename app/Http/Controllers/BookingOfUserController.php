@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\ServiceDetail;
+use App\Spa;
 use Illuminate\Http\Request;
 use App\BookingOfUser;
 use App\Time;
@@ -34,6 +35,11 @@ class BookingOfUserController extends Controller
         $booking->fill($request->all());
         $booking->user_id = 2;
         $booking->spa_id = $spaId;
+        $name = 'trung';
+        $spa = Spa::find($spaId);
+        $service = ServiceDetail::find($request->service_detail_id);
+        $content = "Cảm ơn bạn đã đặt dịch vụ"." ". $service->name_service." ". "bên spa". " ". $spa->name;
+        $email = "trungnd.dev@gmail.com";
 
         $bookingStaff = BookingOfUser::
             where('spa_id', $spaId)
@@ -47,10 +53,17 @@ class BookingOfUserController extends Controller
             ->whereDate('date_booking', $booking->date_booking)
             ->where('time_booking', $booking->time_booking)->count();
         if (($bookingStaff != 0)){
-            return redirect()->route('user.book')->with('fail', 'Đặt lịch không thành công , nhân viên đã có hẹn');
+            return $this->book($spaId)->with('fail', 'Đặt lịch không thành công , nhân viên đã có hẹn');
         }
         else{
+
             $booking->save();
+            Mail::send('mailbooking', [
+                'name' => $name,
+                'content' => $content,
+            ], function ($msg) {
+                $msg->to('trungnd.dev@gmail.com', 'Đặt dịch vụ')->subject('Đặt dịch vụ');
+            });
 
             return redirect()->route('home')->with('success', 'Đặt lịch thành công ');
         }
