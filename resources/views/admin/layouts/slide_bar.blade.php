@@ -36,6 +36,12 @@
                         <p>Bài Viết</p>
                     </a>
                 </li>
+                <li class="nav-item has-tree-view">
+                    <a href="{{ route('admin.listcomment')}}" class="nav-link">
+                        <i class="nav-icon fas fa-comments"></i>
+                        <p>Bình luận</p>
+                    </a>
+                </li>
                 <li class="nav-item has-treeview">
                 <a href="{{ route('admin.listuser')}}" class="nav-link">
                         <i class="nav-icon fas fa-user"></i>

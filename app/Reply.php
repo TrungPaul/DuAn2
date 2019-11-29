@@ -14,5 +14,10 @@ class Reply extends Model
 		'comment_id',
 		'content',
 		'created_at',
-    ];
+	];
+	
+	public function user()
+    {
+        return $this->belongsTo('App\User' , 'user_id' , 'id');
+    }
 }

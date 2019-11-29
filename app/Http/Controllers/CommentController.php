@@ -12,6 +12,10 @@ use Illuminate\Support\Facades\Auth;
 
 class CommentController extends Controller
 {
+    public function show(){
+        $comment = Comment::all();
+        return view('admin.comment.list_comment', compact('comment'));
+    }
 
     public function add(CommentRequest $request)
     {	
@@ -52,5 +56,18 @@ class CommentController extends Controller
         
         $comment->save();
         return redirect()->back()->with('message_reply', 'Trả lời bình luận thành công!');
+    }
+
+    public function delete(Comment $id)
+    {
+        $delete_reply = Reply::where('comment_id', '=', $id->id)->delete();
+        $id->delete();
+        return redirect()->back()->with('message_delete', 'Xoá bình luận thành công!');
+    }
+
+    public function delete_reply(Reply $id)
+    {
+        $id->delete();
+        return redirect()->back()->with('message_delete', 'Xoá bình luận thành công!');
     }
 }

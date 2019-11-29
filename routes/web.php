@@ -123,5 +123,10 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('post/{id}/duyet','PostController@change_status')->name('admin.change-status-post');
     Route::get('post/{id}/boduyet','PostController@change_status_b')->name('admin.change-status-post-b');
     Route::get('post/{id}/delete', 'PostController@delete')->name('admin.deletepost');
+
+    //comment
+    Route::get('/comment', 'CommentController@show')->name('admin.listcomment');
+    Route::get('comment/{id}/delete', 'CommentController@delete')->name('admin.deletecomment');
+    Route::get('reply/{id}/delete', 'CommentController@delete_reply')->name('admin.deletereply');
 });
 // End Admin
