@@ -34,7 +34,7 @@
 										<div class="beautypress-single-replay">
 											<div class="beautypress-replayer-img">
 												@if (isset($cmt->avatar))
-													<img src="images/{{ $cmt->avatar }}" alt="">
+													<img src="images/{{ $cmt->avatar }}" style="border-radius:100%;">
 												@else
 													<img src="https://www.hardiagedcare.com.au/wp-content/uploads/2019/02/default-avatar-profile-icon-vector-18942381.jpg" alt="">
 												@endif
@@ -63,7 +63,7 @@
 										<div class="beautypress-single-replay" style="margin-left:80px;">
 											<div class="beautypress-replayer-img">
 											@if (isset($rep->avatar))
-												<img src="images/{{ $rep->avatar }}" alt="">
+												<img src="images/{{ $rep->avatar }}" style="border-radius:100%;">
 											@else
 												<img src="https://www.hardiagedcare.com.au/wp-content/uploads/2019/02/default-avatar-profile-icon-vector-18942381.jpg" alt="">
 											@endif
@@ -108,7 +108,7 @@
 													</div>
 													<div class="form-group">
 													@if (Auth::check())
-														<img src="images/{{ Auth::user()->avatar }}" width="30"><br><br>
+														<img src="images/{{ Auth::user()->avatar }}" width="50" height="50" style="border-radius:100%;"><br><br>
 														<textarea name="reply_content" class="form-control mb-30"  id="r_massage" cols="30" placeholder="Nhập bình luận" rows="10">{{ old('content') }}</textarea>
 													@else 
 														<textarea name="reply_content" class="form-control mb-30"  id="r_massage" cols="30" placeholder="Nhập bình luận" rows="10">{{ old('content') }}</textarea>
@@ -161,7 +161,9 @@
 										</div>
 										<div class="form-group">
 											@if (Auth::check())
-												<img src="images/{{ Auth::user()->avatar }}" width="50"><br><br>
+												<div class="beautypress-newsfeed-img">
+													<img src="images/{{ Auth::user()->avatar }}" width="50">
+												</div><br>
 												<textarea name="content" class="form-control mb-30"  id="r_massage" cols="30" placeholder="Nhập bình luận" rows="10">{{ old('content') }}</textarea>
 											@else 
 												<textarea name="content" class="form-control mb-30"  id="r_massage" cols="30" placeholder="Nhập bình luận" rows="10">{{ old('content') }}</textarea>
