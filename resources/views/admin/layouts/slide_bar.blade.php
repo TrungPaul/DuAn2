@@ -25,26 +25,26 @@
                     </a>
                 </li>
                 <li class="nav-item has-tree-view">
-                <a href="{{route('admin.listservice')}}" class="nav-link">
+                <a href="" class="nav-link">
                         <i class="nav-icon fas fa-th"></i>
                         <p>Dịch vụ</p>
                     </a>
                 </li>
                 <li class="nav-item has-tree-view">
-                    <a href="" class="nav-link">
-                        <i class="nav-icon fas fa-th"></i>
+                    <a href="{{ route('admin.listpost')}}" class="nav-link">
+                        <i class="nav-icon fas fa-book"></i>
                         <p>Bài Viết</p>
                     </a>
                 </li>
                 <li class="nav-item has-treeview">
                 <a href="{{ route('admin.listuser')}}" class="nav-link">
-                        <i class="fas fa-user"></i>
+                        <i class="nav-icon fas fa-user"></i>
                         <p>Thành Viên</p>
                     </a>
                 </li>
                 <li class="nav-item has-treeview">
                 <a href="{{ route('admin.listspa')}}" class="nav-link">
-                        <i class="fas fa-user"></i>
+                        <i class="nav-icon fas fa-user"></i>
                         <p>
                         Spa
                         </p>
@@ -52,7 +52,7 @@
                 </li>
                 <li class="nav-item has-treeview">
                     <a href="" class="nav-link">
-                        <i class="fas fa-envelope"></i>
+                        <i class="nav-icon fas fa-envelope"></i>
                         <p>
                             Liên hệ
                             <span class="badge badge-info right"></span>
@@ -61,7 +61,7 @@
                 </li>
                 <li class="nav-item has-tree-view">
                     <a href="" class="nav-link">
-                        <i class="fas fa-sign-out-alt"></i>
+                        <i class="nav-icon fas fa-sign-out-alt"></i>
                         <p>Đăng xuất</p>
                     </a>
                 </li>
