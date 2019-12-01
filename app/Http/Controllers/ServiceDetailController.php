@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\ServiceDetail;
 use Illuminate\Support\Facades\Auth;
+use App\Service;
 
 class ServiceDetailController extends Controller
 {
@@ -31,8 +32,8 @@ class ServiceDetailController extends Controller
 
     public function getAdd($spaId)
     {
-
-        return view('pages-spa.addServiceDetail', compact('spaId'));
+        $service = Service::where('spa_id', $spaId)->get();
+        return view('pages-spa.addServiceDetail', compact('spaId', 'service'));
     }
 
     public function postAddServiceDetail(Request $request)
