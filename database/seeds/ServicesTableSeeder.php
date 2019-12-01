@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\Config;
 
 class ServicesTableSeeder extends Seeder
 {
@@ -12,16 +11,21 @@ class ServicesTableSeeder extends Seeder
      */
     public function run()
     {
-        $faker = Faker\Factory::create();
+        $service = [
+            [
+                'name_service' => 'Dịch Vụ Mặt',
+                'icon' => 'image-seeder.jpg'
+            ],
+            [
+                'name_service' => 'Dịch Vụ Móng',
+                'icon' => 'image-seeder.jpg'
+            ],
+            [
+                'name_service' => 'Dịch Vụ Body',
+                'icon' => 'image-seeder.jpg'
+            ]
+        ];
 
-        $limit = 3;
-
-        for ($i = 0; $i < $limit; $i++) {
-            DB::table('services')->insert([
-                'spa_id' => rand(1, 10),
-                'name_service' => $faker->name(),
-                'icon' => 'image-seeder.jpg',
-            ]);
-        }
+        DB::table('services')->insert($service);
     }
 }

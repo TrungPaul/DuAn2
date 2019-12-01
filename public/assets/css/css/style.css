@@ -1869,7 +1869,6 @@ label::after {
 footer {
     float: left;
     width: 100%;
-    /* background: #24324a; */
 }
 .widget {
     float: left;

@@ -28,7 +28,7 @@ class SpaController extends Controller
         $data = $request->only(['email', 'password']);
         $checkLogin = Auth::guard('spa')->attempt($data);
         if ($checkLogin) {
-            return redirect()->route('info-spa');
+            return view('pages-spa.spa', compact('checkLogin'));
         } else {
             return redirect()->route('login-spa');
         }
