@@ -33,13 +33,13 @@ class BookingOfUserController extends Controller
 
         $booking = new BookingOfUser();
         $booking->fill($request->all());
-        $booking->user_id = 2;
+        $booking->user_id = Auth::user()->id;
         $booking->spa_id = $spaId;
-        $name = 'trung';
+        $name = Auth::user()->name;
         $spa = Spa::find($spaId);
         $service = ServiceDetail::find($request->service_detail_id);
-        $content = "Cảm ơn bạn đã đặt dịch vụ"." ". $service->name_service." ". "bên spa". " ". $spa->name;
-        $email = "trungnd.dev@gmail.com";
+        $times = Time::find($booking->time_booking);
+        $content = "Cảm ơn bạn đã đặt dịch vụ"." ". $service->name_service." ". "bên spa". " ". $spa->name ."vào lúc". " " .$times->time. "ngày" .$booking->date_booking ;
 
         $bookingStaff = BookingOfUser::
             where('spa_id', $spaId)
@@ -62,7 +62,7 @@ class BookingOfUserController extends Controller
                 'name' => $name,
                 'content' => $content,
             ], function ($msg) {
-                $msg->to('trungnd.dev@gmail.com', 'Đặt dịch vụ')->subject('Đặt dịch vụ');
+                $msg->to( 'trungnd.dev@gmail.com', 'Đặt dịch vụ')->subject('Đặt dịch vụ');
             });
 
             return redirect()->route('home')->with('success', 'Đặt lịch thành công ');

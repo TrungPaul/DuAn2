@@ -31,6 +31,7 @@
                             <div class="beautypress-service-and-date">
                                 <h2>Đặt dịch vụ</h2>
                                 <div class="beautypress-select">
+                                    <h5>Dịch vụ</h5>
                                     <div class="input-group">
                                         <select name="service_detail_id" id="appointment-service" class="form-control">
                                             @foreach($service as $ser)
@@ -44,16 +45,17 @@
                                 </div><!-- .beautypress-select END -->
                                 <div class="beautypress-spilit-container">
                                     <div class="">
+                                        <h5>Ngày</h5>
                                         <div class="input-group">
-                                            <input type="date" id="appointment-date" class="form-control" name="date_booking">
-                                            @if( $errors->first('date_booking'))
-                                                <span class="text-danger">{{ $errors->first('date_booking')}}</span>
-                                            @endif
+                                            <input type="date" id="appointment-date" class="form-control" name="date_booking" min="2019-11-28">
                                         </div>
+                                        @if( $errors->first('date_booking'))
+                                            <span class="text-danger">{{ $errors->first('date_booking')}}</span>
+                                        @endif
                                     </div><!-- .beautypress-date-select END -->
                                     <div class="beautypress-select">
+                                        <h5>Thời gian</h5>
                                         <div class="input-group">
-
                                             <select name="time_booking" id="appointment-time" class="form-control" >
                                                 @foreach($times as $time)
                                                     <option value="{{$time->id}}">{{$time->time}}</option>
@@ -66,6 +68,7 @@
                                     </div><!-- .beautypress-select END -->
                                 </div>
                                 <div class="beautypress-select">
+                                    <h5>Nhân viên</h5>
                                     <div class="input-group">
                                         <select name="staff_id" id="appointment-service" class="form-control">
                                                @foreach($staff as $st)
