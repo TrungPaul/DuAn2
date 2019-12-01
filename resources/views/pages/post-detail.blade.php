@@ -36,7 +36,7 @@
 												@if (isset($cmt->avatar))
 													<img src="images/{{ $cmt->avatar }}" style="border-radius:100%;">
 												@else
-													<img src="https://www.hardiagedcare.com.au/wp-content/uploads/2019/02/default-avatar-profile-icon-vector-18942381.jpg" alt="">
+													<img src="https://www.alliancerehabmed.com/wp-content/uploads/icon-avatar-default.png" alt="">
 												@endif
 											</div>
 											<div class="beautypress-replay-text">
@@ -65,7 +65,7 @@
 											@if (isset($rep->avatar))
 												<img src="images/{{ $rep->avatar }}" style="border-radius:100%;">
 											@else
-												<img src="https://www.hardiagedcare.com.au/wp-content/uploads/2019/02/default-avatar-profile-icon-vector-18942381.jpg" alt="">
+												<img src="https://www.alliancerehabmed.com/wp-content/uploads/icon-avatar-default.png" alt="">
 											@endif
 											</div>
 											<div class="beautypress-replay-text">

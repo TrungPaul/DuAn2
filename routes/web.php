@@ -126,5 +126,10 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/comment', 'CommentController@show')->name('admin.listcomment');
     Route::get('comment/{id}/delete', 'CommentController@delete')->name('admin.deletecomment');
     Route::get('reply/{id}/delete', 'CommentController@delete_reply')->name('admin.deletereply');
+
+    //contact
+    Route::get('/contact', 'ContactController@show')->name('admin.listcontact');
+    Route::get('contact/{id}/reply', 'ContactController@reply')->name('admin.replycontact');
+    Route::get('contact/{id}/delete', 'ContactController@delete')->name('admin.deletecontact');
 });
 // End Admin
