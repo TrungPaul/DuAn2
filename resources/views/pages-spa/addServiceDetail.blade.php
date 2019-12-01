@@ -67,8 +67,9 @@
                                                 data-select2-id="" tabindex="-1" aria-hidden="true">
                                             @foreach($service as $ser)
                                             <option value="{{$ser->id}}}" data-select2-id="6">{{$ser->name_service}}</option>
-
-                                        </select><span
+    @endforeach
+                                        </select>
+                                        <span
                                             class="select2 select2-container select2-container--default select2-container--below select2-container--focus"
                                             dir="ltr" data-select2-id="5" style="width: 329px;"><span
                                                 class="selection"></span>
