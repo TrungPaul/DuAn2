@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Service;
+use App\ServiceDetail;
 use Illuminate\Http\Request;
 use App\Spa;
 use App\Http\Requests\SpaRequest;
@@ -69,10 +70,10 @@ class SpaController extends Controller
 
     public function detailSpa($id)
     {
-//        $detailSpa = Spa::where('id', $id)->first()->toArray();
-//        dd($detailSpa);
-
-        return view('pages.detail-spa');
+        $detailSpa = Spa::where('id', $id)->first();
+        $service = ServiceDetail::where('spa_id', $id)->get();
+        
+        return view('pages.detail-spa', compact('detailSpa'));
     }
 
     public function information()
