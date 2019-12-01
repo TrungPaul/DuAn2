@@ -45,7 +45,6 @@ class RegisterRequest extends FormRequest
             'password.required' => "Không được để trống",
             'pwd.required' => "Không được để trống",
             'pwd.same' => "Mật khẩu không trùng khớp",
-            'gender.required' => "Vui lòng chọn một giới tính",
             'remember.required' => "Vui lòng chấp nhận điều khoản của chúng tôi"
         ];
     }

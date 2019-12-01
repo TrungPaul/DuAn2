@@ -13,7 +13,7 @@ class ServiceDeatailTableSeeder extends Seeder
     {
         $faker = Faker\Factory::create();
 
-        $limit = 50;
+        $limit = 20;
 
         for ($i = 0; $i < $limit; $i++) {
             DB::table('service_detail')->insert([

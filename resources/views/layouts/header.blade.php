@@ -36,7 +36,7 @@
                         </li>
                         @if(Auth::check())
                             <li>
-                                <a href="">{{ Auth::user()->name }}</a>
+                                <a href="{{ route('user.profile') }}">{{ Auth::user()->name }}</a>
                             </li>
                             <li>
                                 <a href="{{ url('logout') }}"><i class="fa fa-sign-out" aria-hidden="true"></i></a>

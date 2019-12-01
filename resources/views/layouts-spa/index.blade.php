@@ -66,7 +66,7 @@
     </section>
     @include ('layouts.footer')
     @include ('layouts-spa.bottom_assets')
-    @yield('alert');
+    @yield('alert')
 </div>
 
 </body>

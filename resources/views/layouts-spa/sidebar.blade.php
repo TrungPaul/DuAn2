@@ -3,10 +3,11 @@
 
         <div class="dashboard-thumb">
             <div class="dashboard-th-pic">
-                <img src="assets/img/user-3.jpg" class="img-fluid mx-auto img-circle" alt=""/>
+                <img src="images/spas/{{ Auth::guard('spa')->user()->image }}" class="img-fluid mx-auto img-circle" alt=""/>
             </div>
-            <h4 class="mb-1">Adam Muklarial</h4>
-            <span class="text-success">Web Designer</span>
+            <h4 class="mb-1">{{ Auth::guard('spa')->user()->name }}</h4>
+            <span class="text-dark">{{ Auth::guard('spa')->user()->location }},
+                {{ Auth::guard('spa')->user()->city['name'] }}</span>
         </div>
         <ul class="nav dashboard-verticle-nav">
             <li class="nav-item">
@@ -16,12 +17,15 @@
                 <a class="nav-link" href="{{ route('management-booking') }}"><i class="ti-file"></i>Quản lí đặt lịch</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link active" href="">
+                <a class="nav-link" href="{{ route('list-serviceDetail') }}"><i class="ti-file"></i>Quản lí dịch vụ</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="{{ route('info-spa') }}">
                     <i class="ti-user"></i>Thông tin cá nhân
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="">
+                <a class="nav-link" href="{{ route('edit-profile-spa') }}">
                     <i class="fas fa-edit"></i> Chỉnh sửa thông tin
                 </a>
             </li>

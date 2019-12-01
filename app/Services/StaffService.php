@@ -21,7 +21,7 @@ class StaffService implements StaffInterface
 
         $employee = new Staff();
         $employee->fill($request->all());
-        $employee->spa_id = Auth::user()->id;
+        $employee->spa_id = Auth::guard('spa')->user()->id;
         if ($request->hasFile('avatar')) {
             $employee->avatar = $this->uploadService->uploadFile($request->avatar);
         }

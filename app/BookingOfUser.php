@@ -26,6 +26,11 @@ class BookingOfUser extends Model
 
     public function detailService()
     {
-        return $this->belongsTo(ServiceDetail::class, 'spa_id', 'id');
+        return $this->belongsTo(ServiceDetail::class, 'service_detail_id', 'id');
+    }
+
+    public function detailStaff()
+    {
+        return $this->belongsTo(Staff::class, 'staff_id', 'id');
     }
 }

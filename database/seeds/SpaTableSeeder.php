@@ -23,7 +23,7 @@ class SpaTableSeeder extends Seeder
                 'phone' => '0393079176',
                 'city_id' => rand(1, 3),
                 'location' => $faker->address(),
-                'is_active' => 0,
+                'is_active' => 1,
                 'image' => 'image-seeder.jpg'
             ]);
         }

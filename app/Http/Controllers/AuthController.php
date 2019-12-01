@@ -21,7 +21,6 @@ class AuthController extends Controller
 
     public function postLogin(LoginUser $request)
     {
-
         // check validate , lấy ra dữ liệu
         $data = $request->only(['email', 'password']);
         // KIỂM TRA ĐĂNG NHẬP EMAIL VÀ PASSWWORD VỪA NHẬN

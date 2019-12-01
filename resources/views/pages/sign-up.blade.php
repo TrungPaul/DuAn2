@@ -57,7 +57,6 @@
                             <span class="text-danger"> {{ $errors->first('password') }} </span>
                         @endif
                     </div>
-
                     <div class="form-group mb-3">
                         <div class="clearfix">
                             <label class="float-left">Nhập lại password</label>
@@ -104,21 +103,21 @@
                             <span class="text-danger"> {{ $errors->first('gender') }}  </span>
                         @endif
                     </div>
-
                     <br>
                     <div class="row">
                         <div class="col-sm-10">
                             <div class="checkbox-custom checkbox-default">
                                 <div class="checkbox-custom checkbox-default">
                                     <input id="RememberMe" name="remember" type="checkbox"/>
-                                    <label for="RememberMe"><a href="https://www.facebook.com/legal/terms" class="text-primary">Tôi đồng ý với các điều khoản sử dụng</a></label>
+                                    <label for="RememberMe"><a href="https://www.facebook.com/legal/terms"
+                                                               class="text-primary">Tôi đồng ý với các điều khoản sử
+                                            dụng</a></label>
                                 </div>
                                 @if($errors->first('remember'))
                                     <span class="text-danger"> {{ $errors->first('remember') }} </span>
                                 @endif
                             </div>
                         </div>
-
                     </div>
                     <div class="row">
                         <div class="col-sm-12 text-center">
@@ -130,11 +129,8 @@
                         <img src="{{asset('assets/img/section-heading-separetor.png')}}" alt="" style="width:52%">
                     </div>
                     <br>
-                    <div class="mb-1 text-center">
-                        <a class="btn btn-facebook mb-3 ml-1 mr-1" href="#">Đăng nhập <i class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-google mb-3 ml-1 mr-1" href="#">Đăng nhập <i class="fab fa-google"></i></a>
-                    </div>
-                    <p class="text-center">Bạn đã có tài khoản<a href="{{route('login')}}" class="text-primary"> Đăng nhập</a></p>
+                    <p class="text-center">Bạn đã có tài khoản<a href="{{route('login')}}" class="text-primary"> Đăng
+                            nhập</a></p>
                 </form>
             </div>
         </div>
