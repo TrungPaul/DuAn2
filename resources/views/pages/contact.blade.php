@@ -27,7 +27,10 @@
                                 @csrf
                                 <div class="beautypress-spilit-container">
                                     <div class="input-group">
-                                        <input type="text" name="name"  placeholder="Tên"> 
+                                        <input type="text" name="name"  placeholder="Tên" class="@error('name') is-invalid @enderror"> 
+                                        @error('name')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
                                     </div>
                                     <div class="input-group">
                                         <input type="email" name="email"  placeholder="Email" class="@error('email') is-invalid @enderror">

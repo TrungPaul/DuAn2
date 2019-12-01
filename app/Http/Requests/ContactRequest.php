@@ -24,13 +24,16 @@ class ContactRequest extends FormRequest
     public function rules()
     {
         return [
+            'name' => 'required',
             'email' => 'required|email',
             'content' => 'required',
         ];
     }
 
-    public function messages(){
+    public function messages()
+    {
         return [
+            'name.required'    => 'Tên không được để trống',
             'email.required'    => 'Email không được để trống',
             'email.email' => 'Email không hợp lệ',
             'content.required'    => 'Nội dung không được để trống',
