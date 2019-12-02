@@ -46,4 +46,24 @@ class BookingOfUserController extends Controller
 
         return response()->json($result, 200);
     }
+
+    public function finishedBook(Request $request)
+    {
+        $date_booking = $request->date;
+        $service_id = $request->service_detail_id;
+        $idSpa = Auth::guard('spa')->user()->id;
+        // lấy ngày tháng năm hiện tại
+        $today = date("Y/m/d");
+        $choose_service = ServiceDetail::where('spa_id', $idSpa)->select('name_service', 'id')->get();
+
+        $getData = BookingOfUser::where('spa_id', $idSpa)->where('date_booking','<', $today)
+            ->when($date_booking, function ($query, $date_booking) {
+                return $query->where('date_booking', $date_booking);
+            })
+            ->when($service_id, function ($query, $service_id) {
+                return $query->where('service_detail_id', $service_id);
+            })->orderBy('id', 'DESC')->with('detailService')->paginate(5);
+
+        return view('pages-spa.finished-booking', compact('getData','choose_service', 'today'));
+    }
 }

@@ -63,6 +63,7 @@ Route::group(['middleware' => 'auth:spa'], function () {
         Route::post('employee-status/{id}', 'StaffController@delete');
         Route::get('management-booking', 'BookingOfUserController@getBookingOfSpa')->name('management-booking');
         Route::get('management-booking/{id}', 'BookingOfUserController@getDetailBooking')->name('detail-booking');
+        Route::get('calendar-finish', 'BookingOfUserController@finishedBook')->name('calendar-finish');
         //service
         Route::get('service/{spaId}', 'ServiceController@index')->name('list-service');
         Route::get('service/delete/{serviceId}', 'ServiceController@destroy')->name('delete-service');
