@@ -5,5 +5,9 @@
 <link rel="stylesheet" href="{{ asset('assets/css/fontawesome-free/css/all.min.css')}}">
 <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
 <link rel="stylesheet" href="{{ asset('assets/css/dataTables.bootstrap4.css')}}">
+<link rel="stylesheet" href="{{ asset('assets/css/datatables.min.css')}}">
 <link rel="stylesheet" href="{{ asset('assets/css/adminlte.min.css')}}">
 <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+<link href="{{ asset('assets/css/summernote.css')}}" rel="stylesheet">
+<link href="{{ asset('assets/css/summernote-bs4.css')}}" rel="stylesheet">
+<link href="{{ asset('assets/css/summernote-lite.css')}}" rel="stylesheet">

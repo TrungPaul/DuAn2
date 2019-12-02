@@ -34,7 +34,7 @@ class ServiceDetailController extends Controller
     {
         $service = Service::where('spa_id', $spaId)->get();
 
-        return view('pages-spa.addServiceDetail', compact('spaId'));
+        return view('pages-spa.addServiceDetail', compact('spaId', 'service'));
     }
 
     public function postAddServiceDetail(Request $request)

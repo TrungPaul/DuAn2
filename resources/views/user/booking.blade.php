@@ -22,64 +22,75 @@
                 </div>
                 <div class="col-md-12 col-sm-12 col-lg-6 col-xl-6">
                     <div class="beautypress-booking-form-wraper">
-                            <form action="{{ route('user.booking',$spaId) }}" method="POST" enctype="multipart/form-data"
-                                  novalidate>
-                                @csrf
+                        <form action="{{ route('user.booking',$spaId) }}" method="POST" enctype="multipart/form-data"
+                              novalidate>
                             @csrf
                             <input type="hidden" name="action" value="send_appointment_form"/>
+                            <input type="hidden" name="date_booking" value="{{$data}}"/>
                             <div class="alert hidden" id="beautypress-form-msg"></div>
                             <div class="beautypress-service-and-date">
                                 <h2>Đặt dịch vụ</h2>
+                                <div class="beautypress-spilit-container">
+                                    <div>
+                                    <h5>Tên</h5>
+                                    <div class="input-group">
+                                        <input type="text" name="name" id="c_name" placeholder="Tên">
+                                    </div>
+                                    </div>
+                                    <div>
+                                    <h5>Email</h5>
+                                    <div class="input-group">
+                                        <input type="email" name="email" id="c_email" placeholder="Email">
+                                    </div>
+                                    </div>
+                                </div>
                                 <div class="beautypress-select">
                                     <h5>Dịch vụ</h5>
                                     <div class="input-group">
                                         <select name="service_detail_id" id="appointment-service" class="form-control">
                                             @foreach($service as $ser)
-                                            <option value="{{$ser->id}}">{{$ser->name_service}} ({{$ser->price_service}}đ)</option>
+                                                <option value="{{$ser->id}}">{{$ser->name_service}}
+                                                    ({{$ser->price_service}}đ)
+                                                </option>
                                             @endforeach
                                         </select>
                                         @if( $errors->first('service_detail_id'))
                                             <span class="text-danger">{{ $errors->first('service_detail_id')}}</span>
                                         @endif
                                     </div>
-                                </div><!-- .beautypress-select END -->
-                                <div class="beautypress-spilit-container">
-                                    <div class="">
-                                        <h5>Ngày</h5>
-                                        <div class="input-group">
-                                            <input type="date" id="appointment-date" class="form-control" name="date_booking" min="2019-11-28">
-                                        </div>
-                                        @if( $errors->first('date_booking'))
-                                            <span class="text-danger">{{ $errors->first('date_booking')}}</span>
-                                        @endif
-                                    </div><!-- .beautypress-date-select END -->
-                                    <div class="beautypress-select">
-                                        <h5>Thời gian</h5>
-                                        <div class="input-group">
-                                            <select name="time_booking" id="appointment-time" class="form-control" >
-                                                @foreach($times as $time)
-                                                    <option value="{{$time->id}}">{{$time->time}}</option>
-                                                @endforeach
-                                            </select>
-                                            @if( $errors->first('time_booking'))
-                                                <span class="text-danger">{{ $errors->first('time_booking')}}</span>
-                                            @endif
-                                        </div>
-                                    </div><!-- .beautypress-select END -->
                                 </div>
-                                <div class="beautypress-select">
-                                    <h5>Nhân viên</h5>
-                                    <div class="input-group">
-                                        <select name="staff_id" id="appointment-service" class="form-control">
-                                               @foreach($staff as $st)
-                                                <option value="{{$st->id}}">{{$st->name}}</option>
-                                                   @endforeach
-                                        </select>
-                                        @if( $errors->first('staff_id'))
-                                            <span class="text-danger">{{ $errors->first('staff_id')}}</span>
-                                        @endif
-                                    </div>
-                                </div>
+                               <!-- .beautypress-select END -->
+                                                                <div class="beautypress-spilit-container">
+                                                                    <div class="">
+                                                                        <h5>Nhân viên</h5>
+                                                                        <div class="input-group">
+                                                                            <select name="staff_id" id="appointment-service" class="form-control">
+                                                                                @foreach($staff as $st)
+                                                                                    <option value="{{$st->id}}">{{$st->name}}</option>
+                                                                                @endforeach
+                                                                            </select>
+                                                                            @if( $errors->first('staff_id'))
+                                                                                <span class="text-danger">{{ $errors->first('staff_id')}}</span>
+                                                                            @endif
+                                                                        </div>
+                                                                    </div><!-- .beautypress-date-select END -->
+                                                                    <div class="beautypress-select">
+                                                                        <h5>Thời gian còn trống</h5>
+                                                                        <div class="input-group">
+                                                                            <select name="time_booking" id="appointment-service" class="form-control">
+                                                                                @foreach($timeNotBook as $not)
+                                                                                    <option value="{{$not->id}}">
+                                                                                        {{$not->time}}
+                                                                                    </option>
+                                                                                @endforeach
+                                                                            </select>
+                                                                            @if( $errors->first('time_booking'))
+                                                                                <span class="text-danger">{{ $errors->first('time_booking')}}</span>
+                                                                            @endif
+                                                                        </div>
+                                                                    </div><!-- .beautypress-select END -->
+                                                                </div>
+
                                 <button type="submit" class="btn btn-info btn-md full-width">Thêm mới<i
                                         class="ml-2 ti-arrow-right"></i></button>
                             </div><!-- .beautypress-service-and-date END -->
@@ -90,7 +101,77 @@
             </div>
         </div>
     </section>
-    @endsection
+    <script>
+        $('.time_booking').click(function () {
+            let value = ('.time_booking').val();
+            alert(value);
+        });
+
+        $('.button-checkbox').each(function () {
+            // Settings
+            var $widget = $(this),
+                $button = $widget.find('button'),
+                $checkbox = $widget.find('input:checkbox'),
+                color = $button.data('color'),
+                settings = {
+                    on: {
+                        icon: 'glyphicon glyphicon-check'
+                    },
+                    off: {
+                        icon: 'glyphicon glyphicon-unchecked'
+                    }
+                };
+
+            // Event Handlers
+            $button.on('click', function () {
+                $checkbox.prop('checked', !$checkbox.is(':checked'));
+                $checkbox.triggerHandler('change');
+                updateDisplay();
+            });
+            $checkbox.on('change', function () {
+                updateDisplay();
+            });
+
+            // Actions
+            function updateDisplay() {
+                var isChecked = $checkbox.is(':checked');
+
+                // Set the button's state
+                $button.data('state', (isChecked) ? "on" : "off");
+
+                // Set the button's icon
+                $button.find('.state-icon')
+                    .removeClass()
+                    .addClass('state-icon ' + settings[$button.data('state')].icon);
+
+                // Update the button's color
+                if (isChecked) {
+                    $button
+                        .removeClass('btn-default')
+                        .addClass('btn-' + color + ' active');
+                } else {
+                    $button
+                        .removeClass('btn-' + color + ' active')
+                        .addClass('btn-default');
+                }
+            }
+
+            // Initialization
+            function init() {
+
+                updateDisplay();
+
+                // Inject the icon if applicable
+                if ($button.find('.state-icon').length == 0) {
+                    $button.prepend('<i class="state-icon ' + settings[$button.data('state')].icon + '"></i>');
+                }
+            }
+
+            init();
+        });
+        })
+        ;</script>
+@endsection
 
 @section('alert')
     @if (session('fail'))

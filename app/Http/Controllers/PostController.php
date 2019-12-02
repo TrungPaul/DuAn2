@@ -8,6 +8,7 @@ use App\Category;
 use App\Comment;
 use App\Service;
 use App\Spa;
+use App\Http\Requests\PostRequest;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
@@ -54,17 +55,17 @@ class PostController extends Controller
 
     public function show()
     {
-        $posts = Post::orderBy('created_at', 'desc')->paginate(5);
-        return view('pages-spa.list-post', compact('posts'));
+        $posts = Post::all();
+        return view('admin.post.list_post', compact('posts'));
     }
 
     public function add()
     {
         $category = Category::all();
-    	return view('pages-spa.add-post', compact('category'));
+    	return view('admin.post.add_post', compact('category'));
     }
 
-    public function create_post(Request $request)
+    public function create_post(PostRequest $request)
     {
         $data = new Post;
         $data->fill($request->all());
@@ -76,21 +77,22 @@ class PostController extends Controller
             $data->image = $filename;
         }
         $data->save();
-        return redirect()->route('list-post');
+        return redirect()->route('admin.listpost')->with('message_add', 'Thêm bài viết thành công!');
     }
 
     public function edit(Post $id)
     {
         $cate = Category::all();
-        return view('pages-spa.edit-post', ['post' => $id], ['cate' => $cate]);
+        return view('admin.post.edit_post', ['post' => $id], ['cate' => $cate]);
     }
 
-    public function update_post(Request $request)
+    public function update_post(PostRequest $request)
     {
         $post = Post::find($request->id);
         $post->where('id', $request->id)->update([
             'cate_id' => $request->cate_id,
             'title' => $request->title,
+            'description' => $request->description,
             'content' => $request->content,
         ]);
         if ($request->hasFile('image')) {
@@ -101,7 +103,31 @@ class PostController extends Controller
             $post->image = $filename;
         }
         $post->save();
-        return redirect()->route('list-post');
+        return redirect()->route('admin.listpost')->with('message_edit', 'Sửa bài viết thành công!');
+    }
+
+    public function change_status(Request $request) 
+    {
+        $post = Post::find($request->id);
+        $post->where('id', $request->id)->update([
+            'status' => 1,
+        ]);
+        $post->save();
+        return redirect()->route('admin.listpost')->with('message_change_status', 'Thay đổi trạng thái bài viết thành công!');
+    }
+    public function change_status_b(Request $request) 
+    {
+        $post = Post::find($request->id);
+        $post->where('id', $request->id)->update([
+            'status' => 0,
+        ]);
+        $post->save();
+        return redirect()->route('admin.listpost')->with('message_change_status', 'Thay đổi trạng thái bài viết thành công!');
+    }
+    public function delete(Post $id)
+    {
+        $id->delete();
+        return redirect()->back()->with('message_delete', 'Xoá bài viết thành công!');
     }
 
     public function search(Request $request) {

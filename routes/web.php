@@ -24,10 +24,11 @@ Route::get('/danh-sach-bai-viet/orderBy=date', 'PostController@new')->name('new_
 Route::get('post/{post_id}/detail', 'PostController@detail')->name('detail_post');
 Route::get('{cate_id}/posts_category', 'PostController@posts_category')->name('post_in_cate');
 Route::get('list-spa','SpaController@show')->name('list-spa');
-Route::get('search', 'PostController@search')->name('search');;
+Route::get('search', 'PostController@search')->name('search');
 Route::get('detail-spa/{idSpa}', 'SpaController@detailSpa')->name('detail-spa');
 Route::get('lien-he', 'ContactController@index')->name('view_contact');
-Route::get('/booking/{spaId}', 'BookingOfUserController@book')->name('user.book');
+Route::get('/getbooking/{spaId}', 'BookingOfUserController@getBook')->name('user.getbook');
+Route::post('/booking/{spaId}', 'BookingOfUserController@book')->name('user.book');
 Route::post('/booking/{spaId}/add', 'BookingOfUserController@addBooking')->name('user.booking');
 Route::group(['namespace' => 'User'], function(){
     Route::get('/thong-tin', 'HomeController@profile')->name('user.profile');
@@ -67,13 +68,6 @@ Route::group(['middleware'=>'auth:spa'],function() {
         return view('pages-spa.list-employee');
     })->name('list-employee');
 
-    //post
-    Route::get('post','PostController@show')->name('list-post');
-    Route::get('add','PostController@add')->name('add-post');
-    Route::post('create-post', 'PostController@create_post')->name('create-post');
-    Route::get('{id}/edit','PostController@edit')->name('edit-post');
-    Route::post('update','PostController@update_post')->name('update-post');
-
     Route::get('service/{spaId}','ServiceController@index')->name('list-service');
     Route::get('service/delete/{serviceId}','ServiceController@destroy')->name('delete-service');
     Route::get('service/get-add-service/{spaId}','ServiceController@storeService')->name('get-add-service');
@@ -99,7 +93,7 @@ Route::post('contact', 'ContactController@add')->name('contact');
 
 //dang ky spa
 
-Route::get('sign-up-spa', 'SpaController@register')->name('login_spa');;
+Route::get('sign-up-spa', 'SpaController@register');
 Route::post('post-spa-register','SpaController@postRegister')->name('spa_register');
 Route::get('login-spa', 'SpaController@login')->name('login-spa');
 Route::post('login-spa', 'SpaController@postLoginSpa');
@@ -120,5 +114,20 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/spa', 'AdminController@listspa')->name('admin.listspa');
     Route::get('{spa}/edit-spa', 'AdminController@editspa')->name('admin.editspa');
     Route::post('/update-spa', 'AdminController@updatespa')->name('admin.update_spa');
+
+    //post
+    Route::get('/post', 'PostController@show')->name('admin.listpost');
+    Route::get('post/add-post','PostController@add')->name('admin.addpost');
+    Route::post('create-post', 'PostController@create_post')->name('admin.create_post');
+    Route::get('post/{id}/edit-post','PostController@edit')->name('admin.editpost');
+    Route::post('update-post','PostController@update_post')->name('admin.update_post');
+    Route::get('post/{id}/duyet','PostController@change_status')->name('admin.change-status-post');
+    Route::get('post/{id}/boduyet','PostController@change_status_b')->name('admin.change-status-post-b');
+    Route::get('post/{id}/delete', 'PostController@delete')->name('admin.deletepost');
+
+    //comment
+    Route::get('/comment', 'CommentController@show')->name('admin.listcomment');
+    Route::get('comment/{id}/delete', 'CommentController@delete')->name('admin.deletecomment');
+    Route::get('reply/{id}/delete', 'CommentController@delete_reply')->name('admin.deletereply');
 });
 // End Admin
