@@ -122,6 +122,6 @@ class SpaController extends Controller
         }
         $update->update();
 
-        return redirect()->route('edit-profile-spa')->with('changepassword', 'Đổi mật khẩu thành công');
+        return redirect()->route('edit-profile-spa')->with('success', 'Thay đổi thông tin thành công');
     }
 }

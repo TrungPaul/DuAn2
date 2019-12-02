@@ -89,7 +89,7 @@
             </div>
             <!-- /Manage jobs -->
         </div>
-    </div
+    </div>
     </div>
     <div class="modal fade show" id="delete" tabindex="-1" role="dialog" aria-labelledby="registermodal"
          style="display: none;">

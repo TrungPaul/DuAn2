@@ -124,4 +124,12 @@
     </div>
 @endsection()
 
+@section('alert')
+    @if (session('success'))
+        <script>
+            toastr.success('{{ session('success')}}', {timeOut: 200});
+        </script>
+    @endif
+@endsection
+
 
