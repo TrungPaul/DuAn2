@@ -67,6 +67,9 @@ Route::group(['middleware' => 'auth:spa'], function () {
         Route::get('service/delete/{serviceId}', 'ServiceController@destroy')->name('delete-service');
         Route::get('service/get-add-service/{spaId}', 'ServiceController@storeService')->name('get-add-service');
         Route::post('service/post-add-service/{spaId}', 'ServiceController@add')->name('get-add-service');
+        //change pass
+        Route::get('change-password', 'SpaController@changePass')->name('change-pass');
+        Route::post('change-password', 'SpaController@postChangePass');
     });
         //service- detail
         Route::post('booking/add', 'BookingOfUserController@addBooking')->name('add-booking');

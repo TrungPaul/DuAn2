@@ -30,7 +30,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#change-password">
+                <a class="nav-link" href="{{ route('change-pass') }}">
                     <i class="lni-lock"></i>Đổi mật khẩu
                 </a>
             </li>

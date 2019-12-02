@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ChangePasswordRequests;
 use App\Service;
 use App\ServiceDetail;
 use Illuminate\Http\Request;
@@ -31,7 +32,8 @@ class SpaController extends Controller
         if ($checkLogin) {
             return view('pages-spa.spa', compact('checkLogin'));
         } else {
-            return redirect()->route('login-spa');
+            $message = 'Mật khẩu hoặc email không chính xác';
+            return view('pages-spa.login-spa', compact('message'));
         }
     }
 
@@ -71,14 +73,33 @@ class SpaController extends Controller
     public function detailSpa($id)
     {
         $detailSpa = Spa::where('id', $id)->first();
-        $service_one = ServiceDetail::where('spa_id', $id)->where('service_id' , 1)->get();
-        $service_two = ServiceDetail::where('spa_id', $id)->where('service_id' , 2)->get();
-        $service_three = ServiceDetail::where('spa_id', $id)->where('service_id' , 3)->get();
+        $service_one = ServiceDetail::where('spa_id', $id)->where('service_id', 1)->get();
+        $service_two = ServiceDetail::where('spa_id', $id)->where('service_id', 2)->get();
+        $service_three = ServiceDetail::where('spa_id', $id)->where('service_id', 3)->get();
         return view('pages.detail-spa', compact('detailSpa', 'service_one', 'service_two', 'service_three'));
     }
 
     public function information()
     {
         return view('pages-spa.spa');
+    }
+
+    public function changePass()
+    {
+        return view('pages-spa.change-pass');
+    }
+
+    public function postChangePass(ChangePasswordRequests $request)
+    {
+        $idSpa = Auth::guard('spa')->user()->id;
+        $data = $request->except('_token', 'id');
+        $spa = Spa::find($idSpa);
+        if (password_verify($request->password, $spa->password) == false) {
+            return redirect()->route('change-pass')
+                ->with('errmsg', 'Mật khẩu cũ không chính xác');
+        }
+        $spa->where('id', $idSpa)->update(['password' => bcrypt($request->newpassword)]);
+
+        return redirect()->route('change-pass')->with('changepassword', 'Đổi mật khẩu thành công');
     }
 }
