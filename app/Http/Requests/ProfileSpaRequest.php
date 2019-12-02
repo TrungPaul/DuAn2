@@ -2,9 +2,11 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 
-class ContactRequest extends FormRequest
+class ProfileSpaRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,18 +27,19 @@ class ContactRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'email' => 'required|email',
-            'content' => 'required',
+            'city_id' => 'bail|required|not_in:0',
+            'location' => 'required',
+            'phone' => 'required',
+            'image' => 'bail|nullable|mimes:jpeg,png,jpg,gif,svg',
+            'email' => ['bail', 'required', 'email', 'max:255',
+                Rule::unique('spas')->ignore(Auth::guard('spa')->user()->id)],
         ];
     }
 
     public function messages()
     {
         return [
-            'name.required'    => 'Tên không được để trống',
-            'email.required'    => 'Email không được để trống',
-            'email.email' => 'Email không hợp lệ',
-            'content.required'    => 'Nội dung không được để trống',
+            'location.required' => 'Địa chỉ không được để trống'
         ];
     }
 }

@@ -230,6 +230,9 @@ ul {
 img {
     max-width: 100%;
 }
+.avatar-spa {
+    max-width: 75%;
+}
 
 textarea,
 input[type="text"],
@@ -2585,8 +2588,7 @@ Section
 }
 
 .beautypress-iocn-btn.full-round-btn {
-    height: 50px;
-    width: 50px;
+    padding: 10px;
     border-radius: 100%;
     display: -webkit-inline-box;
     display: -ms-inline-flexbox;
@@ -2604,6 +2606,7 @@ Section
     position: relative;
     transition: all .9s ease;
 }
+
 
 .beautypress-iocn-btn.full-round-btn.bg-color-pink {
     background-color: var(--color-pink);
@@ -9653,8 +9656,9 @@ Section
 .beautypress-single-portfolio-details-wraper {
     box-shadow: var(--primary-shadow);
     background-color: var(--color-white);
-    padding: 40px;
-    margin: 0 0 30px;
+    padding: 30px;
+    margin: 0 0 50px 17px;
+    height: 400px;
 }
 
 .beautypress-portfolio-content-header h2 {
@@ -10808,7 +10812,7 @@ label[for="rating"] {
     transform: translate(0px, 0px) scale(1, 1);
     opacity: 1;
   }
-  
+
 label.error {
     color:red;
 }

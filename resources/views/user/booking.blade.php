@@ -36,11 +36,17 @@
                                     <div class="input-group">
                                         <input type="text" name="name" id="c_name" placeholder="Tên">
                                     </div>
+                                        @if( $errors->first('name'))
+                                            <span class="text-danger">{{ $errors->first('name')}}</span>
+                                        @endif
                                     </div>
                                     <div>
                                     <h5>Email</h5>
                                     <div class="input-group">
                                         <input type="email" name="email" id="c_email" placeholder="Email">
+                                        @if( $errors->first('email'))
+                                            <span class="text-danger">{{ $errors->first('email')}}</span>
+                                        @endif
                                     </div>
                                     </div>
                                 </div>

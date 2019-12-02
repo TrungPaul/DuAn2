@@ -55,23 +55,24 @@
                         <div class="beautypress-single-new-pricing-wraper active">
                             <div
                                 class="beautypress-single-new-pricing beautypress-watermark-icon beautypress-pricing-header beautypress-pricing-content">
-                                <img src="images/spas/{{ $spa->image }}" class="w3-round">
+                                <a href="{{ route('detail-spa',[$spa->id]) }}"><img src="images/spas/{{ $spa->image }}" class="w3-round"></a>
                             </div><!-- .beautypress-single-new-pricing END -->
                             <div class="beautypress-single-new-pricing beautypress-pricing-content">
                                 <ul class="beautypress-both-side-list beautypress-version-3">
-                                    <li><h3 class="text-dark">{{ $spa->name }}</h3></li>
+                                    <li><a href="{{ route('detail-spa',[$spa->id]) }}"><h3 class="text-dark">{{ $spa->name }}</h3></a></li>
                                     <hr>
                                     <li>Email: {{ $spa->email }}</li>
                                     <li>Số điện thoại: {{ $spa->phone }}</li>
                                     <li>Địa chỉ: {{ $spa->location }}, {{ $spa->city->name }} </li>
                                 </ul>
                             </div><!-- .beautypress-single-new-pricing END -->
-                            <a href="{{ route('detail-spa',[ $spa->id ]) }}" class="beautypress-single-new-pricing beautypress-pricing-footer">
+                            <a href="{{ route('user.getbook', $spa->id ) }}" class="beautypress-single-new-pricing beautypress-pricing-footer">
                                 <h3>Đặt lịch</h3>
                             </a><!-- .beautypress-single-new-pricing END -->
                         </div>
                     @endforeach
-                    {{ $result->links() }}
+                    <div class="d-flex justify-content-center">{{ $result->links() }}</div>
+
                 </div>
             </div>
 

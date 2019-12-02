@@ -11,11 +11,27 @@ class BookingOfUser extends Model
         'name',
         'email',
         'spa_id',
-        'date_booking',
-        'time_booking',
-        'staff_id',
-        'service_detail_id'
+        'service_detail',
+        'date'
     ];
 
-}
+    public function chooseStaff()
+    {
+        return $this->belongsToMany(Staff::class);
+    }
 
+    public function userBook()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    }
+
+    public function detailService()
+    {
+        return $this->belongsTo(ServiceDetail::class, 'service_detail_id', 'id');
+    }
+
+    public function detailStaff()
+    {
+        return $this->belongsTo(Staff::class, 'staff_id', 'id');
+    }
+}

@@ -22,10 +22,9 @@
                 </div>
                 <div class="col-md-12 col-sm-12 col-lg-6 col-xl-6">
                     <div class="beautypress-booking-form-wraper">
-                        <form action="{{ route('user.book',$spaId) }}" method="POST" enctype="multipart/form-data"
+                        <form action="{{ route('user.book', $spaId)}}" method="post" enctype="multipart/form-data"
                               novalidate>
                             @csrf
-                            <input type="hidden" name="action" value="send_appointment_form"/>
                             <div class="alert hidden" id="beautypress-form-msg"></div>
                             <div class="beautypress-service-and-date">
                                 <h2>Đặt dịch vụ</h2>

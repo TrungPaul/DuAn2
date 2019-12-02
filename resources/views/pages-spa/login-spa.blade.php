@@ -4,16 +4,18 @@
     <div class="center-sign">
         <div class="panel card-sign">
             <div class="card-title-sign mt-3 text-right">
-                <h2 class="title text-uppercase font-weight-bold m-0"><a href="{{route('home')}}">SpaTime</a></h2>
+                <h2 class="title text-uppercase font-weight-bold m-0"><a href="{{route('home')}}">Đăng nhập - Spa</a></h2>
             </div>
             <div class="card-body">
+                @if(isset($message))<span class="text-danger">{{ $message }}</span>
+                @endif
                 <form action="{{ route('login-spa')}}" method="post">
                     @csrf
                     <div class="form-group mb-3">
                         <label>Email</label>
                         <span class="text-danger">(*)</span>
                         <div class="input-group">
-                            <input name="email" type="text" class="form-control form-control-lg"/>
+                            <input name="email" type="text" value="{{ old('email') }}" class="form-control form-control-lg"/>
                             <span class="input-group-append">
                                 <span class="input-group-text">
                                     <i class="fas fa-user"></i>

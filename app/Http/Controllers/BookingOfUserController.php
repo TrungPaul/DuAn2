@@ -19,6 +19,7 @@ class BookingOfUserController extends Controller
 
     public function book(Request $request ,$spaId)
     {
+        dd($request->all());
         $this->validate($request, [
             'date_booking' => 'required|after:today',
         ]);
@@ -28,7 +29,6 @@ class BookingOfUserController extends Controller
         $serviceBeBook = BookingOfUser::where('spa_id' ,  $spaId)->whereDate('date_booking', $request->date_booking)->pluck('time_booking');
         $timeNotBook = Time::whereNotIn('id' ,$serviceBeBook)->get();
         $times = Time::all();
-//        dd($times);
 
         return view('user.booking' ,  compact('times', 'service', 'staff' , 'spaId', 'timeNotBook','data'));
     }

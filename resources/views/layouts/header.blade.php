@@ -36,7 +36,7 @@
                         </li>
                         @if(Auth::check())
                             <li>
-                                <a href="">{{ Auth::user()->name }}</a>
+                                <a href="{{ route('user.profile') }}">{{ Auth::user()->name }}</a>
                             </li>
                             <li>
                                 <a href="{{ url('logout') }}"><i class="fa fa-sign-out" aria-hidden="true"></i></a>
@@ -65,7 +65,7 @@
     <div id="search">
         <button type="button" class="close">×</button>
         <form action="{{route('search')}}" method="GET" autocomplete="off">
-            <input type="search" class="search" name="key" placeholder="Tìm kiếm..." />
+            <input type="search" class="search" name="key" placeholder="Tìm kiếm spa, dịch vụ, bài viết" />
             <button type="submit" class="btn btn-primary">Tìm kiếm</button>
         </form>
     </div>

@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ChangePasswordRequests;
+use App\Http\Requests\ProfileSpaRequest;
 use App\Service;
+use App\ServiceDetail;
 use Illuminate\Http\Request;
 use App\Spa;
 use App\Http\Requests\SpaRequest;
@@ -28,9 +31,10 @@ class SpaController extends Controller
         $data = $request->only(['email', 'password']);
         $checkLogin = Auth::guard('spa')->attempt($data);
         if ($checkLogin) {
-            return redirect()->route('info-spa');
+            return view('pages-spa.spa', compact('checkLogin'));
         } else {
-            return redirect()->route('login-spa');
+            $message = 'Mật khẩu hoặc email không chính xác';
+            return view('pages-spa.login-spa', compact('message'));
         }
     }
 
@@ -69,14 +73,55 @@ class SpaController extends Controller
 
     public function detailSpa($id)
     {
-//        $detailSpa = Spa::where('id', $id)->first()->toArray();
-//        dd($detailSpa);
-
-        return view('pages.detail-spa');
+        $detailSpa = Spa::where('id', $id)->first();
+        $service_one = ServiceDetail::where('spa_id', $id)->where('service_id', 1)->get();
+        $service_two = ServiceDetail::where('spa_id', $id)->where('service_id', 2)->get();
+        $service_three = ServiceDetail::where('spa_id', $id)->where('service_id', 3)->get();
+        return view('pages.detail-spa', compact('detailSpa', 'service_one', 'service_two', 'service_three'));
     }
 
     public function information()
     {
         return view('pages-spa.spa');
+    }
+
+    public function changePass()
+    {
+        return view('pages-spa.change-pass');
+    }
+
+    public function postChangePass(ChangePasswordRequests $request)
+    {
+        $idSpa = Auth::guard('spa')->user()->id;
+        $data = $request->except('_token', 'id');
+        $spa = Spa::find($idSpa);
+        if (password_verify($request->password, $spa->password) == false) {
+            return redirect()->route('change-pass')
+                ->with('errmsg', 'Mật khẩu cũ không chính xác');
+        }
+        $spa->where('id', $idSpa)->update(['password' => bcrypt($request->newpassword)]);
+
+        return redirect()->route('change-pass')->with('changepassword', 'Đổi mật khẩu thành công');
+    }
+
+    public function editProfile()
+    {
+        return view('pages-spa.profile-spa');
+    }
+
+    public function updateProfile(ProfileSpaRequest $request)
+    {
+        $update = Spa::find(Auth::guard('spa')->user()->id);
+        $update->fill($request->all());
+        if ($request->hasFile('image')) {
+            $oriFileName = $request->image->getClientOriginalName();
+            $filename = str_replace(' ', '-', $oriFileName);
+            $filename = uniqid() . '-' . $filename;
+            $path = $request->file('image')->storeAs('spas', $filename);
+            $update->image = $filename;
+        }
+        $update->update();
+
+        return redirect()->route('edit-profile-spa')->with('success', 'Thay đổi thông tin thành công');
     }
 }

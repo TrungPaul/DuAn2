@@ -28,7 +28,7 @@
 
                                         <div class="mg-list-wrap">
                                             <div class="mg-list-thumb">
-                                                <img src="images/employee/{{ $employee->avatar }}" class="mx-auto"
+                                                <img src="images/{{ $employee->avatar }}" class="mx-auto"
                                                      alt=""/>
                                             </div>
                                             <div class="mg-list-caption">
