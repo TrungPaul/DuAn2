@@ -51,7 +51,7 @@
                                 {{ $rep->name }}: <i style="font-size:13px;">{{ $rep->content }}</i>&emsp;
                                 <a 
                                     href="javascript:;" 
-                                    linkurl="{{route('admin.deletereply', $item->id)}}" 
+                                    linkurl="{{route('admin.deletereply', $rep->id)}}" 
                                     class="btn btn-sm btn-danger btn-remove">
                                     <i class="fa fa-trash"></i>  Xoá
                                 </a>

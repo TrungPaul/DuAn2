@@ -8,8 +8,35 @@
             <h3>Tìm kiếm</h3>
             <img src="assets/img/section-heading-separetor.png" alt="">
         </div>
+        @if (count($spas) != 0)
+            <h6>Tìm thấy {{count($spas)}} spa</h6>
+            <hr>
+        @endif
+        <div class="col-md-12">
+            @foreach($spas as $key => $spa)
+                <div class="beautypress-single-new-pricing-wraper active">
+                    <div
+                        class="beautypress-single-new-pricing beautypress-watermark-icon beautypress-pricing-header beautypress-pricing-content">
+                        <a href="{{ route('detail-spa',[$spa->id]) }}"><img src="images/spas/{{ $spa->image }}" class="w3-round"></a>
+                    </div><!-- .beautypress-single-new-pricing END -->
+                    <div class="beautypress-single-new-pricing beautypress-pricing-content">
+                        <ul class="beautypress-both-side-list beautypress-version-3">
+                            <li><a href="{{ route('detail-spa',[$spa->id]) }}"><h3 class="text-dark">{{ $spa->name }}</h3></a></li>
+                            <hr>
+                            <li>Email: {{ $spa->email }}</li>
+                            <li>Số điện thoại: {{ $spa->phone }}</li>
+                            <li>Địa chỉ: {{ $spa->location }}, {{ $spa->city->name }} </li>
+                        </ul>
+                    </div><!-- .beautypress-single-new-pricing END -->
+                    <a href="{{ route('detail-spa',[ $spa->id ]) }}" class="beautypress-single-new-pricing beautypress-pricing-footer">
+                        <h3>Đặt lịch</h3>
+                    </a><!-- .beautypress-single-new-pricing END -->
+                </div>
+            @endforeach
+        </div>
+
         @if (count($services) != 0)
-            <h6>Tìm thấy {{count($services)}} dịch vụ</h6>
+            <h6 style="margin-top:50px;">Tìm thấy {{count($services)}} dịch vụ</h6>
             <hr>
         @endif
         <div class="row">
@@ -28,6 +55,7 @@
                 </div>
             @endforeach
         </div>
+
         @if (count($posts) != 0)
             <h6 style="margin-top:50px;">Tìm thấy {{count($posts)}} bài viết</h6>
             <hr>

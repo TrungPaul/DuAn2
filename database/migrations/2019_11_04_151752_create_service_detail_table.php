@@ -20,7 +20,7 @@ class CreateServiceDetailTable extends Migration
             $table->string('name_service');
             $table->string('price_service');
             $table->string('discount');
-            $table->string('detail_service');
+            $table->text('detail_service');
             $table->string('image_service');
             $table->timestamps();
         });

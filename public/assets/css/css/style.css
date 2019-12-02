@@ -3632,7 +3632,6 @@ header.style4 .menu-sec nav > ul > li.menu-item-has-children > a::before {
 .nav.nav-tabs {
     float: none;
     width: auto;
-    text-align: center;
     margin: 0;
     display: inline-block;
     border: 1px solid #e7e7e7;

@@ -65,7 +65,7 @@
     <div id="search">
         <button type="button" class="close">×</button>
         <form action="{{route('search')}}" method="GET" autocomplete="off">
-            <input type="search" class="search" name="key" placeholder="Tìm kiếm..." />
+            <input type="search" class="search" name="key" placeholder="Tìm kiếm spa, dịch vụ, bài viết" />
             <button type="submit" class="btn btn-primary">Tìm kiếm</button>
         </form>
     </div>
