@@ -17,6 +17,9 @@
                 <a class="nav-link" href="{{ route('management-booking') }}"><i class="ti-file"></i>Quản lí đặt lịch</a>
             </li>
             <li class="nav-item">
+                <a class="nav-link" href="{{ route('calendar-finish') }}"><i class="ti-file"></i>Lịch đã hoàn thành</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="{{ route('list-serviceDetail') }}"><i class="ti-file"></i>Quản lí dịch vụ</a>
             </li>
             <li class="nav-item">
