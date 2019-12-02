@@ -25,30 +25,30 @@
                 <div class="beautypress-language-select-list">
                 </div>
                 <ul class="beautypress-simple-iocn-list beautypress-version-1">
-                    <li><i class="xsicon icon-call"></i>+00 11 222 333 444</li>
-                    <li><i class="xsicon icon-envelope"></i>beautypress@gmail.com</li>
+                    <li><i class="xsicon icon-call"></i>Liên hệ trợ giúp: 0123456789</li>
+                    <li><i class="xsicon icon-envelope"></i>Email: beautypress@gmail.com</li>
                 </ul>
             </div>
         </div>
     </div>
-    <div class="topbar tp-rlt">
-        <div class="container">
-            <nav class="xs_nav_2 xs_nav-landscape">
-                <div class="nav-header">
-                    <a class="nav-logo" href="{{ url('/') }}">
-                        <img src="assets/img/logo-v4.png" alt="logo">
-                    </ao>
-                </div>
-                <div class="nav-menus-wrapper">
-                    <ul class="nav-menu nav-menu-centered" style="margin-right: -300px;">
-                        <li>
-                            <a href="{{ url('contact') }}">Liên hệ với chúng tôi</a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-        </div>
-    </div>
+{{--    <div class="topbar tp-rlt">--}}
+{{--        <div class="container">--}}
+{{--            <nav class="xs_nav_2 xs_nav-landscape">--}}
+{{--                <div class="nav-header">--}}
+{{--                    <a class="nav-logo" href="{{ url('/') }}">--}}
+{{--                        <img src="assets/img/logo-v4.png" alt="logo">--}}
+{{--                    </ao>--}}
+{{--                </div>--}}
+{{--                <div class="nav-menus-wrapper">--}}
+{{--                    <ul class="nav-menu nav-menu-centered" style="margin-right: -300px;">--}}
+{{--                        <li>--}}
+{{--                            <a href="{{ url('contact') }}">Liên hệ với chúng tôi</a>--}}
+{{--                        </li>--}}
+{{--                    </ul>--}}
+{{--                </div>--}}
+{{--            </nav>--}}
+{{--        </div>--}}
+{{--    </div>--}}
 
     <div class="clearfix"></div>
     <!-- ============================ Hero Banner End ================================== -->
@@ -66,7 +66,7 @@
     </section>
     @include ('layouts.footer')
     @include ('layouts-spa.bottom_assets')
-    @yield('alert');
+    @yield('alert')
 </div>
 
 </body>

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\ServiceDetail;
 use Illuminate\Support\Facades\Auth;
+use App\Service;
 
 class ServiceDetailController extends Controller
 {
@@ -15,11 +16,12 @@ class ServiceDetailController extends Controller
         $this->uploadService = $uploadService;
     }
 
-    public function index($spaId)
+    public function index()
     {
-        $service = ServiceDetail::where('spa_id', $spaId)->get();
+        $idSpa = Auth::guard('spa')->user()->id;
+        $service = ServiceDetail::where('spa_id', $idSpa)->paginate(6);
 
-        return view('pages-spa.ListServiceDetail', compact( 'service'));
+        return view('pages-spa.ListServiceDetail', compact('service'));
     }
 
     public function destroy($id)
@@ -31,8 +33,8 @@ class ServiceDetailController extends Controller
 
     public function getAdd($spaId)
     {
-
-        return view('pages-spa.addServiceDetail', compact('spaId'));
+        $service = Service::where('spa_id', $spaId)->get();
+        return view('pages-spa.addServiceDetail', compact('spaId', 'service'));
     }
 
     public function postAddServiceDetail(Request $request)
@@ -40,11 +42,11 @@ class ServiceDetailController extends Controller
         $this->validate($request, [
             'name_service' => 'required',
             'spa_id' => 'required',
-            'service_id'=> 'required',
-          'price_service' => 'required',
-          'discount' => 'nullable',
-        'detail_service' => 'required',
-        'image_service' => 'required'
+            'service_id' => 'required',
+            'price_service' => 'required',
+            'discount' => 'nullable',
+            'detail_service' => 'required',
+            'image_service' => 'required'
         ]);
         $serviceDetail = new ServiceDetail();
         $serviceDetail->fill($request->all());
@@ -64,12 +66,12 @@ class ServiceDetailController extends Controller
         return view('pages-spa.updateServiceDetail', compact('service'));
     }
 
-    public function update(Request $request ,$id)
+    public function update(Request $request, $id)
     {
         $this->validate($request, [
             'name_service' => 'required',
             'spa_id' => 'required',
-            'service_id'=> 'required',
+            'service_id' => 'required',
             'price_service' => 'required',
             'discount' => 'nullable',
             'detail_service' => 'required',

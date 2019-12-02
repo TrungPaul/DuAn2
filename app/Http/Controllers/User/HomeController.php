@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ChangePasswordRequests;
+use http\Client\Curl\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 use App\Services\UserServices;
@@ -21,7 +22,6 @@ class HomeController extends Controller
 
     public function profile()
     {
-
         $gender = Config::get('spa');
 
         return view('user.profile', compact('gender'));

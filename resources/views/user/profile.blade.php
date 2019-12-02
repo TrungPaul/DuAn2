@@ -1,4 +1,4 @@
-@extends('layouts.index')
+@extends('layouts-spa.index')
 @section('title', 'Thông tin cá nhân')
 @section('content')
     <div class="container" style="margin-top: 5%; padding: 30px">

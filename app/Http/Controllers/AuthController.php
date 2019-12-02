@@ -21,7 +21,6 @@ class AuthController extends Controller
 
     public function postLogin(LoginUser $request)
     {
-        
         // check validate , lấy ra dữ liệu
         $data = $request->only(['email', 'password']);
         // KIỂM TRA ĐĂNG NHẬP EMAIL VÀ PASSWWORD VỪA NHẬN
@@ -43,8 +42,8 @@ class AuthController extends Controller
         $input = $request->all();
         $input['password'] = bcrypt($input['password']);
         $user = User::create($input);
-        $success = Lang::get('message.create_user');
+        $create_user = Lang::get('message.create_user');
 
-        return redirect()->route('login', compact('success'))->with('crate_user',Lang::get('message.create_user'));
+        return view('pages.sign-in', compact('create_user'));
     }
 }

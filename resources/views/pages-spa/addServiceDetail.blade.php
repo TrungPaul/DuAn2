@@ -65,11 +65,11 @@
                                         <select id="career-gender1" name="service_id"
                                                 class="form-control select2-hidden-accessible"
                                                 data-select2-id="" tabindex="-1" aria-hidden="true">
-                                            <option value="" data-select2-id="6">&nbsp;</option>
-                                            <option value="1" data-select2-id="12">cắt móng</option>
-                                            <option value="2" data-select2-id="13">sơn</option>
-
-                                        </select><span
+                                            @foreach($service as $ser)
+                                            <option value="{{$ser->id}}}" data-select2-id="6">{{$ser->name_service}}</option>
+    @endforeach
+                                        </select>
+                                        <span
                                             class="select2 select2-container select2-container--default select2-container--below select2-container--focus"
                                             dir="ltr" data-select2-id="5" style="width: 329px;"><span
                                                 class="selection"></span>

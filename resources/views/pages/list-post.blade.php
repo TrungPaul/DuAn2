@@ -58,6 +58,11 @@
                     </div><!-- .beautypress-single-sidebar END -->
                 </div>
             </div>
+            <div class="beautypress-pagination-wraper">
+                <ul class="beautypress-pagination">
+                    {{ $posts->links() }}
+                </ul>
+            </div>
         </div>
     </div>
 @endsection

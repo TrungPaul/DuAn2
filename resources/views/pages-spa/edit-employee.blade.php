@@ -62,7 +62,7 @@
                                 </div>
                                 <div class="col-lg-6 col-md-6col-sm-6" style="width: 150px; ">
                                     <div class="form-group">
-                                        <img id="showImage" src="images/employee/{{ $employee->avatar }}" width="150"
+                                        <img id="showImage" src="images/{{ $employee->avatar }}" width="150"
                                              style="margin-left: 30%;">
                                     </div>
                                 </div>

@@ -4,7 +4,7 @@
     <div class="center-sign">
         <div class="panel card-sign">
             <div class="card-title-sign mt-3 text-right">
-                <h2 class="title text-uppercase font-weight-bold m-0"><a href="{{route('home')}}">SpaTime</a></h2>
+                <h2 class="title text-uppercase font-weight-bold m-0"><a href="{{route('home')}}">Đăng nhập - Spa</a></h2>
             </div>
             <div class="card-body">
                 <form action="{{ route('login-spa')}}" method="post">
