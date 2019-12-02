@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ChangePasswordRequests;
+use App\Http\Requests\ProfileSpaRequest;
 use App\Service;
 use App\ServiceDetail;
 use Illuminate\Http\Request;
@@ -101,5 +102,26 @@ class SpaController extends Controller
         $spa->where('id', $idSpa)->update(['password' => bcrypt($request->newpassword)]);
 
         return redirect()->route('change-pass')->with('changepassword', 'Đổi mật khẩu thành công');
+    }
+
+    public function editProfile()
+    {
+        return view('pages-spa.profile-spa');
+    }
+
+    public function updateProfile(ProfileSpaRequest $request)
+    {
+        $update = Spa::find(Auth::guard('spa')->user()->id);
+        $update->fill($request->all());
+        if ($request->hasFile('image')) {
+            $oriFileName = $request->image->getClientOriginalName();
+            $filename = str_replace(' ', '-', $oriFileName);
+            $filename = uniqid() . '-' . $filename;
+            $path = $request->file('image')->storeAs('spas', $filename);
+            $update->image = $filename;
+        }
+        $update->update();
+
+        return redirect()->route('edit-profile-spa')->with('changepassword', 'Đổi mật khẩu thành công');
     }
 }

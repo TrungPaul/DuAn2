@@ -51,7 +51,8 @@ Route::get('logout', function () {
 })->name('logout');
 Route::group(['middleware' => 'auth:spa'], function () {
     Route::prefix('spa')->group(function () {
-        Route::get('edit-profile-spa', 'SpaController@index')->name('edit-profile-spa');
+        Route::get('edit-profile-spa', 'SpaController@editProfile')->name('edit-profile-spa');
+        Route::post('edit-profile-spa', 'SpaController@updateProfile');
         Route::get('/', 'SpaController@information')->name('info-spa');
         Route::get('employee', 'StaffController@listEmployee')->name('list-employee');
         Route::get('add-employee', 'StaffController@addEmployee')->name('add-employee');
