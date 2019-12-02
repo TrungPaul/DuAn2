@@ -71,9 +71,10 @@ class SpaController extends Controller
     public function detailSpa($id)
     {
         $detailSpa = Spa::where('id', $id)->first();
-        $service = ServiceDetail::where('spa_id', $id)->get();
-        
-        return view('pages.detail-spa', compact('detailSpa'));
+        $service_one = ServiceDetail::where('spa_id', $id)->where('service_id' , 1)->get();
+        $service_two = ServiceDetail::where('spa_id', $id)->where('service_id' , 2)->get();
+        $service_three = ServiceDetail::where('spa_id', $id)->where('service_id' , 3)->get();
+        return view('pages.detail-spa', compact('detailSpa', 'service_one', 'service_two', 'service_three'));
     }
 
     public function information()

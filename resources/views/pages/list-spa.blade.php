@@ -71,7 +71,8 @@
                             </a><!-- .beautypress-single-new-pricing END -->
                         </div>
                     @endforeach
-                    {{ $result->links() }}
+                    <div class="d-flex justify-content-center">{{ $result->links() }}</div>
+                    
                 </div>
             </div>
 
