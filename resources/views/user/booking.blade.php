@@ -1,115 +1,193 @@
 @extends('layouts.index')
 @section('title', 'Booking')
 @section('content')
-<section class="beautypress-booking-section section-padding">
+    <section class="beautypress-booking-section section-padding">
         <div class="container">
             <div class="row">
                 <div class="col-md-12 col-sm-12 col-lg-6 col-xl-6">
+                    <div class="beautypress-booking-text-wraper">
+                        <div class="beautypress-booking-content-text beautypress-border beautypress-version-3">
+                            <div class="beautypress-booking-text">
+                                <h2>Lịch làm việc</h2>
+                                <h3>Giờ làm việc</h3>
+                                <div class="beautypress-icon-bg-text">
+                                    <p> Xin chào quý khách . Rất vui được phục vụ quý khách </p>
+                                </div><!-- .beautypress-icon-bg-text END -->
+                                <ul>
+                                    <li>Mon - Sun : 8:00am - 10:00pm</li>
+                                </ul>
+                            </div><!-- .beautypress-booking-text END -->
+                        </div><!-- .beautypress-booking-content-text END -->
+                    </div><!-- .beautypress-booking-text-wraper END -->
+                </div>
+                <div class="col-md-12 col-sm-12 col-lg-6 col-xl-6">
                     <div class="beautypress-booking-form-wraper">
-                        <form action="#" method="POST" id="beautypress-booking-form">
+                        <form action="{{ route('user.booking',$spaId) }}" method="POST" enctype="multipart/form-data"
+                              novalidate>
                             @csrf
-                             <input type="hidden" name="action" value="send_appointment_form">
+                            <input type="hidden" name="action" value="send_appointment_form"/>
+                            <input type="hidden" name="date_booking" value="{{$data}}"/>
                             <div class="alert hidden" id="beautypress-form-msg"></div>
                             <div class="beautypress-service-and-date">
-                                <h2>Đặt Dịch Vụ</h2>
-                                <div class="beautypress-select">
+                                <h2>Đặt dịch vụ</h2>
+                                <div class="beautypress-spilit-container">
+                                    <div>
+                                    <h5>Tên</h5>
                                     <div class="input-group">
-                                        <select name="appointment-service" id="appointment-service" class="form-control">
-                                            <option value="">Chọn loại dịch vụ</option>
-                                            <option value="Oil Massage">Oil Massage ($59.00)</option>
-                                            <option value="Relax Day">Relax Day ($199.00)</option>
-                                            <option value="Spa &amp; Beauty">Spa &amp; Beauty ($299.00)</option>
-                                            <option value="Relax Day (for Two)">Relax Day (for Two $399.00)</option>
+                                        <input type="text" name="name" id="c_name" placeholder="Tên">
+                                    </div>
+                                        @if( $errors->first('name'))
+                                            <span class="text-danger">{{ $errors->first('name')}}</span>
+                                        @endif
+                                    </div>
+                                    <div>
+                                    <h5>Email</h5>
+                                    <div class="input-group">
+                                        <input type="email" name="email" id="c_email" placeholder="Email">
+                                        @if( $errors->first('email'))
+                                            <span class="text-danger">{{ $errors->first('email')}}</span>
+                                        @endif
+                                    </div>
+                                    </div>
+                                </div>
+                                <div class="beautypress-select">
+                                    <h5>Dịch vụ</h5>
+                                    <div class="input-group">
+                                        <select name="service_detail_id" id="appointment-service" class="form-control">
+                                            @foreach($service as $ser)
+                                                <option value="{{$ser->id}}">{{$ser->name_service}}
+                                                    ({{$ser->price_service}}đ)
+                                                </option>
+                                            @endforeach
                                         </select>
+                                        @if( $errors->first('service_detail_id'))
+                                            <span class="text-danger">{{ $errors->first('service_detail_id')}}</span>
+                                        @endif
                                     </div>
-                                </div><!-- .beautypress-select END -->
-                                <div class="beautypress-spilit-container">
-                                    <div class="beautypress-date-select beautypress-select">
-                                        <div class="input-group">
-                                            <input type="date" id="appointment-date" class="form-control datepicker" name="appointment-date" placeholder="Date Shedule">
-                                        </div>
-                                    </div><!-- .beautypress-date-select END -->
-                                    <div class="beautypress-select">
-                                        <div class="input-group">
-                                            <select name="appointment-time" id="appointment-time" class="form-control">
-                                                <option value="">Time Shedule</option>
-                                                <option value="12:00 AM">12:00 AM</option>
-                                                <option value="12:30 AM">12:30 AM</option>
-                                                <option value="01:00 AM">01:00 AM</option>
-                                                <option value="01:30 AM">01:30 AM</option>
-                                                <option value="02:00 AM">02:00 AM</option>
-                                                <option value="02:30 AM">02:30 AM</option>
-                                                <option value="03:00 AM">03:00 AM</option>
-                                                <option value="03:30 AM">03:30 AM</option>
-                                                <option value="04:00 AM">04:00 AM</option>
-                                                <option value="04:30 AM">04:30 AM</option>
-                                                <option value="05:00 AM">05:00 AM</option>
-                                                <option value="05:30 AM">05:30 AM</option>
-                                                <option value="06:00 AM">06:00 AM</option>
-                                                <option value="06:30 AM">06:30 AM</option>
-                                                <option value="07:00 AM">07:00 AM</option>
-                                                <option value="07:30 AM">07:30 AM</option>
-                                                <option value="08:00 AM">08:00 AM</option>
-                                                <option value="08:30 AM">08:30 AM</option>
-                                                <option value="09:00 AM">09:00 AM</option>
-                                                <option value="09:30 AM">09:30 AM</option>
-                                                <option value="10:00 AM">10:00 AM</option>
-                                                <option value="10:30 AM">10:30 AM</option>
-                                                <option value="11:00 AM">11:00 AM</option>
-                                                <option value="11:30 AM">11:30 AM</option>
-                                                <option value="12:00 PM">12:00 PM</option>
-                                                <option value="12:30 PM">12:30 PM</option>
-                                                <option value="01:00 PM">01:00 PM</option>
-                                                <option value="01:30 PM">01:30 PM</option>
-                                                <option value="02:00 PM">02:00 PM</option>
-                                                <option value="02:30 PM">02:30 PM</option>
-                                                <option value="03:00 PM">03:00 PM</option>
-                                                <option value="03:30 PM">03:30 PM</option>
-                                                <option value="04:00 PM">04:00 PM</option>
-                                                <option value="04:30 PM">04:30 PM</option>
-                                                <option value="05:00 PM">05:00 PM</option>
-                                                <option value="05:30 PM">05:30 PM</option>
-                                                <option value="06:00 PM">06:00 PM</option>
-                                                <option value="06:30 PM">06:30 PM</option>
-                                                <option value="07:00 PM">07:00 PM</option>
-                                                <option value="07:30 PM">07:30 PM</option>
-                                                <option value="08:00 PM">08:00 PM</option>
-                                                <option value="08:30 PM">08:30 PM</option>
-                                                <option value="09:00 PM">09:00 PM</option>
-                                                <option value="09:30 PM">09:30 PM</option>
-                                                <option value="10:00 PM">10:00 PM</option>
-                                                <option value="10:30 PM">10:30 PM</option>
-                                                <option value="11:00 PM">11:00 PM</option>
-                                                <option value="11:30 PM">11:30 PM</option>
-                                            </select>
-                                        </div>
-                                    </div><!-- .beautypress-select END -->
                                 </div>
+                               <!-- .beautypress-select END -->
+                                                                <div class="beautypress-spilit-container">
+                                                                    <div class="">
+                                                                        <h5>Nhân viên</h5>
+                                                                        <div class="input-group">
+                                                                            <select name="staff_id" id="appointment-service" class="form-control">
+                                                                                @foreach($staff as $st)
+                                                                                    <option value="{{$st->id}}">{{$st->name}}</option>
+                                                                                @endforeach
+                                                                            </select>
+                                                                            @if( $errors->first('staff_id'))
+                                                                                <span class="text-danger">{{ $errors->first('staff_id')}}</span>
+                                                                            @endif
+                                                                        </div>
+                                                                    </div><!-- .beautypress-date-select END -->
+                                                                    <div class="beautypress-select">
+                                                                        <h5>Thời gian còn trống</h5>
+                                                                        <div class="input-group">
+                                                                            <select name="time_booking" id="appointment-service" class="form-control">
+                                                                                @foreach($timeNotBook as $not)
+                                                                                    <option value="{{$not->id}}">
+                                                                                        {{$not->time}}
+                                                                                    </option>
+                                                                                @endforeach
+                                                                            </select>
+                                                                            @if( $errors->first('time_booking'))
+                                                                                <span class="text-danger">{{ $errors->first('time_booking')}}</span>
+                                                                            @endif
+                                                                        </div>
+                                                                    </div><!-- .beautypress-select END -->
+                                                                </div>
+
+                                <button type="submit" class="btn btn-info btn-md full-width">Thêm mới<i
+                                        class="ml-2 ti-arrow-right"></i></button>
                             </div><!-- .beautypress-service-and-date END -->
-                            <div class="beautypress-personal-information">
-                                <h2>Personal Information</h2>
-                                <div class="beautypress-spilit-container">
-                                    <div class="form-group first-name-group">
-                                        <input type="text" name="first-name" class="form-control" id="first-name" placeholder="First Name....">
-                                    </div>
-                                    <div class="form-group email-group">
-                                        <input type="email" name="email" class="form-control" id="email" placeholder="Email Address....">
-                                    </div>
-                                </div>
-                                <div class="form-group phone-group">
-                                    <input type="number" name="phone" class="form-control" id="phone" placeholder="Phone Number....">
-                                </div>
-                                <div class="form-group massage-gropu">
-                                    <textarea class="form-control" rows="5" id="appointment-comment" placeholder="Enter Message...."></textarea>
-                                </div>
-                                <div class="form-group button-group">
-                                    <input type="submit" name="submit" value="submit" id="beautypress-submit">
-                                </div>
-                            </div><!-- .beautypress-personal-information END -->
+                            <!-- .beautypress-personal-information END -->
                         </form><!-- #beautypress-booking-form END -->
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    @endsection
+    <script>
+        $('.time_booking').click(function () {
+            let value = ('.time_booking').val();
+            alert(value);
+        });
+
+        $('.button-checkbox').each(function () {
+            // Settings
+            var $widget = $(this),
+                $button = $widget.find('button'),
+                $checkbox = $widget.find('input:checkbox'),
+                color = $button.data('color'),
+                settings = {
+                    on: {
+                        icon: 'glyphicon glyphicon-check'
+                    },
+                    off: {
+                        icon: 'glyphicon glyphicon-unchecked'
+                    }
+                };
+
+            // Event Handlers
+            $button.on('click', function () {
+                $checkbox.prop('checked', !$checkbox.is(':checked'));
+                $checkbox.triggerHandler('change');
+                updateDisplay();
+            });
+            $checkbox.on('change', function () {
+                updateDisplay();
+            });
+
+            // Actions
+            function updateDisplay() {
+                var isChecked = $checkbox.is(':checked');
+
+                // Set the button's state
+                $button.data('state', (isChecked) ? "on" : "off");
+
+                // Set the button's icon
+                $button.find('.state-icon')
+                    .removeClass()
+                    .addClass('state-icon ' + settings[$button.data('state')].icon);
+
+                // Update the button's color
+                if (isChecked) {
+                    $button
+                        .removeClass('btn-default')
+                        .addClass('btn-' + color + ' active');
+                } else {
+                    $button
+                        .removeClass('btn-' + color + ' active')
+                        .addClass('btn-default');
+                }
+            }
+
+            // Initialization
+            function init() {
+
+                updateDisplay();
+
+                // Inject the icon if applicable
+                if ($button.find('.state-icon').length == 0) {
+                    $button.prepend('<i class="state-icon ' + settings[$button.data('state')].icon + '"></i>');
+                }
+            }
+
+            init();
+        });
+        })
+        ;</script>
+@endsection
+
+@section('alert')
+    @if (session('fail'))
+        <script>
+            toastr.error('{{ session('fail')}}', {timeOut: 200});
+        </script>
+    @endif
+    @if (session('success'))
+        <script>
+            toastr.success('{{ session('success')}}', {timeOut: 200});
+        </script>
+    @endif
+@endsection

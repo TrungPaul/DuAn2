@@ -4,7 +4,6 @@
             <h3>Dịch vụ</h3>
             <img alt="" src="assets/img/section-heading-separetor.png">
         </div>
-
         <div class="row">
             @foreach ( $services as $key => $s )
                 <div class="col-md-6 col-xl-4 col-lg-4 pt-5">

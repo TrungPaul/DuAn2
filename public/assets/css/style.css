@@ -2168,6 +2168,7 @@ Section
 ===============================================================================*/
 
 .beautypress-booking-text-wraper {
+    padding-top: 40px;
     height: 100%;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -10747,7 +10748,6 @@ label[for="rating"] {
     margin-top : 0;
     display: block;
   }
-
 /* tim kiếm ở trang chủ */
   #search {
     position: fixed;

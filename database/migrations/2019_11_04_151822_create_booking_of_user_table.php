@@ -15,7 +15,8 @@ class CreateBookingOfUserTable extends Migration
     {
         Schema::create('booking_of_user', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('user_id');
+            $table->string('name');
+            $table->string('email');
             $table->integer('spa_id');
             $table->date('date_booking');
             $table->integer('time_booking');

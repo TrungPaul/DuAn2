@@ -53,11 +53,4 @@ class HomeController extends Controller
 
         return redirect()->route('user.profile');
     }
-
-    public function book()
-    {
-        return view('user.booking');
-    }
-
-
 }

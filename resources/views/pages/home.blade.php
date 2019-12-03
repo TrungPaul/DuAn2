@@ -8,3 +8,15 @@
     @include('layouts.partner')
 
 @endsection
+@section('alert')
+    @if (session('fail'))
+        <script>
+            toastr.error('{{ session('fail')}}', {timeOut: 200});
+        </script>
+    @endif
+    @if (session('success'))
+        <script>
+            toastr.success('{{ session('success')}}', {timeOut: 200});
+        </script>
+    @endif
+@endsection

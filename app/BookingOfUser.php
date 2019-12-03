@@ -8,10 +8,14 @@ class BookingOfUser extends Model
 {
     protected $table = 'booking_of_user';
     protected $fillable = [
-        'user_id',
+        'name',
+        'email',
         'spa_id',
+        'time_booking',
         'service_detail',
-        'date'
+        'date_booking',
+        'staff_id',
+        'service_detail_id'
     ];
 
     public function chooseStaff()

@@ -10,9 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-
-Route::get('/', 'HomeController@index')->name('home');
+Route::get('/','HomeController@index')->name('home');
 
 Auth::routes();
 
@@ -25,8 +23,10 @@ Route::get('list-spa', 'SpaController@show')->name('list-spa');
 Route::get('search', 'PostController@search')->name('search');;
 Route::get('detail-spa/{idSpa}', 'SpaController@detailSpa')->name('detail-spa');
 Route::get('lien-he', 'ContactController@index')->name('view_contact');
-
-Route::group(['namespace' => 'User'], function () {
+Route::get('/getbooking/{spaId}', 'BookingOfUserController@getBook')->name('user.getbook');
+Route::post('/booking/{spaId}', 'BookingOfUserController@book')->name('user.book');
+Route::post('/booking/{spaId}/add', 'BookingOfUserController@addBooking')->name('user.booking');
+Route::group(['namespace' => 'User'], function(){
     Route::get('/thong-tin', 'HomeController@profile')->name('user.profile');
 
     Route::get('/edit-profile', 'HomeController@editprofile')->name('user.edit-profile');
@@ -34,7 +34,7 @@ Route::group(['namespace' => 'User'], function () {
 
     Route::get('change-password', 'HomeController@changePassword')->name('user.change-password');
     Route::post('change-password', 'HomeController@savePassword')->name('user.save-password');
-    Route::get('/booking', 'HomeController@book')->name('user.book');
+    Route::post('/booking', 'HomeController@book')->name('user.books');
 
 });
 

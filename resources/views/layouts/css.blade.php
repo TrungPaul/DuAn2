@@ -5,3 +5,4 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/css/chosen.css') }}" />
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/css/colors.css') }}" />
 <link rel="stylesheet" href="{{asset('assets/vendor/font-awesome/css/all.min.css')}}" />
+
