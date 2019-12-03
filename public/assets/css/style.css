@@ -231,7 +231,8 @@ img {
     max-width: 100%;
 }
 .avatar-spa {
-    max-width: 75%;
+    margin-left: 10px;
+    width: 96%;
 }
 
 textarea,

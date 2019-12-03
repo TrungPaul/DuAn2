@@ -138,6 +138,7 @@ Route::group(['prefix' => 'admin'], function () {
     //contact
     Route::get('/contact', 'ContactController@show')->name('admin.listcontact');
     Route::get('contact/{id}/reply', 'ContactController@reply')->name('admin.replycontact');
+    Route::post('contact/send_reply', 'ContactController@send_reply')->name('admin.sendreplycontact');
     Route::get('contact/{id}/delete', 'ContactController@delete')->name('admin.deletecontact');
 });
 // End Admin

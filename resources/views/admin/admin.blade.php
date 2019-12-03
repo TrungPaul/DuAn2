@@ -11,7 +11,7 @@
 			<div class="icon">
 				<i class="fas fa-user-alt"></i></i>
 			</div>
-			<a href="" class="small-box-footer">Xem thêm <i class="fas fa-arrow-circle-right"></i></a>
+			<a href="{{ route('admin.listuser')}}" class="small-box-footer">Xem thêm <i class="fas fa-arrow-circle-right"></i></a>
 		</div>
 	</div>
 	<div class="col-lg-3 col-6">
@@ -31,13 +31,13 @@
 		<!-- small box -->
 		<div class="small-box bg-primary">
 			<div class="inner">
-				<h3> </h3>
+				<h3> {{ $post }}</h3>
 				<p> Bài viết </p>
 			</div>
 			<div class="icon">
 				<i class="fas fa-book"></i>
 			</div>
-			<a href="" class="small-box-footer">Xem thêm <i class="fas fa-arrow-circle-right"></i></a>
+			<a href="{{ route('admin.listpost')}}" class="small-box-footer">Xem thêm <i class="fas fa-arrow-circle-right"></i></a>
 		</div>
 	</div>
 		<div class="col-lg-3 col-6">
@@ -50,7 +50,7 @@
 			<div class="icon">
 				<i class="fas fa-newspaper"></i>
 			</div>
-			<a href="" class="small-box-footer">Xem thêm <i class="fas fa-arrow-circle-right"></i></a>
+			<a href="{{ route('admin.listspa')}}" class="small-box-footer">Xem thêm <i class="fas fa-arrow-circle-right"></i></a>
 		</div>
 	</div>
 	<!-- ./col -->

@@ -19,5 +19,7 @@ class DatabaseSeeder extends Seeder
         $this->call(UserTableSeeder::class);
         $this->call(LocationTableSeeder::class);
         $this->call(SpaTableSeeder::class);
+        $this->call(TimeTableSeeder::class);
+        $this->call(StaffTableSeeder::class);
     }
 }
