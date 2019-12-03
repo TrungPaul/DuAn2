@@ -11,8 +11,11 @@ class BookingOfUser extends Model
         'name',
         'email',
         'spa_id',
+        'time_booking',
         'service_detail',
-        'date'
+        'date_booking',
+        'staff_id',
+        'service_detail_id'
     ];
 
     public function chooseStaff()
