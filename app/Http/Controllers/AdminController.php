@@ -10,6 +10,7 @@ use App\Services\ UserServices;
 use App\Service;
 use App\Spa;
 use App\User;
+use App\Post;
 use Session;
 use Illuminate\Support\Facades\Lang;
 
@@ -112,9 +113,9 @@ class AdminController extends Controller
     public function count()
     {
         $user = User::count();
-        $spa = Spa:: count();
-        $service = Service:: count();
-
-        return \view('admin.admin', \compact('user','spa','service'));
+        $spa = Spa::count();
+        $service = Service::count();
+        $post = Post::count();
+        return \view('admin.admin', \compact('user','spa','service', 'post'));
     }
 }

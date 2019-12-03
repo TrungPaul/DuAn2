@@ -20,9 +20,10 @@
                     </div>
                     <hr>
                     <div class="tr-single-body">
-                        <form enctype="multipart/form-data" action="" method="post">
+                        <form enctype="multipart/form-data" action="{{route('admin.sendreplycontact')}}" method="post">
                             @csrf
-                            <input type="hidden" name="id" value="{{$contact->id}}">
+                            <input type="hidden" name="name" value="{{$contact->name}}">
+                            <input type="hidden" name="email" value="{{$contact->email}}">
 
                             <div class="col-md-12 text-dark">
                                 <div class="form-group">
@@ -38,7 +39,7 @@
 
                             <div class="col-md-12 text-right">
                                 <a href="{{route('admin.listcontact')}}" class="btn btn-sm btn-danger">Huỷ</a>
-                                <button type="submit" class="btn btn-sm btn-primary">Lưu</button>
+                                <button type="submit" class="btn btn-sm btn-primary">Gửi</button>
                                
                             </div>
                         </form>
@@ -51,11 +52,4 @@
         </div>
 
     </div>
-@section('script')
-    <script>
-         $('#textarea_contact').summernote({
-            height:300,
-        });
-    </script>
-@stop
 @endsection

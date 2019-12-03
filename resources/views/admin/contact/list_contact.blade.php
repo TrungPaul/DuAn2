@@ -13,7 +13,7 @@
                 {{ session()->get('message_delete') }}
             </div>
         @endif
-        @if(session()->has('reply'))
+        @if(session()->has('message_reply'))
             <div class="text-center alert alert-success rounded-0">
                 {{ session()->get('message_reply') }}
             </div>

@@ -22,7 +22,7 @@ class CreateBookingOfUserTable extends Migration
             $table->integer('time_booking');
             $table->integer('staff_id');
             $table->integer('service_detail_id');
-            $table->dateTime('date');
+            $table->dateTime('date')->nullable();
             $table->timestamps();
         });
     }
