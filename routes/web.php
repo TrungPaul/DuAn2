@@ -102,10 +102,13 @@ Route::post('login-spa', 'SpaController@postLoginSpa');
 
 // Start Admin
 
+// đăng nhập
+Route::get('login-admin','AdminController@loginAdmin')->name('admin.login');
+Route::post('login-admin','AdminController@postLogin')->name('admin.post_login');
+Route::get('logout-admin','AdminController@logoutAdmin')->name('admin.logout');
+
 Route::group(['prefix' => 'admin'], function () {
-    Route::get('/', function () {
-        return view('admin.admin');
-    })->name('admin');
+    Route::get('/', 'AdminController@count')->name('admin');
 
     // user
     Route::get('/thanh-vien', 'AdminController@listuser')->name('admin.listuser');
