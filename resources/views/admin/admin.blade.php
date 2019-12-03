@@ -5,7 +5,7 @@
 		<!-- small box -->
 		<div class="small-box bg-info">
 			<div class="inner">
-				<h3> </h3>
+            <h3> {{$user}}</h3>
 				<p> Thành viên</p>
 			</div>
 			<div class="icon">
@@ -18,7 +18,7 @@
 		<!-- small box -->
 		<div class="small-box bg-success">
 			<div class="inner">
-				<h3></h3>
+            <h3>{{$service}}</h3>
 				<p> Dịch vụ</p>
 			</div>
 			<div class="icon">
@@ -44,7 +44,7 @@
 		<!-- small box -->
 		<div class="small-box bg-danger">
 			<div class="inner">
-				<h3> </h3>
+            <h3> {{$spa}}</h3>
 				<p>Spa</p>
 			</div>
 			<div class="icon">

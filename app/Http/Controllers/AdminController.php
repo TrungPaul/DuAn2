@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Services\ UserServices;
 use App\Service;
 use App\Spa;
+use App\User;
+use Session;
 use Illuminate\Support\Facades\Lang;
 
 class AdminController extends Controller
@@ -18,6 +20,7 @@ class AdminController extends Controller
     public function __construct(UserServices $userServices)
     {
         $this->userServices = $userServices;
+        // $this->middleware(Auth::user()->role, ['except' => ['admin.logout']]);
     }
 
     public function loginAdmin()
@@ -42,6 +45,13 @@ class AdminController extends Controller
         }
     }
 
+    public function logoutAdmin()
+    {
+        Auth::logout();
+        Session::flush();
+
+        return redirect()->route('admin.login');
+    }
 
     public function listuser()
     {
@@ -51,16 +61,14 @@ class AdminController extends Controller
         return view('admin.list_user', compact('user', 'gender'));
     }
 
-    public
-    function edituser(User $user)
+    public function edituser(User $user)
     {
         $gender = Config::get('spa');
 
         return view('admin.edit_user', \compact('gender', 'user'));
     }
 
-    public
-    function updateuser(Request $request)
+    public function updateuser(Request $request)
     {
         $user = $this->userServices->update($request);
 
@@ -99,5 +107,14 @@ class AdminController extends Controller
 
         return redirect()->route('admin.listspa')
             ->with('success', Lang::get('Thành công'));
+    }
+
+    public function count()
+    {
+        $user = User::count();
+        $spa = Spa:: count();
+        $service = Service:: count();
+
+        return \view('admin.admin', \compact('user','spa','service'));
     }
 }
