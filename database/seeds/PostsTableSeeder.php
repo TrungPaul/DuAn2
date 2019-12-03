@@ -21,7 +21,7 @@ class PostsTableSeeder extends Seeder
                 'cate_id' => rand(1, 5),
                 'title' => $faker->word,
                 'description' => $faker->word,
-                'image' => 'image-seeder.jpg',
+                'image' => 'post.jpg',
                 'content' => $faker->text,
                 'status' => 1,
             ]);

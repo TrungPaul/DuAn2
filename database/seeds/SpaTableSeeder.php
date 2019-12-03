@@ -24,7 +24,7 @@ class SpaTableSeeder extends Seeder
                 'city_id' => rand(1, 3),
                 'location' => $faker->address(),
                 'is_active' => 1,
-                'image' => 'image-seeder.jpg'
+                'image' => 'tmv-xuan-huong.jpg'
             ]);
         }
     }
