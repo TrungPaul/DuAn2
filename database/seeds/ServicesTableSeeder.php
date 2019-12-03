@@ -14,15 +14,15 @@ class ServicesTableSeeder extends Seeder
         $service = [
             [
                 'name_service' => 'Dịch Vụ Mặt',
-                'icon' => 'image-seeder.jpg'
+                'icon' => 'face.jpg'
             ],
             [
                 'name_service' => 'Dịch Vụ Móng',
-                'icon' => 'image-seeder.jpg'
+                'icon' => 'nail.jpg'
             ],
             [
                 'name_service' => 'Dịch Vụ Body',
-                'icon' => 'image-seeder.jpg'
+                'icon' => 'body.jpg'
             ]
         ];
 
