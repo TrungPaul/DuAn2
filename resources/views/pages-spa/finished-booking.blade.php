@@ -30,7 +30,8 @@
                                                 placeholder="Chọn dịch vụ">
                                             <option value="">Chọn dịch vụ</option>
                                             @foreach($choose_service as $idService)
-                                                <option value="{{ $idService->id}}">{{ $idService->name_service }}</option>
+                                                <option
+                                                    value="{{ $idService->id}}">{{ $idService->name_service }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -73,10 +74,12 @@
                                                     class="ti-eye"></i></a>
                                         </div>
                                         <div class="btn-group ml-2">
-                                            <a data-target="#delete"
-                                               data-toggle="modal" class="mg-delete delete"
-                                               data-id="{{ $book->id }}"
-                                               title="Xóa"><i
+                                            <a
+                                                href="javascript:;"
+                                                linkurl="{{ route('cancel-booking', $book->id) }}" data-target="#delete"
+                                                data-toggle="modal" class="mg-delete delete btn-remove"
+                                                data-id="{{ $book->id }}"
+                                                title="Xóa"><i
                                                     class="ti-trash"></i></a>
                                         </div>
                                     </div>
@@ -90,26 +93,6 @@
             <!-- /Manage jobs -->
         </div>
     </div>
-    </div>
-    <div class="modal fade show" id="delete" tabindex="-1" role="dialog" aria-labelledby="registermodal"
-         style="display: none;">
-        <div class="modal-dialog modal-dialog-centered login-pop-form" role="document">
-            <div class="modal-content" id="registermodal">
-                <div class="modal-header">
-                    {{--                    <h3 class="modal-title " id="exampleModalLabel">Modal</h3>--}}
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body text-danger">
-                    <h4>Bạn có muốn xóa không!</h4>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
-                    <button type="button" class="btn btn-primary del" id="ok">Đồng ý</button>
-                </div>
-            </div>
-        </div>
     </div>
     <div class="modal fade show" id="signup" tabindex="-1" role="dialog" aria-labelledby="sign-up"
          style="display: none;">
@@ -191,4 +174,22 @@
             toastr.success('{{ session('success')}}', {timeOut: 200});
         </script>
     @endif
+    <script>
+        $('.btn-remove').on('click', function () {
+            swal({
+                title: "Cảnh báo!",
+                text: "Bạn có chắc chắn muốn hủy bỏ lịch này ?",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        window.location.href = $(this).attr('linkurl');
+                    } else {
+                        swal("Cảm ơn bạn!");
+                    }
+                })
+        });
+    </script>
 @endsection
