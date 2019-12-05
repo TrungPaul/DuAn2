@@ -59,11 +59,13 @@ Route::group(['middleware' => 'auth:spa'], function () {
         Route::post('add-employee', 'StaffController@createEmployee');
         Route::get('employee/{id}', 'StaffController@edit')->name('edit-employee');
         Route::post('employee/{id}', 'StaffController@update');
-        //thay đổi trạng thái
-        Route::post('employee-status/{id}', 'StaffController@delete');
+        //thay đổi trạng thái nhân viên
+        Route::get('employee-status/{id}', 'StaffController@delete')->name('cancel-employee');
         Route::get('management-booking', 'BookingOfUserController@getBookingOfSpa')->name('management-booking');
         Route::get('management-booking/{id}', 'BookingOfUserController@getDetailBooking')->name('detail-booking');
         Route::get('calendar-finish', 'BookingOfUserController@finishedBook')->name('calendar-finish');
+        //hủy lịch booking của khách
+        Route::get('cancel-booking/{id}', 'BookingOfUserController@cancelBooking')->name('cancel-booking');
         //service
         Route::get('service/{spaId}', 'ServiceController@index')->name('list-service');
         Route::get('service/delete/{serviceId}', 'ServiceController@destroy')->name('delete-service');

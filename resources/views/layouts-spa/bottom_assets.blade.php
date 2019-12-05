@@ -15,6 +15,7 @@
 <script src="assets/js/toastr.min.js"></script>
 <script src="assets-spa/js/ajax-spa.js"></script>
 <script src="assets/js/bootstrap-wysihtml5.js"></script>
+<script src="assets/js/sweetalert.min.js"></script>
 
 <!-- ============================================================== -->
 <!-- This page plugins -->

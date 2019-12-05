@@ -67,7 +67,7 @@ $(document).ready(function () {
         });
     });
 
-    //detail booking ò user
+    //detail booking of user
     $('.detail-booking').click(function () {
         let id = $(this).data('id');
         $.ajaxSetup({

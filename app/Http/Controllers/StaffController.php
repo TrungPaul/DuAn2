@@ -69,7 +69,7 @@ class StaffController extends Controller
     {
         $this->staffService->deleteEmployee($id);
 
-        return response()->json(['success' => 'Xóa thành công']);
+        return redirect()->route('list-employee')->with('success', 'Xóa thành công');
 
     }
 }
