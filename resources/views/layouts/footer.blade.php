@@ -13,16 +13,16 @@
                 </div>
                 <div class="col-md-12 col-sm-12 col-lg-4 col-xl-4">
                     <div class="beautypress-single-footer beautypress-single-footer-group">
-                        <p>Mon-Fri: 9 AM – 6 PM</p>
-                        <p>Saturday: 9 AM – 4 PM</p>
-                        <p>Sunday: Closed</p>
+                        <p>Thứ hai - Thứ sáu: 9:00 – 17:00</p>
+                        <p>Thứ bảy: 9:00 - 12:00</p>
+                        <p>Chủ nhật: Nghỉ</p>
                     </div><!-- .beautypress-single-footer END -->
                 </div>
                 <div class="col-md-12 col-sm-12 col-lg-4 col-xl-4">
                     <div class="beautypress-single-footer beautypress-single-footer-group">
-                        <p>176 W street name, New York, NY 10014</p>
-                        <p>Email: info@yoursite.com</p>
-                        <p>Telephone: +1(800)123-4566</p>
+                        <p>Số 15 Đông Quan, Cầu Giấy, Hà Nội</p>
+                        <p>Email: spatime@gmail.com</p>
+                        <p>Telephone: +84 374 969 474</p>
                     </div><!-- .beautypress-single-footer END -->
                 </div>
             </div>

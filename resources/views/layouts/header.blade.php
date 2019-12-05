@@ -6,8 +6,8 @@
                 <div class="beautypress-language-select-list">
                 </div>
                 <ul class="beautypress-simple-iocn-list beautypress-version-1">
-                    <li><i class="xsicon icon-call"></i>+00 11 222 333 444</li>
-                    <li><i class="xsicon icon-envelope"></i>beautypress@gmail.com</li>
+                    <li><i class="xsicon icon-call"></i>+84 374 969 474</li>
+                    <li><i class="xsicon icon-envelope"></i>spatime@gmail.com</li>
                 </ul>
             </div>
         </div>
@@ -17,7 +17,7 @@
             <nav class="xs_nav_2 xs_nav-landscape">
                 <div class="nav-header">
                     <a class="nav-logo" href="{{ url('/') }}">
-                        <img src="assets/img/logo-v4.png" alt="logo">
+                        <img src="assets/img/logo.png" alt="logo">
                     </a>
                 </div>
                 <div class="nav-menus-wrapper">
