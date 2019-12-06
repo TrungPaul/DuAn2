@@ -21,6 +21,7 @@
                                     </div>
                                     <div class="beautypress-dates">
                                         <p class="color-white"><strong>{{ $p->category->name }}</strong></p>
+                                        <br>{{ $p->created_at }} | <i class="fas fa-eye"></i> {{ $p->views }}
                                     </div>
                                 </div><!-- .beautypress-newsfeed-header-content END -->
                             </div><!-- .beautypress-newsfeed-header END -->
@@ -45,7 +46,7 @@
                                     </div>
                                     <div class="beautypress-latest-post-content">
                                         <a href="{{route('detail_post', $pv->id)}}">{{ $pv->title }}</a>
-                                        <i>{{ $pv->description }}</i>
+                                        <i class="fas fa-eye"></i> {{ $pv->views }}
                                     </div>
                                 </div><!-- .beautypress-single-latest-news END -->
                             @endforeach

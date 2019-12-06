@@ -7,8 +7,10 @@ use App\Comment;
 use App\Service;
 use App\Spa;
 use App\Http\Requests\PostRequest;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+
 class PostController extends Controller
 {
     public function index()
@@ -57,8 +59,11 @@ class PostController extends Controller
     }
     public function create_post(PostRequest $request)
     {
+        $dt = Carbon::now('Asia/Ho_Chi_Minh');
         $data = new Post;
+
         $data->fill($request->all());
+        $request->created_at = $dt;
         if ($request->hasFile('image')) {
             $oriFileName = $request->image->getClientOriginalName();
             $filename = str_replace(' ', '-', $oriFileName);

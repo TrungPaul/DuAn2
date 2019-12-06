@@ -52,4 +52,11 @@
         </div>
 
     </div>
+@section('script')
+    <script>
+        $('#textarea_contact').summernote({
+            height:300,
+        });
+    </script>
+@stop
 @endsection
