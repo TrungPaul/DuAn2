@@ -24,7 +24,7 @@ class PostRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|min:5|max:50',
+            'title' => 'required|min:5|max:191',
             'image' => 'mimes:jpeg,png,jpg,gif,svg',
             'description' => 'required',
             'content' => 'required|min:50',
@@ -35,7 +35,7 @@ class PostRequest extends FormRequest
         return [
             'title.required' => "Không được để trống",
             'title.min' => "Tiêu đề tối thiểu 5 ký tự",
-            'title.max' => "Tiêu đề tối đa 50 ký tự",
+            'title.max' => "Tiêu đề tối đa 191 ký tự",
             'description.required' => "Không được để trống",
             'image.mimes' => "Đuôi của avatar phải là jpeg, png, jpg, gif, svg",
             'content.required' => "Không được bỏ trống",

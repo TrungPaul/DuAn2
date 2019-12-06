@@ -33,7 +33,7 @@
                                         @enderror
                                     </div>
                                     <div class="input-group">
-                                        <input type="email" name="email"  placeholder="Email" class="@error('email') is-invalid @enderror">
+                                        <input type="text" name="email"  placeholder="Email" class="@error('email') is-invalid @enderror">
                                         @error('email')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror

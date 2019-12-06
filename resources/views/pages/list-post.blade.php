@@ -21,6 +21,7 @@
                                     </div>
                                     <div class="beautypress-dates">
                                         <p class="color-white"><strong>{{ $p->category->name }}</strong></p>
+                                        <br>{{ $p->created_at }} | <i class="fas fa-eye"></i> {{ $p->views }}
                                     </div>
                                 </div><!-- .beautypress-newsfeed-header-content END -->
                             </div><!-- .beautypress-newsfeed-header END -->

@@ -27,4 +27,4 @@
 <link rel="stylesheet" href="assets/css/toastr.min.css" >
 <!--Theme Responsive css-->
 <!-- <link rel="stylesheet" href="css/responsive.css" /> -->
-<link href="assets/css/bootstrap-wysihtml5.css" rel="stylesheet">
+

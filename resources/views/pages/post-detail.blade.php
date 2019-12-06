@@ -15,12 +15,13 @@
 									<img src="images/{{ $post->user->avatar }}" alt="">
 									{{ $post->user->name }}
 								</div>
-								<h2>{{ $post->title }}</h2>
-								<i>{{ $post->description }}</i>
-                                <p>{{ $post->content }}</p>
+								{{ $post->created_at }} | <i class="fas fa-eye"></i> {{ $post->views }}
+								<h2 class="pt-5">{{ $post->title }}</h2>
+								<i>{{ $post->description }}</i><br><br>
+                                <div id="summernote">{!! $post->content !!}</div>
 							</div><!-- .beautypress-blog-post-wraper END -->
 						
-							<div class="beautypress-replay-answer-container">
+							<div class="beautypress-replay-answer-container mt-5">
 								<div class="beautypress-simple-title mb-30">
 									<h3>Bình luận</h3>
 								</div>
@@ -194,7 +195,6 @@
 												</div>
 												<div class="beautypress-latest-post-content">
 													<a href="{{route('detail_post', $ps->id)}}">{{ $ps->title }}</a>
-													<i>{{ $ps->description }}</i>
 												</div>
 											</div><!-- .beautypress-single-latest-news END -->
 										@endif
@@ -215,7 +215,6 @@
                                             </div>
                                             <div class="beautypress-latest-post-content">
                                                 <a href="{{route('detail_post', $np->id)}}">{{ $np->title }}</a>
-                                                <i>{{ $np->description }}</i>
                                             </div>
                                         </div><!-- .beautypress-single-latest-news END -->
                                     @endforeach

@@ -3,5 +3,5 @@ Xin chào, <b>{{ $name }}</b>
     Chúc <b>{{ $name }}</b> một ngày tốt lành!
 </p>
 <p>
-    {{ $content }}
+    {!! $content !!}
 </p>

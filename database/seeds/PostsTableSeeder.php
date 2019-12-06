@@ -24,6 +24,8 @@ class PostsTableSeeder extends Seeder
                 'image' => 'post.jpg',
                 'content' => $faker->text,
                 'status' => 1,
+                'views' => rand(1,100),
+                'created_at' => $faker->dateTimeThisYear($max = 'now'),
             ]);
         }
     }
