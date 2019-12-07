@@ -57,9 +57,13 @@
                                                  alt=""/>
                                         </div>
                                         <div class="mg-list-caption">
-                                            <h4 class="mg-title">Tên khách: {{ $book->userBook['name'] }}</h4>
+                                            <h4 class="mg-title">Tên khách: {{ $book->userBook['name'] }}
+                                                @if($book->detailService == null)
+                                                    <span class="mg-subtitle text-danger">Dịch vụ dừng hoạt động(*Vui lòng hủy lịch)</span>
+                                                @else
                                             <span class="mg-subtitle">Tên dịch vụ: {{ $book->detailService['name_service'] }}
                                                     - Giá: {{ $book->detailService['price_service'] }}</span>
+                                                @endif
                                             <span>Ngày đặt lịch: {{ date('d-m-Y', strtotime($book->date_booking)) }}
                                                     - Ca: {{ $book->time_booking }}
                                                 </span>
@@ -67,7 +71,7 @@
                                     </div>
                                     <div class="mg-action">
                                         <div class="btn-group ml-2">
-                                            <a href=""
+                                            <a href="javascript:;"
                                                class="mg-edit edit detail-booking" title="Chi tiết"
                                                data-toggle="modal"
                                                data-target="#signup" data-id="{{ $book->id }}"><i
