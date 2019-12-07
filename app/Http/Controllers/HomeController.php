@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Post;
 use App\Service;
-use App\Category;
+use App\Spa;
 
 class HomeController extends Controller
 {
@@ -28,6 +28,7 @@ class HomeController extends Controller
     {
         $posts = Post::where('status', 1)->orderBy('views', 'desc')->limit(3)->get();
         $services = Service::limit(3)->get();
-        return view('pages.home', compact('posts', 'services'));
+        $spas =  Spa::limit(6)->get();
+        return view('pages.home', compact('posts', 'services', 'spas'));
     }
 }

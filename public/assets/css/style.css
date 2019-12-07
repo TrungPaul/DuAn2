@@ -10791,16 +10791,16 @@ label[for="rating"] {
     left: 50%;
     margin-top: 61px;
     margin-left: -45px;
-    background-color: limegreen;
+    background-color: #7B1FA2;
     border: black;
   }
   #search .close {
     position: fixed;
-    top: 15px;
+    top: 10px;
     right: 15px;
     color: #fff;
-    background-color: limegreen;
-    border-color: green;
+    background-color: #7B1FA2;
+    border-color: #7B1FA2;
     opacity: 1;
     padding: 10px 17px;
     font-size: 27px;
@@ -10816,4 +10816,34 @@ label[for="rating"] {
 
 label.error {
     color:red;
+}
+
+::-webkit-input-placeholder {
+    font-style: italic;
+}
+
+.beautypress-partner-our-feature {
+    position: relative;
+    overflow: hidden;
+}
+
+.beautypress-partner-our-feature img{
+    max-width: 95%;
+    height: 150px;
+}
+
+.beautypress-partner-features-content {
+    position: absolute;
+    bottom: -65px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    z-index: 2;
+    padding: 0 10px;
+    -webkit-transition: all .4s ease;
+    transition: all .4s ease;
+}
+
+.beautypress-partner-our-feature:hover .beautypress-partner-features-content {
+    bottom: 10px;
 }
