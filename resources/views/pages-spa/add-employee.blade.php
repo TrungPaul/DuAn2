@@ -21,7 +21,7 @@
                             <div class="row">
                                 <div class="col-lg-6 col-md-6 col-sm-6">
                                     <div class="form-group">
-                                        <label>Tên nhân viên</label>
+                                        <label>Tên nhân viên<span class="text-danger">*</span></label>
                                         <input class="form-control" type="text" name="name" value="{{ old('name') }}">
                                         @if( $errors->first('name'))
                                             <span class="text-danger">{{ $errors->first('name')}}</span>
@@ -30,7 +30,7 @@
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-6">
                                     <div class="form-group" data-select2-id="10">
-                                        <label>Giới tính</label>
+                                        <label>Giới tính<span class="text-danger">*</span></label>
                                         <select id="career-gender" name="gender"
                                                 class="form-control select2-hidden-accessible"
                                                 data-select2-id="career-gender" tabindex="-1" aria-hidden="true">

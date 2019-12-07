@@ -84,8 +84,15 @@ $(document).ready(function () {
                  $('.name_guest').html($result.user_book["name"]);
                  $('.email_guest').html($result.user_book["email"]);
                  $('.phone_guest').html($result.user_book["phone_number"]);
-                 $('.name_service').html($result.detail_service['name_service']);
-                 $('.price_service').html($result.detail_service['price_service']);
+                 if($result.detail_service == null)
+                 {
+                     $('.name_service').html('Dịch vụ này không còn hoạt động');
+                     $('.price_service').html('Dịch vụ này không còn hoạt động');
+
+                 }else {
+                     $('.name_service').html($result.detail_service['name_service']);
+                     $('.price_service').html($result.detail_service['price_service']);
+                 }
                  $('.date_booking').html($result.date_booking);
                  $('.time_booking').html($result.time_booking);
                  $('.staff_name').html($result.detail_staff['name']);

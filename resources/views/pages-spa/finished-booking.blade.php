@@ -58,8 +58,12 @@
                                         </div>
                                         <div class="mg-list-caption">
                                             <h4 class="mg-title">Tên khách: {{ $book->userBook['name'] }}</h4>
+                                            @if($book->detailService == null)
+                                                <span class="mg-subtitle text-danger">Dịch vụ dừng hoạt động</span>
+                                            @else
                                             <span class="mg-subtitle">Tên dịch vụ: {{ $book->detailService['name_service'] }}
                                                     - Giá: {{ $book->detailService['price_service'] }}</span>
+                                            @endif
                                             <span>Ngày đặt lịch: {{ date('d-m-Y', strtotime($book->date_booking)) }}
                                                     - Ca: {{ $book->time_booking }}
                                                 </span>

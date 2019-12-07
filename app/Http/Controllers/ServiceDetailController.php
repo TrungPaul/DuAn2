@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\DetailServiceRequest;
 use App\Services\UploadImageService;
 use Illuminate\Http\Request;
 use App\User;
@@ -16,10 +17,19 @@ class ServiceDetailController extends Controller
         $this->uploadService = $uploadService;
     }
 
-    public function index()
+    public function index(Request $request)
     {
+        $key = $request->keyword;
         $idSpa = Auth::guard('spa')->user()->id;
-        $service = ServiceDetail::where('spa_id', $idSpa)->paginate(6);
+        if (!$request->has('keyword') || empty($key)) {
+            $service = ServiceDetail::where('spa_id', $idSpa)->orderBy('id', 'DESC')->paginate(5);
+        } else {
+            $service = ServiceDetail::where([
+                ['spa_id', $idSpa],
+                ['name_service', 'like', "%$key%"]
+            ])->orderBy('id', 'DESC')->paginate(5);
+            $service->withPath("spa/service-detail/?keyword=$key");
+        }
 
         return view('pages-spa.ListServiceDetail', compact('service'));
     }
@@ -28,28 +38,22 @@ class ServiceDetailController extends Controller
     {
         ServiceDetail::where('id', $id)->delete();
 
-        return $this->index(Auth::user()->id);
+        return redirect()->route('list-serviceDetail')->with('destroy', 'Xóa dịch vụ thành công');
     }
 
-    public function getAdd($spaId)
+    public function getAdd()
     {
-        $service = Service::where('spa_id', $spaId)->get();
+        $service = Service::all();
 
         return view('pages-spa.addServiceDetail', compact('spaId', 'service'));
     }
 
-    public function postAddServiceDetail(Request $request)
+    public function postAddServiceDetail(DetailServiceRequest $request)
     {
-        $this->validate($request, [
-            'name_service' => 'required',
-            'spa_id' => 'required',
-            'service_id' => 'required',
-            'price_service' => 'required',
-            'discount' => 'nullable',
-            'detail_service' => 'required',
-            'image_service' => 'required'
-        ]);
+
         $serviceDetail = new ServiceDetail();
+        $request['spa_id'] = $idSpa = Auth::guard('spa')->user()->id;
+        $request['image_service'] = 'face.jpg';
         $serviceDetail->fill($request->all());
         if ($request->hasFile('image_service')) {
             $avatar = $request->image_service;
@@ -57,36 +61,27 @@ class ServiceDetailController extends Controller
         }
         $serviceDetail->save();
 
-        return $this->index($request->spa_id);
+        return redirect()->route('list-serviceDetail')->with('create', 'Thêm dịch vụ thành công');
     }
 
     public function getUpdate($id)
     {
-        $service = ServiceDetail::where('id', $id)->get();
+        $ser = ServiceDetail::find($id);
+        $service = Service::all();
 
-        return view('pages-spa.updateServiceDetail', compact('service'));
+        return view('pages-spa.updateServiceDetail', compact('ser', 'service'));
     }
 
-    public function update(Request $request, $id)
+    public function update(DetailServiceRequest $request, $id)
     {
-        $this->validate($request, [
-            'name_service' => 'required',
-            'spa_id' => 'required',
-            'service_id' => 'required',
-            'price_service' => 'required',
-            'discount' => 'nullable',
-            'detail_service' => 'required',
-            'image_service' => 'nullable'
-        ]);
         $serviceDetail = ServiceDetail::find($id);
         $serviceDetail->fill($request->all());
-        $serviceDetail->spa_id = Auth::user()->id;
         if ($request->hasFile('image_service')) {
             $avatar = $request->image_service;
             $serviceDetail->image_service = $this->uploadService->uploadFile($avatar);
         }
         $serviceDetail->update();
 
-        return $this->index($serviceDetail->spa_id);
+        return redirect()->route('list-serviceDetail')->with('update', 'Sửa đổi dịch vụ thành công');
     }
 }

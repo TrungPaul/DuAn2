@@ -16,4 +16,9 @@ class ServiceDetail extends Model
         'detail_service',
         'image_service'
     ];
+
+    public function cateService()
+    {
+        return $this->belongsTo(Service::class, 'service_id', 'id');
+    }
 }

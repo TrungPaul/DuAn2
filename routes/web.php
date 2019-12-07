@@ -74,16 +74,17 @@ Route::group(['middleware' => 'auth:spa'], function () {
         //change pass
         Route::get('change-password', 'SpaController@changePass')->name('change-pass');
         Route::post('change-password', 'SpaController@postChangePass');
-    });
-        //service- detail
-        Route::post('booking/add', 'BookingOfUserController@addBooking')->name('add-booking');
-        Route::get('service-detail', 'ServiceDetailController@index')->name('list-serviceDetail');
-        Route::post('service-detail/update/{id}', 'ServiceDetailController@update')->name('update-serviceDetail');
-        Route::get('service-detail/getupdate/{id}', 'ServiceDetailController@getUpdate')->name('get-update-serviceDetail');
-        Route::get('service-detail/getadd/{spaId}', 'ServiceDetailController@getAdd')->name('getAdd-serviceDetail');
-        Route::get('service-detail/delete/{id}', 'ServiceDetailController@destroy')->name('destroy-serviceDetail');
-        Route::post('service-detail/add', 'ServiceDetailController@postAddServiceDetail')->name('add-serviceDetail');
 
+        Route::post('booking/add', 'BookingOfUserController@addBooking')->name('add-booking');
+        //service- detail
+        Route::get('service-detail', 'ServiceDetailController@index')->name('list-serviceDetail');
+        Route::post('service-detail/{id}', 'ServiceDetailController@update')->name('update-serviceDetail');
+        Route::get('service-detail/{id}', 'ServiceDetailController@getUpdate')->name('get-update-serviceDetail');
+        Route::get('add-service-detail', 'ServiceDetailController@getAdd')->name('getAdd');
+        Route::post('add-service-detail', 'ServiceDetailController@postAddServiceDetail');
+        Route::get('service-detail/delete/{id}', 'ServiceDetailController@destroy')->name('destroy-serviceDetail');
+
+    });
 });
 
 //comment
