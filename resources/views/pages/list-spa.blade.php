@@ -51,26 +51,33 @@
                     </div>
                 </div>
                 <div class="col-md-9">
-                    @foreach($result as $key => $spa)
-                        <div class="beautypress-single-new-pricing-wraper active">
-                            <div
-                                class="beautypress-single-new-pricing beautypress-watermark-icon beautypress-pricing-header beautypress-pricing-content">
-                                <a href="{{ route('detail-spa',[$spa->id]) }}"><img src="images/spas/{{ $spa->image }}" class="w3-round"></a>
-                            </div><!-- .beautypress-single-new-pricing END -->
-                            <div class="beautypress-single-new-pricing beautypress-pricing-content">
-                                <ul class="beautypress-both-side-list beautypress-version-3">
-                                    <li><a href="{{ route('detail-spa',[$spa->id]) }}"><h3 class="text-dark">{{ $spa->name }}</h3></a></li>
-                                    <hr>
-                                    <li>Email: {{ $spa->email }}</li>
-                                    <li>Số điện thoại: {{ $spa->phone }}</li>
-                                    <li>Địa chỉ: {{ $spa->location }}, {{ $spa->city->name }} </li>
-                                </ul>
-                            </div><!-- .beautypress-single-new-pricing END -->
-                            <a href="{{ route('user.getbook', $spa->id ) }}" class="beautypress-single-new-pricing beautypress-pricing-footer">
-                                <h3>Đặt lịch</h3>
-                            </a><!-- .beautypress-single-new-pricing END -->
-                        </div>
-                    @endforeach
+                    @if (count($result) > 0)
+                        @foreach($result as $key => $spa)
+                            <div class="beautypress-single-new-pricing-wraper active">
+                                <div
+                                    class="beautypress-single-new-pricing beautypress-watermark-icon beautypress-pricing-header beautypress-pricing-content">
+                                    <a href="{{ route('detail-spa',[$spa->id]) }}"><img
+                                            src="images/spas/{{ $spa->image }}" class="w3-round"></a>
+                                </div><!-- .beautypress-single-new-pricing END -->
+                                <div class="beautypress-single-new-pricing beautypress-pricing-content">
+                                    <ul class="beautypress-both-side-list beautypress-version-3">
+                                        <li><a href="{{ route('detail-spa',[$spa->id]) }}"><h3
+                                                    class="text-dark">{{ $spa->name }}</h3></a></li>
+                                        <hr>
+                                        <li>Email: {{ $spa->email }}</li>
+                                        <li>Số điện thoại: {{ $spa->phone }}</li>
+                                        <li>Địa chỉ: {{ $spa->location }}, {{ $spa->city->name }} </li>
+                                    </ul>
+                                </div><!-- .beautypress-single-new-pricing END -->
+                                <a href="{{ route('user.getbook', $spa->id ) }}"
+                                   class="beautypress-single-new-pricing beautypress-pricing-footer">
+                                    <h3>Đặt lịch</h3>
+                                </a><!-- .beautypress-single-new-pricing END -->
+                            </div>
+                        @endforeach
+                    @else
+                    <h4 class="text-center text-danger">Không có Spa nào</h4>
+                    @endif
                     <div class="d-flex justify-content-center">{{ $result->links() }}</div>
 
                 </div>

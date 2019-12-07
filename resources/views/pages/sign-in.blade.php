@@ -8,6 +8,8 @@
             </div>
             <div class="card-body">
                 @if(isset($create_user))<h4 class="text-success">{{ $create_user }}</h4>@endif
+                @if(isset($erorrLogin))<span class="text-danger">{{ $erorrLogin }}</span>
+                @endif
                 <form action="{{ route('postLogin')}}" method="post">
                     @csrf
                     <div class="form-group mb-3">
