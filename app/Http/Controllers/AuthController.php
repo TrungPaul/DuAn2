@@ -28,7 +28,8 @@ class AuthController extends Controller
         if ($checklogin) {
             return redirect()->route('home');
         } else {
-            return redirect()->route('login');
+            $erorrLogin = 'Email hoặc mật khẩu không đúng';
+            return view('pages.sign-in', compact('erorrLogin'));
         }
     }
 
