@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\BookingOfUser;
 use App\Http\Requests\ChangePasswordRequests;
 use App\Http\Requests\ProfileSpaRequest;
 use App\Service;
 use App\ServiceDetail;
+use App\Staff;
 use Illuminate\Http\Request;
 use App\Spa;
 use App\Http\Requests\SpaRequest;
@@ -18,6 +20,7 @@ class SpaController extends Controller
     public function register()
     {
         $location = DB::table('locations')->get();
+
         return view('pages-spa.register', compact('location'));
     }
 
@@ -31,9 +34,11 @@ class SpaController extends Controller
         $data = $request->only(['email', 'password']);
         $checkLogin = Auth::guard('spa')->attempt($data);
         if ($checkLogin) {
+
             return view('pages-spa.spa', compact('checkLogin'));
         } else {
             $message = 'Mật khẩu hoặc email không chính xác';
+
             return view('pages-spa.login-spa', compact('message'));
         }
     }
@@ -51,6 +56,7 @@ class SpaController extends Controller
             $data->image = $filename;
         }
         $data->save();
+
         return redirect()->back()->with('message', 'Đăng ký thành công! chúng tôi sẽ liên hệ lại cho bạn trong thời gian sớm nhất!');
     }
 
@@ -68,6 +74,7 @@ class SpaController extends Controller
             ->when($locations, function ($query, $locations) {
                 return $query->where('city_id', $locations);
             })->with('listService')->orderBy('id', 'DESC')->paginate(6);
+
         return view('pages.list-spa', compact('result', 'location', 'service'));
     }
 
@@ -77,6 +84,7 @@ class SpaController extends Controller
         $service_one = ServiceDetail::where('spa_id', $id)->where('service_id', 1)->get();
         $service_two = ServiceDetail::where('spa_id', $id)->where('service_id', 2)->get();
         $service_three = ServiceDetail::where('spa_id', $id)->where('service_id', 3)->get();
+
         return view('pages.detail-spa', compact('detailSpa', 'service_one', 'service_two', 'service_three'));
     }
 
@@ -96,6 +104,7 @@ class SpaController extends Controller
         $data = $request->except('_token', 'id');
         $spa = Spa::find($idSpa);
         if (password_verify($request->password, $spa->password) == false) {
+
             return redirect()->route('change-pass')
                 ->with('errmsg', 'Mật khẩu cũ không chính xác');
         }

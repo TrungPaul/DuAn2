@@ -86,21 +86,30 @@ class BookingOfUserController extends Controller
     {
         $date_booking = $request->date;
         $service_id = $request->service_detail_id;
+        $staff_id = $request->staff;
         $idSpa = Auth::guard('spa')->user()->id;
+        $employee = Staff::where([
+            ['spa_id', $idSpa],
+            ['is_active', 1]
+        ])->get();
         // lấy ngày tháng năm hiện tại
         $today = date("Y/m/d");
         $choose_service = ServiceDetail::where('spa_id', $idSpa)->select('name_service', 'id')->get();
         $getData = BookingOfUser::where([
             ['spa_id', $idSpa],
             ['staff_id', '<>', 0],
-            ['date_booking', '>', $today]
+            ['date_booking', '>=', $today],
+            ['status', '<>', 0],
+            ['status', 1]
         ])->when($date_booking, function ($query, $date_booking) {
             return $query->where('date_booking', $date_booking);
+        })->when($staff_id, function ($query, $staff_id) {
+            return $query->where('staff_id', $staff_id);
         })->when($service_id, function ($query, $service_id) {
             return $query->where('service_detail_id', $service_id);
         })->orderBy('id', 'DESC')->with('detailService')->paginate(5);
 
-        return view('pages-spa.management-booking', compact('getData', 'choose_service'));
+        return view('pages-spa.management-booking', compact('getData', 'choose_service', 'employee'));
     }
 
     public function getDetailBooking($id)
@@ -121,7 +130,9 @@ class BookingOfUserController extends Controller
         $getData = BookingOfUser::where([
             ['spa_id', $idSpa],
             ['staff_id', '<>', 0],
-            ['date_booking', '<', $today]
+            ['date_booking', '<', $today],
+            ['status', '<>', 0],
+            ['status', 2]
         ])->when($date_booking, function ($query, $date_booking) {
             return $query->where('date_booking', $date_booking);
         })->when($service_id, function ($query, $service_id) {
@@ -133,8 +144,28 @@ class BookingOfUserController extends Controller
 
     public function cancelBooking($id)
     {
-        $cancel = BookingOfUser::where('id', $id)->update(['staff_id' => 0]);
+        $cancel = BookingOfUser::where('id', $id)
+            ->update(['status' => 0]);
 
         return back();
+    }
+
+    public function listCancelBooking(Request $request)
+    {
+        $date_booking = $request->date;
+        $service_id = $request->service_detail_id;
+        $idSpa = Auth::guard('spa')->user()->id;
+        // lấy ngày tháng năm hiện tại
+        $choose_service = ServiceDetail::where('spa_id', $idSpa)->select('name_service', 'id')->get();
+        $getData = BookingOfUser::where([
+            ['spa_id', $idSpa],
+            ['status', 0]
+        ])->when($date_booking, function ($query, $date_booking) {
+            return $query->where('date_booking', $date_booking);
+        })->when($service_id, function ($query, $service_id) {
+            return $query->where('service_detail_id', $service_id);
+        })->orderBy('id', 'DESC')->with('detailService')->paginate(5);
+
+        return view('pages-spa.list-cancel-booking', compact('getData', 'choose_service', 'today'));
     }
 }

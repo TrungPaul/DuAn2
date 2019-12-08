@@ -27,7 +27,6 @@ class StaffService implements StaffInterface
         }
 
         return $employee->save();
-
     }
 
     public function updateEmployee($id, $request)

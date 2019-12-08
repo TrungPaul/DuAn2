@@ -11,20 +11,29 @@
         </div>
         <ul class="nav dashboard-verticle-nav">
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('list-employee') }}"><i class="ti-file"></i>Quản lí nhân viên</a>
+                <a class="nav-link" href="{{ route('list-employee') }}">
+                    <i class="ti-file"></i>Quản lí nhân viên</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('management-booking') }}"><i class="ti-file"></i>Quản lí đặt lịch</a>
+                <a class="nav-link" href="{{ route('management-booking') }}">
+                    <i class="ti-file"></i>Quản lí đặt lịch</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('calendar-finish') }}"><i class="ti-file"></i>Lịch đã hoàn thành</a>
+                <a class="nav-link" href="{{ route('calendar-finish') }}">
+                    <i class="ti-file"></i>Lịch đã hoàn thành</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('list-serviceDetail') }}"><i class="ti-file"></i>Quản lí dịch vụ</a>
+                <a class="nav-link" href="{{ route('list-cancel-booking') }}">
+                    <i class="ti-file"></i>Lịch đã hủy
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('list-serviceDetail') }}">
+                    <i class="ti-file"></i>Quản lí dịch vụ<span class="text-danger"></span></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link active" href="{{ route('info-spa') }}">
-                    <i class="ti-user"></i>Thông tin cá nhân
+                    <i class="ti-user"></i>Thông tin
                 </a>
             </li>
             <li class="nav-item">

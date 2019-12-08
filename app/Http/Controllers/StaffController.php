@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 
 class StaffController extends Controller
 {
-    const STATUS_DEFAULT = 0;
+    const STATUS_DEFAULT = 1;
 
     public function __construct(StaffInterface $staffService)
     {
