@@ -19,7 +19,7 @@ class CreateStaffsTable extends Migration
             $table->string('avatar')->default('default-avatar.png');
             $table->string('gender');
             $table->integer('spa_id');
-            $table->integer('is_active')->default(0);
+            $table->integer('is_active')->default(1);
             $table->timestamps();
         });
     }

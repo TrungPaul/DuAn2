@@ -66,6 +66,7 @@ Route::group(['middleware' => 'auth:spa'], function () {
         Route::get('calendar-finish', 'BookingOfUserController@finishedBook')->name('calendar-finish');
         //hủy lịch booking của khách
         Route::get('cancel-booking/{id}', 'BookingOfUserController@cancelBooking')->name('cancel-booking');
+        Route::get('list-cancel-booking', 'BookingOfUserController@listCancelBooking')->name('list-cancel-booking');
         //service
         Route::get('service/{spaId}', 'ServiceController@index')->name('list-service');
         Route::get('service/delete/{serviceId}', 'ServiceController@destroy')->name('delete-service');

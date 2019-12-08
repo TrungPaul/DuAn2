@@ -48,6 +48,7 @@
                         </div>
                         <div class="col-md-12">
                             <!-- Single Manage job -->
+                            @if(count($getData) > 0)
                             @foreach($getData as $key => $book)
                                 <div class="manage-list">
 
@@ -89,6 +90,11 @@
                                     </div>
                                 </div>
                             @endforeach
+                            @else
+                                <div class="manage-list">
+                                    <h4 class="text-danger">Không có lịch</h4>
+                                </div>
+                            @endif
                             {{ $getData->links() }}
                         </div>
                     </div>

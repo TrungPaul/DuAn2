@@ -21,7 +21,7 @@ class StaffTableSeeder extends Seeder
                 'spa_id' => rand(1, 10),
                 'is_active' => 1,
                 'avatar' => 'image-seeder.jpg',
-                'gender' => 1,
+                'gender' => 'Nam',
             ]);
         }
     }

@@ -3,40 +3,22 @@
 
 @section('content')
     <div class="col-md-9 col-sm-12">
-        <!-- Tab panes -->
-        <!-- My Profile -->
         <div class="tab-pane active container" id="c-profile">
             <!-- Company Information -->
             <div class="tab-pane" id="manage-jobs">
                 <div class="tr-single-box">
-
                     <div class="tr-single-header">
-
-                        <h3><i class="ti-shift-right mr-2"></i> Danh sách đặt lịch</h3>
-
-
+                        <h3><i class="ti-shift-right mr-2"></i> Danh sách lịch đã hủy</h3>
                     </div>
                     <form class="search-big-form search-shadow">
                         <div class="row">
                             <form action="" method="get">
-                                <div class="col-lg-3 col-md-3 col-sm-12 p-0">
+                                <div class="col-lg-5 col-md-5 col-sm-12 p-0">
                                     <div class="form-group">
                                         <input type="date" name="date" class="form-control" placeholder="">
                                     </div>
                                 </div>
-                                <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                                    <div class="form-group">
-                                        <select id="" name="staff" class="js-states form-control"
-                                                placeholder="Chọn dịch vụ">
-                                            <option value="">Chọn nhân viên</option>
-                                            @foreach($employee as $staff)
-                                                <option
-                                                    value="{{ $staff->id}}">{{ $staff->name }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-4 col-sm-12 p-0">
+                                <div class="col-lg-5 col-md-5 col-sm-12 p-0">
                                     <div class="form-group">
                                         <select id="" name="service_detail_id" class="js-states form-control"
                                                 placeholder="Chọn dịch vụ">
@@ -70,13 +52,13 @@
                                                  alt=""/>
                                         </div>
                                         <div class="mg-list-caption">
-                                            <h4 class="mg-title">Tên khách: {{ $book->userBook['name'] }}
-                                                @if($book->detailService == null)
-                                                    <span class="mg-subtitle text-danger">Dịch vụ dừng hoạt động(*Vui lòng hủy lịch)</span>
-                                                @else
+                                            <h4 class="mg-title">Tên khách: {{ $book->userBook['name'] }}</h4>
+                                            @if($book->detailService == null)
+                                                <span class="mg-subtitle text-danger">Dịch vụ dừng hoạt động</span>
+                                            @else
                                             <span class="mg-subtitle">Tên dịch vụ: {{ $book->detailService['name_service'] }}
                                                     - Giá: {{ $book->detailService['price_service'] }}</span>
-                                                @endif
+                                            @endif
                                             <span>Ngày đặt lịch: {{ date('d-m-Y', strtotime($book->date_booking)) }}
                                                     - Ca: {{ $book->time_booking }}
                                                 </span>
@@ -84,7 +66,7 @@
                                     </div>
                                     <div class="mg-action">
                                         <div class="btn-group ml-2">
-                                            <a href="javascript:;"
+                                            <a href=""
                                                class="mg-edit edit detail-booking" title="Chi tiết"
                                                data-toggle="modal"
                                                data-target="#signup" data-id="{{ $book->id }}"><i
@@ -104,7 +86,7 @@
                             @endforeach
                             @else
                                 <div class="manage-list">
-                                    <h4 class="text-danger">Không có lịch trùng khớp</h4>
+                                    <h4 class="text-danger">Không có lịch</h4>
                                 </div>
                             @endif
                             {{ $getData->links() }}
