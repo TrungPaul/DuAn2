@@ -11,9 +11,21 @@ class UserTableSeeder extends Seeder
      */
     public function run()
     {
+        $usertest = [
+            'name' => 'Nam',
+            'email' => 'user@gmail.com',
+            'password' => Hash::make('123456'),
+            'phone_number' => '0393079176',
+            'date_of_birth' => now(),
+            'is_active' => 1,
+            'avatar' => 'default-avatar.png',
+            'gender' => 1,
+        ];
+        DB::table('users')->insert($usertest);
+
         $faker = Faker\Factory::create();
 
-        $limit = 10;
+        $limit = 30;
 
         for ($i = 0; $i < $limit; $i++) {
             DB::table('users')->insert([
@@ -22,7 +34,7 @@ class UserTableSeeder extends Seeder
                 'password' => Hash::make('123456'),
                 'phone_number' => '0393079176',
                 'date_of_birth' => now(),
-                'is_active' => 0,
+                'is_active' => 1,
                 'avatar' => 'image-seeder.jpg',
                 'gender' => 1,
             ]);
