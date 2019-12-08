@@ -21,5 +21,6 @@ class DatabaseSeeder extends Seeder
         $this->call(SpaTableSeeder::class);
         $this->call(TimeTableSeeder::class);
         $this->call(StaffTableSeeder::class);
+        $this->call(BookingOfUserTableSeeder::class);
     }
 }
