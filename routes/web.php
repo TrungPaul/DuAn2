@@ -34,8 +34,6 @@ Route::group(['namespace' => 'User'], function(){
 
     Route::get('change-password', 'HomeController@changePassword')->name('user.change-password');
     Route::post('change-password', 'HomeController@savePassword')->name('user.save-password');
-    Route::post('/booking', 'HomeController@book')->name('user.books');
-
 });
 
 Route::get('/sign-in', 'AuthController@getLogin')->name('login');

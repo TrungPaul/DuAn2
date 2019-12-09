@@ -29,7 +29,7 @@
                                 <h2>Đặt dịch vụ</h2>
                                 <div class="beautypress-select">
                                     <h5>Dịch vụ</h5>
-                                    <div class="beautypress-spilit-container">
+                                    <div class="beautypress-select">
                                         <div class="">
                                             <h5>Ngày</h5>
                                             <div class="input-group">
@@ -41,7 +41,22 @@
                                             @endif
                                         </div><!-- .beautypress-date-select END -->
                                     </div>
-                                    <button type="submit" class="btn btn-info btn-md full-width">Thêm mới<i
+                                    <div class="beautypress-select">
+                                        <div class="">
+                                            <h5>Nhân viên</h5>
+                                            <div class="input-group">
+                                                <select name="staff_id" id="appointment-service" class="form-control">
+                                                    @foreach($staff as $st)
+                                                        <option value="{{$st->id}}">{{$st->name}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                            @if( $errors->first('staff_id'))
+                                                <span class="text-danger">{{ $errors->first('staff_id')}}</span>
+                                            @endif
+                                        </div><!-- .beautypress-date-select END -->
+                                    </div>
+                                    <button type="submit" class="btn btn-info btn-md full-width">Tiếp theo<i
                                             class="ml-2 ti-arrow-right"></i></button>
                                 </div><!-- .beautypress-service-and-date END -->
                                 <!-- .beautypress-personal-information END --><!-- #beautypress-booking-form END -->
