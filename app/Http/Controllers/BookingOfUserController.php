@@ -21,7 +21,8 @@ class BookingOfUserController extends Controller
 
     public function getBook($spaId)
     {
-        return view('user.DateBook', compact('spaId'));
+        $staff = Staff::where('spa_id', $spaId)->get();
+        return view('user.DateBook', compact('spaId' , 'staff'));
     }
 
     public function book(Request $request, $spaId)
@@ -30,13 +31,13 @@ class BookingOfUserController extends Controller
             'date_booking' => 'required|after:today',
         ]);
         $data = $request->date_booking;
-        $staff = Staff::where('spa_id', $spaId)->get();
+        $staff_id = $request->staff_id ;
         $service = ServiceDetail::where('spa_id', $spaId)->get();
-        $serviceBeBook = BookingOfUser::where('spa_id', $spaId)->whereDate('date_booking', $request->date_booking)->pluck('time_booking');
+        $serviceBeBook = BookingOfUser::where('spa_id', $spaId)->where('staff_id', $staff_id)->whereDate('date_booking', $request->date_booking)->pluck('time_booking');
         $timeNotBook = Time::whereNotIn('id', $serviceBeBook)->get();
         $times = Time::all();
 
-        return view('user.booking', compact('times', 'service', 'staff', 'spaId', 'timeNotBook', 'data'));
+        return view('user.booking', compact('times', 'service', 'staff_id', 'spaId', 'timeNotBook', 'data'));
     }
 
     public function addBooking(Request $request, $spaId)
@@ -53,6 +54,10 @@ class BookingOfUserController extends Controller
         $booking = new BookingOfUser();
         $booking->fill($request->all());
         $booking->spa_id = $spaId;
+        if(Auth::user() != null) {
+
+            return $booking->user_id = Auth::user()->id;
+        }
         $name = $request->name;
         $email = $request->email;
         $spa = Spa::find($spaId);
@@ -74,8 +79,8 @@ class BookingOfUserController extends Controller
             Mail::send('mailbooking', [
                 'name' => $name,
                 'content' => $content,
-            ], function ($msg) {
-                $msg->to('trungnd.dev@gmail.com', 'Đặt dịch vụ')->subject('Đặt dịch vụ');
+            ], function ($msg) use ($email) {
+                $msg->to($email, 'Đặt dịch vụ')->subject('Đặt dịch vụ');
             });
 
             return redirect()->route('detail-spa', $spaId)->with('success', 'Đặt lịch thành công ');
