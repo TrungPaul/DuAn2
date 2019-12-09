@@ -50,6 +50,7 @@ class SpaRequest extends FormRequest
             'email.max' => "Email không quá 255 ký tự",
             'email.unique' => "Email đã tồn tại",
             'password.required' => "Mật khẩu không được để trống",
+            'password.min' => "Mật khẩu tối thiều 6 ký tự",
             'pwd.required' => "Không được để trống",
             'pwd.same' => "Mật khẩu không trùng khớp",
             'remember.required' => "Vui lòng cam đoan với chúng tôi"

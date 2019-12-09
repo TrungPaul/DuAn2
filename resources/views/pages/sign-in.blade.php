@@ -4,7 +4,7 @@
     <div class="center-sign">
         <div class="panel card-sign">
             <div class="card-title-sign mt-3 text-right">
-                <h2 class="title text-uppercase font-weight-bold m-0"><a href="{{route('home')}}">SpaTime</a></h2>
+                <h2 class="title text-uppercase font-weight-bold m-0">Đăng nhập - User</h2>
             </div>
             <div class="card-body">
                 @if(isset($create_user))<h4 class="text-success">{{ $create_user }}</h4>@endif
@@ -70,7 +70,7 @@
                             là Spa
                         </a>
                     </div>
-                    <p class="text-center">Bạn đã có tài khoản <a href="/sign-up">Đăng ký</a></p>
+                    <p class="text-center">Bạn đã có tài khoản <a class="text-primary" href="/sign-up">Đăng ký</a></p>
                 </form>
             </div>
         </div>

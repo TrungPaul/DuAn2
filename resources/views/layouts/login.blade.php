@@ -19,12 +19,15 @@
         <link rel="stylesheet" href="vendor/bootstrap-datepicker/css/bootstrap-datepicker3.css" /> -->
     <!-- Theme CSS -->
     <link rel="stylesheet" href="{{asset('assets/css/theme.css')}}"/>
+    <link rel="icon" type="image/png" href="assets/favicon.ico">
 </head>
 <body>
 <!-- start: page -->
-<section class="body-sign">
-    @yield('content')
-</section>
+<div class="backg">
+    <section class="body-sign">
+        @yield('content')
+    </section>
+</div>
 @include ('layouts.bottom_assets')
 </body>
 <!-- Mirrored from preview.oklerthemes.com/porto-admin/2.2.0/pages-signin.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 09 Aug 2019 04:14:02 GMT -->

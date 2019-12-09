@@ -30,7 +30,7 @@
                     </div>
                     <div class="col-md-6 col-sm-12 col-xl-8">
                         <div id="sync1" class="beautypress-spilit-container">
-                            <img class="avatar-spa" src="images/spas/image-seeder.jpg" style="height:400px;">
+                            <img class="avatar-spa" src="images/spas/{{ $detailSpa->image }}" style="height:400px;">
                         </div>
                     </div>
                 </div>

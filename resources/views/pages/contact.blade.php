@@ -13,11 +13,11 @@
                                 <h2>Liên hệ</h2>
                             </div><!-- .beautypress-separetor-sub-heading END -->
                             <ul class="beautypress-icon-with-text">
-                                <li><i class="fa fa-map-marker"></i>121 King Street, Melbourne Victoria 3000 Australia
+                                <li><i class="fa fa-map-marker"></i>Số 15 Đông Quan, Cầu Giấy, Hà Nội
                                 </li>
-                                <li><i class="xsicon icon-phone3"></i>+91 00 00 00 00</li>
-                                <li><i class="xsicon icon-envelope5"></i>mail@domain.com</li>
-                                <li><i class="fa fa-facebook"></i>facebok.com/name</li>
+                                <li><i class="xsicon icon-phone3"></i>+84 374 969 474</li>
+                                <li><i class="xsicon icon-envelope5"></i>spatime@gmail.com</li>
+                                <!-- <li><i class="fa fa-facebook"></i>facebok.com/name</li> -->
                             </ul><!-- .beautypress-icon-with-text END -->
                         </div><!-- .beautypress-contact-details END -->
                     </div>
