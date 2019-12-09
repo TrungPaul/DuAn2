@@ -75,7 +75,7 @@
                                         <div class="btn-group ml-2">
                                             <a
                                                 href="javascript:;"
-                                                linkurl="{{ route('cancel-booking', $book->id) }}" data-target="#delete"
+                                                linkurl="{{ route('destroy-cancel-booking', $book->id) }}" data-target="#delete"
                                                 data-toggle="modal" class="mg-delete delete btn-remove"
                                                 data-id="{{ $book->id }}"
                                                 title="Xóa"><i
