@@ -154,6 +154,15 @@ class BookingOfUserController extends Controller
         return back();
     }
 
+     public function destroyCancelBooking($id)
+    {
+        $cancel = BookingOfUser::where('id', $id)
+            ->update(['status' => -1]);
+
+        return back();
+    }
+
+
     public function listCancelBooking(Request $request)
     {
         $date_booking = $request->date;
