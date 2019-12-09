@@ -25,11 +25,15 @@ class AuthController extends Controller
         $data = $request->only(['email', 'password']);
         // KIỂM TRA ĐĂNG NHẬP EMAIL VÀ PASSWWORD VỪA NHẬN
         $checklogin = Auth::attempt($data);
-        if ($checklogin) {
-            return redirect()->route('home');
-        } else {
+
+        if ($checklogin == false) {
             $erorrLogin = 'Email hoặc mật khẩu không đúng';
             return view('pages.sign-in', compact('erorrLogin'));
+        } elseif(Auth::user()->is_active == 0) {
+            $erorrLogin = 'Tài khoản của bạn không được kích hoạt';
+            return view('pages.sign-in', compact('erorrLogin'));
+        } else{
+            return redirect()->route('home');
         }
     }
 

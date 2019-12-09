@@ -14,6 +14,7 @@ use App\Http\Requests\SpaRequest;
 use App\Http\Requests\LoginUser;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class SpaController extends Controller
 {
@@ -32,14 +33,19 @@ class SpaController extends Controller
     public function postLoginSpa(LoginUser $request)
     {
         $data = $request->only(['email', 'password']);
-        $checkLogin = Auth::guard('spa')->attempt($data);
-        if ($checkLogin) {
 
-            return view('pages-spa.spa', compact('checkLogin'));
-        } else {
-            $message = 'Mật khẩu hoặc email không chính xác';
+        $checkLogin = Auth::guard('spa')->attempt($data);
+        if ($checkLogin == false) {
+            $message = 'Email hoặc mật khẩu không đúng';
 
             return view('pages-spa.login-spa', compact('message'));
+        } elseif (Auth::guard('spa')->user()->is_active == 0) {
+            $message = 'Vui lòng chờ kích hoạt tài khoản';
+
+            return view('pages-spa.login-spa', compact('message'));
+        } else {
+
+            return view('pages-spa.spa', compact('checkLogin'));
         }
     }
 
@@ -47,7 +53,7 @@ class SpaController extends Controller
     {
         $data = new Spa;
         $data->fill($request->all());
-        $data['password'] = bcrypt($data['password']);
+        $data['password'] = Hash::make($request->password);
         if ($request->hasFile('image')) {
             $oriFileName = $request->image->getClientOriginalName();
             $filename = str_replace(' ', '-', $oriFileName);
