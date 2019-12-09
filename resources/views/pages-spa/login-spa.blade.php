@@ -1,10 +1,10 @@
 @extends('layouts.login')
-@section('title', 'Đăng nhập khoản spa')
+@section('title', 'Đăng nhập tài khoản spa')
 @section('content')
     <div class="center-sign">
         <div class="panel card-sign">
             <div class="card-title-sign mt-3 text-right">
-                <h2 class="title text-uppercase font-weight-bold m-0"><a href="{{route('home')}}">Đăng nhập - Spa</a></h2>
+                <h2 class="title text-uppercase font-weight-bold m-0">Đăng nhập - Spa</h2>
             </div>
             <div class="card-body">
                 @if(isset($message))<span class="text-danger">{{ $message }}</span>
@@ -65,7 +65,7 @@
                     <div class="mb-1 text-center">
                         <img src="{{asset('assets/img/section-heading-separetor.png')}}" alt="" style="width:52%">
                     </div>
-                    <p class="text-center">Bạn muốn đăng ký để trở thành Spa trong hệ thống?<br> <a href="/sign-up-spa">Đăng ký</a></p>
+                    <p class="text-center">Bạn muốn đăng ký để trở thành Spa trong hệ thống?<br> <a class="text-primary" href="/sign-up-spa">Đăng ký</a></p>
                 </form>
             </div>
         </div>

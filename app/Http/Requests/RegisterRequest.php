@@ -30,7 +30,6 @@ class RegisterRequest extends FormRequest
             'password' => 'required|min:6',
             'pwd' => 'required|same:password',
             'gender' => ['required', Rule::in(['1', '2', '3'])],
-            'remember' =>'required'
         ];
     }
 
@@ -45,7 +44,6 @@ class RegisterRequest extends FormRequest
             'password.required' => "Không được để trống",
             'pwd.required' => "Không được để trống",
             'pwd.same' => "Mật khẩu không trùng khớp",
-            'remember.required' => "Vui lòng chấp nhận điều khoản của chúng tôi"
         ];
     }
 }

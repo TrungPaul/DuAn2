@@ -4,9 +4,10 @@
     <div class="center-sign">
         <div class="panel card-sign">
             <div class="card-title-sign mt-3 text-right">
-                <h2 class="title text-uppercase font-weight-bold m-0"><i class="fas fa-user mr-1"></i> Sign Up</h2>
+                <h2 class="title text-uppercase font-weight-bold m-0">Đăng ký - User</h2>
             </div>
             <div class="card-body">
+                <a class="text-primary h5" href="{{ url('/') }}">Trở về trang chủ</a><br><br>
                 <form action="{{ route('register') }}" method="POST" enctype="multipart/form-data" novalidate>
                     @csrf
                     <div class="form-group mb-3">
@@ -33,7 +34,7 @@
                                    value="{{ old('email') }}"/>
                             <span class="input-group-append">
                             <span class="input-group-text">
-                                <i class="fas fa-user"></i>
+                                <i class="fas fa-envelope"></i>
                             </span>
                         </span>
                         </div>
@@ -104,21 +105,6 @@
                         @endif
                     </div>
                     <br>
-                    <div class="row">
-                        <div class="col-sm-10">
-                            <div class="checkbox-custom checkbox-default">
-                                <div class="checkbox-custom checkbox-default">
-                                    <input id="RememberMe" name="remember" type="checkbox"/>
-                                    <label for="RememberMe"><a href="https://www.facebook.com/legal/terms"
-                                                               class="text-primary">Tôi đồng ý với các điều khoản sử
-                                            dụng</a></label>
-                                </div>
-                                @if($errors->first('remember'))
-                                    <span class="text-danger"> {{ $errors->first('remember') }} </span>
-                                @endif
-                            </div>
-                        </div>
-                    </div>
                     <div class="row">
                         <div class="col-sm-12 text-center">
                             <button type="submit" class="btn btn-primary mt-2 ">Đăng ký</button>
