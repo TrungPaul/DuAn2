@@ -39,7 +39,7 @@ class HomeController extends Controller
     {
         $this->userService->updateProfile($request);
 
-        return redirect()->route('user.profile');
+        return redirect()->route('user.profile')->with('success', 'Thay đổi thông tin thành công');
     }
 
     public function changePassword()
@@ -52,5 +52,20 @@ class HomeController extends Controller
         $this->userService->savePassword($request);
 
         return redirect()->route('user.profile');
+    }
+
+    public function listbooking()
+    {
+        return view('user.list_booking');
+    }
+
+    public function listbookingcancel()
+    {
+        return view('user.list_booking_cancel');
+    }
+
+    public function listbookingdone()
+    {
+        return view('user.list_booking_done');
     }
 }

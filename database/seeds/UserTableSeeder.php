@@ -35,7 +35,7 @@ class UserTableSeeder extends Seeder
                 'phone_number' => '0393079176',
                 'date_of_birth' => now(),
                 'is_active' => 1,
-                'avatar' => 'image-seeder.jpg',
+                'avatar' => 'default-avatar.png',
                 'gender' => 1,
             ]);
         }

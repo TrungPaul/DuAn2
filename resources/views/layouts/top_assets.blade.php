@@ -21,7 +21,7 @@
 <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
 
 <!--For Plugins external css-->
-<link rel="stylesheet" href="assets/css/plugins.css" />
+<link rel="stylesheet" href="assets/css/plugins.css"/>
 <!--Theme custom css -->
 <link rel="stylesheet" href="assets/css/style.css">
 <link rel="stylesheet" href="assets/css/toastr.min.css" >

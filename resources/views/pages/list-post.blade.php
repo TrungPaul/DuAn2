@@ -16,7 +16,7 @@
                                 <img src="images/posts/{{ $p->image }}">
                                 <div class="beautypress-newsfeed-header-content">
                                     <div class="beautypress-newsfeed-img">
-                                        <img src="images/{{ $p->user->avatar }}" alt="">
+                                        <img src="images/avatar/{{ $p->user->avatar }}" alt="">
                                         <a href="#">{{ $p->user->name }}</a>
                                     </div>
                                     <div class="beautypress-dates">

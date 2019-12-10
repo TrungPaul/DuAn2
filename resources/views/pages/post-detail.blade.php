@@ -12,7 +12,7 @@
 								<p>Danh mục: <strong>{{ $post->category->name }}</strong></p> 
 								<div class="beautypress-newsfeed-img">
 									<strong>Tác giả: </strong>&emsp;
-									<img src="images/{{ $post->user->avatar }}" alt="">
+									<img src="images/avatar/{{ $post->user->avatar }}" alt="">
 									{{ $post->user->name }}
 								</div>
 								{{ $post->created_at }} | <i class="fas fa-eye"></i> {{ $post->views }}
@@ -35,9 +35,9 @@
 										<div class="beautypress-single-replay">
 											<div class="beautypress-replayer-img">
 												@if (isset($cmt->avatar))
-													<img src="images/{{ $cmt->avatar }}" style="border-radius:100%;">
+													<img src="images/avatar/{{ $cmt->avatar }}" style="border-radius:100%;">
 												@else
-													<img src="https://www.alliancerehabmed.com/wp-content/uploads/icon-avatar-default.png" alt="">
+													<img src="images/avatar/default-avatar.png" alt="">
 												@endif
 											</div>
 											<div class="beautypress-replay-text">
@@ -64,9 +64,9 @@
 										<div class="beautypress-single-replay" style="margin-left:80px;">
 											<div class="beautypress-replayer-img">
 											@if (isset($rep->avatar))
-												<img src="images/{{ $rep->avatar }}" style="border-radius:100%;">
+												<img src="images/avatar/{{ $rep->avatar }}" style="border-radius:100%;">
 											@else
-												<img src="https://www.alliancerehabmed.com/wp-content/uploads/icon-avatar-default.png" alt="">
+												<img src="images/avatar/default-avatar.png" alt="">
 											@endif
 											</div>
 											<div class="beautypress-replay-text">
@@ -109,7 +109,7 @@
 													</div>
 													<div class="form-group">
 													@if (Auth::check())
-														<img src="images/{{ Auth::user()->avatar }}" width="50" height="50" style="border-radius:100%;"><br><br>
+														<img src="images/avatar/{{ Auth::user()->avatar }}" width="50" height="50" style="border-radius:100%;"><br><br>
 														<textarea name="reply_content" class="form-control mb-30"  id="r_massage" cols="30" placeholder="Nhập bình luận" rows="10">{{ old('content') }}</textarea>
 													@else 
 														<textarea name="reply_content" class="form-control mb-30"  id="r_massage" cols="30" placeholder="Nhập bình luận" rows="10">{{ old('content') }}</textarea>
@@ -163,7 +163,7 @@
 										<div class="form-group">
 											@if (Auth::check())
 												<div class="beautypress-newsfeed-img">
-													<img src="images/{{ Auth::user()->avatar }}" width="50">
+													<img src="images/avatar/{{ Auth::user()->avatar }}" width="50">
 												</div><br>
 												<textarea name="content" class="form-control mb-30"  id="r_massage" cols="30" placeholder="Nhập bình luận" rows="10">{{ old('content') }}</textarea>
 											@else 
