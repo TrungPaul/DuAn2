@@ -1,41 +1,63 @@
 @extends('layouts.index')
 @section('title', 'Thông tin cá nhân')
 @section('content')
-    <div class="container" style="margin-top: 5%; padding: 30px">
-        <div class="row">
-            <aside class="col-lg-3 column border-right">
-                @include('layouts.menu_bar')
-            </aside>
-            <div class="col-lg-9 column">
-                <div class="profile-title">
-                    <h3>Thông tin cá nhân</h3>
+<section class="tr-single-detail gray-bg mb-5" style="margin-top:170px">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    @include('layouts.menu_bar')
                 </div>
-                <div class="cand-single-user" style="margin-top: 10%">
-                    <div class="can-detail-s">
-                        <div class="cst"><img src="{{ Auth::user()->avatar }}" style="margin-top: 30%" alt=""></div>
+                
+                <div class="col-md-9">
+                    <div class="tr-single-header">
+                        <h2>Thông tin tài khoản</h2>
+                        <hr>
+                    </div>
+                    <div class="tr-single-body">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                <div class="form-group">
+                                    <label><b>Tên:</b> {{ Auth::user()->name }}</label>
+                                </div>
+                            </div>
 
-                       <div style="margin-top: 15%">
-                           <h3>{{ Auth::user()->name }}</h3>
-                           <P>
-                               Giới tính:
-                               @if ( Auth::user()->gender == $gender['gender_type_male'] )
-                                   Nam
-                               @elseif ( Auth::user()->gender == $gender['gender_type_female'] )
-                                   Nữ
-                               @else
-                                   Khác
-                               @endif
-                           </P>
-                           <p>Ngày Sinh: {{ Auth::user()->date_of_birth }}</p>
-                           <span>Số điện thoại: {{ Auth::user()->phone_number }}</span><br>
-                           <span>Email: {{ Auth::user()->email }}</span>
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                <div class="form-group">
+                                    <label><b>Email:</b> {{ Auth::user()->email }}</label>
+                                </div>
+                            </div>
 
-                       </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                <div class="form-group">
+                                    <label><b>Số điện thoại:</b> {{ Auth::user()->phone_number }}</label>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                <div class="form-group">
+                                    <label><b>Ngày sinh:</b> {{ Auth::user()->date_of_birth }}</label>
+                                    
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                <div class="form-group">
+                                    <label><b>Giới tính:</b>
+                                        @if ( Auth::user()->gender == $gender['gender_type_male'] )
+                                            Nam
+                                        @elseif ( Auth::user()->gender == $gender['gender_type_female'] )
+                                            Nữ
+                                        @else
+                                            Khác
+                                        @endif
+                                    </label>
+                                </div>
+                            </div>
+                            
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>>
-
-
+    </section>
 @endsection

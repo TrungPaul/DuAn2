@@ -5,14 +5,13 @@ use Illuminate\Http\Request;
 
 class UploadService
 {
-    public function uploadFile(Request $request)
+    public function uploadFile($avatar)
     {
+        $name = time() . '.' . $avatar->getClientOriginalExtension();
+        $destinationPath = public_path('/images/avatar');
+        $avatar->move($destinationPath, $name);
 
-        $filename = $request->avatar->getClientOriginalName();
-        $filename = str_replace(' ', '-', $filename);
-        $filename = uniqid() . '-' . $filename;
-
-        return $filename;
+        return $name;
     }
 
 }

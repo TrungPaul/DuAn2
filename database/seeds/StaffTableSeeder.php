@@ -27,7 +27,7 @@ class StaffTableSeeder extends Seeder
         for ($i = 0; $i < $limit; $i++) {
             DB::table('staffs')->insert([
                 'name' => $faker->name(),
-                'spa_id' => rand(1, 10),
+                'spa_id' => rand(1, 11),
                 'is_active' => 1,
                 'avatar' => 'image-seeder.jpg',
                 'gender' => 'Nam',

@@ -48,7 +48,7 @@
                             <li class="dropdown">
                                 <a href="#">Đăng ký</a>
                                 <div class="dropdown-content">
-                                    <p><a href="{{ url('sign-up') }}">Đăng ký tài khoản thuờng</a></p>
+                                    <p><a href="{{ url('sign-up') }}">Đăng ký tài khoản thường</a></p>
                                     <hr>
                                     <p><a href="{{ url('sign-up-spa') }}">Đăng ký tải khoản spa</a></p>
                                 </div>

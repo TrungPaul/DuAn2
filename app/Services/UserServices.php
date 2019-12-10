@@ -11,8 +11,6 @@ use App\Services\UploadService;
 
 class UserServices
 {
-    protected $uploadFile;
-
     public function __construct(UploadService $uploadFile)
     {
         $this->uploadFile = $uploadFile;
@@ -24,10 +22,7 @@ class UserServices
         $user->fill($request->all());
 
         if ($request->hasFile('avatar')) {
-
-            $path = $this->uploadFile->uploadFile($request);
-
-            $user->avatar = request()->avatar->move('images/avatar', $path);
+            $user->avatar = $this->uploadFile->uploadFile($request->avatar);
         }
 
         $user->save();

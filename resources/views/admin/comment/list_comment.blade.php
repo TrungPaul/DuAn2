@@ -35,18 +35,18 @@
                         <td>{{ $item->name}}</td>
                         <td>
                             @if (isset($item->user_id))
-                                <img src="../images/{{ $item->user->avatar }}" width="55;" height="55;" style="border-radius:100%; margin-left:auto; margin-right:auto; display:block" >
+                                <img src="../images/avatar/{{ $item->user->avatar }}" width="55;" height="55;" style="border-radius:100%; margin-left:auto; margin-right:auto; display:block" >
                             @else 
-                                <img src="https://www.hardiagedcare.com.au/wp-content/uploads/2019/02/default-avatar-profile-icon-vector-18942381.jpg" class="img-fluid">
+                                <img src="../images/avatar/default-avatar.png" class="img-fluid">
                             @endif
                         </td>
                         <td>{{ $item->content }}
                        <td>
                             @foreach($item->replies as $rep)
                                 @if (isset($rep->user_id))
-                                    <img src="../images/{{ $rep->user->avatar }}" width="42;" height="42;" style="border-radius:100%;">
+                                    <img src="../images/avatar/{{ $rep->user->avatar }}" width="42;" height="42;" style="border-radius:100%;">
                                 @else 
-                                    <img src="https://www.hardiagedcare.com.au/wp-content/uploads/2019/02/default-avatar-profile-icon-vector-18942381.jpg" width="50;" class="img-fluid">
+                                    <img src="../images/avatar/default-avatar.png" width="50;" class="img-fluid">
                                 @endif
                                 {{ $rep->name }}: <i style="font-size:13px;">{{ $rep->content }}</i>&emsp;
                                 <a 

@@ -16,5 +16,6 @@
 {{-- script --}}
 @include('layouts.script')
 @yield('script')
+@yield('alert')
 </body>
 </html>

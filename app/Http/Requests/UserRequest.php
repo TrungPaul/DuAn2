@@ -24,7 +24,7 @@ class UserRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|min:4',
+            'name' => 'required',
             'email' => 'bail|required|email|max:255',
             'avatar' => 'mimes:jpeg,png,jpg,gif,svg|max:2048',
             'phone_number' => 'required',
@@ -36,7 +36,6 @@ class UserRequest extends FormRequest
     public function messages(){
         return [
             'name.required'    => 'Tên của bạn không được để trống',
-            'name.min'    => 'Tên của bạn không được ít hơn 4 ký tự',
             'email.required' => "Không được để trống",
             'email.email'=> "Email không đúng định dạng",
             'email.max' => "Email không quá 255 ký tự",
