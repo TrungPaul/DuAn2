@@ -27,6 +27,7 @@
                             @csrf
                             <input type="hidden" name="action" value="send_appointment_form"/>
                             <input type="hidden" name="date_booking" value="{{$data}}"/>
+                            <input type="hidden" name="staff_id" value="{{$staff_id}}"/>
                             <div class="alert hidden" id="beautypress-form-msg"></div>
                             <div class="beautypress-service-and-date">
                                 <h2>Đặt dịch vụ</h2>
@@ -67,19 +68,7 @@
                                 </div>
                                <!-- .beautypress-select END -->
                                                                 <div class="beautypress-spilit-container">
-                                                                    <div class="">
-                                                                        <h5>Nhân viên</h5>
-                                                                        <div class="input-group">
-                                                                            <select name="staff_id" id="appointment-service" class="form-control">
-                                                                                @foreach($staff as $st)
-                                                                                    <option value="{{$st->id}}">{{$st->name}}</option>
-                                                                                @endforeach
-                                                                            </select>
-                                                                            @if( $errors->first('staff_id'))
-                                                                                <span class="text-danger">{{ $errors->first('staff_id')}}</span>
-                                                                            @endif
-                                                                        </div>
-                                                                    </div><!-- .beautypress-date-select END -->
+                                                                    <!-- .beautypress-date-select END -->
                                                                     <div class="beautypress-select">
                                                                         <h5>Thời gian còn trống</h5>
                                                                         <div class="input-group">
