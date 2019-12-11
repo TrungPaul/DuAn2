@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\ServiceDetail;
 use App\Spa;
+use App\User;
 use Illuminate\Http\Request;
 use App\Services\BookingOfUserService;
 use App\BookingOfUser;
@@ -44,7 +45,7 @@ class BookingOfUserController extends Controller
     {
         $this->validate($request, [
             'name' => 'required',
-            'email' => 'required',
+            'email' => 'required|email',
             'service_detail_id' => 'required',
             'date_booking' => 'required|after:today',
             'time_booking' => 'required',
@@ -55,8 +56,7 @@ class BookingOfUserController extends Controller
         $booking->fill($request->all());
         $booking->spa_id = $spaId;
         if(Auth::user() != null) {
-
-            return $booking->user_id = Auth::user()->id;
+             $booking->user_id = Auth::user()->id;
         }
         $name = $request->name;
         $email = $request->email;
@@ -148,8 +148,29 @@ class BookingOfUserController extends Controller
 
     public function cancelBooking($id)
     {
-        $cancel = BookingOfUser::where('id', $id)
+       $infoBooking = BookingOfUser::find($id);
+       if($infoBooking->user_id != null ) {
+          $user = User::find($infoBooking->user_id);
+          $email = $user->email;
+          $name = $user ->name;
+       }else{
+           $name = $infoBooking->name;
+           $email = $infoBooking->email;
+       }
+       $times = Time::find($infoBooking->time_booking);
+       $service = ServiceDetail::find($infoBooking->service_detail_id);
+       $spa = Spa::find($infoBooking->spa_id);
+       $content = "Dịch vụ" . " " . $service->name_service . " " . "bên spa" . " " . $spa->name . "vào lúc" . $times->time . " " . "ngày" . $infoBooking->time_booking . " " .  "đã bị hủy, cảm ơn bạn đã đặt dịch vụ bên spa";
+
+        BookingOfUser::where('id', $id)
             ->update(['status' => 0]);
+
+        Mail::send('mailbooking', [
+            'name' => $name,
+            'content' => $content,
+        ], function ($msg) use ($email) {
+            $msg->to($email, 'Hủy dịch vụ')->subject('Hủy dịch vụ');
+        });
 
         return back();
     }
