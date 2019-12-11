@@ -21,12 +21,10 @@ class AdminController extends Controller
     public function __construct(UserServices $userServices)
     {
         $this->userServices = $userServices;
-        // $this->middleware(Auth::user()->role, ['except' => ['admin.logout']]);
     }
 
     public function loginAdmin()
     {
-
         return view('admin.login_admin');
     }
 
@@ -37,12 +35,14 @@ class AdminController extends Controller
         $data = $request->only(['email', 'password']);
         // KIỂM TRA ĐĂNG NHẬP EMAIL VÀ PASSWWORD VỪA NHẬN
         $checklogin = Auth::attempt($data);
-        if (Auth::user()->role == $role['role_type_admin']) {
-
-            return redirect()->route('admin');
+        if ($checklogin == false) {
+            $message = 'Email hoặc mật khẩu không đúng';
+            return view('admin.login_admin', compact('message'));
+        } elseif (Auth::user()->role != $role['role_type_admin']) {
+            $message = 'Tài khoản của bạn không có quyền truy cập';
+            return view('admin.login_admin', compact('message'));
         } else {
-
-            return redirect()->route('admin.login');
+            return redirect()->route('admin');
         }
     }
 

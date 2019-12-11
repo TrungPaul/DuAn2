@@ -66,7 +66,7 @@
                     </a>
                 </li>
                 <li class="nav-item has-tree-view">
-                    <a href="" class="nav-link">
+                    <a href="{{ route('admin.logout') }}" class="nav-link">
                         <i class="nav-icon fas fa-sign-out-alt"></i>
                         <p>Đăng xuất</p>
                     </a>
