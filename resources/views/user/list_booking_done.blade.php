@@ -7,7 +7,7 @@
                 <div class="col-md-3">
                     @include('layouts.menu_bar')
                 </div>
-                
+
                 <div class="col-md-9">
                     <div class="tr-single-header">
                         <h2>Danh sách lịch đã hoàn thành</h2>
@@ -16,26 +16,21 @@
                     <form class="search-big-form search-shadow">
                         <div class="row">
                             <form action="" method="get">
-                                <div class="col-lg-3 col-md-3 col-sm-12 p-0">
+                                <div class="col-lg-5 col-md-5 col-sm-12 p-0">
                                     <div class="form-group">
-                                        <input type="date" name="date" class="form-control" placeholder="">
+                                        <input type="date"  name="date" class="form-control" placeholder="">
                                     </div>
                                 </div>
-                                <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                                    <div class="form-group">
-                                        <select id="" name="spa" class="js-states form-control"
-                                                placeholder="Chọn dịch vụ">
-                                            <option value="">Chọn spa</option>
-                                            <option>Spa 1</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-4 col-sm-12 p-0">
+
+                                <div class="col-lg-5 col-md-5 col-sm-12 p-0">
                                     <div class="form-group">
                                         <select id="select" name="service_detail_id" class="js-states form-control"
                                                 placeholder="Chọn dịch vụ">
                                             <option value="">Chọn dịch vụ</option>
-                                            <option value="">Dịch vụ 1</option>
+                                            @foreach($spa as $idService)
+                                                <option
+                                                    value="{{ $idService->service_detail_id}}">{{ $idService->detailService['name_service'] }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
@@ -46,46 +41,56 @@
                         </div>
                     </form>
                     <div class="tr-single-body">
-                        <div class="col-md-12">
-                            <!-- Single Manage job -->
-                                <div class="manage-list">
 
-                                    <div class="mg-list-wrap">
-                                        <div class="mg-list-thumb">
-                                            <img src="images/spas/tmv-xuan-huong.jpg" class="mx-auto"
-                                                 alt=""/>
-                                        </div>
-                                        <div class="mg-list-caption">
-                                            <h4 class="mg-title">Tên spa: Thẩm mỹ viện Con chó
-                                            <span class="mg-subtitle">Tên dịch vụ: Matxa cẳng
-                                                    - Giá: {{ number_format(12000000) }}</span>
-                                            <span>Ngày đặt lịch: 04/12/2019
-                                                    - Ca: 2 ( 9:00 Sáng )
+                        <div class="col-md-12">
+                            @if(count($getData) > 0)
+                                @foreach($getData as $key => $book)
+                                    <div class="manage-list">
+
+                                        <div class="mg-list-wrap">
+                                            <div class="mg-list-thumb">
+                                                <img src="images/spas/{{ $book->spaBook['image']  }}" class="mx-auto"
+                                                     alt=""/>
+                                            </div>
+                                            <div class="mg-list-caption">
+                                                <h4 class="mg-title">Tên Spa: {{ $book->spaBook['name'] }}</h4>
+                                                @if($book->detailService == null)
+                                                    <span class="mg-subtitle text-danger">Dịch vụ dừng hoạt động(*Vui lòng hủy lịch)</span>
+                                                @else
+                                                    <span class="mg-subtitle">Tên dịch vụ: {{ $book->detailService['name_service'] }}
+                                                    - Giá: {{ $book->detailService['price_service'] }}</span>
+                                                @endif
+                                                <span>Ngày đặt lịch: {{ date('d-m-Y', strtotime($book->date_booking)) }}
+                                                    - Ca: {{ $book->time_booking }}
                                                 </span>
+                                            </div>
+                                        </div>
+                                        <div class="mg-action">
+                                            <div class="btn-group ml-2">
+                                                <a href="javascript:;"
+                                                   class="mg-edit edit detail-booking-user" title="Chi tiết"
+                                                   data-toggle="modal"
+                                                   data-target="#signup" data-id="{{ $book->id }}"><i
+                                                        class="fas fa-eye"></i></a>
+                                            </div>
+                                            <div class="btn-group ml-2">
+                                                <a
+                                                    href="javascript:;"
+                                                    linkurl="{{ route('user-destroy-cancel-booking', $book->id) }}" data-target="#delete"
+                                                    data-toggle="modal" class="mg-delete delete btn-remove"
+                                                    data-id=""
+                                                    title="Xóa"><i
+                                                        class="fas fa-trash"></i></a>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="mg-action">
-                                        <div class="btn-group ml-2">
-                                            <a href="javascript:;"
-                                               class="mg-edit edit detail-booking" title="Chi tiết"
-                                               data-toggle="modal"
-                                               data-target="#signup" data-id=""><i
-                                                    class="fas fa-eye"></i></a>
-                                        </div>
-                                        <div class="btn-group ml-2">
-                                            <a
-                                                href="javascript:;"
-                                                linkurl="" data-target="#delete"
-                                                data-toggle="modal" class="mg-delete delete btn-remove"
-                                                data-id=""
-                                                title="Xóa"><i
-                                                    class="fas fa-trash"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- <div class="manage-list">
+                                @endforeach
+                            @else
+                                <div class="manage-list">
                                     <h4 class="text-danger">Không có lịch trùng khớp</h4>
-                                </div> -->
+                                </div>
+                            @endif
+                            {{ $getData->links() }}
                         </div>
                     </div>
                 </div>
@@ -110,15 +115,15 @@
                             <h6>Thông tin spa</h6>
                             <div class="form-group">
                                 <label class="text-dark">Tên spa:</label>
-                                <span class="name_guest"></span>
+                                <span class="name_spa"></span>
                             </div>
                             <div class="form-group">
                                 <label class="text-dark">Email:</label>
-                                <span class="email_guest"></span>
+                                <span class="email_spa"></span>
                             </div>
                             <div class="form-group">
                                 <label class="text-dark">Số điện thoại:</label>
-                                <span class="phone_guest"></span>
+                                <span class="phone_spa"></span>
                             </div>
                             <hr>
                             <h6>Thông tin dịch vụ</h6>

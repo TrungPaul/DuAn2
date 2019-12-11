@@ -70,7 +70,7 @@
                                                  alt=""/>
                                         </div>
                                         <div class="mg-list-caption">
-                                            <h4 class="mg-title">Tên khách: {{ $book->userBook['name'] }}
+                                            <h4 class="mg-title">Tên khách: {{ $book->userBook['name'] }}</h4>
                                                 @if($book->detailService == null)
                                                     <span class="mg-subtitle text-danger">Dịch vụ dừng hoạt động(*Vui lòng hủy lịch)</span>
                                                 @else
