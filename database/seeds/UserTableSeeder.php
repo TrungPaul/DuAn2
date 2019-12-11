@@ -20,6 +20,7 @@ class UserTableSeeder extends Seeder
             'is_active' => 1,
             'avatar' => 'default-avatar.png',
             'gender' => 1,
+            'role' => 100,
         ];
         DB::table('users')->insert($usertest);
 

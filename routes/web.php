@@ -114,7 +114,7 @@ Route::get('login-admin','AdminController@loginAdmin')->name('admin.login');
 Route::post('login-admin','AdminController@postLogin')->name('admin.post_login');
 Route::get('logout-admin','AdminController@logoutAdmin')->name('admin.logout');
 
-Route::group(['prefix' => 'admin'], function () {
+Route::group(['prefix' => 'admin', 'middleware' => 'checkadmin'], function () {
     Route::get('/', 'AdminController@count')->name('admin');
 
     // user
