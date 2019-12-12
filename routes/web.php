@@ -45,7 +45,6 @@ Route::group(['middleware' => 'auth'], function () {
         //hủy lịch booking của khách
         Route::get('user-cancel-booking/{id}', 'HomeController@cancelBooking')->name('user-cancel-booking');
         Route::get('user-destroy-cancel-booking/{id}', 'HomeController@destroyCancelBooking')->name('user-destroy-cancel-booking');
-
     });
 });
 
