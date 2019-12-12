@@ -93,6 +93,15 @@
                                     </div>
                                     <div class="mg-action">
                                         <div class="btn-group ml-2">
+                                            <a
+                                                href="javascript:;"
+                                                linkurldone="{{ route('complete-booking', $book->id) }}" data-target="#delete"
+                                                data-toggle="modal" class="mg-delete delete btn-done"
+                                                data-id="{{ $book->id }}"
+                                                title="Đã hoàn thành"><i
+                                                    class="ti-check"></i></a>
+                                        </div>
+                                        <div class="btn-group ml-2">
                                             <a href="javascript:;"
                                                class="mg-edit edit detail-booking" title="Chi tiết"
                                                data-toggle="modal"
@@ -216,7 +225,23 @@
             })
                 .then((willDelete) => {
                     if (willDelete) {
-                        window.location.href = $(this).attr('linkurl');
+                        window.location.href = $(this).attr('linkurldone');
+                    } else {
+                        swal("Cảm ơn bạn!");
+                    }
+                })
+        });
+        $('.btn-done').on('click', function () {
+            swal({
+                title: "Thông báo!",
+                text: "Bạn có chắc lịch này đã được hoàn thành",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        window.location.href = $(this).attr('linkurldone');
                     } else {
                         swal("Cảm ơn bạn!");
                     }
