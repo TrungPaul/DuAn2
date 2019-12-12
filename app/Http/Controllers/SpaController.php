@@ -15,6 +15,7 @@ use App\Http\Requests\LoginUser;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Mail;
 
 class SpaController extends Controller
 {
@@ -62,6 +63,13 @@ class SpaController extends Controller
             $data->image = $filename;
         }
         $data->save();
+        $content = "Có spa " . $request->name . ", " ."Email: " . $request->email . ", " . "Số điện thoại: " . $request->phone . " ";
+       
+        Mail::send('mailregisterspa', [
+            'content' => $content,
+        ], function ($msg){
+            $msg->to('trungmadridzz@gmail.com', 'Spa đăng ký tài khoản')->subject('Spa đăng ký tài khoản');
+        });
 
         return redirect()->back()->with('message', 'Đăng ký thành công! chúng tôi sẽ liên hệ lại cho bạn trong thời gian sớm nhất!');
     }
