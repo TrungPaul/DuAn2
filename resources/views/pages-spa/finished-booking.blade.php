@@ -54,11 +54,20 @@
 
                                     <div class="mg-list-wrap">
                                         <div class="mg-list-thumb">
-                                            <img src="images/{{ $book->userBook['avatar']  }}" class="mx-auto"
-                                                 alt=""/>
+                                            @if($book->user_id == null)
+                                                <img src="images/avatar/default-avatar.png" class="mx-auto"
+                                                     alt=""/>
+                                            @else
+                                                <img src="images/avatar/{{ $book->userBook['avatar']  }}" class="mx-auto"
+                                                     alt=""/>
+                                            @endif
                                         </div>
                                         <div class="mg-list-caption">
-                                            <h4 class="mg-title">Tên khách: {{ $book->userBook['name'] }}</h4>
+                                            @if($book->user_id == null)
+                                                <h4 class="mg-title">Tên khách: {{ $book->name }}</h4>
+                                            @else
+                                                <h4 class="mg-title">Tên khách: {{ $book->userBook['name'] }}</h4>
+                                            @endif
                                             @if($book->detailService == null)
                                                 <span class="mg-subtitle text-danger">Dịch vụ dừng hoạt động</span>
                                             @else

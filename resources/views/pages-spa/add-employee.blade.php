@@ -62,7 +62,7 @@
                                 </div>
                                 <div class="col-lg-6 col-md-6col-sm-6" style="width: 150px; ">
                                     <div class="form-group">
-                                        <img id="showImage" src="images/default-avatar.png" width="150"
+                                        <img id="showImage" src="images/employee/default-avatar.png" width="150"
                                              style="margin-left: 30%;">
                                     </div>
                                 </div>
@@ -81,7 +81,7 @@
         img.onchange = function () {
             var anh = this.files[0];
             if (anh == undefined) {
-                document.querySelector('#showImage').src = "images/default-avatar.png";
+                document.querySelector('#showImage').src = "images/employee/default-avatar.png";
             } else {
                 getBase64(anh, '#showImage');
             }
