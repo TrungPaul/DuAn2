@@ -18,7 +18,7 @@
                     <div class="beautypress-welcome-content-group">
                         <div class="beautypress-welcome-container">
                             <div class="beautypress-welcome-wraper">
-                                <h3 class="color-white">Tóc đẹp hoàn hảo</h3>
+                                <h3 class="color-white">Sắc đẹp hoàn hảo</h3>
                             </div>
                         </div><!-- .beautypress-welcome-container END -->
                     </div><!-- .beautypress-welcome-content-group END -->

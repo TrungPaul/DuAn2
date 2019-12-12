@@ -134,7 +134,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkadmin'], function () {
     // spa
     Route::get('/spa', 'AdminController@listspa')->name('admin.listspa');
     Route::get('{spa}/edit-spa', 'AdminController@editspa')->name('admin.editspa');
-    Route::post('/update-spa', 'AdminController@updatespa')->name('admin.update_spa');
+    Route::post('/active-spa', 'AdminController@activespa')->name('admin.active_spa');
+    Route::post('/inactive-spa', 'AdminController@inactivespa')->name('admin.inactive_spa');
 
     //post
     Route::get('/post', 'PostController@show')->name('admin.listpost');
