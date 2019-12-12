@@ -50,8 +50,8 @@ class ContactController extends Controller
         Mail::send('mailreplycontact', [
             'name' => $name,
             'content' => $content,
-        ], function ($msg) {
-            $msg->to( 'hoangtvph06093@fpt.edu.vn', 'Hoàng')->subject('Phản hồi liên hệ');
+        ], function ($msg) use ($email){
+            $msg->to($email, 'Phản hồi liên hệ')->subject('Phản hồi liên hệ');
         });
         return redirect()->route('admin.listcontact')->with('message_reply', 'Phản hồi liên hệ thành công!');
     }

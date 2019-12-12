@@ -58,7 +58,7 @@ class AdminController extends Controller
     {
         $gender = Config::get('spa');
         $user = $this->userServices->listuser();
-
+        
         return view('admin.list_user', compact('user', 'gender'));
     }
 

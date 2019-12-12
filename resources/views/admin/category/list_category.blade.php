@@ -1,11 +1,11 @@
 @extends('admin.layouts.main')
-@section('title', 'Dánh sách bài viết')
-@section('titlePage', 'Quản lí bài viết')
+@section('title', 'Danh mục bài viết')
+@section('titlePage', 'Quản lí danh mục')
 @section('content')
     <div class="card">
         <div class="card-header">
             <h3 class="card-title">
-                Danh sách bài viết
+                Danh mục bài viết
             </h3>
         </div>
         @if(session()->has('message_add'))
@@ -23,23 +23,15 @@
                 {{ session()->get('message_delete') }}
             </div>
         @endif
-        @if(session()->has('message_change_status'))
-            <div class="text-center alert alert-success rounded-0">
-                {{ session()->get('message_change_status') }}
-            </div>
-        @endif
         <div class="card-body">
             <table id="example" class="table table-bordered">
                 <thead>
                 <tr>
-                    <th>ID </th>
-                    <th width="200">Ảnh </th>
-                    <th>Tiêu đề </th>
-                    <th>Mô tả </th>
-                    <th>Trạng thái </th>
-                    <th style="width: 150px;">
+                    <th width="50px">ID </th>
+                    <th>Name </th>
+                    <th width="120">
                         <a 
-                        href="{{ route('admin.addpost')}}" 
+                        href="{{ route('admin.addcate')}}" 
                         class="btn btn-sm btn-success">
                         <i class="fa fa-plus"></i>  Thêm
                         </a>
@@ -47,29 +39,22 @@
                 </tr>
                 </thead>
                 <tbody>
-                @foreach ( $posts as $item)
+                @foreach ( $cate as $item)
                     <tr>
                         <td>{{ $item->id}}</td>
-                        <td><img src="../images/posts/{{ $item->image }}" class="img-fluid"></td>
-                        <td>{{ $item->title}}</td>
-                        <td>{{ $item->description }}</td>
-                        @if ($item->status == 0)
-                            <td>Chờ duyệt</td>
-                        @else
-                            <td>Đã duyệt</td>
-                        @endif
+                        <td>{{ $item->name }}</td>
                         <td>
                             <a 
-                                href="{{route('admin.editpost', $item->id)}}"
+                                href="{{route('admin.editcate', $item->id)}}"
                                 class="btn btn-sm btn-primary">
                                 <i class="fas fa-pencil-alt"></i>  Sửa
                             </a>
                             <a 
                                 href="javascript:;" 
-                                linkurl="{{route('admin.deletepost', $item->id)}}" 
+                                linkurl="{{route('admin.deletecate', $item->id)}}" 
                                 class="btn btn-sm btn-danger btn-remove">
                                 <i class="fa fa-trash"></i>  Xoá
-                            </a>
+                            </a> 
                         </td>
                     </tr>
                 @endforeach
@@ -81,7 +66,7 @@
     <script>
          $('.btn-remove').on('click', function(){
             var url = $(this).attr('linkurl');
-            var conf = confirm('Bạn có chắc muốn xoá bài viết này không?');
+            var conf = confirm('Bạn có chắc muốn xoá danh mục này không?');
             if(conf){
                 window.location.href = url;
             }

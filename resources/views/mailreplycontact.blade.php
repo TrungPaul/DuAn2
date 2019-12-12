@@ -1,4 +1,4 @@
-Xin chào, <b>{{ $name }}</b>
+Xin chào <b>{{ $name }}</b>,
 <p>
     Chúc <b>{{ $name }}</b> một ngày tốt lành!
 </p>

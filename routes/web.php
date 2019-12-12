@@ -147,5 +147,13 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkadmin'], function () {
     Route::get('contact/{id}/reply', 'ContactController@reply')->name('admin.replycontact');
     Route::post('contact/send_reply', 'ContactController@send_reply')->name('admin.sendreplycontact');
     Route::get('contact/{id}/delete', 'ContactController@delete')->name('admin.deletecontact');
+
+    //cateogry_post
+    Route::get('/category', 'CategoryController@show')->name('admin.listcate');
+    Route::get('category/add', 'CategoryController@add')->name('admin.addcate');
+    Route::post('create-category', 'CategoryController@create')->name('admin.create_cate');
+    Route::get('category/{id}/edit-category', 'CategoryController@edit')->name('admin.editcate');
+    Route::post('update-category', 'CategoryController@update')->name('admin.update_cate');
+    Route::get('category/{id}/delete', 'CategoryController@delete')->name('admin.deletecate');
 });
 // End Admin

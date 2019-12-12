@@ -1,17 +1,11 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="{{route('admin')}}" class="brand-link">
-        <h4 class="brand-text font-weight-light">Admin SpaTime</h4>
+        <h4 class="brand-text font-weight-light text-uppercase">Admin SpaTime</h4>
     </a>
 
     <!-- Sidebar -->
     <div class="sidebar">
-        <!-- Sidebar user (optional) -->
-        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-            <div class="info">
-                <a href="#" class="d-block">Admin</a>
-            </div>
-        </div>
 
         <!-- Sidebar Menu -->
         <nav class="mt-2">
@@ -24,16 +18,22 @@
                         <p>Trang chủ</p>
                     </a>
                 </li>
-                <li class="nav-item has-tree-view">
+                <!-- <li class="nav-item has-tree-view">
                 <a href="" class="nav-link">
                         <i class="nav-icon fas fa-th"></i>
                         <p>Dịch vụ</p>
+                    </a>
+                </li> -->
+                <li class="nav-item has-tree-view">
+                    <a href="{{ route('admin.listcate')}}" class="nav-link">
+                        <i class="nav-icon fas fa-list"></i>
+                        <p>Danh mục bài viết</p>
                     </a>
                 </li>
                 <li class="nav-item has-tree-view">
                     <a href="{{ route('admin.listpost')}}" class="nav-link">
                         <i class="nav-icon fas fa-book"></i>
-                        <p>Bài Viết</p>
+                        <p>Bài viết</p>
                     </a>
                 </li>
                 <li class="nav-item has-tree-view">
@@ -44,13 +44,13 @@
                 </li>
                 <li class="nav-item has-treeview">
                 <a href="{{ route('admin.listuser')}}" class="nav-link">
-                        <i class="nav-icon fas fa-user"></i>
+                        <i class="nav-icon fas fa-users"></i>
                         <p>Thành Viên</p>
                     </a>
                 </li>
                 <li class="nav-item has-treeview">
                 <a href="{{ route('admin.listspa')}}" class="nav-link">
-                        <i class="nav-icon fas fa-user"></i>
+                        <i class="nav-icon fas fa-spa"></i>
                         <p>
                         Spa
                         </p>

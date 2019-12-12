@@ -20,6 +20,7 @@
                             @csrf
                             <div class="col-md-6">
                                 <div class="form-group">
+                                    <input type="hidden" name="user_id" value="{{ Auth::user()->id }}"> 
                                     <label>Tiêu đề</label>
                                     <input type="text" name="title" class="form-control @error('title') is-invalid @enderror" value="{{ old('title') }}"> 
                                     @error('title')

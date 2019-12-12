@@ -16,8 +16,7 @@ class Admin
      */
     public function handle($request, Closure $next)
     {
-        if(Auth::check())
-        {
+        if(Auth::check() && Auth::user()->role == 100){
             return $next($request);
         } else{
             return redirect('login-admin');
