@@ -37,4 +37,9 @@ class BookingOfUser extends Model
     {
         return $this->belongsTo(Staff::class, 'staff_id', 'id');
     }
+
+    public function spaBook()
+    {
+        return $this->belongsTo(Spa::class, 'spa_id', 'id');
+    }
 }

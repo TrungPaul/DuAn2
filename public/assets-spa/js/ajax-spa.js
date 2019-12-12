@@ -95,8 +95,47 @@ $(document).ready(function () {
                  }
                  $('.date_booking').html($result.date_booking);
                  $('.time_booking').html($result.time_booking);
-                 $('.staff_name').html($result.detail_staff['name']);
-                 $('.staff_gender').html($result.detail_staff['gender']);
+                if($result.detail_staff == null) {
+                    $('.staff_name').html('Nhân viên này đã nghỉ việc');
+                    $('.staff_gender').html('Nhân viên này đã nghỉ việc');
+                }else {
+                    $('.staff_name').html($result.detail_staff['name']);
+                    $('.staff_gender').html($result.detail_staff['gender']);
+                }
+            }
+        });
+    });
+
+
+    $('.detail-booking-user').click(function () {
+        let id = $(this).data('id');
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $.ajax({
+            url: '/management-booking/' + id,
+            dataType: 'json',
+            type: 'get',
+            success : function ($result) {
+                console.log($result);
+                $('.name_spa').html($result.spa_book["name"]);
+                $('.email_spa').html($result.spa_book["email"]);
+                $('.phone_spa').html($result.spa_book["phone"]);
+                if($result.detail_service == null)
+                {
+                    $('.name_service').html('Dịch vụ này không còn hoạt động');
+                    $('.price_service').html('Dịch vụ này không còn hoạt động');
+
+                }else {
+                    $('.name_service').html($result.detail_service['name_service']);
+                    $('.price_service').html($result.detail_service['price_service']);
+                }
+                $('.date_booking').html($result.date_booking);
+                $('.time_booking').html($result.time_booking);
+                $('.staff_name').html($result.detail_staff['name']);
+                $('.staff_gender').html($result.detail_staff['gender']);
             }
         });
     });

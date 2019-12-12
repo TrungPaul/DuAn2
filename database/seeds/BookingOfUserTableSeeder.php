@@ -22,5 +22,16 @@ class BookingOfUserTableSeeder extends Seeder
                 'status' => rand(0, 2)
             ]);
         }
+        for ($i = 0; $i < 20; $i++) {
+            DB::table('booking_of_user')->insert([
+                'user_id' => 1,
+                'spa_id' => 1,
+                'date_booking' => now(),
+                'time_booking' => rand(1, 6),
+                'staff_id' => rand(0, 10),
+                'service_detail_id' => rand(1, 5),
+                'status' => rand(0, 2)
+            ]);
+        }
     }
 }

@@ -26,18 +26,27 @@ Route::get('lien-he', 'ContactController@index')->name('view_contact');
 Route::get('/getbooking/{spaId}', 'BookingOfUserController@getBook')->name('user.getbook');
 Route::post('/booking/{spaId}', 'BookingOfUserController@book')->name('user.book');
 Route::post('/booking/{spaId}/add', 'BookingOfUserController@addBooking')->name('user.booking');
-Route::group(['namespace' => 'User'], function(){
-    Route::get('/thong-tin', 'HomeController@profile')->name('user.profile');
 
-    Route::get('/edit-profile', 'HomeController@editprofile')->name('user.edit-profile');
-    Route::post('/edit-profile', 'HomeController@updateprofile')->name('user.update-profile');
+Route::group(['middleware' => 'auth'], function () {
+    Route::group(['namespace' => 'User'], function () {
+        Route::get('/thong-tin', 'HomeController@profile')->name('user.profile');
 
-    Route::get('change-password', 'HomeController@changePassword')->name('user.change-password');
-    Route::post('change-password', 'HomeController@savePassword')->name('user.save-password');
+        Route::get('/edit-profile', 'HomeController@editprofile')->name('user.edit-profile');
+        Route::post('/edit-profile', 'HomeController@updateprofile')->name('user.update-profile');
 
-    Route::get('list-booking', 'HomeController@listbooking')->name('user.list-booking');
-    Route::get('list-booking-cancel', 'HomeController@listbookingcancel')->name('user.list-booking-cancel');
-    Route::get('list-booking-done', 'HomeController@listbookingdone')->name('user.list-booking-done');
+        Route::get('change-password', 'HomeController@changePassword')->name('user.change-password');
+        Route::post('change-password', 'HomeController@savePassword')->name('user.save-password');
+
+        Route::get('list-booking', 'HomeController@listbooking')->name('user.list-booking');
+        Route::get('list-booking-cancel', 'HomeController@listbookingcancel')->name('user.list-booking-cancel');
+        Route::get('list-booking-done', 'HomeController@listbookingdone')->name('user.list-booking-done');
+        //chi tiet lich dat
+        Route::get('management-booking/{id}', 'HomeController@getDetailBooking')->name('user-detail-booking');
+        //hủy lịch booking của khách
+        Route::get('user-cancel-booking/{id}', 'HomeController@cancelBooking')->name('user-cancel-booking');
+        Route::get('user-destroy-cancel-booking/{id}', 'HomeController@destroyCancelBooking')->name('user-destroy-cancel-booking');
+
+    });
 });
 
 Route::get('/sign-in', 'AuthController@getLogin')->name('login');
