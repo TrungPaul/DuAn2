@@ -66,11 +66,20 @@
 
                                     <div class="mg-list-wrap">
                                         <div class="mg-list-thumb">
-                                            <img src="images/{{ $book->userBook['avatar']  }}" class="mx-auto"
+                                            @if($book->user_id == null)
+                                                <img src="images/avatar/default-avatar.png" class="mx-auto"
+                                                     alt=""/>
+                                            @else
+                                            <img src="images/avatar/{{ $book->userBook['avatar']  }}" class="mx-auto"
                                                  alt=""/>
+                                            @endif
                                         </div>
                                         <div class="mg-list-caption">
+                                            @if($book->user_id == null)
+                                                <h4 class="mg-title">Tên khách: {{ $book->name }}</h4>
+                                            @else
                                             <h4 class="mg-title">Tên khách: {{ $book->userBook['name'] }}</h4>
+                                            @endif
                                                 @if($book->detailService == null)
                                                     <span class="mg-subtitle text-danger">Dịch vụ dừng hoạt động(*Vui lòng hủy lịch)</span>
                                                 @else
@@ -96,7 +105,7 @@
                                                 linkurl="{{ route('cancel-booking', $book->id) }}" data-target="#delete"
                                                 data-toggle="modal" class="mg-delete delete btn-remove"
                                                 data-id="{{ $book->id }}"
-                                                title="Xóa"><i
+                                                title="Hủy lịch"><i
                                                     class="ti-trash"></i></a>
                                         </div>
                                     </div>

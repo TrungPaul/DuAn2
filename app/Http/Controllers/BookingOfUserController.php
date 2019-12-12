@@ -112,7 +112,7 @@ class BookingOfUserController extends Controller
             return $query->where('staff_id', $staff_id);
         })->when($service_id, function ($query, $service_id) {
             return $query->where('service_detail_id', $service_id);
-        })->orderBy('id', 'DESC')->with('detailService')->paginate(5);
+        })->orderBy('id', 'DESC')->with('detailService')->paginate(10);
 
         return view('pages-spa.management-booking', compact('getData', 'choose_service', 'employee'));
     }
@@ -141,7 +141,7 @@ class BookingOfUserController extends Controller
             return $query->where('date_booking', $date_booking);
         })->when($service_id, function ($query, $service_id) {
             return $query->where('service_detail_id', $service_id);
-        })->orderBy('id', 'DESC')->with('detailService')->paginate(5);
+        })->orderBy('id', 'DESC')->with('detailService')->paginate(10);
 
         return view('pages-spa.finished-booking', compact('getData', 'choose_service', 'today'));
     }
@@ -198,7 +198,7 @@ class BookingOfUserController extends Controller
             return $query->where('date_booking', $date_booking);
         })->when($service_id, function ($query, $service_id) {
             return $query->where('service_detail_id', $service_id);
-        })->orderBy('id', 'DESC')->with('detailService')->paginate(5);
+        })->orderBy('id', 'DESC')->with('detailService')->paginate(10);
 
         return view('pages-spa.list-cancel-booking', compact('getData', 'choose_service', 'today'));
     }
