@@ -12,9 +12,6 @@
                         <img src="images/{{ $s->icon }}" alt="">
                         <div class="beautypress-our-features-content">
                             <h3>{{ $s->name_service }}</h3>
-                            <div class="xs-btn-wraper">
-                                <a href="#" class="xs-btn round-btn box-shadow-btn bg-color-purple">Chi tiết <span></span></a>
-                            </div>
                         </div>
                     </div><!-- .beautypress-single-our-feature END -->
                 </div>

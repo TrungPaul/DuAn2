@@ -1,4 +1,4 @@
-<title>@yield('title', 'SpaTime')</title>
+<title>@yield('title', 'Admin SpaTime')</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,3 +11,4 @@
 <link href="{{ asset('assets/css/summernote.css')}}" rel="stylesheet">
 <link href="{{ asset('assets/css/summernote-bs4.css')}}" rel="stylesheet">
 <link href="{{ asset('assets/css/summernote-lite.css')}}" rel="stylesheet">
+<link rel="icon" type="image/png" href="{{ asset('assets/favicon.ico')}}">

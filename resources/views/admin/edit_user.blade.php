@@ -15,16 +15,18 @@
                                     <input type="hidden" name="id" value="{{ $user->id }}">
                                 @endif
 
-                                <div class="form-group">
-                                    Họ Và Tên
-                                    <input type="text" class="form-control" value="{{ $user->name }}" name="name" readonly>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        Họ Và Tên
+                                        <input type="text" class="form-control" value="{{ $user->name }}" name="name" readonly>
+                                    </div>
 
+                                    <div class="form-group">
+                                        Email
+                                        <input type="text" class="form-control"  value="{{ $user->email }}" name="email" readonly>
+                                    </div>
                                 </div>
-
-                                <div class="form-group">
-                                   Email
-                                    <input type="text" class="form-control"  value="{{ $user->email }}" name="email" readonly>
-                                </div>
+                                   
 
 
                                     <div class="col-6">
@@ -51,15 +53,18 @@
                                         </div>
 
                                 </div>
-                                @if($user->is_active != $gender['user_type_inActive'])
-                                    <input type="hidden" name="is_active" value="0">
-                                    <button type="submit" class="btn btn-danger btn-sm">Chặn</button>
-                                @elseif($user->is_active != $gender['user_type_active'])
-                                    <input type="hidden" name="is_active" value="1">
-                                    <button type="submit" class="btn btn-success btn-sm">Thành viên</button>
-                                @else
-                                @endif
-                                <a href="{{ route('admin.listuser') }}" class="btn btn-warning btn-sm text-light btn-cancel"> Hủy </a>
+                                <div class="col-md-6 text-right">
+                                    @if($user->is_active != $gender['user_type_inActive'])
+                                        <input type="hidden" name="is_active" value="0">
+                                        <button type="submit" class="btn btn-danger btn-sm">Chặn</button>
+                                    @elseif($user->is_active != $gender['user_type_active'])
+                                        <input type="hidden" name="is_active" value="1">
+                                        <button type="submit" class="btn btn-success btn-sm">Thành viên</button>
+                                    @else
+                                    @endif
+                                    <a href="{{ route('admin.listuser') }}" class="btn btn-warning btn-sm text-light"> Hủy </a>
+                                </div>
+                                   
                             </form>
                         </div>
                     </div>
@@ -68,17 +73,4 @@
             </div>
         </div>
     </div>
-@section('script')
-<script>
-    $('.btn-cancel').on('click', function(){
-        swal({
-            text: "@lang('messages.errorPost')",
-            icon: "success",
-            button: true,
-            dangerMode: true,
-
-        });
-    });
-</script>
-@stop
 @endsection

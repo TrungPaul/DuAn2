@@ -9,24 +9,12 @@
 				<p> Thành viên</p>
 			</div>
 			<div class="icon">
-				<i class="fas fa-user-alt"></i></i>
+				<i class="fas fa-users"></i></i>
 			</div>
 			<a href="{{ route('admin.listuser')}}" class="small-box-footer">Xem thêm <i class="fas fa-arrow-circle-right"></i></a>
 		</div>
 	</div>
-	<div class="col-lg-3 col-6">
-		<!-- small box -->
-		<div class="small-box bg-success">
-			<div class="inner">
-            <h3>{{$service}}</h3>
-				<p> Dịch vụ</p>
-			</div>
-			<div class="icon">
-				<i class="fas fa-list-alt"></i>
-			</div>
-			<a href="" class="small-box-footer">Xem thêm <i class="fas fa-arrow-circle-right"></i></a>
-		</div>
-	</div>
+	
 	<div class="col-lg-3 col-6">
 		<!-- small box -->
 		<div class="small-box bg-primary">
@@ -48,7 +36,7 @@
 				<p>Spa</p>
 			</div>
 			<div class="icon">
-				<i class="fas fa-newspaper"></i>
+				<i class="fas fa-spa"></i>
 			</div>
 			<a href="{{ route('admin.listspa')}}" class="small-box-footer">Xem thêm <i class="fas fa-arrow-circle-right"></i></a>
 		</div>

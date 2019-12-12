@@ -12,17 +12,21 @@
             <table id="example" class="table table-bordered">
                 <thead>
                 <tr>
-                    <th># Tên </th>
+                    <th width="100px;">Ảnh </th>
+                    <th>Tên </th>
                     <th>Địa chỉ </th>
+                    <th>Email </th>
                     <th>Số điện thoại </th>
-                    <th>Trạng thái </th>
+                    <th style="width:95px;">Trạng thái </th>
                 </tr>
                 </thead>
                 <tbody>
                 @foreach ( $spa as $item)
                     <tr>
+                        <td><img src="../images/spas/{{ $item->image }}" class="img-fluid"></td>
                         <td>{{ $item->name}}</td>
                         <td>{{ $item->location}}</td>
+                        <td>{{ $item->email}}</td>
                         <td>{{ $item->phone}}</td>
                         <td>@if ( $item->is_active == $active['user_type_active'] )
                         <a href=" {{ route('admin.editspa', $item->id ) }}" class="btn btn-success btn-sm text-white">
@@ -30,7 +34,7 @@
                             </a>
                         @elseif ( $item->is_active == $active['user_type_inActive'] )
                         <a href="{{ route('admin.editspa', $item->id ) }}" class="btn btn-danger btn-sm text-white">
-                            Chặn
+                            Đã chặn
                         </a>
                         @endif</td>
                     </tr>

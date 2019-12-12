@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use App\Post;
 use App\Category;
 use App\Comment;
+use App\Reply;
 use App\Service;
 use App\Spa;
 use App\Http\Requests\PostRequest;
@@ -118,6 +119,7 @@ class PostController extends Controller
     }
     public function delete(Post $id)
     {
+        $delete_comment = Comment::where('post_id', '=', $id->id)->delete();
         $id->delete();
         return redirect()->back()->with('message_delete', 'Xoá bài viết thành công!');
     }

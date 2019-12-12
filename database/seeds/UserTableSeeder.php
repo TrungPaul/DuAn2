@@ -12,13 +12,13 @@ class UserTableSeeder extends Seeder
     public function run()
     {
         $usertest = [
-            'name' => 'Nam',
-            'email' => 'user@gmail.com',
+            'name' => 'Admin',
+            'email' => 'admin@gmail.com',
             'password' => Hash::make('123456'),
             'phone_number' => '0393079176',
             'date_of_birth' => now(),
             'is_active' => 1,
-            'avatar' => 'default-avatar.png',
+            'avatar' => 'admin.png',
             'gender' => 1,
             'role' => 100,
         ];
