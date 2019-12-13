@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UserRequest extends FormRequest
 {
@@ -25,7 +26,8 @@ class UserRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'email' => 'bail|required|email|max:255',
+            'email' =>['bail','required','email','max:255',
+                Rule::unique('users')->ignore($this->id)],
             'avatar' => 'mimes:jpeg,png,jpg,gif,svg|max:2048',
             'phone_number' => 'required',
             'date_of_birth' => 'required',

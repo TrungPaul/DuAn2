@@ -28,16 +28,24 @@ class CategoryController extends Controller
     {
         return view('admin.category.edit_category', ['cate' => $id]);
     }
-    public function update(CategoryRequest $request)
+    public function update(Request $request, $id)
     {
-        $cate = Category::find($request->id);
-        $cate->where('id', $request->id)->update([
+        $validatedData = $request->validate([
+            'name' =>'required|max:16|unique:categories,name,'.$id,
+        ],
+            [
+                'name.required'=>"Tên danh mục không được để trống",
+                'name.unique'=>"Tên danh mục đã tồn tại",
+            ]
+        );
+        $cate = Category::find($id);
+        $cate->where('id', $id)->update([
             'name' => $request->name,
         ]);
         $cate->save();
         return redirect()->route('admin.listcate')->with('message_edit', 'Sửa danh mục thành công!');
     }
-   
+
     public function delete(Category $id)
     {
         $delete_post = Post::where('cate_id', '=', $id->id)->delete();

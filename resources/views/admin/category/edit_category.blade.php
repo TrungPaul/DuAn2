@@ -16,13 +16,13 @@
                     </div>
 
                     <div class="tr-single-body">
-                        <form enctype="multipart/form-data" action="{{route('admin.update_cate')}}" method="post">
+                        <form enctype="multipart/form-data" action="{{route('admin.update_cate', $cate->id)}}" method="post">
                             @csrf
-                            <input type="hidden" name="id"  value="{{ $cate->id }}"> 
+{{--                            <input type="hidden" name="id"  value="{{ $cate->id }}">--}}
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Tên danh mục</label>
-                                    <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" value="{{ $cate->name }}"> 
+                                    <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" value="{{ $cate->name }}">
                                     @error('name')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
