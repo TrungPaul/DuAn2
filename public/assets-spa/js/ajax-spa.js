@@ -79,26 +79,31 @@ $(document).ready(function () {
             url: 'spa/management-booking/' + id,
             dataType: 'json',
             type: 'get',
-            success : function ($result) {
+            success: function ($result) {
                 console.log($result);
-                 $('.name_guest').html($result.user_book["name"]);
-                 $('.email_guest').html($result.user_book["email"]);
-                 $('.phone_guest').html($result.user_book["phone_number"]);
-                 if($result.detail_service == null)
-                 {
-                     $('.name_service').html('Dịch vụ này không còn hoạt động');
-                     $('.price_service').html('Dịch vụ này không còn hoạt động');
+                if ($result.user_book == null) {
+                    $('.name_guest').html($result.name);
+                    $('.email_guest').html($result.email);
 
-                 }else {
-                     $('.name_service').html($result.detail_service['name_service']);
-                     $('.price_service').html($result.detail_service['price_service']);
-                 }
-                 $('.date_booking').html($result.date_booking);
-                 $('.time_booking').html($result.time_booking);
-                if($result.detail_staff == null) {
+                } else {
+                    $('.name_guest').html($result.user_book["name"]);
+                    $('.email_guest').html($result.user_book["email"]);
+                    $('.phone_guest').html($result.user_book["phone_number"]);
+                }
+                if ($result.detail_service == null) {
+                    $('.name_service').html('Dịch vụ này không còn hoạt động');
+                    $('.price_service').html('Dịch vụ này không còn hoạt động');
+
+                } else {
+                    $('.name_service').html($result.detail_service['name_service']);
+                    $('.price_service').html($result.detail_service['price_service']);
+                }
+                $('.date_booking').html($result.date_booking);
+                $('.time_booking').html($result.time_booking);
+                if ($result.detail_staff == null) {
                     $('.staff_name').html('Nhân viên này đã nghỉ việc');
                     $('.staff_gender').html('Nhân viên này đã nghỉ việc');
-                }else {
+                } else {
                     $('.staff_name').html($result.detail_staff['name']);
                     $('.staff_gender').html($result.detail_staff['gender']);
                 }
@@ -118,17 +123,16 @@ $(document).ready(function () {
             url: '/management-booking/' + id,
             dataType: 'json',
             type: 'get',
-            success : function ($result) {
+            success: function ($result) {
                 console.log($result);
                 $('.name_spa').html($result.spa_book["name"]);
                 $('.email_spa').html($result.spa_book["email"]);
                 $('.phone_spa').html($result.spa_book["phone"]);
-                if($result.detail_service == null)
-                {
+                if ($result.detail_service == null) {
                     $('.name_service').html('Dịch vụ này không còn hoạt động');
                     $('.price_service').html('Dịch vụ này không còn hoạt động');
 
-                }else {
+                } else {
                     $('.name_service').html($result.detail_service['name_service']);
                     $('.price_service').html($result.detail_service['price_service']);
                 }

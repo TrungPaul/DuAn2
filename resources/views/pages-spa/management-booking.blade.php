@@ -66,11 +66,20 @@
 
                                     <div class="mg-list-wrap">
                                         <div class="mg-list-thumb">
-                                            <img src="images/{{ $book->userBook['avatar']  }}" class="mx-auto"
+                                            @if($book->user_id == null)
+                                                <img src="images/avatar/default-avatar.png" class="mx-auto"
+                                                     alt=""/>
+                                            @else
+                                            <img src="images/avatar/{{ $book->userBook['avatar']  }}" class="mx-auto"
                                                  alt=""/>
+                                            @endif
                                         </div>
                                         <div class="mg-list-caption">
+                                            @if($book->user_id == null)
+                                                <h4 class="mg-title">Tên khách: {{ $book->name }}</h4>
+                                            @else
                                             <h4 class="mg-title">Tên khách: {{ $book->userBook['name'] }}</h4>
+                                            @endif
                                                 @if($book->detailService == null)
                                                     <span class="mg-subtitle text-danger">Dịch vụ dừng hoạt động(*Vui lòng hủy lịch)</span>
                                                 @else
@@ -84,6 +93,15 @@
                                     </div>
                                     <div class="mg-action">
                                         <div class="btn-group ml-2">
+                                            <a
+                                                href="javascript:;"
+                                                linkurldone="{{ route('complete-booking', $book->id) }}" data-target="#delete"
+                                                data-toggle="modal" class="mg-delete delete btn-done"
+                                                data-id="{{ $book->id }}"
+                                                title="Đã hoàn thành"><i
+                                                    class="ti-check"></i></a>
+                                        </div>
+                                        <div class="btn-group ml-2">
                                             <a href="javascript:;"
                                                class="mg-edit edit detail-booking" title="Chi tiết"
                                                data-toggle="modal"
@@ -96,7 +114,7 @@
                                                 linkurl="{{ route('cancel-booking', $book->id) }}" data-target="#delete"
                                                 data-toggle="modal" class="mg-delete delete btn-remove"
                                                 data-id="{{ $book->id }}"
-                                                title="Xóa"><i
+                                                title="Hủy lịch"><i
                                                     class="ti-trash"></i></a>
                                         </div>
                                     </div>
@@ -207,7 +225,23 @@
             })
                 .then((willDelete) => {
                     if (willDelete) {
-                        window.location.href = $(this).attr('linkurl');
+                        window.location.href = $(this).attr('linkurldone');
+                    } else {
+                        swal("Cảm ơn bạn!");
+                    }
+                })
+        });
+        $('.btn-done').on('click', function () {
+            swal({
+                title: "Thông báo!",
+                text: "Bạn có chắc lịch này đã được hoàn thành",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        window.location.href = $(this).attr('linkurldone');
                     } else {
                         swal("Cảm ơn bạn!");
                     }

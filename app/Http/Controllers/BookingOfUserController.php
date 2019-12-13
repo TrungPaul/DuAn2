@@ -112,7 +112,7 @@ class BookingOfUserController extends Controller
             return $query->where('staff_id', $staff_id);
         })->when($service_id, function ($query, $service_id) {
             return $query->where('service_detail_id', $service_id);
-        })->orderBy('id', 'DESC')->with('detailService')->paginate(5);
+        })->orderBy('id', 'DESC')->with('detailService')->paginate(10);
 
         return view('pages-spa.management-booking', compact('getData', 'choose_service', 'employee'));
     }
@@ -134,14 +134,13 @@ class BookingOfUserController extends Controller
         $choose_service = ServiceDetail::where('spa_id', $idSpa)->select('name_service', 'id')->get();
         $getData = BookingOfUser::where([
             ['spa_id', $idSpa],
-            ['staff_id', '<>', 0],
             ['status', 2]
-        ])->orWhere('date_booking', '<', $today)
+        ])->where('date_booking', '<', $today)
             ->when($date_booking, function ($query, $date_booking) {
             return $query->where('date_booking', $date_booking);
         })->when($service_id, function ($query, $service_id) {
             return $query->where('service_detail_id', $service_id);
-        })->orderBy('id', 'DESC')->with('detailService')->paginate(5);
+        })->orderBy('date_booking', 'DESC')->with('detailService')->paginate(10);
 
         return view('pages-spa.finished-booking', compact('getData', 'choose_service', 'today'));
     }
@@ -198,8 +197,16 @@ class BookingOfUserController extends Controller
             return $query->where('date_booking', $date_booking);
         })->when($service_id, function ($query, $service_id) {
             return $query->where('service_detail_id', $service_id);
-        })->orderBy('id', 'DESC')->with('detailService')->paginate(5);
+        })->orderBy('id', 'DESC')->with('detailService')->paginate(10);
 
         return view('pages-spa.list-cancel-booking', compact('getData', 'choose_service', 'today'));
+    }
+
+    public function completeBook($id)
+    {
+        $cancel = BookingOfUser::where('id', $id)
+            ->update(['status' => 2]);
+
+        return back();
     }
 }

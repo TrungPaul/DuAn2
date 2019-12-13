@@ -45,7 +45,6 @@ Route::group(['middleware' => 'auth'], function () {
         //hủy lịch booking của khách
         Route::get('user-cancel-booking/{id}', 'HomeController@cancelBooking')->name('user-cancel-booking');
         Route::get('user-destroy-cancel-booking/{id}', 'HomeController@destroyCancelBooking')->name('user-destroy-cancel-booking');
-
     });
 });
 
@@ -79,6 +78,8 @@ Route::group(['middleware' => 'auth:spa'], function () {
         Route::get('cancel-booking/{id}', 'BookingOfUserController@cancelBooking')->name('cancel-booking');
         Route::get('destroy-cancel-booking/{id}', 'BookingOfUserController@destroyCancelBooking')->name('destroy-cancel-booking');
         Route::get('list-cancel-booking', 'BookingOfUserController@listCancelBooking')->name('list-cancel-booking');
+        //cập nhật trạng thái hoàn thành dịch vụ
+        Route::get('complete-booking/{id}', 'BookingOfUserController@completeBook')->name('complete-booking');
         //service
         Route::get('service/{spaId}', 'ServiceController@index')->name('list-service');
         Route::get('service/delete/{serviceId}', 'ServiceController@destroy')->name('delete-service');

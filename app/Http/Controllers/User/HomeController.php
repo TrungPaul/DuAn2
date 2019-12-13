@@ -7,7 +7,10 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ChangePasswordRequests;
 use App\ServiceDetail;
 use App\Services\BookingOfUserService;
+use App\Spa;
 use App\Staff;
+use App\Time;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
@@ -137,8 +140,23 @@ class HomeController extends Controller
 
     public function cancelBooking($id)
     {
-        $cancel = BookingOfUser::where('id', $id)
+        $infoBooking = BookingOfUser::find($id);
+        $times = Time::find($infoBooking->time_booking);
+        $service = ServiceDetail::find($infoBooking->service_detail_id);
+        $spa = Spa::find($infoBooking->spa_id);
+        $email = $spa->email;
+        $name = $spa->name;
+        $content = "Dịch vụ" . " " . $service->name_service . " " . "bên spa" . " " . $spa->name . "vào lúc" . $times->time . " " . "ngày" . $infoBooking->date_booking . " " .  "đã bị hủy.Vui lòng vào mục quản lý đặt lịch để kiểm tra lại";
+        
+         BookingOfUser::where('id', $id)
             ->update(['status' => 0]);
+
+        Mail::send('mailbooking', [
+            'name' => $name,
+            'content' => $content,
+        ], function ($msg) use ($email) {
+            $msg->to($email, 'Hủy dịch vụ')->subject('Hủy dịch vụ');
+        });
 
         return back();
     }

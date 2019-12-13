@@ -4,7 +4,9 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 
+    <link rel="icon" type="image/png" href="assets/favicon.ico">
     <title>@yield('title')</title>
 
     <!-- All Plugins Css -->

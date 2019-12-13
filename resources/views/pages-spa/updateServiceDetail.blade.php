@@ -110,7 +110,7 @@
             img.onchange = function () {
                 var anh = this.files[0];
                 if (anh == undefined) {
-                    document.querySelector('#showImage').src = "images/default-avatar.png";
+                    document.querySelector('#showImage').src = "images/{{ $ser->image_service }}";
                 } else {
                     getBase64(anh, '#showImage');
                 }

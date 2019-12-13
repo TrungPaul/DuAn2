@@ -27,9 +27,9 @@ class DetailServiceRequest extends FormRequest
                 'name_service' => 'required',
                 'service_id' => 'required',
                 'price_service' => 'bail|required|integer|regex:/[1-9]/|between:0,9999999',
-                'discount' => 'bail|required|integer|regex:/[1-9]/|between:0,99',
+                'discount' => 'bail|nullable|integer|regex:/[1-9]/|between:0,99',
                 'detail_service' => 'required',
-                'image_service' => 'nullable'
+                'image_service' => 'nullable|file|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ];
     }
 
@@ -38,14 +38,17 @@ class DetailServiceRequest extends FormRequest
         return [
             'name_service.required' => 'Tên dịch vụ không được bỏ trống',
             'service_id.required' => 'Danh mục dịch vụ không được bỏ trống',
+            'price_service.required' => 'Giá dịch vụ không được để trống',
             'price_service.integer' => 'Giá dịch vụ không hợp lệ',
             'price_service.regex' => 'Giá dịch vụ không hợp lệ',
             'price_service.between'=> 'Giá dịch vụ từ 1 - 10.000.000VNĐ',
+            //'discount.required' => 'Giá dịch vụ không hợp lệ',
             'discount.integer' => 'Giá dịch vụ không hợp lệ',
             'discount.regex' => 'Khuyến mại không hợp lệ',
             'discount.between'=> 'Khuyến mãi dịch vụ từ 1 - 99%',
             'detail_service.required' => 'Chi tiết dịch vụ không được bỏ trống',
-            'image_service.required' => 'Ảnh dịch vụ không được bỏ trống',
+            'image_service.file' => 'Ảnh dịch vụ không đúng định dạng',
+            'image_service.mimes' => 'Ảnh dịch vụ không đúng định dạng',
 
         ];
     }
