@@ -99,7 +99,7 @@ $(document).ready(function () {
                     $('.price_service').html($result.detail_service['price_service']);
                 }
                 $('.date_booking').html($result.date_booking);
-                $('.time_booking').html($result.time_booking);
+                $('.time_booking').html($result.show_time['time']);
                 if ($result.detail_staff == null) {
                     $('.staff_name').html('Nhân viên này đã nghỉ việc');
                     $('.staff_gender').html('Nhân viên này đã nghỉ việc');
@@ -137,7 +137,7 @@ $(document).ready(function () {
                     $('.price_service').html($result.detail_service['price_service']);
                 }
                 $('.date_booking').html($result.date_booking);
-                $('.time_booking').html($result.time_booking);
+                $('.time_booking').html($result.show_time['time']);
                 $('.staff_name').html($result.detail_staff['name']);
                 $('.staff_gender').html($result.detail_staff['gender']);
             }

@@ -87,7 +87,7 @@
                                                     - Giá: {{ $book->detailService['price_service'] }}</span>
                                                 @endif
                                             <span>Ngày đặt lịch: {{ date('d-m-Y', strtotime($book->date_booking)) }}
-                                                    - Ca: {{ $book->time_booking }}
+                                                    - Ca: {{ $book->time_booking }}({{ $book->showTime['time'] }})
                                                 </span>
                                         </div>
                                     </div>
@@ -225,7 +225,7 @@
             })
                 .then((willDelete) => {
                     if (willDelete) {
-                        window.location.href = $(this).attr('linkurldone');
+                        window.location.href = $(this).attr('linkurl');
                     } else {
                         swal("Cảm ơn bạn!");
                     }
