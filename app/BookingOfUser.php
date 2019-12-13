@@ -42,4 +42,9 @@ class BookingOfUser extends Model
     {
         return $this->belongsTo(Spa::class, 'spa_id', 'id');
     }
+
+    public function showTime()
+    {
+        return $this->belongsTo(Time::class, 'time_booking', 'id');
+    }
 }

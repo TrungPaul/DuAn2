@@ -14,7 +14,7 @@ class BookingOfUserService
 
     public function detailBooking($id)
     {
-        $result = BookingOfUser::where('id', $id)->with('userBook', 'detailService', 'detailStaff', 'spaBook')->first();
+        $result = BookingOfUser::where('id', $id)->with('userBook', 'detailService', 'detailStaff', 'spaBook', 'showTime')->first();
         return $result;
     }
 }
