@@ -76,7 +76,7 @@
                                                             <h4><b>{{ $service->name_service }}</b></h4>
                                                             <p> {{ $service->detail_service }} </p>
                                                             <div class="beautypress-btn-wraper">
-                                                                <a href="#"
+                                                                <a href="{{ route('service.getbook', $service->id ) }}"
                                                                 class="xs-btn round-btn box-shadow-btn bg-color-purple">Đặt dịch vụ này<span></span></a>
                                                             </div>
                                                         </div>
