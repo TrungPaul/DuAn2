@@ -67,7 +67,7 @@
                                                 @endforeach
                                             @else
                                                 <div class="manage-list">
-                                                    <span class="text-danger">Không có dữ liệu phù hợp</span>
+                                                    <h4 class="text-danger">Không có dữ liệu</h4>
                                                 </div>
                                             @endif
                                             {{ $service->links() }}

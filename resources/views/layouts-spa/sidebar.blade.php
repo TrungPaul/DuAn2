@@ -3,7 +3,7 @@
 
         <div class="dashboard-thumb">
             <div class="dashboard-th-pic">
-                <img src="images/spas/{{ Auth::guard('spa')->user()->image }}" class="img-fluid mx-auto img-circle" alt=""/>
+                <img src="images/spas/{{ Auth::guard('spa')->user()->image }}" style="height: 110px" class="img-fluid mx-auto img-circle" alt=""/>
             </div>
             <h4 class="mb-1">{{ Auth::guard('spa')->user()->name }}</h4>
             <span class="text-dark">{{ Auth::guard('spa')->user()->location }},

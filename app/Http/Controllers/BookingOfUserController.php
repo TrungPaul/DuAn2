@@ -134,9 +134,8 @@ class BookingOfUserController extends Controller
         $choose_service = ServiceDetail::where('spa_id', $idSpa)->select('name_service', 'id')->get();
         $getData = BookingOfUser::where([
             ['spa_id', $idSpa],
-            ['staff_id', '<>', 0],
             ['status', 2]
-        ])->orWhere('date_booking', '<', $today)
+        ])->where('date_booking', '<', $today)
             ->when($date_booking, function ($query, $date_booking) {
             return $query->where('date_booking', $date_booking);
         })->when($service_id, function ($query, $service_id) {

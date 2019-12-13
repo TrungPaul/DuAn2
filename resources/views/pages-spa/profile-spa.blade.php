@@ -84,7 +84,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-6 col-md-6col-sm-6">
+                            <div class="col-lg-6 col-md-6col-sm-6" >
                                 <div class="form-group">
                                     <img id="showImage" src="images/spas/{{ Auth::guard('spa')->user()->image }}"
                                          style="width: 390px; overflow: hidden">
@@ -103,7 +103,7 @@
             img.onchange = function () {
                 var anh = this.files[0];
                 if (anh == undefined) {
-                    document.querySelector('#showImage').src = "images/image-seeder.jpg";
+                    document.querySelector('#showImage').src = "images/spas/{{ Auth::guard('spa')->user()->image }}";
                 } else {
                     getBase64(anh, '#showImage');
                 }

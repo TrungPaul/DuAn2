@@ -19,9 +19,9 @@ class CreateServiceDetailTable extends Migration
             $table->integer('service_id');
             $table->string('name_service');
             $table->string('price_service');
-            $table->string('discount');
+            $table->string('discount')->nullable();
             $table->text('detail_service');
-            $table->string('image_service');
+            $table->string('image_service')->nullable();
             $table->timestamps();
         });
     }
