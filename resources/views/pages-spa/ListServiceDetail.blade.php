@@ -42,7 +42,7 @@
                                                             <div class="mg-list-caption">
                                                                 <h4 class="mg-title">Tên dịch
                                                                     vụ: {{ $ser->name_service }}</h4>
-                                                                <span class="mg-subtitle">Giá: {{ $ser->price_service }}
+                                                                <span class="mg-subtitle">Giá: {{ $ser->price_service }}VNĐ
                                                                 - Khuyến mãi: {{ $ser->discount }}%
                                                                 </span>
 
