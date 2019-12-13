@@ -60,7 +60,7 @@
                                             <ul class="nav nav-tabs beautypress-side-nav">
                                                 <li><h6>Không có dịch vụ nào</h6></li>
                                             </ul>
-                                        @endif 
+                                        @endif
                                         <div class="tab-content">
                                             @foreach ($service_one as $sv1 => $service)
                                                 <div @if($sv1 == 0) class="tab-pane beautypress-tab-content active" @else class="tab-pane beautypress-tab-content" @endif id="tab-{{ $service->id }}">
@@ -76,7 +76,7 @@
                                                             <h4><b>{{ $service->name_service }}</b></h4>
                                                             <p> {{ $service->detail_service }} </p>
                                                             <div class="beautypress-btn-wraper">
-                                                                <a href="#"
+                                                                <a href="{{ route('service.getbook', $service->id ) }}"
                                                                 class="xs-btn round-btn box-shadow-btn bg-color-purple">Đặt dịch vụ này<span></span></a>
                                                             </div>
                                                         </div>
@@ -102,7 +102,7 @@
                                             <ul class="nav nav-tabs beautypress-side-nav">
                                                 <li><h6>Không có dịch vụ nào</h6></li>
                                             </ul>
-                                        @endif 
+                                        @endif
                                         <div class="tab-content">
                                             @foreach ($service_two as $sv2 => $service)
                                                 <div @if($sv2 == 0) class="tab-pane beautypress-tab-content active" @else class="tab-pane beautypress-tab-content" @endif id="tab-{{ $service->id }}">
@@ -111,7 +111,7 @@
                                                             <img src="images/{{ $service->image_service}}" alt="Image">
                                                             <div class="beautypress-tab-image-content">
                                                                 <span
-                                                                    class="beautypress-iocn-btn full-round-btn bg-color-purple">{{ number_format($service->price_service) }} VNĐ</span>
+                                                                    class="beautypress-iocn-btn full-round-btn bg-color-purple">{{ number_format($service->price_service , 0,'.' , ',') }} VNĐ</span>
                                                             </div>
                                                         </div>
                                                         <div class="beautypress-tab-text-content">
@@ -144,7 +144,7 @@
                                             <ul class="nav nav-tabs beautypress-side-nav">
                                                 <li><h6>Không có dịch vụ nào</h6></li>
                                             </ul>
-                                        @endif 
+                                        @endif
                                         <div class="tab-content">
                                             @foreach ($service_three as $sv3 => $service)
                                                 <div @if($sv3 == 0) class="tab-pane beautypress-tab-content active" @else class="tab-pane beautypress-tab-content" @endif id="tab-{{ $service->id }}">
@@ -159,7 +159,7 @@
                                                         <div class="beautypress-tab-text-content">
                                                             <h4><b>{{ $service->name_service }}</b></h4>
                                                             <p>{{ $service->detail_service }}</p>
-                                                           
+
                                                             <div class="beautypress-btn-wraper">
                                                                 <a href="#"
                                                                 class="xs-btn round-btn box-shadow-btn bg-color-purple">Đặt dịch vụ này<span></span></a>
@@ -181,4 +181,17 @@
         </section>
     </div>
     <div style="margin-bottom:100px;"></div>
+@endsection
+
+        @section('alert')
+            @if (session('fail'))
+                <script>
+                    toastr.error('{{ session('fail')}}', {timeOut: 200});
+                </script>
+            @endif
+            @if (session('success'))
+                <script>
+                    toastr.success('{{ session('success')}}', {timeOut: 200});
+                </script>
+    @endif
 @endsection

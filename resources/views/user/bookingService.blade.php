@@ -28,63 +28,49 @@
                             <input type="hidden" name="action" value="send_appointment_form"/>
                             <input type="hidden" name="date_booking" value="{{$data}}"/>
                             <input type="hidden" name="staff_id" value="{{$staff_id}}"/>
+                            <input type="hidden" name="service_detail_id" value="{{$serviceId}}"/>
                             <div class="alert hidden" id="beautypress-form-msg"></div>
                             <div class="beautypress-service-and-date">
                                 <h2>Đặt dịch vụ</h2>
                                 <div class="beautypress-spilit-container">
                                     <div>
-                                    <h5>Tên</h5>
-                                    <div class="input-group">
-                                        <input type="text" name="name" id="c_name" placeholder="Tên">
-                                    </div>
+                                        <h5>Tên</h5>
+                                        <div class="input-group">
+                                            <input type="text" name="name" id="c_name" placeholder="Tên">
+                                        </div>
                                         @if( $errors->first('name'))
                                             <span class="text-danger">{{ $errors->first('name')}}</span>
                                         @endif
                                     </div>
                                     <div>
-                                    <h5>Email</h5>
-                                    <div class="input-group">
-                                        <input type="email" name="email" id="c_email" placeholder="Email">
-                                    </div>
+                                        <h5>Email</h5>
+                                        <div class="input-group">
+                                            <input type="email" name="email" id="c_email" placeholder="Email">
+                                        </div>
                                         @if( $errors->first('email'))
                                             <span class="text-danger">{{ $errors->first('email')}}</span>
                                         @endif
                                     </div>
                                 </div>
-                                <div class="beautypress-select">
-                                    <h5>Dịch vụ</h5>
-                                    <div class="input-group">
-                                        <select name="service_detail_id" id="appointment-service" class="form-control">
-                                            @foreach($service as $ser)
-                                                <option value="{{$ser->id}}">{{$ser->name_service}}
-                                                    ({{$ser->price_service}}đ)
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                        @if( $errors->first('service_detail_id'))
-                                            <span class="text-danger">{{ $errors->first('service_detail_id')}}</span>
-                                        @endif
-                                    </div>
+                                <!-- .beautypress-select END -->
+                                <div class="beautypress-spilit-container">
+                                    <!-- .beautypress-date-select END -->
+                                    <div class="beautypress-select">
+                                        <h5>Thời gian còn trống</h5>
+                                        <div class="input-group">
+                                            <select name="time_booking" id="appointment-service" class="form-control">
+                                                @foreach($timeNotBook as $not)
+                                                    <option value="{{$not->id}}">
+                                                        {{$not->time}}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                            @if( $errors->first('time_booking'))
+                                                <span class="text-danger">{{ $errors->first('time_booking')}}</span>
+                                            @endif
+                                        </div>
+                                    </div><!-- .beautypress-select END -->
                                 </div>
-                               <!-- .beautypress-select END -->
-                                                                <div class="beautypress-spilit-container">
-                                                                    <!-- .beautypress-date-select END -->
-                                                                    <div class="beautypress-select">
-                                                                        <h5>Thời gian còn trống</h5>
-                                                                        <div class="input-group">
-                                                                            <select name="time_booking" id="appointment-service" class="form-control">
-                                                                                @foreach($timeNotBook as $not)
-                                                                                    <option value="{{$not->id}}">
-                                                                                        {{$not->time}}
-                                                                                    </option>
-                                                                                @endforeach
-                                                                            </select>
-                                                                            @if( $errors->first('time_booking'))
-                                                                                <span class="text-danger">{{ $errors->first('time_booking')}}</span>
-                                                                            @endif
-                                                                        </div>
-                                                                    </div><!-- .beautypress-select END -->
-                                                                </div>
 
                                 <button type="submit" class="btn btn-info btn-md full-width">Thêm mới<i
                                         class="ml-2 ti-arrow-right"></i></button>

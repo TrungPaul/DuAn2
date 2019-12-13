@@ -26,7 +26,8 @@ Route::get('lien-he', 'ContactController@index')->name('view_contact');
 Route::get('/getbooking/{spaId}', 'BookingOfUserController@getBook')->name('user.getbook');
 Route::post('/booking/{spaId}', 'BookingOfUserController@book')->name('user.book');
 Route::post('/booking/{spaId}/add', 'BookingOfUserController@addBooking')->name('user.booking');
-
+Route::get('/getbooking-from-service/{serviceId}', 'BookingOfUserController@getBookingFS')->name('service.getbook');
+Route::post('/booking-from-service/{serviceId}', 'BookingOfUserController@bookservice')->name('service.book');
 Route::group(['middleware' => 'auth'], function () {
     Route::group(['namespace' => 'User'], function () {
         Route::get('/thong-tin', 'HomeController@profile')->name('user.profile');
@@ -89,7 +90,6 @@ Route::group(['middleware' => 'auth:spa'], function () {
         Route::get('change-password', 'SpaController@changePass')->name('change-pass');
         Route::post('change-password', 'SpaController@postChangePass');
 
-        Route::post('booking/add', 'BookingOfUserController@addBooking')->name('add-booking');
         //service- detail
         Route::get('service-detail', 'ServiceDetailController@index')->name('list-serviceDetail');
         Route::post('service-detail/{id}', 'ServiceDetailController@update')->name('update-serviceDetail');
