@@ -225,7 +225,7 @@
             })
                 .then((willDelete) => {
                     if (willDelete) {
-                        window.location.href = $(this).attr('linkurldone');
+                        window.location.href = $(this).attr('linkurl');
                     } else {
                         swal("Cảm ơn bạn!");
                     }
