@@ -12,6 +12,7 @@ use App\Time;
 use App\Staff;
 use Illuminate\Support\Facades\Auth;
 use Mail;
+use Carbon\Carbon;
 
 class BookingOfUserController extends Controller
 {
@@ -22,23 +23,68 @@ class BookingOfUserController extends Controller
 
     public function getBook($spaId)
     {
+        $now = Carbon::now('Asia/Ho_Chi_Minh');
+        $dateNow = $now->toDateString();
         $staff = Staff::where('spa_id', $spaId)->get();
-        return view('user.DateBook', compact('spaId' , 'staff'));
+        return view('user.DateBook', compact('spaId' , 'staff' , 'dateNow'));
+    }
+    public function getBookingFS($serviceId)
+    {
+        $service = ServiceDetail::find($serviceId);
+        $now = Carbon::now('Asia/Ho_Chi_Minh');
+        $dateNow = $now->toDateString();
+        $spaId = $service->spa_id;
+        $staff = Staff::where('spa_id', $spaId)->get();
+
+        return view('user.DateBookFromService', compact('spaId' , 'staff' , 'dateNow' ,'serviceId'));
     }
 
     public function book(Request $request, $spaId)
     {
         $this->validate($request, [
-            'date_booking' => 'required|after:today',
+            'date_booking' => 'required|after:yesterday',
+            'staff_id' => 'required'
         ]);
+        $now = Carbon::now('Asia/Ho_Chi_Minh');
+        $timeNow = $now->toTimeString();
+        $date = $now->toDateString();
         $data = $request->date_booking;
         $staff_id = $request->staff_id ;
         $service = ServiceDetail::where('spa_id', $spaId)->get();
         $serviceBeBook = BookingOfUser::where('spa_id', $spaId)->where('staff_id', $staff_id)->whereDate('date_booking', $request->date_booking)->pluck('time_booking');
-        $timeNotBook = Time::whereNotIn('id', $serviceBeBook)->get();
+        if ($request->date_booking == $date) {
+            $timeNotBook = Time::whereNotIn('id', $serviceBeBook)->whereTime('time', '>=', $timeNow)->get();
+        }else{
+            $timeNotBook = Time::whereNotIn('id', $serviceBeBook)->get();
+        }
         $times = Time::all();
 
         return view('user.booking', compact('times', 'service', 'staff_id', 'spaId', 'timeNotBook', 'data'));
+    }
+    //book from service
+    public function bookservice(Request $request, $serviceId)
+    {
+        $this->validate($request, [
+            'date_booking' => 'required|after:yesterday',
+            'staff_id' => 'required'
+        ]);
+
+        $service = ServiceDetail::find($serviceId);
+        $spaId = $service->spa_id;
+        $now = Carbon::now('Asia/Ho_Chi_Minh');
+        $timeNow = $now->toTimeString();
+        $date = $now->toDateString();
+        $data = $request->date_booking;
+        $staff_id = $request->staff_id ;
+        $serviceBeBook = BookingOfUser::where('spa_id', $spaId)->where('staff_id', $staff_id)->whereDate('date_booking', $request->date_booking)->pluck('time_booking');
+        if ($request->date_booking == $date) {
+            $timeNotBook = Time::whereNotIn('id', $serviceBeBook)->whereTime('time', '>=', $timeNow)->get();
+        }else{
+            $timeNotBook = Time::whereNotIn('id', $serviceBeBook)->get();
+        }
+        $times = Time::all();
+
+        return view('user.bookingService', compact('times', 'service', 'staff_id', 'spaId', 'timeNotBook', 'data' , 'serviceId'));
     }
 
     public function addBooking(Request $request, $spaId)
@@ -83,7 +129,7 @@ class BookingOfUserController extends Controller
                 $msg->to($email, 'Đặt dịch vụ')->subject('Đặt dịch vụ');
             });
 
-            return redirect()->route('detail-spa', $spaId)->with('success', 'Đặt lịch thành công ');
+            return redirect()->route('home')->with('success', 'Đặt lịch thành công ');
         }
     }
 
