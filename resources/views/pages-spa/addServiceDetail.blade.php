@@ -41,7 +41,7 @@
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-6">
                                     <div class="form-group">
-                                        <label>Khuyến mãi%<span class="text-danger">*</span></label>
+                                        <label>Khuyến mãi%</label>
                                         <input class="form-control" type="text" name="discount"
                                                value="{{ old('discount') }}">
                                         @if( $errors->first('discount'))
@@ -90,6 +90,7 @@
                                 </div>
                                 <div class="col-lg-6 col-md-6col-sm-6" style="width: 150px; ">
                                     <div class="form-group">
+                                        <label>Ảnh hiển thị</label>
                                         <img id="showImage" src="images/face.jpg" width="250">
                                     </div>
                                 </div>

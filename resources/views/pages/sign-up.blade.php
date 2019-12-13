@@ -11,6 +11,7 @@
                 <form action="{{ route('register') }}" method="POST" enctype="multipart/form-data" novalidate>
                     @csrf
                     <div class="form-group mb-3">
+
                         <label>Tên hiển thị</label>
                         <label class="text-danger">(*)</label>
                         <div class="input-group">
