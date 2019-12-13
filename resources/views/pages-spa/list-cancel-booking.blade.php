@@ -60,7 +60,7 @@
                                                     - Giá: {{ $book->detailService['price_service'] }}</span>
                                             @endif
                                             <span>Ngày đặt lịch: {{ date('d-m-Y', strtotime($book->date_booking)) }}
-                                                    - Ca: {{ $book->time_booking }}
+                                                    - Ca: {{ $book->time_booking }}({{ $book->showTime['time'] }})
                                                 </span>
                                         </div>
                                     </div>
