@@ -69,7 +69,7 @@
                                                             <img src="images/{{ $service->image_service}}" alt="Image">
                                                             <div class="beautypress-tab-image-content">
                                                                 <span
-                                                                    class="beautypress-iocn-btn full-round-btn bg-color-purple" style="">{{ number_format($service->price_service) }} VNĐ</span>
+                                                                    class="beautypress-iocn-btn full-round-btn bg-color-purple" style="">{{ $service->price_service}} VNĐ</span>
                                                             </div>
                                                         </div>
                                                         <div class="beautypress-tab-text-content">
@@ -111,7 +111,7 @@
                                                             <img src="images/{{ $service->image_service}}" alt="Image">
                                                             <div class="beautypress-tab-image-content">
                                                                 <span
-                                                                    class="beautypress-iocn-btn full-round-btn bg-color-purple">{{ number_format($service->price_service , 0,'.' , ',') }} VNĐ</span>
+                                                                    class="beautypress-iocn-btn full-round-btn bg-color-purple">{{ $service->price_service }} VNĐ</span>
                                                             </div>
                                                         </div>
                                                         <div class="beautypress-tab-text-content">
@@ -153,7 +153,7 @@
                                                             <img src="images/{{ $service->image_service}}" alt="Image">
                                                             <div class="beautypress-tab-image-content">
                                                                 <span
-                                                                    class="beautypress-iocn-btn full-round-btn bg-color-purple">{{ number_format($service->price_service) }} VNĐ</span>
+                                                                    class="beautypress-iocn-btn full-round-btn bg-color-purple">{{ $service->price_service }} VNĐ</span>
                                                             </div>
                                                         </div>
                                                         <div class="beautypress-tab-text-content">
