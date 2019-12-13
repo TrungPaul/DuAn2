@@ -27,27 +27,27 @@
                                 @csrf
                                 <div class="beautypress-spilit-container">
                                     <div class="input-group">
-                                        <input type="text" name="name"  placeholder="Tên" class="@error('name') is-invalid @enderror"> 
+                                        <input type="text" name="name"  placeholder="Tên" class="@error('name') is-invalid @enderror"  value="{{ old('name') }}"> 
                                         @error('name')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
                                     </div>
                                     <div class="input-group">
-                                        <input type="text" name="email"  placeholder="Email" class="@error('email') is-invalid @enderror">
+                                        <input type="text" name="email"  placeholder="Email" class="@error('email') is-invalid @enderror" value="{{ old('email') }}">
                                         @error('email')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
                                     </div>
                                 </div><!-- .beautypress-spilit-container END -->
                                 <div class="input-group">
-                                    <input type="number" name="phone" placeholder="Điện thoại" class="@error('phone') is-invalid @enderror">
+                                    <input type="text" name="phone" placeholder="Điện thoại" class="@error('phone') is-invalid @enderror" value="{{ old('phone') }}">
                                     @error('phone')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
                                 <div class="input-group">
                                     <textarea name="content"  cols="30" rows="10"
-                                              placeholder="Nội dung" class="@error('content') is-invalid @enderror"></textarea>
+                                              placeholder="Nội dung" class="@error('content') is-invalid @enderror">{{ old('content') }}</textarea>
                                     @error('content')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror

@@ -77,7 +77,7 @@
                                 <label>Số điện thoại</label>
                                 <label class="text-danger">(*)</label>
                                 <div class="input-group">
-                                    <input name="phone" type="number" class="form-control form-control-lg @error('phone') is-invalid @enderror"
+                                    <input name="phone" type="text" class="form-control form-control-lg @error('phone') is-invalid @enderror"
                                         value="{{old('phone')}}"/>
                                     <span class="input-group-append">
                                     <span class="input-group-text">

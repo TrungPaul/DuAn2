@@ -9,7 +9,7 @@
                 <img src="assets/img/section-heading-separetor.png" alt="">
             </div>
             <div class="row">
-                <div class="col-md-8">
+                <div class="col-md-8 mb-3">
                     @foreach ( $posts as $key => $p )
                         <div class="beautypress-single-newsletter mb-30">
                             <div class="beautypress-newsfeed-header beautypress-black-gradient-overlay d-flex">

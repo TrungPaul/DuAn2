@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Contact;
 use Mail;
 use App\Http\Requests\ContactRequest;
+use Carbon\Carbon;
 
 class ContactController extends Controller
 {
@@ -15,8 +16,13 @@ class ContactController extends Controller
     }
     public function add(ContactRequest $request)
     {
-        $data = $request->except('_token');
-        Contact::create($data);
+        $dt = Carbon::now('Asia/Ho_Chi_Minh');
+        $contact = new Contact;
+
+        $contact->created_at = $dt;
+        $contact->fill($request->all());
+        $contact->save();
+
         $action_contact = true;
         return redirect()->route('view_contact', compact('action_contact'));
     }

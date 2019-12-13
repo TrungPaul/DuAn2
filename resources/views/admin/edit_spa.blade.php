@@ -9,7 +9,7 @@
                             <h4> Thay đổi trạng thái</h4>
                         </div>
                         <div class="card-body" id="card-body-form">
-                            <form method="post"  action="{{ route('admin.update_spa') }}">
+                            <form method="post"  action="{{route( $spa->is_active != $active['user_type_active'] ? 'admin.active_spa' : 'admin.inactive_spa')}}">
                                 @csrf
                                 @if (isset($spa))
                                     <input type="hidden" name="id" value="{{ $spa->id }}">

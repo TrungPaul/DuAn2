@@ -13,6 +13,7 @@ use App\User;
 use App\Post;
 use Session;
 use Illuminate\Support\Facades\Lang;
+use Mail;
 
 class AdminController extends Controller
 {
@@ -100,12 +101,42 @@ class AdminController extends Controller
     }
 
     public
-    function updatespa(Request $request)
+    function activespa(Request $request)
     {
         $spa = Spa::find($request->id);
         $spa->fill($request->all());
         $spa->save();
+        $name = $request->name;
+        $email = $request->email;
+        $content = "Cảm ơn bạn vì đã tin dùng SpaTime, tài khoản spa của bạn đã được kích hoạt, bạn có thể đăng nhập và bắt đầu sử dụng
+                    các chức năng của SpaTime";
+       
+        Mail::send('mailactivespa', [
+            'name' => $name,
+            'content' => $content,
+        ], function ($msg) use ($email){
+            $msg->to($email, 'Đăng ký spa thành công')->subject('Đăng ký spa thành công');
+        });
+        return redirect()->route('admin.listspa')
+            ->with('success', Lang::get('Thành công'));
+    }
 
+    function inactivespa(Request $request)
+    {
+        $spa = Spa::find($request->id);
+        $spa->fill($request->all());
+        $spa->save();
+        $name = $request->name;
+        $email = $request->email;
+        $content = "Tài khoản spa của bạn đã bị khoá do vi phạm một số chính sách của chúng tôi, xin lỗi bạn vì sự bất tiện này
+                    mọi thắc mắc xin liên hệ số điện thoại: 0374969474, hoặc email: spatime@gmail.com để được hỗ trợ";
+       
+        Mail::send('mailinactivespa', [
+            'name' => $name,
+            'content' => $content,
+        ], function ($msg) use ($email){
+            $msg->to($email, 'Tài khoản spa đã bị khoá')->subject('Tài khoản spa đã bị khoá');
+        });
         return redirect()->route('admin.listspa')
             ->with('success', Lang::get('Thành công'));
     }
