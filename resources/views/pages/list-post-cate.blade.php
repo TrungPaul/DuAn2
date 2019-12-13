@@ -31,6 +31,9 @@
                             </div><!-- .beautypress-newsfeed-footer END -->
                         </div><!-- .beautypress-single-newsletter END -->
                     @endforeach
+                    <div class="d-flex justify-content-center">
+                        {{ $posts->links() }}
+                    </div>
                 </div>
 
                 <div class="col-md-4">

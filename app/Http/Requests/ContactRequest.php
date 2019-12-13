@@ -26,6 +26,7 @@ class ContactRequest extends FormRequest
         return [
             'name' => 'required',
             'email' => 'required|email',
+            'phone' => "required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10|max:11",
             'content' => 'required',
         ];
     }
@@ -33,9 +34,13 @@ class ContactRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.required'    => 'Tên không được để trống',
-            'email.required'    => 'Email không được để trống',
+            'name.required'  => 'Tên không được để trống',
+            'email.required'  => 'Email không được để trống',
             'email.email' => 'Email không hợp lệ',
+            'phone.required' => 'Số điện thoại không được bỏ trống',
+            'phone.regex' => 'Số điện thoại không hợp lệ',
+            'phone.min' => 'Số điện thoại phải là 10 số',
+            'phone.max' => 'Số điện thoại tối đa là 11 số',
             'content.required'    => 'Nội dung không được để trống',
         ];
     }

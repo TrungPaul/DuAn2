@@ -24,10 +24,10 @@ class PostRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|min:5|max:191',
+            'title' => 'required|max:191',
             'image' => 'mimes:jpeg,png,jpg,gif,svg',
             'description' => 'required',
-            'content' => 'required|min:50',
+            'content' => 'required',
         ];
     }
     public function messages()
@@ -39,7 +39,6 @@ class PostRequest extends FormRequest
             'description.required' => "Không được để trống",
             'image.mimes' => "Đuôi của avatar phải là jpeg, png, jpg, gif, svg",
             'content.required' => "Không được bỏ trống",
-            'content.min' => "Nội dung phải nhiều hơn 50 ký tự",
         ];
     }
 }
