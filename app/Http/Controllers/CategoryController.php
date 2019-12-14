@@ -31,7 +31,7 @@ class CategoryController extends Controller
     public function update(Request $request, $id)
     {
         $validatedData = $request->validate([
-            'name' =>'required|max:16|unique:categories,name,'.$id,
+            'name' =>'required|max:225|unique:categories,name,'.$id,
         ],
             [
                 'name.required'=>"Tên danh mục không được để trống",
