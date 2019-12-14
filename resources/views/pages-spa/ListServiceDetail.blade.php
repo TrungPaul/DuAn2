@@ -42,10 +42,11 @@
                                                             <div class="mg-list-caption">
                                                                 <h4 class="mg-title">Tên dịch
                                                                     vụ: {{ $ser->name_service }}</h4>
-                                                                <span class="mg-subtitle">Giá: {{ $ser->price_service }}VNĐ
-                                                                - Khuyến mãi: {{ $ser->discount }}%
+                                                                <span class="mg-subtitle">Giá: {{ number_format($ser->price_service , 0,'.' , ',') }}VNĐ
+                                                                @if($ser->discount != null)
+                                                                        - Khuyến mãi: {{ $ser->discount }}%
                                                                 </span>
-
+                                                                @endif
                                                             </div>
                                                         </div>
                                                         <div class="mg-action">
@@ -57,7 +58,8 @@
                                                                 <a data-target="#delete"
                                                                    href="javascript:;"
                                                                    linkurl="{{ route('destroy-serviceDetail', $ser->id) }}"
-                                                                   data-toggle="modal" class="mg-delete delete btn-remove"
+                                                                   data-toggle="modal"
+                                                                   class="mg-delete delete btn-remove"
                                                                    data-id="{{ $ser->id }}"
                                                                    title="Xóa"><i
                                                                         class="ti-trash"></i></a>

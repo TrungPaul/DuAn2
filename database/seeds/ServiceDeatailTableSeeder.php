@@ -23,11 +23,11 @@ class ServiceDeatailTableSeeder extends Seeder
                 'image_service' => 'image-seeder.jpg',
             ]);
         }
-        $limit = 50;
+        $limit = 20;
 
         for ($i = 0; $i < $limit; $i++) {
             DB::table('service_detail')->insert([
-                'spa_id' => rand(1, 11),
+                'spa_id' => rand(1, 6),
                 'service_id'=> rand(1, 3),
                 'name_service' => $faker->name,
                 'price_service' => rand(300000, 1000000),

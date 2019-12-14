@@ -52,8 +52,8 @@
                                     <div class="form-group">
                                         <label>Ảnh đại diện</label>
                                         <div class="custom-file">
-                                            <input type="file" name="avatar" class="custom-file-input" id="customFile">
-                                            <label class="custom-file-label" for="customFile">Chọn ảnh</label>
+                                            <input type="file" style="overflow: hidden" name="avatar" class="custom-file-input" id="customFile">
+                                            <label class="custom-file-label" style="overflow: hidden" for="customFile">Chọn ảnh</label>
                                             @if( $errors->first('avatar'))
                                                 <span class="text-danger">{{ $errors->first('avatar')}}</span>
                                             @endif

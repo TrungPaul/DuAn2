@@ -18,5 +18,6 @@
     <?php if (isset($_GET['action_contact']) && $_GET['action_contact'] == true) { ?>
         toastr.success('Cảm ơn bạn đã góp ý, chúng tôi sẽ phản hồi bạn trong thời gian sớm nhất!')
     <?php } ?>
+
 </script>
 
