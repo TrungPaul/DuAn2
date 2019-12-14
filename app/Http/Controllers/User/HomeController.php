@@ -16,7 +16,9 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
 use App\Services\UserServices;
 use App\Http\Requests\UserRequest;
-
+use Illuminate\Support\Facades\Mail;
+use Carbon\Carbon;
+use function GuzzleHttp\Psr7\str;
 
 class HomeController extends Controller
 {
@@ -141,24 +143,33 @@ class HomeController extends Controller
     public function cancelBooking($id)
     {
         $infoBooking = BookingOfUser::find($id);
-        $times = Time::find($infoBooking->time_booking);
-        $service = ServiceDetail::find($infoBooking->service_detail_id);
-        $spa = Spa::find($infoBooking->spa_id);
-        $email = $spa->email;
-        $name = $spa->name;
-        $content = "Dịch vụ" . " " . $service->name_service . " " . "bên spa" . " " . $spa->name . "vào lúc" . $times->time . " " . "ngày" . $infoBooking->date_booking . " " .  "đã bị hủy.Vui lòng vào mục quản lý đặt lịch để kiểm tra lại";
-        
-         BookingOfUser::where('id', $id)
-            ->update(['status' => 0]);
+        $timeCancel = $infoBooking->time_booking;
+        $time = Time::find($timeCancel);
+        $timeht = Carbon::now('Asia/Ho_Chi_Minh')->toTimeString();
+        if (substr($timeht, 0, 2) - substr($time->time, 0, 2) == -1) {
+            return redirect()->route('user.list-booking')->with('error', 'Bạn chỉ có thể hủy lịch trước 1 giờ đặt lịch');
+        } else {
+            $times = Time::find($infoBooking->time_booking);
+            $service = ServiceDetail::find($infoBooking->service_detail_id);
+            $spa = Spa::find($infoBooking->spa_id);
+            $email = $spa->email;
+            $name = $spa->name;
+            $content = "Dịch vụ" . " " . $service->name_service . " " . "bên spa" . " " . $spa->name . "vào lúc" . $times->time . " " . "ngày" . $infoBooking->date_booking . " " . "đã bị hủy.Vui lòng vào mục quản lý đặt lịch để kiểm tra lại";
 
-        Mail::send('mailbooking', [
-            'name' => $name,
-            'content' => $content,
-        ], function ($msg) use ($email) {
-            $msg->to($email, 'Hủy dịch vụ')->subject('Hủy dịch vụ');
-        });
+            BookingOfUser::where('id', $id)
+                ->update(['status' => 0]);
 
-        return back();
+            Mail::send('mailbooking', [
+                'name' => $name,
+                'content' => $content,
+            ], function ($msg) use ($email) {
+                $msg->to($email, 'Hủy dịch vụ')->subject('Hủy dịch vụ');
+            });
+
+            return back();
+        }
+
+
     }
 
     public function destroyCancelBooking($id)

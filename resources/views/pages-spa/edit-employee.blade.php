@@ -53,7 +53,7 @@
                                         <label>Ảnh đại diện</label>
                                         <div class="custom-file">
                                             <input type="file" name="avatar" class="custom-file-input" id="customFile">
-                                            <label class="custom-file-label" for="customFile">Chọn ảnh</label>
+                                            <label class="custom-file-label" style="overflow: hidden" for="customFile">Chọn ảnh</label>
                                             @if( $errors->first('avatar'))
                                                 <span class="text-danger">{{ $errors->first('avatar')}}</span>
                                             @endif
@@ -81,7 +81,7 @@
         img.onchange = function () {
             var anh = this.files[0];
             if (anh == undefined) {
-                document.querySelector('#showImage').src = "images/default-avatar.png";
+                document.querySelector('#showImage').src = "images/{{ $employee->avatar }}";
             } else {
                 getBase64(anh, '#showImage');
             }

@@ -70,7 +70,7 @@
                                         <div class="custom-file">
                                             <input type="file" name="image_service" class="custom-file-input"
                                                    id="customFile">
-                                            <label class="custom-file-label" for="customFile">Chọn ảnh</label>
+                                            <label class="custom-file-label" style="overflow:hidden;" for="customFile">Chọn ảnh</label>
                                             @if( $errors->first('image_service'))
                                                 <span
                                                     class="text-danger">{{ $errors->first('image_service')}}</span>

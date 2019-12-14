@@ -23,7 +23,7 @@ class SpaTableSeeder extends Seeder
             'image' => 'tmv-xuan-huong.jpg'
         ];
         DB::table('spas')->insert($spatest);
-        $limit = 10;
+        $limit = 5;
         for ($i = 0; $i < $limit; $i++) {
             DB::table('spas')->insert([
                 'name' => $faker->name(),
