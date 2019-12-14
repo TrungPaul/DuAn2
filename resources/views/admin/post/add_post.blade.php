@@ -45,7 +45,7 @@
                             <div class="col-md-6">
                                 <img src="https://summer.pes.edu/wp-content/uploads/2019/02/default-2.jpg" alt="Ảnh" class="img-fluid" id="showImage" name="img" style="border: 2px solid #ccc">
                                 <div class="form-group">
-                                    <label>Ảnh sản phẩm</label>
+                                    <label>Ảnh bài viết</label>
                                     <input type="file" name="image" class="form-control @error('image') is-invalid @enderror" value="{{ old('image') }}">
                                     @error('image') 
                                         <span class="invalid-feedback" role="alert">

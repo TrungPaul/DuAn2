@@ -66,7 +66,9 @@ $(document).ready(function () {
 
         });
     });
-
+    function formatNumber(num) {
+        return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+    }
     //detail booking of user
     $('.detail-booking').click(function () {
         let id = $(this).data('id');
@@ -75,12 +77,12 @@ $(document).ready(function () {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
+
         $.ajax({
             url: 'spa/management-booking/' + id,
             dataType: 'json',
             type: 'get',
             success: function ($result) {
-                console.log($result);
                 if ($result.user_book == null) {
                     $('.name_guest').html($result.name);
                     $('.email_guest').html($result.email);
@@ -96,7 +98,7 @@ $(document).ready(function () {
 
                 } else {
                     $('.name_service').html($result.detail_service['name_service']);
-                    $('.price_service').html($result.detail_service['price_service']);
+                    $('.price_service').html(formatNumber($result.detail_service['price_service']) +'VNĐ');
                 }
                 $('.date_booking').html($result.date_booking);
                 $('.time_booking').html($result.show_time['time']);
@@ -124,7 +126,7 @@ $(document).ready(function () {
             dataType: 'json',
             type: 'get',
             success: function ($result) {
-                console.log($result);
+
                 $('.name_spa').html($result.spa_book["name"]);
                 $('.email_spa').html($result.spa_book["email"]);
                 $('.phone_spa').html($result.spa_book["phone"]);
@@ -134,7 +136,7 @@ $(document).ready(function () {
 
                 } else {
                     $('.name_service').html($result.detail_service['name_service']);
-                    $('.price_service').html($result.detail_service['price_service']);
+                    $('.price_service').html(formatNumber($result.detail_service['price_service']) + 'VNĐ');
                 }
                 $('.date_booking').html($result.date_booking);
                 $('.time_booking').html($result.show_time['time']);

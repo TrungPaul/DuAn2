@@ -27,7 +27,7 @@ class CreateEmployeeRequest extends FormRequest
         return [
             'name' => 'bail|required|max:50',
             'gender' => ['required', Rule::in(['Nam', 'Nữ', 'Khác'])],
-            'avatar' => 'bail|nullable|image|mimes:jpeg, png, jpg, gif|max:10240',
+            'avatar' => 'bail|nullable|image|mimes:jpeg, png, jpg, gif|max:2048',
         ];
     }
 }

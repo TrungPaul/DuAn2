@@ -21,37 +21,35 @@
                 </thead>
                 <tbody>
                 @foreach ($user as $item)
-                    <tr>
-                        <td>{{ $item->name}}</td>
-                        <td>{{$item->email}}</td>
-                        <td>{{$item->phone_number}}</td>
-                        <td>
-                            @if ( $item->gender == $gender['gender_type_male'] )
-                                Nam
-                            @elseif ( $item->gender == $gender['gender_type_female'] )
-                                Nữ
-                            @else
-                                Other
-                            @endif
-                        </td>
-                        <td>
-                            @if ( $item->role == $gender['role_type_admin'])
-                                <span class="btn btn-success btn-sm text-white">
-                                    Admin
-                                </span>
-                            @elseif ( $item->is_active == $gender['user_type_inActive'] )
-                                <a href="{{ route('admin.edit_user', $item->id ) }}" class="btn btn-danger btn-sm text-white">
-                                    Đã chặn
-                                </a>
-                            @elseif ( $item->is_active == $gender['user_type_active']  )
-                                <a href="{{ route('admin.edit_user', $item->id ) }}" class="btn btn-primary btn-sm text-white">
-                                    Thành viên
-                                </a>
-                            @else 
-                                Khác
-                            @endif
-                        </td>
-                    </tr>
+                    @if ( $item->role != $gender['role_type_admin'])
+                        <tr>
+                            <td>{{ $item->name}}</td> 
+                            <td>{{$item->email}}</td>
+                            <td>{{$item->phone_number}}</td>
+                            <td>
+                                @if ( $item->gender == $gender['gender_type_male'] )
+                                    Nam
+                                @elseif ( $item->gender == $gender['gender_type_female'] )
+                                    Nữ
+                                @else
+                                    Other
+                                @endif
+                            </td>
+                            <td>
+                                @if ( $item->is_active == $gender['user_type_active'] )
+                                    <a href="{{ route('admin.edit_user', $item->id ) }}" class="btn btn-success btn-sm text-white">
+                                        Thành viên
+                                    </a>
+                                @elseif ( $item->is_active == $gender['user_type_inActive'] )
+                                    <a href="{{ route('admin.edit_user', $item->id ) }}" class="btn btn-danger btn-sm text-white">
+                                        Đã chặn
+                                    </a>
+                                @else 
+                                    Khác
+                                @endif
+                            </td>
+                        </tr>
+                    @endif
                 @endforeach
                 </tbody>
             </table>

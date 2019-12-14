@@ -10834,18 +10834,18 @@ label.error {
 
 .beautypress-partner-features-content {
     position: absolute;
-    bottom: -65px;
+    bottom: -72px;
     left: 0;
     width: 100%;
     text-align: center;
     z-index: 2;
-    padding: 0 10px;
+    padding: 0 10px 0 0;
     -webkit-transition: all .4s ease;
     transition: all .4s ease;
 }
 
 .beautypress-partner-our-feature:hover .beautypress-partner-features-content {
-    bottom: 10px;
+    bottom: 20px;
 }
 
 .dashboard-wrap {

@@ -72,7 +72,7 @@
                                                 <span class="mg-subtitle text-danger">Dịch vụ dừng hoạt động</span>
                                             @else
                                             <span class="mg-subtitle">Tên dịch vụ: {{ $book->detailService['name_service'] }}
-                                                    - Giá: {{ $book->detailService['price_service'] }}</span>
+                                                    - Giá: {{ number_format($book->detailService['price_service'] , 0,'.' , ',') . 'VNĐ' }}</span>
                                             @endif
                                             <span>Ngày đặt lịch: {{ date('d-m-Y', strtotime($book->date_booking)) }}
                                                     - Ca: {{ $book->time_booking }}({{ $book->showTime['time'] }})

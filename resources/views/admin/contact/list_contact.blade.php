@@ -26,6 +26,7 @@
                     <th>Email </th>
                     <th>Số điện thoại </th>
                     <th>Nội dung </th>
+                    <th>Thời gian </th>
                     <th width="120">
                     </th>
                 </tr>
@@ -37,6 +38,7 @@
                         <td>{{ $item->email }}</td>
                         <td>{{ $item->phone }}</td>
                         <td>{{ $item->content }}</td>
+                        <td>{{ $item->created_at }}</td>
                         <td>
                             <a 
                                 href="{{route('admin.replycontact', $item->id)}}"

@@ -43,7 +43,7 @@
 
                                     <div class="col-lg-6 col-md-6 col-sm-6">
                                         <div class="form-group">
-                                            <label>Khuyến mãi%<span class="text-danger">*</span></label>
+                                            <label>Khuyến mãi%</label>
                                             <input class="form-control" type="text" name="discount"
                                                    value="{{$ser->discount}}">
                                             @if( $errors->first('discount'))
@@ -69,11 +69,11 @@
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-6">
                                         <div class="form-group">
-                                            <label>Ảnh đại diện</label>
+                                            <label>Ảnh</label>
                                             <div class="custom-file">
                                                 <input type="file" name="image_service" class="custom-file-input"
                                                        id="customFile">
-                                                <label class="custom-file-label" for="customFile">Chọn ảnh</label>
+                                                <label class="custom-file-label" style="overflow:hidden;" for="customFile">Chọn ảnh</label>
                                                 @if( $errors->first('image_service'))
                                                     <span
                                                         class="text-danger">{{ $errors->first('image_service')}}</span>

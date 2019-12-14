@@ -43,19 +43,24 @@
                         <td>{{ $item->content }}
                        <td>
                             @foreach($item->replies as $rep)
-                                @if (isset($rep->user_id))
-                                    <img src="../images/avatar/{{ $rep->user->avatar }}" width="42;" height="42;" style="border-radius:100%;">
-                                @else 
-                                    <img src="../images/avatar/default-avatar.png" width="50;" class="img-fluid">
-                                @endif
-                                {{ $rep->name }}: <i style="font-size:13px;">{{ $rep->content }}</i>&emsp;
-                                <a 
-                                    href="javascript:;" 
-                                    linkurl="{{route('admin.deletereply', $rep->id)}}" 
-                                    class="btn btn-sm btn-danger btn-remove">
-                                    <i class="fa fa-trash"></i>  Xoá
-                                </a>
-                                <br><br>
+                                <div class="row">
+                                    <div class="col-md-9">
+                                        @if (isset($rep->user_id))
+                                            <img src="../images/avatar/{{ $rep->user->avatar }}" width="42;" height="42;" style="border-radius:100%;">
+                                        @else 
+                                            <img src="../images/avatar/default-avatar.png" width="50;" class="img-fluid">
+                                        @endif
+                                        {{ $rep->name }}: <i style="font-size:13px;">{{ $rep->content }}</i>&emsp;
+                                    </div>
+                                    <div class="col-md-3 text-right">
+                                        <a 
+                                            href="javascript:;" 
+                                            linkurl="{{route('admin.deletereply', $rep->id)}}" 
+                                            class="btn btn-sm btn-danger btn-remove">
+                                            <i class="fa fa-trash"></i>  Xoá
+                                        </a>
+                                    </div>
+                                </div> <br>
                             @endforeach
                        </td>
                         <td>

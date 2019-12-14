@@ -34,7 +34,7 @@
                             </a>
                         @elseif ( $item->is_active == $active['user_type_inActive'] )
                         <a href="{{ route('admin.editspa', $item->id ) }}" class="btn btn-danger btn-sm text-white">
-                            Đã chặn
+                            Đang chặn
                         </a>
                         @endif</td>
                     </tr>

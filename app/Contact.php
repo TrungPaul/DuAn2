@@ -12,5 +12,6 @@ class Contact extends Model
         'email',
         'phone',
         'content',
+        'created_at'
     ];
 }

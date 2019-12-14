@@ -35,7 +35,7 @@ class PostController extends Controller
     public function detail(Post $post_id) {
         $post = Post::find($post_id->id);
         $post->increment('views');
-        $posts = Post::where('cate_id', '=', $post->cate_id)->where('status', 1)->get();
+        $posts = Post::where('cate_id', '=', $post->cate_id)->where('status', 1)->limit(5)->get();
         $comments = Post::find($post_id->id)->comments;
         $new_posts = Post::where('status', 1)->orderBy('created_at', 'desc')->limit(3)->get();
         $categories = Category::all();
@@ -43,7 +43,7 @@ class PostController extends Controller
     }
     public function posts_category($cate_id)
     {
-        $posts = Post::where('cate_id', '=', $cate_id)->where('status', 1)->get();
+        $posts = Post::where('cate_id', '=', $cate_id)->where('status', 1)->paginate('6');
         $posts_view = Post::where('status', 1)->orderBy('views', 'desc')->limit(3)->get();
         $categories = Category::all();
         return view('pages.list-post-cate', compact('posts', 'posts_view', 'categories'));
@@ -58,13 +58,19 @@ class PostController extends Controller
         $category = Category::all();
     	return view('admin.post.add_post', compact('category'));
     }
-    public function create_post(PostRequest $request)
+    public function create_post(Request $request)
     {
+        $request->validate([
+            'image' => 'required|mimes:jpeg,png,jpg,gif,svg',
+            'title' => 'required|max:191',
+            'description' => 'required',
+            'content' => 'required',
+        ]);
         $dt = Carbon::now('Asia/Ho_Chi_Minh');
         $data = new Post;
 
+        $data->created_at = $dt;
         $data->fill($request->all());
-        $request->created_at = $dt;
         if ($request->hasFile('image')) {
             $oriFileName = $request->image->getClientOriginalName();
             $filename = str_replace(' ', '-', $oriFileName);

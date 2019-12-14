@@ -1,7 +1,7 @@
 @extends('layouts.index')
 @section('title', 'Lịch đã đặt')
 @section('content')
-<div class="tr-single-detail gray-bg mb-5" style="margin-top:170px">
+    <div class="tr-single-detail gray-bg mb-5" style="margin-top:170px">
         <div class="container">
             <div class="row">
                 <div class="col-md-3">
@@ -18,7 +18,7 @@
                             <form action="" method="get">
                                 <div class="col-lg-5 col-md-5 col-sm-12 p-0">
                                     <div class="form-group">
-                                        <input type="date" name="date"  class="form-control" placeholder="">
+                                        <input type="date" name="date" class="form-control" placeholder="">
                                     </div>
                                 </div>
 
@@ -45,46 +45,47 @@
                             <!-- Single Manage job -->
                             @if(count($getData) > 0)
                                 @foreach($getData as $key => $book)
-                                <div class="manage-list">
+                                    <div class="manage-list">
 
-                                    <div class="mg-list-wrap">
-                                        <div class="mg-list-thumb">
-                                            <img src="images/spas/{{ $book->spaBook['image']  }}" class="mx-auto"
-                                                 alt=""/>
-                                        </div>
-                                        <div class="mg-list-caption">
-                                            <h4 class="mg-title">Tên Spa: {{ $book->spaBook['name'] }}</h4>
-                                            @if($book->detailService == null)
-                                                <span class="mg-subtitle text-danger">Dịch vụ dừng hoạt động(*Vui lòng hủy lịch)</span>
-                                            @else
-                                                <span class="mg-subtitle">Tên dịch vụ: {{ $book->detailService['name_service'] }}
-                                                    - Giá: {{ $book->detailService['price_service'] }}</span>
-                                            @endif
-                                            <span>Ngày đặt lịch: {{ date('d-m-Y', strtotime($book->date_booking)) }}
+                                        <div class="mg-list-wrap">
+                                            <div class="mg-list-thumb">
+                                                <img src="images/spas/{{ $book->spaBook['image']  }}" class="mx-auto"
+                                                     alt=""/>
+                                            </div>
+                                            <div class="mg-list-caption">
+                                                <h4 class="mg-title">Tên Spa: {{ $book->spaBook['name'] }}</h4>
+                                                @if($book->detailService == null)
+                                                    <span class="mg-subtitle text-danger">Dịch vụ dừng hoạt động(*Vui lòng hủy lịch)</span>
+                                                @else
+                                                    <span class="mg-subtitle">Tên dịch vụ: {{ $book->detailService['name_service'] }}
+                                                    - Giá: {{ number_format($book->detailService['price_service'] , 0,'.' , ',') .'VNĐ' }}</span>
+                                                @endif
+                                                <span>Ngày đặt lịch: {{ date('d-m-Y', strtotime($book->date_booking)) }}
                                                     - Ca: {{ $book->time_booking }}({{ $book->showTime['time'] }})
                                                 </span>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="mg-action">
-                                        <div class="btn-group ml-2">
-                                            <a href="javascript:;"
-                                               class="mg-edit edit detail-booking-user" title="Chi tiết"
-                                               data-toggle="modal"
-                                               data-target="#signup" data-id="{{ $book->id }}"><i
-                                                    class="fas fa-eye"></i></a>
-                                        </div>
+                                        <div class="mg-action">
+                                            <div class="btn-group ml-2">
+                                                <a href="javascript:;"
+                                                   class="mg-edit edit detail-booking-user" title="Chi tiết"
+                                                   data-toggle="modal"
+                                                   data-target="#signup" data-id="{{ $book->id }}"><i
+                                                        class="fas fa-eye"></i></a>
+                                            </div>
 
-                                        <div class="btn-group ml-2">
-                                            <a
-                                                href="javascript:;"
-                                                linkurl="{{ route('user-cancel-booking', $book->id) }}" data-target="#delete"
-                                                data-toggle="modal" class="mg-delete delete btn-remove"
-                                                data-id=""
-                                                title="Hủy lịch"><i
-                                                    class="fas fa-trash"></i></a>
+                                            <div class="btn-group ml-2">
+                                                <a
+                                                    href="javascript:;"
+                                                    linkurl="{{ route('user-cancel-booking', $book->id) }}"
+                                                    data-target="#delete"
+                                                    data-toggle="modal" class="mg-delete delete btn-remove"
+                                                    data-id=""
+                                                    title="Hủy lịch"><i
+                                                        class="fas fa-trash"></i></a>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
                                 @endforeach
                             @else
                                 <div class="manage-list">
@@ -98,7 +99,7 @@
             </div>
         </div>
     </div>
-<div class="modal fade show" id="signup" tabindex="-1" role="dialog" aria-labelledby="sign-up"
+    <div class="modal fade show" id="signup" tabindex="-1" role="dialog" aria-labelledby="sign-up"
          style="display: none;">
         <div class="modal-dialog modal-dialog-centered login-pop-form" role="document">
             <div class="modal-content" id="sign-up">
@@ -163,4 +164,11 @@
             </div>
         </div>
     </div>
+@endsection
+@section('alert')
+    @if (session('error'))
+        <script>
+            toastr.error('{{ session('error')}}', {timeOut: 200});
+        </script>
+    @endif
 @endsection

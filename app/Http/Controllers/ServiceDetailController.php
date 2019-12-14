@@ -53,7 +53,6 @@ class ServiceDetailController extends Controller
 
         $serviceDetail = new ServiceDetail();
         $request['spa_id'] = $idSpa = Auth::guard('spa')->user()->id;
-        $request['price_service'] = number_format($request->price_service , 0,'.' , ',');
         $request['image_service'] = 'face.jpg';
         $serviceDetail->fill($request->all());
         if ($request->hasFile('image_service')) {
