@@ -22,7 +22,7 @@
                 </div>
                 <div class="col-md-12 col-sm-12 col-lg-6 col-xl-6">
                     <div class="beautypress-booking-form-wraper">
-                        <form action="{{ route('service.book',$serviceId)}}" method="post" enctype="multipart/form-data"
+                        <form action="{{ route('service.book',$serviceId)}}" method="get" enctype="multipart/form-data"
                               novalidate>
                             <input type="hidden" value={{$spaId}}>
                             @csrf

@@ -85,7 +85,7 @@
                                             </div><!-- .beautypress-select END -->
                                         </div>
 
-                                <button type="submit" class="btn btn-info btn-md full-width">Thêm mới<i
+                                <button type="submit" class="btn btn-info btn-md full-width">Đặt lịch<i
                                         class="ml-2 ti-arrow-right"></i></button>
                             </div><!-- .beautypress-service-and-date END -->
                             <!-- .beautypress-personal-information END -->
