@@ -89,14 +89,14 @@ class BookingOfUserController extends Controller
 
     public function addBooking(Request $request, $spaId)
     {
-        $this->validate($request, [
-            'name' => 'required',
-            'email' => 'required|email',
-            'service_detail_id' => 'required',
-            'date_booking' => 'required|after:today',
-            'time_booking' => 'required',
-            'staff_id' => 'required'
-        ]);
+//         $this->validate($request, [
+//             'name' => 'required',
+//             'email' => 'required|email',
+//             'service_detail_id' => 'required',
+//             'date_booking' => 'required|after:today',
+//             'time_booking' => 'required',
+//             'staff_id' => 'required'
+//         ]);
 
         $booking = new BookingOfUser();
         $booking->fill($request->all());
