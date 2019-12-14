@@ -89,14 +89,11 @@ class BookingOfUserController extends Controller
 
     public function addBooking(Request $request, $spaId)
     {
-//         $this->validate($request, [
-//             'name' => 'required',
-//             'email' => 'required|email',
-//             'service_detail_id' => 'required',
-//             'date_booking' => 'required|after:today',
-//             'time_booking' => 'required',
-//             'staff_id' => 'required'
-//         ]);
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required|email',
+            'service_detail_id' => 'required',
+        ]);
 
         $booking = new BookingOfUser();
         $booking->fill($request->all());
@@ -250,8 +247,30 @@ class BookingOfUserController extends Controller
 
     public function completeBook($id)
     {
+        $infoBooking = BookingOfUser::find($id);
+        if($infoBooking->user_id != null ) {
+            $user = User::find($infoBooking->user_id);
+            $email = $user->email;
+            $name = $user ->name;
+        }else{
+            $name = $infoBooking->name;
+            $email = $infoBooking->email;
+        }
+        $times = Time::find($infoBooking->time_booking);
+        $service = ServiceDetail::find($infoBooking->service_detail_id);
+        $spa = Spa::find($infoBooking->spa_id);
+        $content = "Dịch vụ" . " " . $service->name_service . " " . "bên spa" . " " . $spa->name . "vào lúc" . $times->time . " " . "ngày" . $infoBooking->time_booking . " " .  "đã hoàn thành, cảm ơn bạn đã đặt dịch vụ bên spa";
+
         $cancel = BookingOfUser::where('id', $id)
             ->update(['status' => 2]);
+
+
+        Mail::send('mailbooking', [
+            'name' => $name,
+            'content' => $content,
+        ], function ($msg) use ($email) {
+            $msg->to($email, 'Đặt dịch vụ')->subject('Đặt dịch vụ');
+        });
 
         return back();
     }
