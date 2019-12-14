@@ -13,6 +13,7 @@ use App\Staff;
 use Illuminate\Support\Facades\Auth;
 use Mail;
 use Carbon\Carbon;
+use App\Http\Requests\BookRequest;
 
 class BookingOfUserController extends Controller
 {
@@ -51,7 +52,10 @@ class BookingOfUserController extends Controller
         $data = $request->date_booking;
         $staff_id = $request->staff_id ;
         $service = ServiceDetail::where('spa_id', $spaId)->get();
-        $serviceBeBook = BookingOfUser::where('spa_id', $spaId)->where('staff_id', $staff_id)->whereDate('date_booking', $request->date_booking)->pluck('time_booking');
+        $serviceBeBook = BookingOfUser::where('spa_id', $spaId)
+            ->where('staff_id', $staff_id)
+            ->whereDate('date_booking', $request->date_booking)
+            ->pluck('time_booking');
         if ($request->date_booking == $date) {
             $timeNotBook = Time::whereNotIn('id', $serviceBeBook)->whereTime('time', '>=', $timeNow)->get();
         }else{
@@ -61,6 +65,8 @@ class BookingOfUserController extends Controller
 
         return view('user.booking', compact('times', 'service', 'staff_id', 'spaId', 'timeNotBook', 'data'));
     }
+
+
     //book from service
     public function bookservice(Request $request, $serviceId)
     {
@@ -87,17 +93,15 @@ class BookingOfUserController extends Controller
         return view('user.bookingService', compact('times', 'service', 'staff_id', 'spaId', 'timeNotBook', 'data' , 'serviceId'));
     }
 
-    public function addBooking(Request $request, $spaId)
+    public function addBookingVieư()
     {
-        $this->validate($request, [
-            'name' => 'required',
-            'email' => 'required|email',
-            'service_detail_id' => 'required',
-            'date_booking' => 'required|after:today',
-            'time_booking' => 'required',
-            'staff_id' => 'required'
-        ]);
+        dd('get add');
 
+        return view('resources/views/user/booking');
+    }
+
+    public function addBooking(BookRequest $request, $spaId)
+    {
         $booking = new BookingOfUser();
         $booking->fill($request->all());
         $booking->spa_id = $spaId;

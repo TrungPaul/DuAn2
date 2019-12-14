@@ -22,7 +22,7 @@
                 </div>
                 <div class="col-md-12 col-sm-12 col-lg-6 col-xl-6">
                     <div class="beautypress-booking-form-wraper">
-                        <form action="{{ route('user.booking',$spaId) }}" method="POST" enctype="multipart/form-data"
+                        <form action="{{ route('user.booking.add',$spaId) }}" method="POST" enctype="multipart/form-data"
                               novalidate>
                             @csrf
                             <input type="hidden" name="action" value="send_appointment_form"/>
@@ -72,7 +72,7 @@
                                     </div><!-- .beautypress-select END -->
                                 </div>
 
-                                <button type="submit" class="btn btn-info btn-md full-width">Thêm mới<i
+                                <button type="submit" class="btn btn-info btn-md full-width">Đặt Lịch<i
                                         class="ml-2 ti-arrow-right"></i></button>
                             </div><!-- .beautypress-service-and-date END -->
                             <!-- .beautypress-personal-information END -->

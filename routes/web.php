@@ -24,10 +24,10 @@ Route::get('search', 'PostController@search')->name('search');;
 Route::get('detail-spa/{idSpa}', 'SpaController@detailSpa')->name('detail-spa');
 Route::get('lien-he', 'ContactController@index')->name('view_contact');
 Route::get('/getbooking/{spaId}', 'BookingOfUserController@getBook')->name('user.getbook');
-Route::post('/booking/{spaId}', 'BookingOfUserController@book')->name('user.book');
-Route::post('/booking/{spaId}/add', 'BookingOfUserController@addBooking')->name('user.booking');
+Route::get('/booking/{spaId}', 'BookingOfUserController@book')->name('user.book');
+Route::post('/booking/{spaId}/add', 'BookingOfUserController@addBooking')->name('user.booking.add');
 Route::get('/getbooking-from-service/{serviceId}', 'BookingOfUserController@getBookingFS')->name('service.getbook');
-Route::post('/booking-from-service/{serviceId}', 'BookingOfUserController@bookservice')->name('service.book');
+Route::get('/booking-from-service/{serviceId}', 'BookingOfUserController@bookservice')->name('service.book');
 Route::group(['middleware' => 'auth'], function () {
     Route::group(['namespace' => 'User'], function () {
         Route::get('/thong-tin', 'HomeController@profile')->name('user.profile');

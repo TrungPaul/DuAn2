@@ -22,10 +22,9 @@
                 </div>
                 <div class="col-md-12 col-sm-12 col-lg-6 col-xl-6">
                     <div class="beautypress-booking-form-wraper">
-                        <form action="{{ route('user.booking',$spaId) }}" method="POST" enctype="multipart/form-data"
-                              novalidate>
+                        <form action="{{ route('user.booking.add',$spaId) }}" method="post" enctype="multipart/form-data"
+                              >
                             @csrf
-                            <input type="hidden" name="action" value="send_appointment_form"/>
                             <input type="hidden" name="date_booking" value="{{$data}}"/>
                             <input type="hidden" name="staff_id" value="{{$staff_id}}"/>
                             <div class="alert hidden" id="beautypress-form-msg"></div>
@@ -67,26 +66,26 @@
                                     </div>
                                 </div>
                                <!-- .beautypress-select END -->
-                                                                <div class="beautypress-spilit-container">
-                                                                    <!-- .beautypress-date-select END -->
-                                                                    <div class="beautypress-select">
-                                                                        <h5>Thời gian còn trống</h5>
-                                                                        <div class="input-group">
-                                                                            <select name="time_booking" id="appointment-service" class="form-control">
-                                                                                @foreach($timeNotBook as $not)
-                                                                                    <option value="{{$not->id}}">
-                                                                                        {{$not->time}}
-                                                                                    </option>
-                                                                                @endforeach
-                                                                            </select>
-                                                                            @if( $errors->first('time_booking'))
-                                                                                <span class="text-danger">{{ $errors->first('time_booking')}}</span>
-                                                                            @endif
-                                                                        </div>
-                                                                    </div><!-- .beautypress-select END -->
-                                                                </div>
+                                        <div class="beautypress-spilit-container">
+                                            <!-- .beautypress-date-select END -->
+                                            <div class="beautypress-select">
+                                                <h5>Thời gian còn trống</h5>
+                                                <div class="input-group">
+                                                    <select name="time_booking" id="appointment-service" class="form-control">
+                                                        @foreach($timeNotBook as $not)
+                                                            <option value="{{$not->id}}">
+                                                                {{$not->time}}
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
+                                                    @if( $errors->first('time_booking'))
+                                                        <span class="text-danger">{{ $errors->first('time_booking')}}</span>
+                                                    @endif
+                                                </div>
+                                            </div><!-- .beautypress-select END -->
+                                        </div>
 
-                                <button type="submit" class="btn btn-info btn-md full-width">Thêm mới<i
+                                <button type="submit" class="btn btn-info btn-md full-width">Đặt lịch<i
                                         class="ml-2 ti-arrow-right"></i></button>
                             </div><!-- .beautypress-service-and-date END -->
                             <!-- .beautypress-personal-information END -->
