@@ -11,9 +11,9 @@
             <div class="row">
                 <div class="col-md-8 mb-3">
                     @foreach ( $posts as $key => $p )
-                        <div class="beautypress-single-newsletter mb-30">
+                        <div class="beautypress-single-newsletter mb-5">
                             <div class="beautypress-newsfeed-header beautypress-black-gradient-overlay d-flex">
-                                <img src="images/posts/{{ $p->image }}">
+                                <img src="images/posts/{{ $p->image }}" style="height:400px;">
                                 <div class="beautypress-newsfeed-header-content">
                                     <div class="beautypress-newsfeed-img">
                                         <img src="images/avatar/{{ $p->user->avatar }}" alt="">

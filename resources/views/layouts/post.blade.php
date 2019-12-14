@@ -6,7 +6,7 @@
         </div>
         <div class="row">
             @foreach ( $posts as $key => $p )
-                <div class="col-md-12 col-sm-12 col-xl-4 col-lg-4">
+                <div class="col-md-6 col-xl-4 col-lg-4 pt-5">
                     <div class="beautypress-single-newsletter mb-30">
                         <div class="beautypress-newsfeed-header beautypress-black-gradient-overlay">
                             <img src="images/posts/{{ $p->image }}" alt="">

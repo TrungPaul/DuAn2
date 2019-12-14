@@ -11,7 +11,7 @@
                     </div>
 
                 </div>
-                <div class="col-md-12 col-sm-12 col-lg-4 col-xl-4">
+                <div class="col-md-12 col-sm-12 col-lg-4 col-xl-4 mb-4">
                     <div class="beautypress-single-footer beautypress-single-footer-group">
                         <p>Thứ hai - Thứ sáu: 9:00 – 17:00</p>
                         <p>Thứ bảy: 9:00 - 12:00</p>
