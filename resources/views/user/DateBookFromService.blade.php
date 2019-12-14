@@ -11,8 +11,9 @@
                                 <h2>Lịch làm việc</h2>
                                 <h3>Giờ làm việc</h3>
                                 <div class="beautypress-icon-bg-text">
-                                    <p> Xin chào quý khách . Rất vui được phục vụ quý khách </p>
-                                </div><!-- .beautypress-icon-bg-text END -->
+
+                                </div>
+                                <br><!-- .beautypress-icon-bg-text END -->
                                 <ul>
                                     <li>Mon - Sun : 8:00am - 10:00pm</li>
                                 </ul>
