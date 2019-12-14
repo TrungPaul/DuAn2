@@ -37,9 +37,9 @@
                             </td>
                             <td>
                                 @if ( $item->is_active == $gender['user_type_active'] )
-                                    <span class="btn btn-success btn-sm text-white">
+                                    <a href="{{ route('admin.edit_user', $item->id ) }}" class="btn btn-success btn-sm text-white">
                                         Thành viên
-                                    </span>
+                                    </a>
                                 @elseif ( $item->is_active == $gender['user_type_inActive'] )
                                     <a href="{{ route('admin.edit_user', $item->id ) }}" class="btn btn-danger btn-sm text-white">
                                         Đã chặn
